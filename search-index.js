@@ -2,8 +2,8 @@ window.ATOM_SEARCH_INDEX = [
   {
     title: 'Atom Wang',
     type: '主页',
-    summary: '个人项目、公开报告与实验的入口。',
-    keywords: 'atom wang atompilot 个人网站 projects reports notes experiments 主页 首页',
+    summary: '王童（Atom Wang）的个人介绍，以及公开项目、报告与实验的入口。',
+    keywords: '王童 atom wang atompilot 个人介绍 关于我 个人网站 projects reports notes experiments 宝可梦 主页 首页',
     url: '/'
   },
   {
