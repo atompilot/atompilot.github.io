@@ -27,7 +27,7 @@ The slug describes the subject, not the tool or agent. Example:
 reports/2026/07/github-hot-projects/index.html
 ```
 
-Every report must contain its title, generation date, source/method note, and a link back to `/reports/`. When an asset is needed, keep it inside the report's own `assets/` directory so the report can move without breaking.
+Every report must contain its title, generation date, source/method note, and a link back to `/reports/`. Give it accurate `description` and `keywords` meta tags, then append its title, summary, keywords, URL, and important report-internal entries to `/search-index.js` so the site-wide Spotlight search can find it. When an asset is needed, keep it inside the report's own `assets/` directory so the report can move without breaking.
 
 ## Library maintenance
 

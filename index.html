@@ -1,75 +1,77 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Atom Wang’s personal website — projects, notes, and experiments."
-    />
-    <title>Atom Wang — Projects, Notes, Experiments</title>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Atom Wang 的个人网站：项目、公开交互式报告与实验。" />
+    <meta name="keywords" content="Atom Wang, atompilot, 个人网站, 项目, HTML 报告, 调研, GitHub" />
+    <title>Atom Wang — 项目、报告与实验</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/search-index.js"></script>
+    <script defer src="/site.js"></script>
   </head>
-  <body>
-    <main>
-      <nav aria-label="Primary navigation">
-        <a class="wordmark" href="#top" aria-label="Atom Wang home">AW</a>
+  <body class="home-page">
+    <main class="site-shell">
+      <nav class="site-nav" aria-label="主导航">
+        <a class="wordmark" href="#top" aria-label="Atom Wang 首页">AW</a>
         <div class="nav-links">
-          <a href="#work">Work</a>
-          <a href="#notes">Notes</a>
-          <a href="/reports/">Reports</a>
-          <a href="https://github.com/atompilot" rel="noreferrer">GitHub ↗</a>
+          <a href="#work">项目</a>
+          <a href="/reports/">报告</a>
+          <a href="https://github.com/atompilot" rel="noreferrer">GitHub</a>
+          <button class="search-trigger" type="button" data-site-search aria-label="搜索全站内容">
+            <span>搜索</span><kbd>⌘ F</kbd>
+          </button>
         </div>
       </nav>
 
-      <section class="hero" id="top" aria-labelledby="intro-title">
-        <p class="eyebrow">Personal site of</p>
-        <h1 id="intro-title">Atom Wang</h1>
-        <p class="intro">
-          Building useful things, thinking in public, and leaving room for
-          experiments.
-        </p>
-        <a class="button" href="#work">Explore the work <span aria-hidden="true">↓</span></a>
-      </section>
-
-      <section class="section" id="work" aria-labelledby="work-title">
-        <div class="section-heading">
-          <p class="eyebrow">Selected directions</p>
-          <h2 id="work-title">Work in progress</h2>
-        </div>
-        <div class="cards">
-          <a class="card card-highlight" href="https://github.com/atompilot" rel="noreferrer">
-            <span class="card-number">01</span>
-            <h3>Projects</h3>
-            <p>Things I make — from product experiments to open-source work.</p>
-            <span class="card-link">View on GitHub ↗</span>
-          </a>
-          <a class="card" href="/reports/">
-            <span class="card-number">02</span>
-            <h3>Reports</h3>
-            <p>Interactive research briefs, built to be useful on any device.</p>
-            <span class="card-link">Open the library →</span>
-          </a>
-          <article class="card">
-            <span class="card-number">03</span>
-            <h3>Experiments</h3>
-            <p>Small prototypes, unfamiliar tools, and ideas tested in the open.</p>
-            <span class="card-link">In the lab</span>
-          </article>
+      <section class="home-hero" id="top" aria-labelledby="intro-title">
+        <p class="eyebrow">Atom Wang</p>
+        <h1 id="intro-title">把好奇心<br />做成可用的东西。</h1>
+        <div class="hero-bottom">
+          <p>这里收集持续推进的项目，以及适合在任何设备上阅读的公开交互式报告。</p>
+          <button class="hero-search" type="button" data-site-search>
+            <span class="search-mark" aria-hidden="true"></span>
+            搜索全部内容
+            <span class="hero-search-key">⌘ F</span>
+          </button>
         </div>
       </section>
 
-      <section class="section note" id="notes" aria-labelledby="notes-title">
+      <section class="home-section" id="work" aria-labelledby="work-title">
+        <div class="section-intro">
+          <p class="eyebrow">Index</p>
+          <h2 id="work-title">从这里开始。</h2>
+        </div>
+        <div class="feature-list">
+          <a class="feature feature-primary" href="/reports/">
+            <span class="feature-index">01</span>
+            <div>
+              <p class="feature-label">Public library</p>
+              <h3>交互式报告</h3>
+              <p>把调研、观察和数据整理成易读、可搜索、可在多设备打开的 HTML。</p>
+            </div>
+            <span class="feature-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="feature" href="https://github.com/atompilot" rel="noreferrer">
+            <span class="feature-index">02</span>
+            <div>
+              <p class="feature-label">Open work</p>
+              <h3>项目与代码</h3>
+              <p>正在构建的产品尝试、开源项目与可以公开分享的实验。</p>
+            </div>
+            <span class="feature-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="home-section quiet-section" aria-labelledby="notes-title">
         <p class="eyebrow">A small promise</p>
-        <h2 id="notes-title">More will take shape here.</h2>
-        <p>
-          This is the beginning: a place to collect work, publish notes, and
-          make room for curiosity.
-        </p>
+        <h2 id="notes-title">持续整理，慢慢生长。</h2>
+        <p>每一份新公开内容都会进入统一的搜索索引。按下 <kbd>⌘ F</kbd>，随时找回需要的线索。</p>
       </section>
 
-      <footer>
+      <footer class="site-footer">
         <span>© 2026 Atom Wang</span>
         <a href="https://github.com/atompilot" rel="noreferrer">GitHub ↗</a>
       </footer>

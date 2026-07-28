@@ -4,51 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Atom Wang 的公开交互式 HTML 报告库。" />
-    <title>Reports — Atom Wang</title>
+    <meta name="keywords" content="Atom Wang, HTML 报告, 交互式简报, 调研, 看板, GitHub Trending" />
+    <title>报告库 — Atom Wang</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/search-index.js"></script>
+    <script defer src="/site.js"></script>
     <style>
-      :root { --ink: #17211c; --paper: #f6f4ee; --muted: #657069; --line: #d9dcd3; --accent: #d5ff56; }
-      * { box-sizing: border-box; }
-      body { margin: 0; min-width: 320px; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-      main { width: min(960px, calc(100% - 40px)); margin: 0 auto; }
-      nav, footer { display: flex; justify-content: space-between; padding: 25px 0; font-size: .9rem; }
-      a { color: inherit; text-underline-offset: 4px; }
-      .mark { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid var(--ink); border-radius: 50%; font-size: .76rem; font-weight: 800; text-decoration: none; }
-      header { padding: 100px 0 78px; border-bottom: 1px solid var(--line); }
-      .eyebrow { margin: 0 0 14px; color: var(--muted); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-      h1 { margin: 0; font-size: clamp(3.8rem, 10vw, 8rem); letter-spacing: -.085em; line-height: .82; }
-      .intro { max-width: 560px; margin: 26px 0 0; font-size: 1.2rem; line-height: 1.5; }
-      section { padding: 60px 0 90px; }
-      .report { display: block; padding: 28px; border: 1px solid var(--ink); background: var(--accent); text-decoration: none; transition: transform 160ms ease, box-shadow 160ms ease; }
-      .report:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--ink); }
-      .meta { display: flex; justify-content: space-between; gap: 16px; color: #455148; font-size: .8rem; }
-      h2 { margin: 48px 0 12px; font-size: clamp(2rem, 5vw, 3.6rem); letter-spacing: -.065em; line-height: .92; }
-      .report p { max-width: 650px; margin: 0; line-height: 1.55; }
-      .open { display: inline-block; margin-top: 32px; font-weight: 800; }
-      footer { border-top: 1px solid var(--line); color: var(--muted); }
-      @media (max-width: 560px) { main { width: min(100% - 32px, 960px); } header { padding: 70px 0 55px; } section { padding: 40px 0 65px; } .meta { flex-direction: column; gap: 5px; } }
+      .reports-page { background: #fbfbfd; }
+      .reports-hero { padding: 108px 0 72px; border-bottom: 1px solid var(--line); }
+      .reports-hero h1 { max-width: 760px; margin: 0; font-size: clamp(3.4rem, 7vw, 6.5rem); font-weight: 680; letter-spacing: -.078em; line-height: .96; }
+      .reports-hero p:last-child { max-width: 570px; margin: 25px 0 0; color: #515154; font-size: 1.1rem; line-height: 1.55; }
+      .reports-count { display: flex; align-items: center; justify-content: space-between; padding: 25px 0; color: var(--muted); font-size: .81rem; }
+      .report-entry { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; gap: 28px; padding: 38px 10px; border-top: 1px solid var(--line); text-decoration: none; transition: padding .2s ease, background .2s ease; }
+      .report-entry:last-child { border-bottom: 1px solid var(--line); }
+      .report-entry:hover { padding-right: 22px; padding-left: 22px; background: var(--blue-soft); }
+      .report-date, .report-kind { color: var(--muted); font-size: .76rem; letter-spacing: .04em; }
+      .report-entry h2 { margin: 0 0 10px; font-size: clamp(1.8rem, 3.3vw, 3rem); font-weight: 660; letter-spacing: -.06em; line-height: .98; }
+      .report-entry p { max-width: 650px; margin: 0; color: #515154; line-height: 1.55; }
+      .report-entry > span:last-child { color: var(--blue); font-size: 1.35rem; }
+      @media (max-width: 720px) {
+        .reports-hero { padding: 76px 0 55px; }
+        .report-entry { grid-template-columns: 1fr auto; gap: 12px; padding: 27px 4px; }
+        .report-entry > div { grid-column: 1; }
+        .report-entry > span:last-child { grid-column: 2; grid-row: 1 / span 2; }
+      }
     </style>
   </head>
-  <body>
-    <main>
-      <nav>
-        <a class="mark" href="/" aria-label="Atom Wang 首页">AW</a>
-        <a href="https://github.com/atompilot" rel="noreferrer">GitHub ↗</a>
+  <body class="reports-page">
+    <main class="site-shell">
+      <nav class="site-nav" aria-label="主导航">
+        <a class="wordmark" href="/" aria-label="Atom Wang 首页">AW</a>
+        <div class="nav-links">
+          <a href="/">首页</a>
+          <a href="https://github.com/atompilot" rel="noreferrer">GitHub</a>
+          <button class="search-trigger" type="button" data-site-search aria-label="搜索全站内容"><span>搜索</span><kbd>⌘ F</kbd></button>
+        </div>
       </nav>
-      <header>
-        <p class="eyebrow">Atom Wang</p>
-        <h1>Reports</h1>
-        <p class="intro">适合在任何设备上阅读的公开交互式简报。每份报告均保留生成日期、数据来源与适用边界。</p>
+      <header class="reports-hero">
+        <p class="eyebrow">Public library</p>
+        <h1>把信息做成<br />好读的页面。</h1>
+        <p>公开、可交互、适合在任何设备上阅读的 HTML 简报。每份报告都标明生成日期、数据来源和适用边界。</p>
       </header>
       <section aria-label="报告列表">
-        <a class="report" href="/reports/2026/07/github-hot-projects/">
-          <div class="meta"><span>2026-07-29</span><span>GitHub · 公开数据</span></div>
-          <h2>GitHub 本月热门项目</h2>
-          <p>23 个 GitHub Trending 月度项目的交互式快照，可按类别筛选或搜索，并明确区分近期热度与长期累计 star。</p>
-          <span class="open">打开报告 →</span>
+        <div class="reports-count"><span>01 report</span><button class="search-trigger" type="button" data-site-search>搜索全部报告 <kbd>⌘ F</kbd></button></div>
+        <a class="report-entry" href="/reports/2026/07/github-hot-projects/">
+          <span class="report-date">2026.07.29</span>
+          <div>
+            <p class="report-kind">GitHub · 公开数据</p>
+            <h2>GitHub 本月热门项目</h2>
+            <p>23 个 GitHub Trending 月度项目的交互式快照。支持分类、模糊搜索与空格分词，并明确区分近期热度与长期累计 star。</p>
+          </div>
+          <span aria-hidden="true">↗</span>
         </a>
       </section>
-      <footer><span>Public report library</span><a href="/">返回首页</a></footer>
+      <footer class="site-footer"><span>Public report library</span><a href="/">返回首页</a></footer>
     </main>
   </body>
 </html>
