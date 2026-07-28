@@ -65,6 +65,11 @@
   let matches = [];
   let returnFocus = null;
 
+  const formatDate = value => {
+    const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    return match ? `${match[1]}.${match[2]}.${match[3]}` : '日期未标注';
+  };
+
   const render = () => {
     const query = input.value.trim();
     matches = query
@@ -73,22 +78,25 @@
         .filter(result => result.score > 0)
         .sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title, 'zh-CN'))
         .slice(0, 8)
-      : [];
+      : (window.ATOM_SEARCH_INDEX || [])
+        .map((item, index) => ({ item, index, score: 0 }))
+        .sort((a, b) => String(b.item.date || '').localeCompare(String(a.item.date || '')) || a.index - b.index);
     activeIndex = Math.min(activeIndex, Math.max(0, matches.length - 1));
 
-    if (!query) {
-      results.innerHTML = '<p class="spotlight-empty">输入关键词，快速定位已公开的项目、报告和报告内条目。</p>';
+    if (!query && !matches.length) {
+      results.innerHTML = '<p class="spotlight-empty">目前还没有可展示的公开内容。</p>';
       return;
     }
     if (!matches.length) {
       results.innerHTML = `<p class="spotlight-empty">没有找到“${escapeHtml(query)}”。试试更短的词，或用空格拆分关键词。</p>`;
       return;
     }
-    results.innerHTML = matches.map(({ item }, index) => `
+    results.innerHTML = `${query ? '' : `<div class="spotlight-results-heading"><strong>全部内容</strong><span>按时间倒序 · ${matches.length} 条</span></div>`}${matches.map(({ item }, index) => `
       <a class="spotlight-result${index === activeIndex ? ' is-active' : ''}" href="${escapeAttribute(item.url)}" data-result-index="${index}">
-        <span class="spotlight-result-copy"><small>${escapeHtml(item.type)}</small><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.summary)}</span></span>
+        <span class="spotlight-result-copy"><span class="spotlight-result-meta"><small>${escapeHtml(item.type)}</small><time datetime="${escapeAttribute(item.date || '')}">${escapeHtml(formatDate(item.date))}</time></span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.summary)}</span></span>
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path></svg>
-      </a>`).join('');
+      </a>`).join('')}`;
+    results.querySelector('.spotlight-result.is-active')?.scrollIntoView({ block: 'nearest' });
   };
 
   const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);

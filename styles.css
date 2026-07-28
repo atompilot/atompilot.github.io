@@ -161,11 +161,15 @@ h1, h2, h3, p { margin-top: 0; }
 .spotlight-hint { padding: 0 20px 14px 53px; color: var(--muted); font-size: .76rem; }
 .spotlight-hint span { color: #515154; }
 .spotlight-results { min-height: 96px; max-height: min(52vh, 480px); overflow-y: auto; border-top: 1px solid rgba(210,210,215,.72); }
+.spotlight-results-heading { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; border-bottom: 1px solid rgba(210,210,215,.72); background: rgba(247,247,249,.94); color: var(--muted); font-size: .68rem; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.spotlight-results-heading strong { color: #424245; font-weight: 650; }
 .spotlight-empty { margin: 0; padding: 27px 20px; color: var(--muted); font-size: .9rem; line-height: 1.55; }
 .spotlight-result { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 18px 14px 20px; border-bottom: 1px solid rgba(210,210,215,.55); text-decoration: none; transition: background .15s ease; }
 .spotlight-result:hover, .spotlight-result.is-active { background: rgba(0,113,227,.09); }
 .spotlight-result-copy { display: grid; min-width: 0; gap: 3px; }
+.spotlight-result-meta { display: flex; align-items: center; gap: 8px; }
 .spotlight-result small { color: var(--blue); font-size: .68rem; font-weight: 700; letter-spacing: .05em; }
+.spotlight-result time { color: var(--muted); font-size: .65rem; }
 .spotlight-result strong { overflow: hidden; font-size: .95rem; font-weight: 660; letter-spacing: -.015em; text-overflow: ellipsis; white-space: nowrap; }
 .spotlight-result-copy > span { overflow: hidden; color: var(--muted); font-size: .78rem; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
 .spotlight-result > svg { width: 18px; height: 18px; flex: none; color: var(--blue); fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.65; }
@@ -200,5 +204,6 @@ h1, h2, h3, p { margin-top: 0; }
   .spotlight { width: min(100% - 20px, 680px); margin-top: 72px; }
   .spotlight-input-row { padding: 16px 15px 11px; }
   .spotlight-hint { padding-left: 48px; }
+  .spotlight-results { max-height: 56vh; }
   .spotlight-footer { gap: 10px; padding: 9px 15px; font-size: .61rem; }
 }

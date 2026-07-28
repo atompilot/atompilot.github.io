@@ -15,7 +15,7 @@ window.ATOM_SEARCH_INDEX = [
   },
   {
     title: 'GitHub 本月热门项目',
-    type: '报告 · 2026-07-29',
+    type: '报告',
     summary: '23 个 GitHub Trending 月度项目的交互式快照，按近期新增 star 排序。',
     keywords: 'github trending 本月 热门项目 开源 热度 star ai agent mcp 调研 2026 07',
     url: '/reports/2026/07/github-hot-projects/'
@@ -181,4 +181,4 @@ window.ATOM_SEARCH_INDEX = [
     keywords: 'github trending 视频剪辑 video editor capcut 开源 创作 typescript',
     url: '/reports/2026/07/github-hot-projects/?q=OpenCut'
   }
-];
+].map(item => ({ date: '2026-07-29', ...item }));
