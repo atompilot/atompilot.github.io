@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>GitHub 本月热门项目 | 2026-07-29</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        --ink: #18211d;
+        --muted: #64736b;
+        --line: #dbe4de;
+        --paper: #f6f7f2;
+        --surface: #ffffff;
+        --accent: #087f5b;
+        --accent-soft: #e1f1e9;
+        --warm: #d86f39;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Geist, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.5;
+      }
+      .shell { width: min(1360px, calc(100% - 48px)); margin: 0 auto; }
+      header { border-bottom: 1px solid var(--line); padding: 18px 0; }
+      .topline { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: var(--muted); font-size: 13px; }
+      .brand { color: var(--ink); font-weight: 750; letter-spacing: -0.02em; }
+      .hero { padding: 72px 0 44px; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(290px, .75fr); gap: 48px; align-items: end; }
+      .eyebrow { margin: 0 0 14px; color: var(--accent); font: 700 12px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; }
+      h1 { margin: 0; max-width: 850px; font-size: clamp(38px, 5.1vw, 75px); letter-spacing: -.07em; line-height: .96; }
+      .intro { margin: 24px 0 0; max-width: 670px; color: #435048; font-size: 17px; }
+      .method { border-left: 3px solid var(--warm); padding: 8px 0 8px 18px; color: #48554e; font-size: 14px; }
+      .method strong { color: var(--ink); }
+      .stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+      .stat { padding: 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .stat b { display: block; font-size: 30px; letter-spacing: -.06em; }
+      .stat span { color: var(--muted); font-size: 12px; }
+      .controls { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .search { min-width: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; outline-color: var(--accent); }
+      .filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+      button { cursor: pointer; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; color: #435048; background: transparent; font: 600 12px/1.2 inherit; transition: background .2s ease, color .2s ease, transform .2s ease; }
+      button:hover, button.active { background: var(--accent); border-color: var(--accent); color: white; }
+      button:active { transform: translateY(1px); }
+      .results-line { margin: 20px 0 12px; color: var(--muted); font-size: 13px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+      article { min-height: 248px; display: flex; flex-direction: column; padding: 24px; background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform .24s cubic-bezier(.16, 1, .3, 1), box-shadow .24s ease; }
+      article:hover { position: relative; z-index: 1; transform: translateY(-4px); box-shadow: 0 18px 36px -25px rgba(20, 45, 31, .5); }
+      .row { display: flex; justify-content: space-between; align-items: start; gap: 14px; }
+      .rank { color: var(--accent); font: 700 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .tag { flex: none; padding: 5px 7px; border-radius: 4px; color: #356b58; background: var(--accent-soft); font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; text-transform: uppercase; }
+      h2 { margin: 24px 0 10px; font-size: 20px; letter-spacing: -.04em; line-height: 1.1; }
+      h2 a { color: inherit; text-decoration: none; }
+      h2 a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+      .description { margin: 0; color: #5a6860; font-size: 13px; line-height: 1.55; }
+      .foot { display: flex; flex-wrap: wrap; gap: 8px 17px; align-items: center; margin-top: auto; padding-top: 22px; color: var(--muted); font-size: 12px; }
+      .gain { color: var(--accent); font-weight: 750; }
+      .flag { color: #995433; }
+      footer { padding: 36px 0 70px; color: var(--muted); font-size: 12px; }
+      footer a { color: var(--accent); }
+      .empty { grid-column: 1 / -1; padding: 48px 24px; color: var(--muted); background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      @media (max-width: 760px) {
+        .shell { width: min(100% - 32px, 680px); }
+        .hero { grid-template-columns: 1fr; gap: 30px; padding: 46px 0 32px; }
+        .controls { grid-template-columns: 1fr; }
+        .filters { justify-content: flex-start; }
+        .grid { grid-template-columns: 1fr; }
+        .topline { align-items: flex-start; flex-direction: column; gap: 5px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell topline">
+        <span class="brand">GITHUB · MONTHLY SIGNALS</span>
+        <span>采集于 2026-07-29 · 全球 · 公开仓库</span>
+      </div>
+    </header>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">30-day open-source pulse</p>
+          <h1>过去一个月，GitHub 在热什么？</h1>
+          <p class="intro">AI Agent 的“工作台与上下文层”最密集；设计技能、AI 辅助生产力工具和可本地运行的软件也持续升温。以下是 GitHub Trending 的本月全站榜单快照。</p>
+        </div>
+        <aside class="method">
+          <strong>口径：</strong>按 GitHub Trending 的 “This month” 排列；主指标是该页面显示的近一月新增 star，不是历史累计 star。热度代表当下关注，不代表安全、质量或适配性。
+        </aside>
+      </section>
+
+      <section class="stats" aria-label="榜单概览">
+        <div class="stat"><b>23</b><span>本月趋势项目</span></div>
+        <div class="stat"><b>314,009</b><span>近一月新增 star 合计</span></div>
+        <div class="stat"><b>14,723</b><span>单项目新增 star 中位数</span></div>
+        <div class="stat"><b>16</b><span>新增 star 超过 1 万的项目</span></div>
+      </section>
+
+      <section class="controls" aria-label="筛选项目">
+        <input id="search" class="search" type="search" placeholder="搜索项目、组织或关键词" aria-label="搜索项目" />
+        <div class="filters" id="filters"></div>
+      </section>
+      <p class="results-line" id="resultCount" aria-live="polite"></p>
+      <section id="projects" class="grid" aria-label="热门项目列表"></section>
+    </main>
+    <footer class="shell">
+      数据来自 <a href="https://github.com/trending?since=monthly">GitHub Trending · This month</a>（2026-07-29 页面快照）。总 star 与新增 star 均为快照值，会随 GitHub 实时变化。标有“需审查”的安全、提示词泄露或金融类项目仅供观察：使用前请独立审查许可证、维护者、代码与合规边界。
+    </footer>
+
+    <script>
+      const projects = [
+        { rank: 1, repo: 'MadsLorentzen/ai-job-search', category: 'Agent', stars: '28,000', gain: '24,315', lang: 'TypeScript', note: '本地运行的 Claude Code 求职工作流：评估职位、定制简历、写求职信与面试准备。' },
+        { rank: 2, repo: 'diegosouzapw/OmniRoute', category: 'Agent', stars: '32,859', gain: '24,936', lang: 'TypeScript', note: '连接多家模型提供商的 AI 网关，覆盖 CLI、MCP 与多种 coding agent。' },
+        { rank: 3, repo: 'permissionlesstech/bitchat', category: '通信', stars: '32,970', gain: '5,679', lang: 'Swift', note: '蓝牙 mesh 聊天工具，强调离线近距离通信。' },
+        { rank: 4, repo: 'usestrix/strix', category: '安全', stars: '45,229', gain: '18,948', lang: 'Python', note: '开源 AI 渗透测试工具，用于发现和修复应用漏洞。', flag: '仅限授权测试' },
+        { rank: 5, repo: 'stablyai/orca', category: 'Agent', stars: '31,591', gain: '22,573', lang: 'TypeScript', note: '并行 coding agent 的工作台，可运行自己的订阅并支持桌面、移动端和 VPS。' },
+        { rank: 6, repo: 'Zackriya-Solutions/meetily', category: '生产力', stars: '27,161', gain: '14,255', lang: 'Rust', note: '本地优先的 AI 会议助手，提供转写、说话人分离和 Ollama 总结。' },
+        { rank: 7, repo: 'emilkowalski/skills', category: '设计', stars: '21,963', gain: '17,933', lang: '—', note: '面向设计工程师的一组可复用技能。' },
+        { rank: 8, repo: 'ogulcancelik/herdr', category: 'Agent', stars: '21,855', gain: '13,835', lang: 'Rust', note: '运行在终端里的 agent multiplexer，用于并行协作。' },
+        { rank: 9, repo: 'Nutlope/hallmark', category: '设计', stars: '19,233', gain: '15,231', lang: 'CSS', note: '适用于 Claude Code、Cursor 与 Codex 的反“AI 味”设计技能。' },
+        { rank: 10, repo: 'hasaneyldrm/exercises-dataset', category: '数据', stars: '17,565', gain: '16,896', lang: 'HTML', note: '含 1,324 个动作、多语言说明、器械与肌群信息的健身数据集。' },
+        { rank: 11, repo: 'asgeirtj/system_prompts_leaks', category: '研究', stars: '61,116', gain: '14,761', lang: 'JavaScript', note: '汇集多个 AI 产品被提取的系统提示词。', flag: '来源与使用边界需审查' },
+        { rank: 12, repo: 'koala73/worldmonitor', category: '数据', stars: '75,792', gain: '15,236', lang: 'TypeScript', note: '聚合新闻、地缘事件和基础设施信息的实时全球情报看板。' },
+        { rank: 13, repo: 'catchorg/Catch2', category: '开发', stars: '21,375', gain: '1,057', lang: 'C++', note: '现代 C++ 单元测试、TDD 与 BDD 框架。' },
+        { rank: 14, repo: 'iOfficeAI/OfficeCLI', category: 'Agent', stars: '22,849', gain: '14,550', lang: 'C#', note: '供 AI agent 读写和自动化 Word、Excel、PowerPoint 的单文件 Office CLI。' },
+        { rank: 15, repo: 'Robbyant/lingbot-map', category: 'AI 模型', stars: '15,754', gain: '8,189', lang: 'Python', note: '从流式数据重建场景的前馈 3D foundation model。' },
+        { rank: 16, repo: 'bradautomates/claude-video', category: 'Agent', stars: '11,834', gain: '8,199', lang: 'Python', note: '让 Claude 通过下载视频、抽帧和转录来理解视频内容。' },
+        { rank: 17, repo: 'wonderwhy-er/DesktopCommanderMCP', category: 'Agent', stars: '8,912', gain: '2,807', lang: 'TypeScript', note: '为 Claude 提供终端控制、文件搜索与 diff 编辑能力的 MCP server。', flag: '本机权限需最小化' },
+        { rank: 18, repo: 'xbtlin/ai-berkshire', category: '金融', stars: '14,580', gain: '10,999', lang: 'Python', note: '基于 Claude Code/Codex 的价值投资研究框架，主打多 agent 对抗式分析。', flag: '非投资建议' },
+        { rank: 19, repo: 'openai/codex-plugin-cc', category: 'Agent', stars: '30,208', gain: '8,576', lang: 'JavaScript', note: '从 Claude Code 调用 Codex 以做代码审查或任务委派。' },
+        { rank: 20, repo: 'ocornut/imgui', category: '开发', stars: '75,315', gain: '1,186', lang: 'C++', note: '依赖极少、轻量的 C++ 图形界面库 Dear ImGui。' },
+        { rank: 21, repo: 'HKUDS/Vibe-Trading', category: '金融', stars: '28,276', gain: '14,723', lang: 'Python', note: '定位为个人交易 agent 的研究项目。', flag: '非投资建议' },
+        { rank: 22, repo: 'DeusData/codebase-memory-mcp', category: 'Agent', stars: '36,145', gain: '19,689', lang: 'C', note: '把代码库索引为持久知识图谱的 code-intelligence MCP server。' },
+        { rank: 23, repo: 'OpenCut-app/OpenCut', category: '创作', stars: '79,448', gain: '19,436', lang: 'TypeScript', note: '开源的视频剪辑工具，定位为 CapCut 替代品。' }
+      ];
+      const filters = ['全部', ...new Set(projects.map(project => project.category))];
+      let selected = '全部';
+      const format = number => new Intl.NumberFormat('zh-CN').format(Number(number.replace(/,/g, '')));
+      const filtersEl = document.querySelector('#filters');
+      const listEl = document.querySelector('#projects');
+      const resultEl = document.querySelector('#resultCount');
+      const searchEl = document.querySelector('#search');
+      const safe = value => value.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+      function renderFilters() {
+        filtersEl.innerHTML = filters.map(filter => `<button class="${filter === selected ? 'active' : ''}" data-filter="${filter}">${filter}</button>`).join('');
+      }
+      function render() {
+        const query = searchEl.value.trim().toLowerCase();
+        const visible = projects.filter(project => (selected === '全部' || project.category === selected) && `${project.repo} ${project.note} ${project.lang}`.toLowerCase().includes(query));
+        resultEl.textContent = `显示 ${visible.length} / ${projects.length} 个项目 · 以本月新增 star 排序`;
+        listEl.innerHTML = visible.length ? visible.map(project => `
+          <article>
+            <div class="row"><span class="rank">#${String(project.rank).padStart(2, '0')}</span><span class="tag">${safe(project.category)}</span></div>
+            <h2><a href="https://github.com/${safe(project.repo)}">${safe(project.repo)}</a></h2>
+            <p class="description">${safe(project.note)}</p>
+            <div class="foot">
+              <span class="gain">+${format(project.gain)} / 月</span>
+              <span>总 ${safe(project.stars)} stars</span>
+              <span>${safe(project.lang)}</span>
+              ${project.flag ? `<span class="flag">${safe(project.flag)}</span>` : ''}
+            </div>
+          </article>`).join('') : '<div class="empty">没有匹配的项目。试试删掉搜索词或切换分类。</div>';
+      }
+      filtersEl.addEventListener('click', event => {
+        const button = event.target.closest('button[data-filter]');
+        if (!button) return;
+        selected = button.dataset.filter;
+        renderFilters();
+        render();
+      });
+      searchEl.addEventListener('input', render);
+      renderFilters();
+      render();
+    </script>
+  </body>
+</html>
