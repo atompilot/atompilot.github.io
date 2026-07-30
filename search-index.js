@@ -16,9 +16,33 @@ window.ATOM_SEARCH_INDEX = [
   {
     title: '终端里还有哪些能用的编程 CLI',
     type: '报告 · 开发工具调研',
-    summary: '除 Claude Code 与 Codex 之外的 26 款终端 AI 编程 agent，star 数与活跃度由 GitHub API 当天实测，含两条改变选型的关键变化。',
-    keywords: 'AI 编程 CLI coding agent 终端 命令行 claude code 替代 codex 替代 opencode pi coding agent goose crush antigravity cli gemini cli 停服 copilot cli amp sourcegraph factory droid cline qwen code kimi cli aider roo code 归档 开源 MCP AGENTS.md 选型',
+    summary: '除 Claude Code 与 Codex 之外的 26 款终端 AI 编程 agent，star 数与活跃度由 GitHub API 当天实测，另附 Reddit / HN 一手用户口碑。',
+    keywords: 'AI 编程 CLI coding agent 终端 命令行 claude code 替代 codex 替代 opencode pi coding agent goose crush antigravity cli gemini cli 停服 copilot cli amp sourcegraph factory droid cline qwen code kimi code aider roo code 归档 开源 MCP AGENTS.md 选型 评价 口碑 reddit',
     url: '/reports/2026/07/code-cli-agents/',
+    date: '2026-07-30'
+  },
+  {
+    title: '社区怎么评价这些编程 CLI',
+    type: '报告内主题 · 用户口碑',
+    summary: 'Reddit 与 Hacker News 上关于 Claude Code、Codex、OpenCode、Cursor CLI、Kimi Code 的一手用户发言汇总。',
+    keywords: '评价 口碑 用户反馈 reddit hacker news 体验 对比 claude code codex opencode cursor cli kimi code 迁移 用量限制 稳定性 隐私 争议',
+    url: '/reports/2026/07/code-cli-agents/#voices',
+    date: '2026-07-30'
+  },
+  {
+    title: 'Cursor CLI',
+    type: '报告内工具 · 商业独立',
+    summary: '命令名 agent，MCP 一等公民、sandbox、print 模式可进 CI；缺 background shell，且必须有 Cursor 订阅。',
+    keywords: 'cursor cli agent 命令 MCP sandbox print 模式 CI worktree cloud handoff background shell 订阅 评价 两极',
+    url: '/reports/2026/07/code-cli-agents/?q=Cursor',
+    date: '2026-07-30'
+  },
+  {
+    title: 'Kimi Code',
+    type: '报告内工具 · 大厂原生',
+    summary: 'Moonshot 的终端 agent，K3 最高 1M 上下文，配额按周刷新；官方自陈三条限制值得先读。',
+    keywords: 'kimi code K3 K2.7 moonshot 月之暗面 订阅 周配额 1M 上下文 thinking history 过度主动 AGENTS.md 数据驻留 ACP MCP 复用',
+    url: '/reports/2026/07/code-cli-agents/?q=Kimi',
     date: '2026-07-30'
   },
   {

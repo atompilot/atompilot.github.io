@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <meta name="description" content="除了 Claude Code 和 Codex，2026 年还有哪些能用的终端 AI 编程 CLI：26 款工具的 star 数、许可证、活跃度与退场情况，含 Gemini CLI 已停服、Claude 订阅禁止驱动第三方 CLI 两条关键变化。" />
-    <meta name="keywords" content="AI 编程 CLI, coding agent, opencode, Pi coding agent, Goose, Crush, Antigravity CLI, Gemini CLI 停服, Copilot CLI, Amp, Factory Droid, Cline, Qwen Code, Kimi CLI, Claude Code 替代, Codex CLI 替代, 2026年7月" />
+    <meta name="description" content="除了 Claude Code 和 Codex，2026 年还有哪些能用的终端 AI 编程 CLI：26 款工具的 star 数、许可证与活跃度，加上 Reddit / Hacker News 上关于 Claude Code、Codex、OpenCode、Cursor CLI、Kimi Code 的一手用户口碑。" />
+    <meta name="keywords" content="AI 编程 CLI, coding agent, opencode 评价, Pi coding agent, Goose, Crush, Antigravity CLI, Gemini CLI 停服, Copilot CLI, Amp, Factory Droid, Cline, Qwen Code, Kimi Code, K3, Cursor CLI 评价, Claude Code 替代, Codex CLI 对比, reddit 口碑, 2026年7月" />
     <title>终端编程 CLI 全景 2026 | 2026-07-30</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
@@ -94,6 +94,19 @@
       .starred { color: var(--accent); font-weight: 750; }
       .empty { grid-column: 1 / -1; padding: 60px 24px; text-align: center; color: var(--muted); background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
+      .voices-intro { max-width: 900px; margin: -12px 0 30px; color: #565d68; font-size: 14px; line-height: 1.65; }
+      .voice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(560px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+      .voice { padding: 30px 28px; background: var(--surface); }
+      .voice h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: -.04em; line-height: 1.2; }
+      .verdict-line { margin: 0 0 16px; padding: 7px 11px; background: var(--accent-soft); border-radius: 4px; color: #14584a; font-size: 12.5px; font-weight: 650; }
+      .voice ul { margin: 0; padding-left: 18px; }
+      .voice li { margin-bottom: 11px; color: #565d68; font-size: 13.5px; line-height: 1.62; }
+      .voice li:last-child { margin-bottom: 0; }
+      .voice li b { color: var(--ink); }
+      .voice code { padding: 1px 4px; background: var(--paper); border-radius: 3px; font-size: 11.5px; }
+      .voices-note { max-width: 900px; margin: 28px 0 0; padding: 20px 22px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--warm); border-radius: 4px; color: #4d545e; font-size: 13.5px; line-height: 1.68; }
+      @media (max-width: 780px) { .voice-grid { grid-template-columns: 1fr; } }
+
       .verdict { margin: 66px 0 0; padding: 40px 0 0; border-top: 1px solid var(--line); }
       .verdict h2 { margin: 0 0 26px; font-size: clamp(26px, 3.2vw, 40px); letter-spacing: -.05em; }
       .picks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
@@ -130,10 +143,10 @@
         <div>
           <p class="eyebrow">Beyond Claude Code &amp; Codex</p>
           <h1>终端里还有<br />哪些能用的<br />编程 CLI。</h1>
-          <p class="intro">26 款终端 AI 编程 agent，按「大厂原生 / 开源通用 / 商业独立 / 已退场」四类整理。star 数、许可证与最近提交时间全部由 GitHub API 于 2026-07-30 当天拉取，不引用二手文章里的数字——因为这个领域半年内已经发生过三次改名、迁移和停服。</p>
+          <p class="intro">26 款终端 AI 编程 agent，按「大厂原生 / 开源通用 / 商业独立 / 已退场」四类整理。star 数、许可证与最近提交时间全部由 GitHub API 于 2026-07-30 当天拉取，不引用二手文章里的数字——因为这个领域半年内已经发生过三次改名、迁移和停服。文末另附 <a href="#voices">社区口碑</a>：Reddit 与 Hacker News 上关于 Claude Code、Codex、OpenCode、Cursor CLI、Kimi Code 的一手用户发言。</p>
         </div>
         <aside class="method">
-          <strong>口径：</strong>活跃度指标（star / license / 最近 push）为 GitHub API 一手数据；定价与产品形态取自各家官网，属公开信息交叉整理，<strong>非实测评分</strong>。本次调研刻意排除了各家自媒体的「最佳工具榜」——这类文章多半出自其中一款工具的厂商，排名不可信。
+          <strong>口径：</strong>活跃度指标（star / license / 最近 push）为 GitHub API 一手数据；定价与产品形态取自各家官网，属公开信息交叉整理，<strong>非实测评分</strong>。社区口碑一节是主观发言汇总，只保留反复出现且指向具体机制的说法。本次调研刻意排除了各家自媒体的「最佳工具榜」——这类文章多半出自其中一款工具的厂商，排名不可信。
         </aside>
       </section>
 
@@ -163,6 +176,61 @@
       </section>
       <p class="results-line" id="resultCount" aria-live="polite"></p>
       <section id="tools" class="grid" aria-label="工具列表"></section>
+
+      <section class="verdict" id="voices">
+        <h2>社区实际怎么说</h2>
+        <p class="voices-intro">以下取自 Reddit（r/codex、r/ClaudeCode、r/ClaudeAI、r/opencode、r/cursor、r/LocalLLaMA）与 Hacker News 的一手用户发言，只保留<strong>反复出现、且指向具体机制</strong>的说法，一次性吐槽和明显的推广贴已剔除。这是主观口碑，不是评测结论——同一款工具在不同人手里的评价经常是反的。</p>
+
+        <div class="voice-grid">
+          <div class="voice">
+            <h3>Claude Code ↔ Codex：一场以「额度」为主因的迁徙</h3>
+            <p class="verdict-line">共识：模型轮流领先，工具体验一边倒。</p>
+            <ul>
+              <li><b>迁走的主因几乎都是用量限制</b>，不是能力。反复出现的说法是即便 Max $100 档也能在几天内烧完周额度；有人称 GPT-5.5 high 的用量消耗比 Sonnet 4.6 medium 少 2–4 倍，因此「两个 Max 20x 账号降级成一个 $100 的 ChatGPT」。</li>
+              <li><b>Codex 被夸的点</b>：更守指令、后端与调试强、不绕圈子、开源、OpenAI 多次重置限额被视为「对客户更好」。</li>
+              <li><b>Codex 被骂的点</b>：TUI 体验差（有人直言「Rust 的 TUI 库生态还不到位」）、<b>diff 显示难读</b>——这条对「要逐条审批改动」的人是致命伤；插件不能从 Claude Code 平移，得重写；慢；从零起项目弱；固执，认定一个方向后不肯回头重审假设。</li>
+              <li><b>Claude Code 被夸的点</b>：CLI 体验「甩开一个身位」、subagent、skill/plugin 生态、diff 可读、<b>会解释自己为什么这么做</b>（便于在跑偏早期叫停），前端与既有代码库理解更好。</li>
+              <li><b>高频结论是「都订，换着用」</b>，并且出现了一个反复被提到的固定搭配：<b>Codex 高推理档做规划与代码审查，Claude 做实现</b>。还有人把它做成自动循环直到干净再提 PR。</li>
+              <li>有人总结得挺准：「5.5 现在是更好的编码模型。下个月大概又是 Claude 领先。习惯换模型吧。」</li>
+            </ul>
+          </div>
+
+          <div class="voice">
+            <h3>opencode：赞誉与不信任并存</h3>
+            <p class="verdict-line">共识：体验超前，工程稳健度和隐私姿态拖后腿。</p>
+            <ul>
+              <li><b>被夸</b>：TUI 比 Claude Code 舒服（「不像 CC 那样往你脸上糊大段文字」）、不动不动要权限、实时显示 diff、LSP 驱动的自愈循环好用、自定义 agent 灵活；Zen/Go 便宜档加上白给的开源前沿模型额度，被不少人视作「退订 Claude 的理由」。</li>
+              <li><b>被骂最狠的是稳定性</b>：启动卡死、发消息后 UI 锁死要杀进程、插件报错直接把界面搞坏——一位用了一周的用户的原话是「我发现这个 CLI 最脆弱、最容易出错，每装一个插件它就退化一点」。也有人反馈 Windows 支持明显是二等公民。</li>
+              <li><b>隐私争议是最伤的一条</b>：有用户审计后发现 web UI 会把请求反代到官方服务器、配置 schema 在每次启动时从官方域名拉取（可据此做 IP 指纹与活动时间戳），必须手动设一串 <code>OPENCODE_DISABLE_*</code> 环境变量才能真正断网自用。HN 上有人因此直接「零信任，立刻删除」。仓库里「默认关闭 sharing」的 issue 自 2026-03 提出后至今仍未关闭。</li>
+              <li>另一条被反复提的技术账：<b>系统提示约 7k token</b>（还没算 MCP 与工具描述），几轮对话后首 token 延迟明显——这正是不少人转投 Pi 的直接原因。</li>
+            </ul>
+          </div>
+
+          <div class="voice">
+            <h3>Cursor CLI：评价最两极的一个</h3>
+            <p class="verdict-line">共识：装它的理由通常是「公司只买了 Cursor」。</p>
+            <ul>
+              <li>负面相当直接，有人称它是「我用过的所有软件里用户体验最糟糕的之一」。但同一批帖子里也有人说 <b>CLI 比 Cursor 自家 IDE 快</b>，IDE 会卡住而 CLI 不会。</li>
+              <li>HN 上有条值得注意的反向观察：跑 Opus 时 Cursor 反而更快，「Claude Code 每两分钟就要卡一下」。另一条相反的说法是 <b>Cursor 会对提示做削减以省 token</b>，因此同一个模型经 Cursor 调用的产出不如直接用 Claude Code / Codex。这两条都来自个人体感，没有可复现的测法。</li>
+              <li><b>最常见的真实动机是采购而非偏好</b>：公司只报销 Cursor 的情况下，CLI 是最接近 Claude Code 的替代品。还有企业用户指出 Anthropic 不向 enterprise/team 提供 Claude Code 订阅、只能走 API 计价，买 Cursor 企业席位反而更便宜、额度更可预期。</li>
+              <li>社区里也有人提醒：Anthropic 条款禁止用其服务开发竞品，而 Cursor CLI 显然与 Claude Code 构成竞争——这层法律关系值得留意，但目前没有实际动作。</li>
+            </ul>
+          </div>
+
+          <div class="voice">
+            <h3>Kimi Code：性价比明确，可靠性未定</h3>
+            <p class="verdict-line">共识：便宜得改变了工作流的经济性，但别拿它跑高风险任务。</p>
+            <ul>
+              <li><b>成本是压倒性优势</b>。K3 官方价 $3/MTok 输入（缓存命中 $0.30）、$15/MTok 输出，约为 Opus 4.8 的一半；订阅 $19 起，配额按周刷新而非按天——这一点被反复称赞，因为真实的 agent 工作就是有的天狂跑、有的天只读代码。有测算称 1000 万输出 token 的月度负载，K 系列约 $280/天而 Opus 4.7 约 $2500/天。</li>
+              <li><b>独立评测互相矛盾，别只看一个</b>：Artificial Analysis 综合排名把 K3 放在第 4（57.1 分）；Arena 的前端代码竞技场里 K3 排第 1，分数高于 Fable 5 与 GPT-5.6 Sol。但 Semgrep 的代码安全测试里 K3 精确率 0.684，明显低于 GPT-5.6 Sol 的 0.880 与 Opus 4.8 的 0.910——误报多。另有对抗性测试称 K3 失败率 36% 对 Opus 4.8 的 8%，不过该测试是专门冲着 K3 已知弱点设计的，日常差距应小于此。</li>
+              <li><b>最该重视的是 Moonshot 自己写的三条限制</b>：K3 依赖完整的 thinking history 回传，<b>会话中途从别的模型切到 K3 会导致输出不稳定</b>；K3「过度主动」，意图模糊时会替你做决定，删文件、部署、付款这类动作必须在 AGENTS.md 里写死边界；官方直接承认整体用户体验仍落后 Claude Fable 5 与 GPT-5.6 Sol。厂商肯把这些写进发布公告，比第三方测评更值得信。</li>
+              <li>工程上的好消息：<b>MCP 配置可直接复用 Claude Code 的</b>，无需改写；实现了 ACP，Zed / JetBrains 能直接把它当后端 agent 使唤。数据驻留方面 API 在中国境内，按自己的合规要求判断。</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="voices-note"><strong>读这些评价时的两个陷阱：</strong>一是<b>时间戳</b>——这些工具的迭代以周计，半年前的「X 比 Y 强」基本失效，本节已尽量只取 2026 年 3 月之后的发言；二是<b>幸存者偏差</b>——会发帖的人要么刚迁移完（急于合理化决定），要么刚被坑（情绪最盛），安静用着没事的沉默用户不会出现在样本里。把这些当作「有哪些失败模式存在」的清单来读，比当作排名来读有用得多。</p>
+      </section>
 
       <section class="verdict" id="verdict">
         <h2>按你的处境选</h2>
@@ -217,11 +285,11 @@
         { name: 'Antigravity CLI', vendor: 'Google', category: '大厂原生', status: '活跃', stars: '闭源', lic: '专有', price: '免费', note: 'Gemini CLI 的强制继任者，Go 单二进制（`agy`）。异步多 agent、subagent、sandbox、权限、MCP、Plugins & Skills 齐全，支持从 Gemini CLI 一次性导入配置。', caveat: 'Google 明确说明上线时「不会有 1:1 功能对等」；从开源转为闭源。', url: 'https://antigravity.google/docs/cli/overview', pick: true },
         { name: 'GitHub Copilot CLI', vendor: 'GitHub', category: '大厂原生', status: '活跃', stars: '11.0k', lic: '专有', price: '随 Copilot 订阅', note: '原生读写 GitHub issue / PR / repo，支持 MCP 与多模型切换。如果待办和代码评审都在 GitHub 上，这是链路最短的一个。', caveat: '每次提问计入 premium request 配额，重度使用容易触顶。', url: 'https://github.com/github/copilot-cli', pick: true },
         { name: 'Qwen Code', vendor: '阿里 / 通义', category: '大厂原生', status: '活跃', stars: '26.5k', lic: 'Apache-2.0', price: '免费额度 + API', note: 'Gemini CLI 的 fork 路线，针对 Qwen 系列模型优化。国内网络环境下可用性明显好于海外 CLI，中文语境理解到位。', url: 'https://github.com/QwenLM/qwen-code' },
-        { name: 'Kimi CLI', vendor: 'Moonshot', category: '大厂原生', status: '活跃', stars: '11.0k', lic: 'Apache-2.0', price: '订阅 + API', note: 'Kimi K2 系列的官方终端 agent，Apache-2.0。国产模型里性价比路线最激进的一条，长上下文是强项。', url: 'https://github.com/MoonshotAI/kimi-cli' },
+        { name: 'Kimi Code', vendor: 'Moonshot', category: '大厂原生', status: '活跃', stars: '5.8k', lic: 'MIT', price: '$19–199 月（年付 $15 起）', note: '注意认仓库：新的是 `MoonshotAI/kimi-code`（MIT，当天在推），老的 `kimi-cli`（11k star）最近提交停在 07-16，正在被取代。装法 `curl -fsSL https://code.kimi.com/kimi-code/install.sh | bash`。默认 K2.7 Code，Moderato($19) 及以上可用 K3（最高 1M 上下文）。配额按**周**刷新而非按天，一天猛干完剩下几天省着用是允许的；另有 5 小时滚动频率限制（按档位 300–1200 请求/窗口）。MCP 配置可直接复用 Claude Code 的，且实现了 ACP，Zed / JetBrains 能把它当后端 agent。', caveat: 'Moonshot 官方自己写明 K3 三条限制：① 对 thinking history 敏感——harness 必须回传完整历史 assistant 消息，会话中途从别的模型切到 K3 会导致上下文干扰、输出不稳定；② 过度主动，会在意图模糊时替你做决定，删文件/部署/付款前必须在 AGENTS.md 里写死边界；③ 官方承认整体用户体验仍落后 Claude Fable 5 与 GPT-5.6 Sol。另：API 托管在中国境内，涉及数据驻留合规的团队需自行评估。', url: 'https://github.com/MoonshotAI/kimi-code' },
         { name: 'Amazon Q Developer CLI', vendor: 'AWS', category: '大厂原生', status: '放缓', stars: '2.0k', lic: 'Apache-2.0', price: '免费版 + Pro', note: '终端里的 agentic chat，深度绑 AWS 资源与 IAM。只有在重度使用 AWS 时才有独特价值。', caveat: '最近提交停在 2026-06-22，节奏明显慢于同类。', url: 'https://github.com/aws/amazon-q-developer-cli' },
 
         // ── 开源通用 ──
-        { name: 'opencode', vendor: 'Anomaly Innovations', category: '开源通用', status: '活跃', stars: '191.1k', lic: 'MIT', price: '免费（自带 Key）+ Zen', note: 'GitHub 上 star 最高的编程 agent，且是全场唯一超过 Claude Code 的。模型无关、LSP 自动接入、Agent Skills、Plan 模式、撤销/重做、认 AGENTS.md。安装：`curl -fsSL https://opencode.ai/install | bash`。', caveat: '2026-03 因 Anthropic 法务函移除了 Claude Pro/Max 登录，现在接 Claude 需要 API Key。', url: 'https://github.com/anomalyco/opencode', pick: true },
+        { name: 'opencode', vendor: 'Anomaly Innovations', category: '开源通用', status: '活跃', stars: '191.1k', lic: 'MIT', price: '免费（自带 Key）/ Go $5 起', note: 'GitHub 上 star 最高的编程 agent，且是全场唯一超过 Claude Code 的。模型无关、LSP 自动接入并驱动「改错→读报错→再改」的自愈循环、Agent Skills、Plan 模式、撤销/重做、认 AGENTS.md。安装：`curl -fsSL https://opencode.ai/install | bash`。Zen/Go 计划便宜（$5 档），还白给若干开源前沿模型额度。', caveat: '三个真实代价：① 稳定性——社区反复报启动卡死、发消息 UI 锁死、插件出错不优雅降级（装得越多越退化）；② 隐私——web UI 默认反代到官方服务器、配置 schema 运行时从 models.dev 拉取，需自行设 OPENCODE_DISABLE_* 系列环境变量才算真本地，「默认关闭 sharing」的 issue 自 2026-03 起至今仍 open；③ 2026-03 因 Anthropic 法务函移除 Claude Pro/Max 登录，接 Claude 只能用 API Key。', url: 'https://github.com/anomalyco/opencode', pick: true },
         { name: 'Pi', vendor: 'Earendil（Mario Zechner / Armin Ronacher）', category: '开源通用', status: '活跃', stars: '80.8k', lic: 'MIT', price: '免费（自带 Key）', note: '极简 harness：系统提示 <1000 token（同类通常 7000–10000），四个核心工具，能力靠「lazy skills」按需加载。四种运行形态（TUI / print-JSON / RPC / SDK 内嵌），会话历史是可分叉的树。`npm i -g @earendil-works/pi-coding-agent`。', caveat: '扩展由模型现写 TypeScript，没有护栏防止扩展本身写错，复杂集成需人工过一遍。', url: 'https://github.com/earendil-works/pi', pick: true },
         { name: 'OpenHands', vendor: 'All Hands AI', category: '开源通用', status: '活跃', stars: '82.6k', lic: 'MIT', price: '免费（自带 Key）+ 云', note: '容器隔离执行是它的核心卖点：agent 在沙箱容器里跑，能浏览网页、读文档、执行代码。无人值守和 CI 场景最放心的一个。', caveat: '审批开关多、启动重，做小改动比纯 CLI 慢。', url: 'https://github.com/OpenHands/OpenHands' },
         { name: 'Cline', vendor: 'Cline Bot', category: '开源通用', status: '活跃', stars: '65.2k', lic: 'Apache-2.0', price: '免费（自带 Key）+ 托管', note: '2026 年已从 VS Code 扩展扩成 SDK + 扩展 + CLI 三形态。headless 模式配 `-y` 自动批准和 JSON 输出，跑 CI 很顺；Plan/Act 双模式让你先审方案再执行。', url: 'https://github.com/cline/cline' },
