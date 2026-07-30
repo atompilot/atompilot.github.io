@@ -61,6 +61,39 @@
     return dialog;
   };
 
+  // The home page lists the same top-level entries the spotlight shows on an
+  // empty query, rendered from the shared index so a new report never has to be
+  // written into the page by hand.
+  const renderReportIndex = () => {
+    const host = document.querySelector('[data-report-index]');
+    if (!host) return;
+    const reports = (window.ATOM_SEARCH_INDEX || [])
+      .map((item, order) => ({ item, order }))
+      .filter(entry => /^报告/.test(String(entry.item.type || '')) && !isChild(entry.item))
+      .sort((a, b) => String(b.item.date || '').localeCompare(String(a.item.date || '')) || a.order - b.order);
+
+    const section = host.closest('section');
+    if (!reports.length) {
+      if (section) section.hidden = true;
+      return;
+    }
+    host.innerHTML = reports.map(({ item }, position) => {
+      const kicker = String(item.type).includes('·') ? String(item.type).split('·').slice(1).join('·').trim() : '报告';
+      return `
+      <a class="index-row" href="${escapeAttribute(item.url)}">
+        <span class="index-num">${String(position + 1).padStart(2, '0')}</span>
+        <span class="index-main">
+          <span class="index-meta"><span class="index-kicker">${escapeHtml(kicker)}</span><time datetime="${escapeAttribute(item.date || '')}">${escapeHtml(formatDate(item.date))}</time></span>
+          <strong>${escapeHtml(item.title)}</strong>
+          <span class="index-summary">${escapeHtml(item.summary)}</span>
+        </span>
+        <span class="index-arrow" aria-hidden="true">↗</span>
+      </a>`;
+    }).join('');
+    const counter = document.querySelector('[data-report-count]');
+    if (counter) counter.textContent = String(reports.length).padStart(2, '0');
+  };
+
   const dialog = createDialog();
   const input = dialog.querySelector('input');
   const results = dialog.querySelector('.spotlight-results');
@@ -228,4 +261,6 @@
     event.preventDefault();
     close();
   });
+
+  renderReportIndex();
 })();
