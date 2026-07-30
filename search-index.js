@@ -14,6 +14,30 @@ window.ATOM_SEARCH_INDEX = [
     url: '/reports/'
   },
   {
+    title: '港版 Switch 2，怎么买《赛博朋克 2077》？',
+    type: '报告 · 游戏设备购买研究',
+    summary: '区分港版本体、香港 eShop 账号、数字支付、实体完整卡带和 DLC 地区匹配，提供安全购买路径。',
+    keywords: 'switch 2 港版 香港 eShop 赛博朋克2077 cyberpunk 2077 ultimate edition 数字版 实体卡带 64GB Game-Key Card Nintendo Account DLC 地区 账号 预付卡 购买指南',
+    url: '/reports/2026/07/switch-2-hk-cyberpunk-buying-guide/',
+    date: '2026-07-30'
+  },
+  {
+    title: '港版 Switch 2 的数字版购买流程',
+    type: '报告内主题 · Nintendo eShop',
+    summary: '先确认香港账号地区与商品上架，再用可用付款方式按需充值并购买。',
+    keywords: '香港 eShop 数字版 购买流程 Nintendo Account 地区 香港 信用卡 预付序号 兑换 下载',
+    url: '/reports/2026/07/switch-2-hk-cyberpunk-buying-guide/#digital',
+    date: '2026-07-30'
+  },
+  {
+    title: 'Switch 2 实体卡与 Game-Key Card 的区别',
+    type: '报告内主题 · 游戏介质',
+    summary: '《赛博朋克 2077：终极版》Switch 2 实体版为 64GB 完整游戏卡，非仅启动下载的 Game-Key Card。',
+    keywords: '实体卡带 Game-Key Card 64GB 赛博朋克2077 Switch 2 完整游戏卡 下载',
+    url: '/reports/2026/07/switch-2-hk-cyberpunk-buying-guide/#physical',
+    date: '2026-07-30'
+  },
+  {
     title: 'Mac 上好用的 AI 软件',
     type: '报告 · 软件调研',
     summary: '11 个领域、40 款 macOS AI 应用清单，标注本地/云端、价格与已知的坑。',
