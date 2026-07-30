@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="把机房变成按秒计费的水电，利用率、加价层和折旧假设决定谁赚钱。" />
+    <meta name="keywords" content="云计算 云计算商业模式 云计算怎么赚钱 互联网软件 商业模式 失效模式 有效模式 行业研究 单位经济 模式一：规模化 IaaS + 承诺折扣锁定 模式二：托管 PaaS 的软件毛利 模式三：自研芯片与垂直整合 模式四：AI 算力长约预售（RPO 模式） 模式五：主权云、混合云与专有云一体机 模式六：数据中心批发租赁（给云厂商当房东） 中国公有云的「总集成商 + 定制项目」模式（失效时间：约 2022–2023 年起） CDN 价格战（失效时间：2015 年起） 出网流量费（egress）作为锁定护城河（失效时间：2024 年起松动，2027 年 1 月起在欧盟彻底禁止） 纯 IDC 机房出租与无规模的独立云厂商（失效时间：约 2020 年起持续恶化） 高价 GPU 短租的「算力二房东」（失效时间：约 2024 年下半年起） 「云一定比自建便宜」这条销售话术（失效时间：约 2023 年起，限于特定负载）" />
+    <title>云计算 — 商业模式怎么赚钱、哪些已经失效</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/reports/2026/07/industry-business-models/assets/report.css" />
+    <script defer src="/search-index.js"></script>
+    <script defer src="/site.js"></script>
+    <style>:root { --sector: 220; }</style>
+  </head>
+  <body class="ib">
+    <main class="site-shell">
+      <nav class="site-nav" aria-label="主导航">
+        <a class="wordmark" href="/" aria-label="Atom Wang 首页">AW</a>
+        <div class="nav-links">
+          <a href="/">首页</a>
+          <a href="/reports/">报告库</a>
+          <a href="/reports/2026/07/industry-business-models/">50 行业总览</a>
+          <a href="/reports/2026/07/industry-business-models/laws.html">总纲</a>
+          <a href="/reports/2026/07/industry-business-models/models.html">模式索引</a>
+          <button class="search-trigger" type="button" data-site-search aria-label="搜索全站内容"><span>搜索</span><kbd>⌘ F</kbd></button>
+        </div>
+      </nav>
+      <header class="ib-doc-hero">
+        <p class="ib-crumb"><a href="/reports/">报告库</a> <span>/</span> <a href="/reports/2026/07/industry-business-models/">50 个行业 × 商业模式</a> <span>/</span> 38</p>
+        <p style="margin:18px 0 0"><span class="sector-tag">互联网软件 · 第 38 / 50 篇</span></p>
+        <h1>云计算</h1>
+        <p class="lede">把机房变成按秒计费的水电，利用率、加价层和折旧假设决定谁赚钱。</p>
+        <div class="ib-doc-meta">
+          <span>生成于 2026-07-31</span>
+          <span>正文约 8,985 字</span>
+          <span>有效模式 6 种</span>
+          <span>失效模式 6 种</span>
+        </div>
+      </header>
+      <div class="ib-layout">
+        <nav class="ib-toc" aria-label="目录">
+        <a href="#一句话看懂这个行业">一句话看懂这个行业</a>
+        <a href="#钱是怎么流动的">钱是怎么流动的</a>
+        <a href="#关键数字">关键数字</a>
+        <a href="#现在依然有效的商业模式">现在依然有效的商业模式</a><a class="sub" href="#模式一-规模化-iaas-承诺折扣锁定">模式一：规模化 IaaS + 承诺折扣锁定</a><a class="sub" href="#模式二-托管-paas-的软件毛利">模式二：托管 PaaS 的软件毛利</a><a class="sub" href="#模式三-自研芯片与垂直整合">模式三：自研芯片与垂直整合</a><a class="sub" href="#模式四-ai-算力长约预售-rpo-模式">模式四：AI 算力长约预售（RPO 模式）</a><a class="sub" href="#模式五-主权云-混合云与专有云一体机">模式五：主权云、混合云与专有云一体机</a><a class="sub" href="#模式六-数据中心批发租赁-给云厂商当房东">模式六：数据中心批发租赁（给云厂商当房东）</a>
+        <a href="#已经失效或正在失效的商业模式">已经失效或正在失效的商业模式</a><a class="sub" href="#中国公有云的-总集成商-定制项目-模式-失效时间-约-2022-2023-年起">中国公有云的「总集成商 + 定制项目」模式（失效时间：约 2022–2023 年起）</a><a class="sub" href="#cdn-价格战-失效时间-2015-年起">CDN 价格战（失效时间：2015 年起）</a><a class="sub" href="#出网流量费-egress-作为锁定护城河-失效时间-2024-年起松动-2027-年-1-月起在欧盟彻底禁止">出网流量费（egress）作为锁定护城河（失效时间：2024 年起松动，2027 年 1 月起在欧盟彻底禁止）</a><a class="sub" href="#纯-idc-机房出租与无规模的独立云厂商-失效时间-约-2020-年起持续恶化">纯 IDC 机房出租与无规模的独立云厂商（失效时间：约 2020 年起持续恶化）</a><a class="sub" href="#高价-gpu-短租的-算力二房东-失效时间-约-2024-年下半年起">高价 GPU 短租的「算力二房东」（失效时间：约 2024 年下半年起）</a><a class="sub" href="#云一定比自建便宜-这条销售话术-失效时间-约-2023-年起-限于特定负载">「云一定比自建便宜」这条销售话术（失效时间：约 2023 年起，限于特定负载）</a>
+        <a href="#这个行业教给我们的通用规律">这个行业教给我们的通用规律</a>
+        <a href="#资料来源">资料来源</a>
+        </nav>
+        <article class="ib-body">
+<section id="一句话看懂这个行业" class="">
+<h2>一句话看懂这个行业</h2>
+<p>云计算卖的不是「服务器」，而是<strong>把一次性的机房资本开支，改写成一条按用量计费的现金流</strong>。企业原本要自己买服务器、租机柜、雇运维、按最坏情况预留三倍余量；云厂商把这些买断成本自己扛下来，再按 CPU 小时、GB 存储、GB 流量、每百万次调用卖给成千上万个客户。客户从「买资产」变成「买服务」，云厂商从「卖硬件」变成「收租」。</p>
+<p>这门生意的服务对象横跨三层：最底下是<strong>基础设施即服务（IaaS，卖虚拟机、硬盘、网络这些原料）</strong>，中间是<strong>平台即服务（PaaS，卖托管数据库、消息队列、数据仓库这些半成品）</strong>，最上面是<strong>软件即服务（SaaS，卖 CRM、协同办公这些成品）</strong>。本文说的「云计算行业」主要指前两层，也就是 AWS、微软 Azure、Google Cloud、阿里云、华为云、天翼云这些「卖算力和平台」的公司。SaaS 是它们的客户，也是它们的竞争者。</p>
+<p>行业的边界在最近三年被 AI 彻底撑大了。2025 年全球云基础设施服务市场收入约 4190 亿美元，第四季度单季 1191 亿美元、同比增长 30%，是三年多来最高增速，且是连续第九个季度增速加快（来源：Synergy Research Group）。撑起这个加速的不是传统企业上云，而是生成式 AI 的训练与推理负载——它把云从「弹性削峰」的工具，变成了「买不到就没法开工」的稀缺产能。</p>
+<p>外行最容易误解的一点是：<strong>以为云厂商的核心竞争力是技术，其实是利用率和折旧假设</strong>。云厂商的成本结构里，服务器和数据中心的折旧是刚性的固定成本——机器买回来插上电，卖不卖得出去都在按天折旧。所以决定利润的不是「单价卖多贵」，而是「买回来的算力有多少比例真的在被付费使用」。利用率每提高一个百分点，几乎全部落进利润。这也解释了一个反直觉的现象：同样卖算力，AWS 2025 年营业利润率 35.4%，而纯 GPU 出租的 CoreWeave 同年净亏 11.7 亿美元。</p>
+<p>第二个常见误解是把「云的营收」等同于「云的生意」。中国市场在 2018–2022 年集体交过这个学费：为了把营收做大，云厂商大量承接政企定制项目、代客户采购硬件再转售，账面收入涨得飞快，毛利被人力和硬件差价吃光。后面「已经失效的商业模式」一节会详细拆这一段。</p>
+</section>
+<section id="钱是怎么流动的" class="">
+<h2>钱是怎么流动的</h2>
+<p>云计算的价值链从上游到下游依次是：<strong>电力与土地 → 芯片 → 服务器整机 → 数据中心（机柜/整栋）→ 云厂商（IaaS/PaaS）→ SaaS 与应用公司 → 最终企业客户</strong>。钱从右往左流，利润却高度集中在两头：上游的芯片，和中间偏右的云厂商平台层。</p>
+<p><strong>最下游到中间：客户付的钱先进云厂商口袋。</strong> 以 AWS 2025 年为例，客户共付了 1287.25 亿美元，AWS 留下 456.06 亿美元营业利润，其余 831.19 亿美元是成本与费用（来源：亚马逊 2025 年 10-K）。也就是说客户每付 100 元，云厂商税前留下约 35 元。这 35 元是全行业最高的一档，原因下面会讲。</p>
+<p><strong>云厂商往上游付的钱，主要是三块：折旧、电、芯片。</strong> 折旧的分量有多重？看一个只做 GPU 出租、几乎没有 PaaS 加价层的对照组：CoreWeave 2025 年第二季度折旧与摊销 5.595 亿美元，占当季收入的 46%（来源：CoreWeave 财报分析）。也就是说纯算力二房东的模式下，客户付的钱有接近一半只是在偿还机器的账面损耗，剩下的还要付电费、机柜租金和利息。CoreWeave 2025 年全年收入 51.3 亿美元，GAAP 净亏损 11.7 亿美元（2024 年亏 8.63 亿美元），总负债约 290 亿美元（来源：CoreWeave 2025 年报道与财报）。</p>
+<p><strong>再往上是数据中心房东这一环。</strong> 云厂商并不全部自建，很大一部分从第三方数据中心运营商手里批发租机柜或整栋。这一环的核心单位经济是<strong>上架率（已经装机并收费的机柜占已建成机柜的比例）</strong>。世纪互联 2025 年第一季度数据：批发型（基地型）IDC 运营总容量 573 兆瓦，其中已上架 437 兆瓦，上架率约 76%；城市型业务运营 51,960 个机柜，上架率仅 63.7%（来源：世纪互联 2025 年 Q1 财报）。三分之一的机柜建好了却在空转，这就是这一环利润薄的直接原因——建设是资本开支，折旧从通电那天开始计，客户却要一年一年慢慢招。</p>
+<p><strong>最上游是芯片。</strong> 这一环的利润最厚，厚到云厂商都在想办法绕开它。AWS 的自研芯片 Graviton（通用 CPU）和 Trainium（AI 训练芯片）合计年化收入已超过 100 亿美元，同比三位数增长；Trainium2 已落地 140 万颗，且已被订满（来源：亚马逊 2025 年 Q4 财报电话会）。谷歌有 TPU，阿里 2026 财年约 1200 亿元资本开支中也明确包含自研芯片投入（来源：阿里巴巴 2026 财年财报）。云厂商自研芯片的本质，是把原本要付给芯片厂商的毛利搬回自己账上。</p>
+<p><strong>利润池为什么集中在云厂商这一环？</strong> 因为只有这一环同时具备三个条件：需求侧极度分散（几百万客户，没有一个能议价）、供给侧极度集中（全球前三家占 63%）、并且能在原料上面叠加<strong>加价层</strong>。亚马逊 2025 年全年营收 7169.24 亿美元、营业利润 799.75 亿美元；AWS 贡献了 18.0% 的营收，却贡献了 57.0% 的营业利润（来源：亚马逊 2025 年 10-K）。这一句话就是整个行业利润池分布的最好注脚。</p>
+<p>不同玩家在这条链上的位置，直接决定了利润率量级，横向对比一眼可见：</p>
+<ul><li>微软云（Microsoft Cloud）整体毛利率 69%，智能云分部营业利润率 42.0%（2025 财年，来源：微软 FY2025 年报）——加价层最厚。</li><li>AWS 营业利润率 35.4%（2025 年，来源：亚马逊 10-K）——规模最大、自研芯片最深。</li><li>Google Cloud 2025 年第四季度营业利润率 30.1%，一年前同期还只有 17.5%（来源：Alphabet 2025 Q4 财报）——正在爬坡。</li><li>阿里云 2026 财年经调整 EBITA 利润率约 9.0%（142.65 亿元 ÷ 1581.32 亿元）——注意口径：经调整 EBITA 是「息税摊销前利润再加回股权激励」，比营业利润宽松得多，所以这 9% 与 AWS 的 35% 不能直接比，实际差距比数字看起来还大。</li><li>优刻得（UCloud）2025 年毛利率 25.83%，归母净亏损 7355.34 万元（来源：优刻得 2025 年年报）——没有规模，连毛利线都很吃力。</li><li>CoreWeave 2025 年净利率约 −22.8%——纯二房东，全部风险自己扛。</li></ul>
+</section>
+<section id="关键数字" class="">
+<h2>关键数字</h2>
+<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th><th>年份</th><th>来源</th></tr></thead><tbody><tr><td>全球云基础设施服务市场规模</td><td>约 4190 亿美元</td><td>2025</td><td>Synergy Research Group</td></tr><tr><td>全球云基础设施单季收入与增速</td><td>1191 亿美元，同比 +30%</td><td>2025 Q4</td><td>Synergy Research Group</td></tr><tr><td>全球公有云终端支出预测</td><td>8500 亿美元，同比 +21.3%</td><td>2026E</td><td>Gartner</td></tr><tr><td>全球集中度 CR3（云基础设施服务）</td><td>AWS 28% + 微软 21% + 谷歌 14% = 63%</td><td>2025 Q4</td><td>Synergy Research Group</td></tr><tr><td>AWS 营收 / 营业利润 / 利润率</td><td>1287.25 亿 / 456.06 亿美元 / 35.4%</td><td>2025</td><td>亚马逊 2025 年 10-K</td></tr><tr><td>微软智能云营收 / 营业利润率</td><td>1062.65 亿美元 / 42.0%</td><td>FY2025</td><td>微软 FY2025 年报</td></tr><tr><td>微软云整体毛利率</td><td>69%（同比下降，因 AI 基础设施扩张）</td><td>FY2025</td><td>微软 FY2025 年报</td></tr><tr><td>Google Cloud 单季营收 / 营业利润率</td><td>176.64 亿美元（+48%）/ 30.1%</td><td>2025 Q4</td><td>Alphabet 2025 Q4 财报</td></tr><tr><td>阿里云营收 / 经调整 EBITA</td><td>1581.32 亿元（+34%）/ 142.65 亿元</td><td>FY2026</td><td>阿里巴巴 2026 财年财报</td></tr><tr><td>中国公有云 IaaS 集中度 CR5</td><td>阿里 26.8% + 华为 12.9% + 天翼 12.3% + 移动 9.4% + 腾讯 7.9% = 69.3%</td><td>2025 H1</td><td>IDC 中国公有云服务市场跟踪</td></tr><tr><td>AWS 未履约订单（backlog）</td><td>2440 亿美元，同比 +40%</td><td>2025 Q4</td><td>亚马逊 2025 Q4 财报</td></tr><tr><td>甲骨文剩余履约义务（RPO）</td><td>6380 亿美元，同比 +363%</td><td>FY2026 Q4</td><td>甲骨文 FY2026 Q4 财报</td></tr><tr><td>数据中心上架率（世纪互联城市型）</td><td>63.7%</td><td>2025 Q1</td><td>世纪互联 2025 Q1 财报</td></tr><tr><td>H100 GPU 全球平均时租</td><td>从约 5 美元/小时降至约 2.4 美元/小时，跌幅超 70%</td><td>2025</td><td>界面新闻 / 36氪</td></tr><tr><td>头部厂商 2026 年资本开支指引</td><td>亚马逊约 2000 亿美元；Alphabet 1750–1850 亿美元</td><td>2026E</td><td>两家公司财报指引</td></tr></tbody></table></div>
+</section>
+<section id="现在依然有效的商业模式" class="alive">
+<h2>现在依然有效的商业模式</h2>
+<h3 id="模式一-规模化-iaas-承诺折扣锁定">模式一：规模化 IaaS + 承诺折扣锁定</h3>
+<p class="labeled"><span class="lb">怎么赚钱</span>把标准化算力、存储、网络按用量卖出去，同时用「你承诺用满一年或三年，我给你打折」的合约（AWS 叫 Savings Plans / 预留实例）把客户的用量锁死。折扣看起来是让利，实际是把「机器会不会闲置」这个风险从云厂商转移给了客户——客户不用也得付钱。</p>
+<p class="labeled"><span class="lb">真实案例</span>AWS 2025 年营收 1287.25 亿美元、营业利润 456.06 亿美元、利润率 35.4%（来源：亚马逊 2025 年 10-K）；其 Compute Savings Plans 承诺 1 年或 3 年可省最高 66%，EC2 实例 Savings Plans 最高 72%（来源：AWS 官方定价页）。这套机制的效果直接体现在 AWS 2025 年第四季度 2440 亿美元、同比增长 40% 的未履约订单上。阿里云 2026 财年收入 1581.32 亿元、同比增长 34%，经调整 EBITA 142.65 亿元、同比增长 35%（来源：阿里巴巴 2026 财年财报），也是靠公共云标准品的规模化重回高增长。</p>
+<p class="labeled"><span class="lb">为什么现在还成立</span>折旧是固定成本，边际客户几乎零边际成本。AWS 的营业利润率从 2023 年的 27.1%（246.31 亿 ÷ 907.57 亿美元）提升到 2025 年的 35.4%，中间收入只涨了 42%，利润却涨了 85%——这就是规模效应的教科书曲线（来源：亚马逊 10-K 分部数据）。</p>
+<p class="labeled"><span class="lb">门槛与风险</span>门槛是资本开支强度，亚马逊 2025 年购置物业设备支出 1283 亿美元、2026 年指引约 2000 亿美元，这个量级把中小玩家全部挡在门外。风险是需求节奏一旦低于产能建设节奏，闲置产能会直接吃掉利润率；另一个隐性风险是折旧年限假设（见通用规律第二条）。</p>
+<h3 id="模式二-托管-paas-的软件毛利">模式二：托管 PaaS 的软件毛利</h3>
+<p class="labeled"><span class="lb">怎么赚钱</span>在裸机之上叠一层托管服务——托管数据库、数据仓库、消息队列、Kubernetes、模型推理 API。客户买的不再是「几核几 G」，而是「我不用请 DBA」。这一层是软件，边际成本接近零，加价空间比 IaaS 大一个量级，而且迁移成本远高于虚拟机（数据和查询语法都被绑住了）。</p>
+<p class="labeled"><span class="lb">真实案例</span>微软 2025 财年智能云分部收入 1062.65 亿美元、营业利润 445.89 亿美元，利润率 42.0%，比 AWS 高出近 7 个百分点，差别几乎全部来自 PaaS 与软件的占比更高；Azure 全年收入首次超过 750 亿美元、增长 34%（来源：微软 FY2025 年报）。Google Cloud 更能说明加价层的威力：2025 年第四季度收入 176.64 亿美元、营业利润 53.13 亿美元（利润率 30.1%），而 2024 年同期是 119.55 亿美元 / 20.93 亿美元（利润率 17.5%）——收入涨 48%，利润涨 154%（来源：Alphabet 2025 Q4 财报）。</p>
+<p class="labeled"><span class="lb">为什么现在还成立</span>数据的迁移摩擦是所有锁定手段里最硬的一种，而且它是客户自己造成的，监管很难拆。腾讯云在削减硬件转售和定制项目后，明确把重心转向「云底座、数据库、大数据等高利润或订阅制产品」，并在 2025 年首次实现规模化盈利（来源：财经报道、IDC 中国公有云市场分析）。</p>
+<p class="labeled"><span class="lb">门槛与风险</span>门槛是产品线宽度与工程投入，一个能打的托管数据库要做好几年。风险是开源替代（PostgreSQL、ClickHouse 等）和跨云中立厂商（Snowflake、Databricks 这类）在同一层抢加价空间。</p>
+<h3 id="模式三-自研芯片与垂直整合">模式三：自研芯片与垂直整合</h3>
+<p class="labeled"><span class="lb">怎么赚钱</span>不是把芯片卖给别人，而是用自研芯片替换掉外购芯片，把原本付给上游的毛利留在自己体内，同时用「同样性能更便宜」去抢价格敏感的负载。</p>
+<p class="labeled"><span class="lb">真实案例</span>AWS 的 Graviton + Trainium 合计年化收入已超过 100 亿美元、同比三位数增长，Trainium2 落地 140 万颗且已被订满，Trainium3 已在爬产（来源：亚马逊 2025 Q4 财报电话会）。谷歌的 TPU 是同一套逻辑，支撑了 Google Cloud 单季 48% 的增速。中国这边，阿里 2026 财年约 1200 亿元资本开支明确包含 GPU 服务器采购、数据中心建设与自研芯片三块（来源：阿里巴巴 2026 财年财报）。</p>
+<p class="labeled"><span class="lb">为什么现在还成立</span>AI 负载的算力成本占比高到值得为它专门设计芯片，而云厂商是全世界少数几个「同时掌握足够大的自有负载 + 足够多的资本」的主体。</p>
+<p class="labeled"><span class="lb">门槛与风险</span>门槛是先有足够大的自有负载摊薄流片成本，规模不到就是纯亏。风险是软件生态——CUDA 的护城河很深，自研芯片如果编程门槛高，客户宁可多付钱。</p>
+<h3 id="模式四-ai-算力长约预售-rpo-模式">模式四：AI 算力长约预售（RPO 模式）</h3>
+<p class="labeled"><span class="lb">怎么赚钱</span>在产能建好之前先签多年期大额合约，用订单去撬动债务和资本开支，客户有时甚至预付款或自带 GPU。核心指标不是当期收入，而是<strong>RPO（剩余履约义务，已签约但还没确认成收入的金额）</strong>。</p>
+<p class="labeled"><span class="lb">真实案例</span>甲骨文 2026 财年第四季度 RPO 达 6380 亿美元、同比暴涨 363%，OCI 收入单季 58 亿美元、同比增长 93%，公司确认大部分 RPO 增量来自大型 AI 合约（来源：甲骨文 FY2026 Q4 财报）。CoreWeave 2025 年底订单积压 668 亿美元，全年收入 51.3 亿美元（来源：CoreWeave 2025 年报）。Alphabet 截至 2025 年 12 月 31 日的收入积压 2428 亿美元，主要与 Google Cloud 相关（来源：Alphabet 2025 年 10-K）。</p>
+<p class="labeled"><span class="lb">为什么现在还成立</span>AI 训练需要多年连续、确定性的产能，客户愿意用长约换供给保障；云厂商拿着长约去银行借钱建数据中心，形成闭环。</p>
+<p class="labeled"><span class="lb">门槛与风险</span>这是本行业风险最集中的一个模式。CoreWeave 668 亿美元订单的另一面是 11.7 亿美元净亏损和约 290 亿美元总负债；甲骨文 RPO 暴涨的同时自由现金流转负。风险机制很直白：<strong>订单是几年后的收入，债务和折旧是今天就要付的现金</strong>，中间任何一个客户违约或降级，缺口就要自己填。而且这类合约的客户集中度极高，单一大客户的动作可以决定生死。</p>
+<h3 id="模式五-主权云-混合云与专有云一体机">模式五：主权云、混合云与专有云一体机</h3>
+<p class="labeled"><span class="lb">怎么赚钱</span>把公有云的软件栈打包成「装在客户自己机房里的一套设备」，卖软件许可 + 硬件 + 年度订阅。适用于数据不能出境、不能出机房的政府、金融、能源客户。</p>
+<p class="labeled"><span class="lb">真实案例</span>Gartner 预测 2026 年全球主权云 IaaS 支出将达 800 亿美元（来源：Gartner 2026 年 2 月新闻稿）。中国市场里天翼云（12.3%）和移动云（9.4%）合计 21.7% 的 IaaS 份额，主要就建立在这类客户上（来源：IDC 2025 上半年数据）。华为云 Stack 是同类产品的代表，份额 12.9%。</p>
+<p class="labeled"><span class="lb">为什么现在还成立</span>合规约束不会消失，反而在加强；欧盟主权云需求、中国信创要求都在把这块蛋糕做大。关键是<strong>产品化程度</strong>——阿里云在 2023 年复盘时的结论说得很清楚：「专有云是盈利的，不盈利的地方在于大量定制化开发、项目总集」（来源：36氪、虎嗅关于阿里云 2023 年组织调整的报道）。</p>
+<p class="labeled"><span class="lb">门槛与风险</span>门槛是软硬件一体化的工程能力与合规资质。风险是滑向下面「已失效」一节的项目制陷阱——同一个客户，卖标准一体机是好生意，卖定制开发就是亏本买卖，两者之间只隔一句「能不能改一下」。</p>
+<h3 id="模式六-数据中心批发租赁-给云厂商当房东">模式六：数据中心批发租赁（给云厂商当房东）</h3>
+<p class="labeled"><span class="lb">怎么赚钱</span>不碰软件，只建楼、拉电、上冷却，把机柜或整栋按兆瓦包给云厂商和大型互联网公司，签 8–10 年长约，赚的是「电力容量的租金差 + 长期现金流」。核心单位经济是上架率、机架功率密度、PUE（电能使用效率＝数据中心总耗电 ÷ IT 设备耗电，越接近 1 越省电）。</p>
+<p class="labeled"><span class="lb">真实案例</span>世纪互联 2025 年第一季度批发型 IDC 运营容量 573 兆瓦、上架 437 兆瓦，单季新增上架约 84 兆瓦创历史新高（来源：世纪互联 2025 Q1 财报）。万国数据在全球运营超过 100 座数据中心、总设计容量 818 兆瓦、客户超 2000 家（来源：行业盘点报道，非财报口径，仅供量级参考）。</p>
+<p class="labeled"><span class="lb">为什么现在还成立</span>AI 让电力容量成为真正的稀缺品，「有电、有地、有并网许可」本身变成了资产。亚马逊仅 2025 年第四季度就新增了超过 1 吉瓦的容量（来源：亚马逊 2025 Q4 财报），这些容量相当一部分来自第三方。</p>
+<p class="labeled"><span class="lb">门槛与风险</span>门槛是电力指标和资本。风险是上架率——世纪互联城市型业务 63.7% 的上架率意味着三分之一的资产在空转，而折旧一天不停；另一个风险是客户集中度，房东的命运绑在两三个大客户的扩产节奏上。</p>
+</section>
+<section id="已经失效或正在失效的商业模式" class="dead">
+<h2>已经失效或正在失效的商业模式</h2>
+<h3 id="中国公有云的-总集成商-定制项目-模式-失效时间-约-2022-2023-年起">中国公有云的「总集成商 + 定制项目」模式（失效时间：约 2022–2023 年起）</h3>
+<p class="labeled"><span class="lb">曾经怎么赚钱</span>为了在「云市场份额」排行榜上占位，云厂商大量承接政企数字化大单，扮演总集成商角色——代客户采购服务器和网络设备再转售、按需求做重度定制开发、包下整个项目的交付。账面收入涨得极快，因为硬件转售是全额计收入的。</p>
+<p class="labeled"><span class="lb">巅峰时有多猛</span>这套打法把中国公有云市场推成了全球第二大市场，也把几家厂商的云业务营收推到了几百亿元量级。代价是毛利率被压到很低——腾讯管理层后来复盘说，腾讯「经常被市场份额和舆论的大势裹挟，被迫做总包去拿市场份额」（来源：财经报道）。</p>
+<p class="labeled"><span class="lb">怎么崩的</span>2021 年第四季度财报会上，腾讯总裁刘炽平明确表态要对亏损业务做成本优化；随后两年腾讯云主动砍掉了一百多亿元的业务收入，绝大部分是毛利率极低的硬件转售和重度定制政企项目，战略改为「放弃集成商角色，做自研产品被集成」（来源：财经、ZAKER 报道）。阿里云在 2023 年 9 月提出「公共云优先」战略，11 月 23 日完成组织架构调整，成立公共云、混合云、基础设施三大事业部，12 月被媒体报道削减定制项目和硬件集成业务（来源：虎嗅、36氪、南方都市报报道）。</p>
+<p class="labeled"><span class="lb">根本原因</span><strong>模式本身不具备规模效应</strong>。软件和标准云产品的边际成本趋近于零，卖第 1000 个客户和第 1 个客户成本几乎一样；而项目制交付的成本随单量线性增长——每多一个项目就要多一队人。收入涨了，成本同比例涨，规模不但不带来利润，还带来管理复杂度和应收账款风险。这是「用错误的指标（营收）考核一个本该看毛利的生意」的典型后果。</p>
+<p class="labeled"><span class="lb">教训</span>当一门生意的成本随收入线性增长时，追求市场份额是自杀。调整后的效果验证了这一点：腾讯云在 2025 年首次实现规模化盈利，阿里云 2026 财年经调整 EBITA 达 142.65 亿元、同比增长 35%（来源：IDC 分析、阿里巴巴财报）。</p>
+<h3 id="cdn-价格战-失效时间-2015-年起">CDN 价格战（失效时间：2015 年起）</h3>
+<p class="labeled"><span class="lb">曾经怎么赚钱</span>内容分发网络（CDN，把网站的图片视频缓存到离用户最近的节点，加快访问速度）本来是一门带宽转售的好生意——买断宽带成本相对固定，按流量卖给视频、电商、游戏客户，毛利接近 50%。</p>
+<p class="labeled"><span class="lb">巅峰时有多猛</span>2015 年之前，网宿科技约占中国 CDN 市场 43%、蓝汛约 37%，两家合计约 80%（来源：21世纪经济报道、界面新闻）。网宿 2015 年 CDN 业务毛利率 47.66%。</p>
+<p class="labeled"><span class="lb">怎么崩的</span>2015 年 3 月，云厂商公开喊出 CDN 价格不超过 1.5 元/G/月，而当时市场价约 3 元；同年 5 月阿里云 CDN 降价 21.2%，腾讯云跟进降价 25%，其余云厂商陆续加入，2017 年价格战进一步升级（来源：界面新闻、21世纪经济报道）。网宿 CDN 毛利率随之滑落：2015 年 47.66% → 2016 年上半年 45.53% → 2016 全年 43.78%。蓝汛等专业 CDN 厂商掉队。到 2025 年上半年，网宿 CDN 与边缘计算收入降至 15.12 亿元、同比下滑 4.03%，占公司收入比重创历史新低的 64%（来源：21经济网）。</p>
+<p class="labeled"><span class="lb">根本原因</span><strong>技术替代 + 补贴性定价</strong>。CDN 对云厂商不是一门生意，是一个获客入口和捆绑筹码——客户的计算存储都在我这，CDN 送你也行。对专业 CDN 公司是主业，对云厂商是赠品，这个不对称一旦出现，专业厂商无论怎么降本都赢不了。</p>
+<p class="labeled"><span class="lb">教训</span><strong>当你的主营业务是别人的赠品时，你已经输了</strong>。判断信号很简单：看看竞争对手是否可以把你的产品免费送出去而不影响它的报表。</p>
+<h3 id="出网流量费-egress-作为锁定护城河-失效时间-2024-年起松动-2027-年-1-月起在欧盟彻底禁止">出网流量费（egress）作为锁定护城河（失效时间：2024 年起松动，2027 年 1 月起在欧盟彻底禁止）</h3>
+<p class="labeled"><span class="lb">曾经怎么赚钱</span>数据存进云里几乎不要钱，但要把数据搬出去，按 GB 收费。AWS 每月只赠送 100 GB 免费出网额度（跨所有服务和区域合计，中国区和 GovCloud 除外，来源：AWS 官方定价页），超出部分按 GB 计费。对存了几个 PB 数据的企业来说，「搬家费」高到足以让迁移方案在财务上不成立——这就是行业里最著名的软锁定。</p>
+<p class="labeled"><span class="lb">巅峰时有多猛</span>出网费在很长时间里是云厂商续约谈判中最有力的筹码：客户拿竞品报价来压价，销售只要算一遍迁移成本，谈判就结束了。</p>
+<p class="labeled"><span class="lb">怎么崩的</span>2024 年，AWS、Azure、Google Cloud 相继宣布对「完整迁出」场景免收出网费——这是在监管落地前的主动让步（来源：英国 CMA 相关文件、法律事务所分析）。欧盟《数据法案》（Regulation (EU) 2023/2854）2024 年 1 月 11 日生效、2025 年 9 月 12 日开始适用，规定 2024 至 2027 年过渡期内切换费只能收「实际直接成本」，<strong>2027 年 1 月 12 日起完全禁止收取任何切换费</strong>（来源：Kemp IT Law、Deloitte Legal 分析）。</p>
+<p class="labeled"><span class="lb">根本原因</span><strong>政策</strong>。这个护城河不是技术造出来的，是定价策略造出来的，所以监管一纸文件就能拆掉。需要注意区分：被禁的是「搬家费」，日常业务的出网流量费（比如给终端用户传视频）并没有取消。</p>
+<p class="labeled"><span class="lb">教训</span>靠人为设置的转换成本建立的护城河，寿命取决于监管的注意力，而不是技术难度。真正耐久的锁定是客户自己造成的（数据模型、查询语法、运维习惯），不是你收费收出来的。</p>
+<h3 id="纯-idc-机房出租与无规模的独立云厂商-失效时间-约-2020-年起持续恶化">纯 IDC 机房出租与无规模的独立云厂商（失效时间：约 2020 年起持续恶化）</h3>
+<p class="labeled"><span class="lb">曾经怎么赚钱</span>早期云计算格局未定时，独立云厂商靠更灵活的服务、更低的价格、更贴身的支持切走中小客户；纯 IDC 商靠机柜租金赚稳定现金流。</p>
+<p class="labeled"><span class="lb">巅峰时有多猛</span>优刻得曾是「中国云计算第一股」，2020 年 1 月登陆科创板，是当时独立第三方云服务商的标杆。</p>
+<p class="labeled"><span class="lb">怎么崩的</span>2025 年优刻得营业收入 16.99 亿元、同比增长 13.07%，归母净利润仍亏损 7355.34 万元；毛利率虽提升 6.97 个百分点至 25.83%，但近六年累计亏损已超过 20 亿元（来源：优刻得 2025 年年报、蓝鲸财经）。对照 AWS 同期 35.4% 的<strong>营业</strong>利润率——优刻得的 25.83% 还是<strong>毛利</strong>率，两者差着整整一层费用。</p>
+<p class="labeled"><span class="lb">根本原因</span><strong>规模不经济</strong>。这个行业的成本结构是「巨额固定成本 + 极低边际成本」，规模是唯一的解药。没有规模就没有议价权（买服务器贵、买带宽贵）、没有摊薄（研发投入按同样金额摊在十分之一的收入上）、也没有加价层（做不出有竞争力的托管数据库）。它同时被上下夹击：上面被大厂用标准品降维打击，下面被客户当成价格备胎。</p>
+<p class="labeled"><span class="lb">教训</span>判断一个行业是否「有下限门槛」，看它的成本曲线。固定成本占比越高、边际成本越低，行业的最小可行规模就越大，中间玩家的生存空间就越窄——最终只剩巨头和极度垂直的小玩家，中间地带被抽空。</p>
+<h3 id="高价-gpu-短租的-算力二房东-失效时间-约-2024-年下半年起">高价 GPU 短租的「算力二房东」（失效时间：约 2024 年下半年起）</h3>
+<p class="labeled"><span class="lb">曾经怎么赚钱</span>2023 年 AI 热潮初期 GPU 严重短缺，谁手上有卡谁就是硬通货。囤卡然后按小时短租，回本周期看起来只要一年出头，一大批智算中心和算力租赁公司涌入。</p>
+<p class="labeled"><span class="lb">巅峰时有多猛</span>中国市场 H100 的小时租赁价曾接近 13 美元（约合 90 多元人民币）（来源：界面新闻、36氪）。按这个价格，一张卡一年不停跑能收回十几万人民币，比卡本身还贵。</p>
+<p class="labeled"><span class="lb">怎么崩的</span>2025 年 H100 全球平均租赁价从年初约 5 美元/小时跌到约 2.4 美元/小时，跌幅超过 70%；A100 价格腰斩，40GB 版跌到 2.8–4 元/小时、80GB 版 4–6.5 元/小时（来源：界面新闻、36氪、行业价格追踪）。核心机制是：早期囤卡的投资者面临回本压力，不得不降价换利用率，而降价又进一步压低了市场价，形成向下螺旋。同时国内算力资源极度分散，「卖家找不到买家，买家也找不到卖家」，缺乏统一的产品与价格标准。</p>
+<p class="labeled"><span class="lb">根本原因</span><strong>供给太多 + 没有锁定</strong>。裸 GPU 时租是彻头彻尾的大宗商品——没有数据沉淀、没有 API 依赖、没有迁移成本，客户明天换一家只需要改一个 IP。而供给端的进入门槛只是「有钱买卡」，这种门槛挡不住任何人。对比一下 CoreWeave：它同样卖 GPU，但靠长约把价格锁死了几年，所以它的问题是财务杠杆，不是价格崩塌——这个差别就是「有没有合约锁定」造成的。</p>
+<p class="labeled"><span class="lb">教训</span><strong>同质化的可转售商品，其租金一定会跌到接近折旧 + 资金成本</strong>。想在这类生意里活下来，只有两条路：要么在上面叠加价层（调度、编排、模型服务），要么用长约把价格提前固定。</p>
+<h3 id="云一定比自建便宜-这条销售话术-失效时间-约-2023-年起-限于特定负载">「云一定比自建便宜」这条销售话术（失效时间：约 2023 年起，限于特定负载）</h3>
+<p class="labeled"><span class="lb">曾经怎么赚钱</span>整个行业十几年的增长叙事建立在一个前提上——把机器交给云厂商，总成本一定更低，因为它有规模。这条话术支撑了无数次上云决策，也支撑了云厂商的高毛利。</p>
+<p class="labeled"><span class="lb">巅峰时有多猛</span>这条话术在 2010–2020 年基本无人质疑，「上云」几乎等同于「降本」。</p>
+<p class="labeled"><span class="lb">怎么崩的</span>2023 年，软件公司 37signals（Basecamp、HEY 的开发商）公开完成「下云」并披露账本：把七个云上应用迁回自有数据中心后，云账单从 320 万美元/年降到 130 万美元/年；为此花了约 70 万美元买 Dell 服务器，这笔硬件钱在 2023 年当年就被节省额覆盖；预计五年合计节省超过 1000 万美元。剩下的 130 万美元几乎全是 S3 存储费用，把 10 PB 数据迁到自有存储后预计五年再省 400 万美元（来源：DHH 公开披露）。</p>
+<p class="labeled"><span class="lb">根本原因</span><strong>云的定价包含了弹性溢价，而弹性对稳定负载毫无价值</strong>。云的成本优势来自「你不用时不付钱」，如果一个负载 7×24 小时满载运行、体量又大到足以自己摊薄运维人力，那你付的溢价就是纯损失。注意这不是「云失效了」，而是「云的普适性叙事失效了」——37signals 的前提是「已有数据中心机位、不需要新租机房」，换个初创公司结论会完全相反。</p>
+<p class="labeled"><span class="lb">教训</span>任何「A 一定比 B 便宜」的行业叙事，都要问清楚适用边界。当一个卖点从「对某类客户成立」被包装成「对所有客户成立」时，反例出现只是时间问题，而反例一旦被量化公开，销售话术就失去了免检权。</p>
+</section>
+<section id="这个行业教给我们的通用规律" class="">
+<h2>这个行业教给我们的通用规律</h2>
+<p><strong>第一，利润在利用率和加价层里，不在营收规模里。</strong> 云计算最反直觉的一点是：营收增长和利润增长可以完全脱钩。中国云厂商 2018–2022 年的营收高增长几乎没带来利润，因为增长来自硬件转售和项目制交付；而 Google Cloud 2025 年第四季度收入涨 48%、利润涨 154%，因为增量来自加价层。<strong>失效信号：一个公司的收入在涨、毛利率却持平或下滑，说明它在卖别人的东西赚差价，不是在卖自己的能力。</strong> 这条规律在任何有「转售」和「自营」两种收入的行业都成立——零售、医药流通、系统集成全都一样。</p>
+<p><strong>第二，会计假设本身就是利润的一部分，要单独拿出来看。</strong> 亚马逊从 2025 年 1 月 1 日起把部分服务器和网络设备的折旧年限从 6 年缩短到 5 年，理由是 AI 带来的技术迭代加快，这一项就让 2025 年营业利润减少约 7 亿美元；加上提前退役设备的加速折旧影响，合计对 AWS 2025 年营业利润的影响约 13 亿美元（来源：亚马逊 10-Q、Calcbench 分析）。同一时点，Meta 做了完全相反的决定，延长部分服务器和网络资产的使用年限，减少 2025 年折旧费用约 29 亿美元。<strong>同一种资产、同样的技术环境，两家公司的假设相反，报表利润就不可比。</strong> 判断信号：当一个重资产行业的公司之间折旧政策出现分叉，先把折旧口径拉齐再比较利润，否则你比的是会计师不是生意。</p>
+<p><strong>第三，靠定价手段建立的锁定，寿命由监管决定；靠客户习惯建立的锁定，寿命由客户决定。</strong> 出网费是前者，2024 年被竞争压力松动、2027 年被欧盟法律取消；数据模型和 API 依赖是后者，至今没有任何法规能拆。<strong>失效信号：当你的护城河可以被一句「不许这么收费」抹掉时，它就不是护城河，是一笔迟早要还的账。</strong> 这条规律对所有靠「转换成本收费」的行业适用——运营商的携号转网、银行的转账手续费、平台的提现费，路径完全一致。</p>
+<p><strong>第四，预售订单是需求证据，也是风险敞口，要看它是被什么撑起来的。</strong> RPO 和 backlog 在 2025–2026 年成了云计算最热的指标：甲骨文 6380 亿美元、AWS 2440 亿美元、Alphabet 2428 亿美元、CoreWeave 668 亿美元。但订单的质量差别巨大——AWS 的订单背后是自有现金流和 57% 的集团利润贡献，CoreWeave 的订单背后是约 290 亿美元负债和 11.7 亿美元年度净亏损。<strong>失效信号：订单增速远超收入增速、且产能靠债务而非经营现金流建设时，任何一个大客户的违约都会被杠杆放大成生存危机。</strong> 这条规律在造船、工程机械、地产预售里已经重复过很多轮了。</p>
+<p><strong>第五，同质化且可转售的商品，租金一定会跌到接近折旧加资金成本。</strong> 裸 GPU 时租从 13 美元跌到 2.4 美元，CDN 从 3 元/G 跌到 1.5 元以下，都是同一个机制：产品没有差异、切换成本为零、供给的唯一门槛是资本。<strong>失效信号：当你的客户可以在一天之内换掉你且不损失任何东西时，你的定价权已经归零，剩下的只是谁的资金成本更低。</strong> 唯二的出路是叠加价层，或者用长约把价格提前锁死。</p>
+<p><strong>第六，固定成本占比越高的行业，中间玩家越活不下去。</strong> 云计算的成本结构决定了它没有「小而美」——优刻得六年累亏 20 亿元、毛利率 25.83%，不是因为团队不行，是因为它的规模不足以摊薄这个行业的固定成本基座。<strong>失效信号：当行业里 CR3 超过 60%（全球云 2025 年 Q4 为 63%）且还在继续提升时，第 4 到第 10 名的公司必须尽快找到一个巨头不愿意进入的垂直缝隙，否则时间不站在他们这边。</strong> 这条规律解释了为什么这个行业的正确战略从来只有两种：做到全球前三，或者做一个大厂看不上的细分市场里的第一。</p>
+</section>
+<section id="资料来源" class="">
+<h2>资料来源</h2>
+<ul><li><a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noreferrer noopener">Amazon 2025 Form 10-K（AWS 分部收入与营业利润）</a> — 访问日期 2026-07-31</li><li><a href="https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf" target="_blank" rel="noreferrer noopener">Amazon 2025 Annual Report</a> — 访问日期 2026-07-31</li><li><a href="https://futurumgroup.com/insights/amazon-q4-fy-2025-revenue-beat-aws-24-amid-200b-capex-plan" target="_blank" rel="noreferrer noopener">Amazon Q4 FY2025: Revenue Beat, AWS +24% Amid $200B Capex Plan（Futurum）</a> — 访问日期 2026-07-31</li><li><a href="https://www.microsoft.com/investor/reports/ar25/index.html" target="_blank" rel="noreferrer noopener">Microsoft Annual Report 2025（分部收入与营业利润）</a> — 访问日期 2026-07-31</li><li><a href="https://www.microsoft.com/en-us/investor/earnings/fy-2025-q4/intelligent-cloud-performance" target="_blank" rel="noreferrer noopener">Microsoft FY25 Q4 Intelligent Cloud Performance</a> — 访问日期 2026-07-31</li><li><a href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf" target="_blank" rel="noreferrer noopener">Alphabet Announces Fourth Quarter and Fiscal Year 2025 Results</a> — 访问日期 2026-07-31</li><li><a href="https://www.srgresearch.com/articles/genai-helps-drive-quarterly-cloud-revenues-to-119-billion-as-growth-rate-jumped-yet-again-in-q4" target="_blank" rel="noreferrer noopener">Synergy Research: GenAI Helps Drive Quarterly Cloud Revenues to $119 Billion</a> — 访问日期 2026-07-31</li><li><a href="https://www.srgresearch.com/articles/cloud-market-share-trends-big-three-together-hold-63-while-oracle-and-the-neoclouds-inch-higher" target="_blank" rel="noreferrer noopener">Synergy Research: Big Three Together Hold 63% while Oracle and the Neoclouds Inch Higher</a> — 访问日期 2026-07-31</li><li><a href="https://www.gartner.com/en/newsroom/press-releases/2026-02-09-gartner-says-worldwide-sovereign-cloud-iaas-spending-will-total-us-dollars-80-billion-in-2026" target="_blank" rel="noreferrer noopener">Gartner Says Worldwide Sovereign Cloud IaaS Spending Will Total $80 Billion in 2026</a> — 访问日期 2026-07-31</li><li><a href="https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Record-Q4-and-FY-2026-Results-Driven-by-Cloud-Infrastructure--Cloud-Applications/default.aspx" target="_blank" rel="noreferrer noopener">Oracle Announces Record Q4 and FY 2026 Results</a> — 访问日期 2026-07-31</li><li><a href="https://www.constellationr.com/insights/news/coreweave-tops-5-billion-revenue-2025-projects-more-hypergrowth-2026-2027" target="_blank" rel="noreferrer noopener">CoreWeave tops $5 billion in revenue for 2025（Constellation Research）</a> — 访问日期 2026-07-31</li><li><a href="https://www.idc.com/resource-center/blog/%E5%85%AC%E6%9C%89%E4%BA%91iaas%E5%B8%82%E5%9C%BA%E5%A2%9E%E9%80%9F%E9%87%8D%E5%9B%9E20%E7%9A%84%E8%83%8C%E5%90%8E%EF%BC%9A-ai-%E7%BA%A2%E5%88%A9%E8%8A%B1%E8%90%BD%E8%B0%81%E5%AE%B6%EF%BC%9F/" target="_blank" rel="noreferrer noopener">IDC：公有云 IaaS 市场增速重回 20% 的背后——AI 红利花落谁家？</a> — 访问日期 2026-07-31</li><li><a href="https://blog.csdn.net/TMT_XQ/article/details/154204087" target="_blank" rel="noreferrer noopener">IDC 报告：阿里云市场份额升至 26.8%（2025 上半年中国公有云 IaaS 份额）</a> — 访问日期 2026-07-31</li><li><a href="https://caifuhao.eastmoney.com/news/20260515180804051033050" target="_blank" rel="noreferrer noopener">阿里 2026 财年财报解读（云智能集团收入与经调整 EBITA）</a> — 访问日期 2026-07-31</li><li><a href="http://finance.sina.com.cn/wm/2026-05-13/doc-inhxufva0644463.shtml" target="_blank" rel="noreferrer noopener">阿里云第一季营收 416 亿：EBITA 为 38 亿 同比增 57%（新浪财经）</a> — 访问日期 2026-07-31</li><li><a href="https://www.lanjinger.com/d/1775803456085493143" target="_blank" rel="noreferrer noopener">优刻得 2025 年再亏 7355.34 万元，六年累亏超 20 亿元（蓝鲸财经）</a> — 访问日期 2026-07-31</li><li><a href="https://m.huxiu.com/article/2483432.html" target="_blank" rel="noreferrer noopener">阿里云再调整：削减定制项目和硬件集成业务（虎嗅）</a> — 访问日期 2026-07-31</li><li><a href="https://app.myzaker.com/article/69a780ae8e9f090eff0bbbba" target="_blank" rel="noreferrer noopener">割肉百亿，腾讯云换回盈利</a> — 访问日期 2026-07-31</li><li><a href="https://m.jiemian.com/article/2366819.html" target="_blank" rel="noreferrer noopener">CDN 价格战落幕，三分天下成定局（界面新闻）</a> — 访问日期 2026-07-31</li><li><a href="https://www.21jingji.com/article/20250815/herald/423c92d9627d6fe3df3a5b6e75498421.html" target="_blank" rel="noreferrer noopener">价格战挤压，网宿科技转型按下&quot;加速键&quot;（21 经济网）</a> — 访问日期 2026-07-31</li><li><a href="https://www.jiemian.com/article/11876304.html" target="_blank" rel="noreferrer noopener">英伟达 H100 海外租金大降，但说&quot;算力泡沫破裂&quot;为时过早（界面新闻）</a> — 访问日期 2026-07-31</li><li><a href="https://finance.sina.com.cn/stock/usstock/c/2025-05-28/doc-ineycmqz0540453.shtml" target="_blank" rel="noreferrer noopener">世纪互联发布 2025 年 Q1 财报：IDC 业务增长强劲（新浪财经）</a> — 访问日期 2026-07-31</li><li><a href="https://kempitlaw.com/insights/the-end-of-switching-charges-commercial-impact-and-compliance-priorities/" target="_blank" rel="noreferrer noopener">The End of Switching Charges: Commercial Impact and Compliance Priorities（Kemp IT Law）</a> — 访问日期 2026-07-31</li><li><a href="https://www.deloittelegal.de/dl/en/services/legal/perspectives/cloud-switching-eu-data-act.html" target="_blank" rel="noreferrer noopener">Cloud switching under the EU Data Act（Deloitte Legal）</a> — 访问日期 2026-07-31</li><li><a href="https://world.hey.com/dhh/our-cloud-exit-has-already-yielded-1m-year-in-savings-c7d9b5bd" target="_blank" rel="noreferrer noopener">Our cloud exit has already yielded $1m/year in savings（37signals / DHH）</a> — 访问日期 2026-07-31</li><li><a href="https://aws.amazon.com/savingsplans/compute-pricing/" target="_blank" rel="noreferrer noopener">AWS Compute Savings Plans 定价页</a> — 访问日期 2026-07-31</li><li><a href="https://aws.amazon.com/ec2/pricing/on-demand/" target="_blank" rel="noreferrer noopener">Amazon EC2 On-Demand Pricing（免费出网额度）</a> — 访问日期 2026-07-31</li><li><a href="https://www.calcbench.com/blog/post/blogger141924366623734345/On-Amazon-and-Server-Lifespans" target="_blank" rel="noreferrer noopener">On Amazon and Server Lifespans（Calcbench，折旧年限变更分析）</a> — 访问日期 2026-07-31</li></ul>
+</section>
+        </article>
+      </div>
+      <div class="ib-pager">
+        <a href="37-saas.html"><span>← 上一个行业</span><b>企业软件 SaaS</b></a>
+        <a href="39-ai-foundation-model.html"><span>下一个行业 →</span><b>AI 大模型</b></a>
+      </div>
+      <footer class="site-footer"><span>Public report library · 2026-07-31</span><a href="/reports/">返回报告库</a></footer>
+    </main>
+    <script>
+      (() => {
+        const links = [...document.querySelectorAll('.ib-toc a')];
+        const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+        const targets = [...document.querySelectorAll('.ib-body section, .ib-body h3')].filter((el) => el.id && map.has(el.id));
+        if (!targets.length) return;
+        const seen = new Set();
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => (e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id)));
+          const first = targets.find((t) => seen.has(t.id));
+          links.forEach((a) => a.classList.remove('active'));
+          if (first) map.get(first.id).classList.add('active');
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        targets.forEach((t) => io.observe(t));
+      })();
+    </script>
+  </body>
+</html>
