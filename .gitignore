@@ -1,1 +1,4 @@
 .DS_Store
+
+# Browser-automation snapshots written during local report verification
+.playwright-cli/
