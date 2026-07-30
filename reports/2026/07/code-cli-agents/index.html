@@ -95,6 +95,24 @@
       .empty { grid-column: 1 / -1; padding: 60px 24px; text-align: center; color: var(--muted); background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
       .voices-intro { max-width: 900px; margin: -12px 0 30px; color: #565d68; font-size: 14px; line-height: 1.65; }
+      .billing-block { margin-bottom: 34px; }
+      .billing-block h3 { margin: 0 0 14px; font-size: 17px; letter-spacing: -.035em; }
+      .table-scroll { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+      .table-scroll table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 700px; }
+      .table-scroll th { padding: 12px 14px; text-align: left; background: var(--paper); border-bottom: 1px solid var(--line); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+      .table-scroll td { padding: 13px 14px; border-bottom: 1px solid var(--line); color: #565d68; line-height: 1.55; vertical-align: top; }
+      .table-scroll tbody tr:last-child td { border-bottom: none; }
+      .table-scroll td:first-child { color: var(--ink); font-weight: 650; white-space: nowrap; }
+      .table-scroll code, .billing-note code, .policy code { padding: 1px 4px; background: var(--paper); border-radius: 3px; font-size: 11.5px; }
+      .policy-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+      .policy { padding: 22px 24px; background: var(--surface); border-top: 3px solid var(--alive); }
+      .policy.partial { border-top-color: var(--slow); }
+      .policy b { display: block; margin-bottom: 10px; font-size: 15px; color: var(--ink); }
+      .policy p { margin: 0; color: #565d68; font-size: 13px; line-height: 1.62; }
+      .billing-note { max-width: 900px; margin: 12px 0 0; color: #565d68; font-size: 13px; line-height: 1.62; }
+      .billing-note.warn { padding-left: 12px; border-left: 3px solid var(--warm); color: #94512a; }
+      @media (max-width: 780px) { .policy-pair { grid-template-columns: 1fr; } }
+
       .voice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(560px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
       .voice { padding: 30px 28px; background: var(--surface); }
       .voice h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: -.04em; line-height: 1.2; }
@@ -143,7 +161,7 @@
         <div>
           <p class="eyebrow">Beyond Claude Code &amp; Codex</p>
           <h1>终端里还有<br />哪些能用的<br />编程 CLI。</h1>
-          <p class="intro">26 款终端 AI 编程 agent，按「大厂原生 / 开源通用 / 商业独立 / 已退场」四类整理。star 数、许可证与最近提交时间全部由 GitHub API 于 2026-07-30 当天拉取，不引用二手文章里的数字——因为这个领域半年内已经发生过三次改名、迁移和停服。文末另附 <a href="#voices">社区口碑</a>：Reddit 与 Hacker News 上关于 Claude Code、Codex、OpenCode、Cursor CLI、Kimi Code 的一手用户发言。</p>
+          <p class="intro">26 款终端 AI 编程 agent，按「大厂原生 / 开源通用 / 商业独立 / 已退场」四类整理。star 数、许可证与最近提交时间全部由 GitHub API 于 2026-07-30 当天拉取，不引用二手文章里的数字——因为这个领域半年内已经发生过三次改名、迁移和停服。文末另附 <a href="#billing">订阅额度对照</a>与 <a href="#voices">社区口碑</a>：Reddit 与 Hacker News 上关于 Claude Code、Codex、OpenCode、Cursor CLI、Kimi Code 的一手用户发言。</p>
         </div>
         <aside class="method">
           <strong>口径：</strong>活跃度指标（star / license / 最近 push）为 GitHub API 一手数据；定价与产品形态取自各家官网，属公开信息交叉整理，<strong>非实测评分</strong>。社区口碑一节是主观发言汇总，只保留反复出现且指向具体机制的说法。本次调研刻意排除了各家自媒体的「最佳工具榜」——这类文章多半出自其中一款工具的厂商，排名不可信。
@@ -157,9 +175,9 @@
           <time>生效 2026-06-18 · Google 官方公告</time>
         </div>
         <div class="alert money">
-          <h3>Claude 订阅不能驱动第三方 CLI</h3>
-          <p>2026-01-09 Anthropic 部署服务端校验封堵第三方工具的 OAuth，2026-02-20 更新条款明确禁止，2026-04-04 全面执行；2026-03-19 OpenCode 因收到法务函合并 PR #18186，移除了全部 Claude Pro/Max 登录相关代码。结论：<strong>换一个 CLI 并不能复用你的 Claude 订阅额度</strong>，必须另付 API 或改用别家订阅。这是选型时最大的成本变量。</p>
-          <time>全面执行 2026-04-04</time>
+          <h3>Claude 订阅能不能驱动第三方：分两种情况</h3>
+          <p>流传最广的说法「Claude 订阅一律不能用于第三方」<strong>已经不准确</strong>。真实边界是：<strong>直接</strong>拿订阅 OAuth token 打 Anthropic API 的第三方 harness 仍被禁——Agent SDK 官方文档原话是「除非事先批准，Anthropic 不允许第三方开发者为其产品提供 claude.ai 登录或速率限制」；但<strong>通过 <code>claude -p</code> 或 Agent SDK 包装</strong>的本地个人工具属于允许范围。更关键的是：原定 2026-06-15 把这类程序化用量拆进独立信用池的计费改动，<strong>Anthropic 已于当日宣布暂停、并未生效</strong>，因此它们目前仍然照常吃订阅额度。官方称会重做方案并提前通知。</p>
+          <time>拆分计费已撤回 · 状态截至 2026-07-30</time>
         </div>
       </section>
 
@@ -176,6 +194,64 @@
       </section>
       <p class="results-line" id="resultCount" aria-live="polite"></p>
       <section id="tools" class="grid" aria-label="工具列表"></section>
+
+      <section class="verdict" id="billing">
+        <h2>订阅额度还是 API 计费</h2>
+        <p class="voices-intro">同一个 CLI，用订阅登录和用 API Key 登录的成本可以差一个数量级——API 是按公开费率全价计量，订阅是包月。所以选型时真正该问的不是「这个工具多少钱」，而是<strong>「我已有的订阅能不能喂给它」</strong>。下表按这个口径分四类。价格与政策截至 2026-07-30，均取自各家官网或官方文档。</p>
+
+        <div class="billing-block">
+          <h3>① 自家订阅直接驱动自家 CLI —— 最省，也最没悬念</h3>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>CLI</th><th>吃哪个订阅</th><th>价位</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>Claude Code</td><td>Claude Pro / Max</td><td>$20 / $100 / $200</td><td>年付 Pro 降至 $17。5 小时滚动窗口 + 周上限，与 claude.ai 聊天共享</td></tr>
+                <tr><td>Codex CLI</td><td>ChatGPT Plus / Pro</td><td>$20 / $100 / $200</td><td>官方文档明写：用 ChatGPT 登录走订阅额度，用 API Key 登录则走标准 API 计价</td></tr>
+                <tr><td>Antigravity CLI</td><td>Google 账号</td><td>免费起</td><td>Gemini CLI 的继任者，对所有人开放</td></tr>
+                <tr><td>Copilot CLI</td><td>GitHub Copilot</td><td>$10–39 / 席</td><td>计入 premium request 配额，重度用易触顶</td></tr>
+                <tr><td>Cursor CLI</td><td>Cursor</td><td>$20 / $60 / $200</td><td>与 IDE 共用同一份额度与 rules</td></tr>
+                <tr><td>Kimi Code</td><td>Kimi Code Plan</td><td>$19–199（年付 $15 起）</td><td>配额按<strong>周</strong>刷新，不是按天</td></tr>
+                <tr><td>Droid</td><td>Factory</td><td>$20 / $100 / $200</td><td><code>droid exec</code> 非交互模式适合 CI</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="billing-block">
+          <h3>② 第三方 CLI 能不能用大厂订阅 —— 两家政策完全相反</h3>
+          <div class="policy-pair">
+            <div class="policy yes">
+              <b>OpenAI：可以，且被明确支持</b>
+              <p>opencode v1.1.11（2026-01-10）加入 Codex OAuth，<code>/connect</code> 即可登录 ChatGPT Plus / Pro；Cline 官方发文「Bring your ChatGPT subscription to Cline」；OpenAI 与 Roo Code 有官方合作。HN 上的说法是 OpenAI 员工在公开渠道明确认可 pi、opencode 等第三方 agent 使用 Codex OAuth。<b>唯一的软肋是这件事至今没有写进正式条款文档</b>，全靠员工发言与产品行为佐证，社区一直在要一个白纸黑字的说法。</p>
+            </div>
+            <div class="policy partial">
+              <b>Anthropic：看你怎么接</b>
+              <p><b>不允许</b>：第三方 harness 直接拿订阅 OAuth token 打 Anthropic API。Agent SDK 文档写得很清楚——「除非事先批准，Anthropic 不允许第三方开发者为其产品提供 claude.ai 登录或速率限制，包括基于 Claude Agent SDK 构建的 agent」。<br /><b>允许</b>：把 <code>claude -p</code>（headless）或 Agent SDK 当后端来包装的本地个人工具。原定 2026-06-15 将这类程序化用量拆进独立信用池（Pro $20 / Max 5x $100 / Max 20x $200，按 API 全价计量、不滚存）的改动，<b>已在当日被 Anthropic 宣布暂停、未生效</b>，目前仍照常吃订阅额度。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="billing-block">
+          <h3>③ 模型侧订阅 —— 降本最狠的一档，也最容易被忽略</h3>
+          <p class="billing-note">这类订阅卖的是模型额度而非工具，能挂到多种 CLI 上，是「不换工具只换钱包」的路子。</p>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>方案</th><th>价格</th><th>额度</th><th>能驱动什么</th></tr></thead>
+              <tbody>
+                <tr><td>GLM Coding Plan（Z.ai）</td><td>Lite $18 / Pro $72 / Max $160 每月<br />年付降至 $12.6 / $50.4 / $112</td><td>周配额约 400 / 2000 / 8000 prompts；5 小时滚动约 80 / 400 / 1600。<b>超限即暂停，从不产生超额账单</b></td><td>官网写明「支持 20+ 编程工具，包含 Claude Code」。全档位自 2026-06-13 起跑 GLM-5.2，1M 上下文</td></tr>
+                <tr><td>opencode Go</td><td>首月 $5，之后 $10 / 月</td><td>面向轻中度日常</td><td>opencode 自家网关，供开源前沿模型（GLM、Kimi、Qwen、MiniMax、DeepSeek）</td></tr>
+                <tr><td>opencode Zen</td><td>按量</td><td>—</td><td>托管网关，模型面更广，属 PAYG 不是订阅</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="billing-note warn">留意价格漂移：GLM 的 Pro 档从早期约 $30 涨到 $72，网上流传的「$3 / $10 一个月」是已经取消的促销价，别照着旧文章做预算。</p>
+        </div>
+
+        <div class="billing-block">
+          <h3>④ 只能自带 API Key —— 工具免费，模型全价</h3>
+          <p class="billing-note">Pi、Goose、Crush、Aider、Continue、OpenHands 属于这一类：软件本身不要钱，但每一个 token 都按 provider 公开费率付。<b>Amp</b> 是其中的特例——同为按量付费，但个人与团队零平台加价、$5 起充，成本结构最透明。这一类真正的省钱办法不是换工具，而是把它们指向上面第 ③ 类的便宜模型订阅，或指向本机 Ollama。</p>
+        </div>
+      </section>
 
       <section class="verdict" id="voices">
         <h2>社区实际怎么说</h2>
