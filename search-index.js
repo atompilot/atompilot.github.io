@@ -14,6 +14,54 @@ window.ATOM_SEARCH_INDEX = [
     url: '/reports/'
   },
   {
+    title: 'Harness 生态全景 2026',
+    type: '报告 · AI 工程生态调研',
+    summary: 'GitHub 上 harness 相关项目全景：agent harness 是什么、术语从哪来、40 个热门项目的 star 与许可证实测，以及 HN 上支持与质疑的一手声音。',
+    keywords: 'harness agent harness harness engineering harness 是什么 AI agent 框架 脚手架 openclaw superpowers ECC hermes agent opencode deepagents CodeWhale Trellis grok-build meta-harness AHE Terminal-Bench lm-evaluation-harness Harness.io CI/CD 消歧 上下文工程 context engineering skills MCP 沙箱 记忆 选型 许可证 AGPL star 通胀 2026',
+    url: '/reports/2026/07/agent-harness-landscape/',
+    date: '2026-07-31'
+  },
+  {
+    title: '先消歧：三个 harness',
+    type: '报告内主题 · 概念辨析',
+    summary: 'agent harness（包住模型的脚手架）、Harness.io（CI/CD 平台）、evaluation harness（模型评测框架）是三个互不相干的东西。',
+    keywords: 'harness 消歧 区别 agent harness Harness.io CI/CD drone gitness lm-evaluation-harness bigcode 评测框架 测试台架 同名',
+    url: '/reports/2026/07/agent-harness-landscape/#disambiguation',
+    date: '2026-07-31'
+  },
+  {
+    title: 'harness engineering 这个词是怎么火起来的',
+    type: '报告内主题 · 术语溯源',
+    summary: 'OpenAI 把 harness engineering 定义为一门学科，Anthropic 同期跟进，随后 2026 年 3 月下旬 GitHub 一周内爆出五个同主题仓库。',
+    keywords: 'harness engineering 起源 OpenAI Codex agent loop Anthropic building effective agents 术语 时间线 2026年3月 爆发 arxiv AHE',
+    url: '/reports/2026/07/agent-harness-landscape/#origin',
+    date: '2026-07-31'
+  },
+  {
+    title: 'HN 上对 harness engineering 的支持与质疑',
+    type: '报告内主题 · 社区口碑',
+    summary: '一派称其为好的软件工程实践，另一派称其为美化过的调参配置；还有人断言 harness 几乎不重要、魔法全在模型本身。',
+    keywords: 'hacker news 评价 口碑 争议 质疑 buzzword 调参 harness 不重要 模型 护城河 粘性 机车党 gearhead 沙箱逃逸 订阅绑定 Codex Claude Code',
+    url: '/reports/2026/07/agent-harness-landscape/#voices',
+    date: '2026-07-31'
+  },
+  {
+    title: 'harness 项目选型风险',
+    type: '报告内主题 · 风险',
+    summary: 'Trellis 的 AGPL 传染性、openclaw 许可证未声明、hive 停更且积压 1313 个 issue、以及整个品类的 star 通胀。',
+    keywords: '选型 风险 许可证 AGPL 传染 NOASSERTION 未声明 issue 积压 停更 维护 star 通胀 watcher 比例 新项目 时间检验',
+    url: '/reports/2026/07/agent-harness-landscape/#risks',
+    date: '2026-07-31'
+  },
+  {
+    title: 'Agentic Harness Engineering (AHE)',
+    type: '报告内项目 · 研究',
+    summary: '冻结模型、只演化 harness 的可观测性框架；GPT-5.5 上 Terminal-Bench 2.0 达 84.7%，排名第 3。',
+    keywords: 'AHE agentic harness engineering 论文 arxiv 自动演化 可观测性 Terminal-Bench SWE-bench 冻结模型 meta-harness stanford SkillOpt',
+    url: '/reports/2026/07/agent-harness-landscape/?q=AHE',
+    date: '2026-07-31'
+  },
+  {
     title: '终端里还有哪些能用的编程 CLI',
     type: '报告 · 开发工具调研',
     summary: '除 Claude Code 与 Codex 之外的 26 款终端 AI 编程 agent，star 数与活跃度由 GitHub API 当天实测，另附 Reddit / HN 一手用户口碑。',

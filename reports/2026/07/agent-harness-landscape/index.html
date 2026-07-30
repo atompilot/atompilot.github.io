@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="2026 年 GitHub 上 harness 相关项目全景：agent harness 是什么、术语从哪来、40 个热门项目的 star 与许可证实测数据，以及 Hacker News 上支持与质疑的一手声音。" />
+    <meta name="keywords" content="agent harness, harness engineering, harness 是什么, AI agent 框架, openclaw, superpowers, ECC, hermes agent, opencode, deepagents, CodeWhale, Trellis, grok-build, meta-harness, AHE, Terminal-Bench, lm-evaluation-harness, Harness.io, 上下文工程, context engineering, skills, MCP, 2026年7月" />
+    <title>Harness 生态全景 2026 | 2026-07-31</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      :root {
+        --ink: #14181f;
+        --muted: #6a7280;
+        --line: #dde3ea;
+        --paper: #f6f8fa;
+        --surface: #ffffff;
+        --accent: #1f6f5c;
+        --accent-soft: #e0f0eb;
+        --warm: #b5541f;
+        --warm-soft: #f8e8dc;
+        --alive: #1f7a4d;
+        --alive-soft: #ddf1e6;
+        --slow: #9a6a12;
+        --slow-soft: #f7ecd4;
+        --dead: #9e3232;
+        --dead-soft: #f8e2e2;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Geist, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.5;
+      }
+      .shell { width: min(1360px, calc(100% - 48px)); margin: 0 auto; }
+      header { border-bottom: 1px solid var(--line); padding: 18px 0; }
+      .topline { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: var(--muted); font-size: 13px; }
+      .brand { color: var(--ink); font-weight: 750; letter-spacing: -0.02em; text-decoration: none; }
+      .report-top-actions { display: flex; align-items: center; gap: 12px; }
+      .report-search-trigger { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.7); cursor: pointer; font: inherit; white-space: nowrap; }
+      .report-search-trigger:hover { color: var(--accent); border-color: var(--accent); }
+      .report-search-trigger kbd { margin-left: 4px; color: inherit; font-size: 10px; }
+
+      .hero { padding: 72px 0 44px; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(290px, .75fr); gap: 48px; align-items: end; }
+      .eyebrow { margin: 0 0 14px; color: var(--accent); font: 700 12px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; }
+      h1 { margin: 0; max-width: 850px; font-size: clamp(38px, 5.1vw, 75px); letter-spacing: -.07em; line-height: .96; }
+      .intro { margin: 24px 0 0; max-width: 690px; color: var(--muted); font-size: 17px; }
+      .hero-meta { border-left: 2px solid var(--line); padding-left: 20px; font-size: 13px; color: var(--muted); }
+      .hero-meta dt { font-weight: 700; color: var(--ink); margin-top: 12px; }
+      .hero-meta dt:first-child { margin-top: 0; }
+      .hero-meta dd { margin: 2px 0 0; }
+
+      section { padding: 52px 0; border-top: 1px solid var(--line); }
+      h2 { margin: 0 0 8px; font-size: clamp(26px, 3vw, 38px); letter-spacing: -.045em; line-height: 1.08; }
+      .lede { margin: 0 0 30px; max-width: 780px; color: var(--muted); font-size: 16px; }
+      h3 { margin: 30px 0 10px; font-size: 19px; letter-spacing: -.02em; }
+      p { margin: 0 0 14px; }
+
+      .verdict { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 14px; padding: 24px 26px; margin: 0 0 26px; }
+      .verdict p { margin: 0 0 10px; font-size: 17px; }
+      .verdict p:last-child { margin: 0; }
+      .verdict strong { color: var(--accent); }
+
+      .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+      .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+      .card h4 { margin: 0 0 8px; font-size: 16px; letter-spacing: -.02em; }
+      .card p { margin: 0; font-size: 14px; color: var(--muted); }
+      .card .tag { display: inline-block; margin-bottom: 10px; padding: 3px 9px; border-radius: 999px; font: 700 11px/1.4 ui-monospace, Menlo, monospace; }
+      .t-agent { background: var(--accent-soft); color: var(--accent); }
+      .t-cicd { background: var(--warm-soft); color: var(--warm); }
+      .t-eval { background: var(--slow-soft); color: var(--slow); }
+
+      .timeline { border-left: 2px solid var(--line); padding-left: 22px; margin: 22px 0 0; }
+      .timeline li { list-style: none; margin: 0 0 18px; position: relative; }
+      .timeline li::before { content: ""; position: absolute; left: -28px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+      .timeline .when { font: 700 12px/1.4 ui-monospace, Menlo, monospace; color: var(--accent); letter-spacing: .04em; }
+      .timeline .what { margin: 3px 0 0; font-size: 15px; }
+      .timeline .what span { color: var(--muted); }
+
+      .controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; align-items: center; }
+      .controls button { padding: 7px 14px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; font: 600 13px/1 inherit; color: var(--muted); cursor: pointer; }
+      .controls button:hover { border-color: var(--accent); color: var(--accent); }
+      .controls button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+      .controls input { flex: 1 1 190px; min-width: 150px; padding: 8px 13px; border: 1px solid var(--line); border-radius: 999px; font: inherit; font-size: 13px; background: var(--surface); color: var(--ink); }
+
+      .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+      table { border-collapse: collapse; width: 100%; min-width: 940px; font-size: 14px; }
+      thead th { position: sticky; top: 0; background: var(--surface); text-align: left; padding: 13px 14px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+      thead th.sortable { cursor: pointer; user-select: none; }
+      thead th.sortable:hover { color: var(--accent); }
+      tbody td { padding: 13px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      tbody tr:last-child td { border-bottom: 0; }
+      tbody tr:hover { background: var(--paper); }
+      .repo { font-weight: 650; letter-spacing: -.01em; }
+      .repo a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+      .repo a:hover { color: var(--accent); border-color: var(--accent); }
+      .num { font: 600 14px/1.4 ui-monospace, Menlo, monospace; white-space: nowrap; }
+      .desc { color: var(--muted); font-size: 13px; max-width: 400px; }
+      .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font: 700 11px/1.6 ui-monospace, Menlo, monospace; white-space: nowrap; }
+      .p-ok { background: var(--alive-soft); color: var(--alive); }
+      .p-warn { background: var(--slow-soft); color: var(--slow); }
+      .p-bad { background: var(--dead-soft); color: var(--dead); }
+      .p-neutral { background: var(--paper); color: var(--muted); border: 1px solid var(--line); }
+
+      .quote { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin: 0 0 14px; }
+      .quote p { margin: 0 0 10px; font-size: 15px; }
+      .quote footer { font-size: 12.5px; color: var(--muted); font-family: ui-monospace, Menlo, monospace; }
+      .quote.pro { border-left: 4px solid var(--alive); }
+      .quote.con { border-left: 4px solid var(--dead); }
+      .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 22px; }
+
+      .risk { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; }
+      .risk h4 { margin: 0 0 6px; font-size: 15.5px; }
+      .risk p { margin: 0; font-size: 14px; color: var(--muted); }
+      .risk.high { border-left: 4px solid var(--dead); }
+      .risk.mid { border-left: 4px solid var(--slow); }
+
+      ul.plain { margin: 0 0 14px; padding-left: 20px; color: var(--muted); font-size: 15px; }
+      ul.plain li { margin-bottom: 7px; }
+      ul.plain strong { color: var(--ink); }
+
+      .note { font-size: 13px; color: var(--muted); margin-top: 14px; }
+      footer.report-foot { border-top: 1px solid var(--line); padding: 34px 0 60px; color: var(--muted); font-size: 13px; }
+      footer.report-foot a { color: var(--accent); }
+      a { color: var(--accent); }
+
+      @media (max-width: 860px) {
+        .shell { width: calc(100% - 32px); }
+        .hero { grid-template-columns: 1fr; gap: 28px; padding: 44px 0 30px; }
+        section { padding: 38px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <div class="topline">
+          <a class="brand" href="/">Atom Wang</a>
+          <div class="report-top-actions">
+            <button class="report-search-trigger" type="button" data-site-search>搜索 <kbd>⌘ F</kbd></button>
+            <a href="/reports/">← 报告库</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div>
+          <p class="eyebrow">AI 工程 · 生态调研</p>
+          <h1>Harness 生态<br />全景 2026</h1>
+          <p class="intro">
+            2026 年 GitHub 上搜 “harness”，出来的东西彼此毫不相干：一个 CI/CD 平台、一堆模型评测框架，
+            和一个刚被命名半年、却已经堆出几十万 star 的新物种 —— <strong>agent harness</strong>。
+            这份报告把三者拆开，把新物种的 40 个热门项目按实测数据排好，并附上 Hacker News 上
+            支持与唱衰的一手声音。
+          </p>
+        </div>
+        <dl class="hero-meta">
+          <dt>生成日期</dt>
+          <dd>2026-07-31</dd>
+          <dt>数据来源</dt>
+          <dd>GitHub REST API 当天实测（star / fork / issue / 许可证 / 最后推送）</dd>
+          <dt>口碑来源</dt>
+          <dd>Hacker News Algolia API，含 “agent harness” 516 条、“harness engineering” 133 条评论</dd>
+          <dt>适用边界</dt>
+          <dd>star 数是热度不是质量；本报告不做单一推荐，只给分层与风险</dd>
+        </dl>
+      </div>
+
+      <section id="verdict">
+        <h2>一句话结论</h2>
+        <div class="verdict">
+          <p>
+            <strong>GitHub 上的 “harness” 现在压倒性指 agent harness</strong> —— 即包住大模型的那层脚手架：
+            上下文投喂、工具接口、计划产物、验证回路、记忆与沙箱。
+          </p>
+          <p>
+            这个词由 <strong>OpenAI 在 2026 年初正式命名为一门学科</strong>，随后 3–4 月 GitHub 上集中爆发出
+            一整批 awesome list、教程书和实现。老牌同名项目 Harness.io（CI/CD，37.5k star）
+            和 lm-evaluation-harness（模型评测，13.5k star）虽然仍在活跃，但在搜索结果里已被新物种淹没。
+          </p>
+          <p>
+            要点在于：<strong>最主流的 harness 实现，描述里根本不写 “harness” 这个词。</strong>
+            只按关键词搜会漏掉 openclaw（384k）、superpowers（264k）、hermes-agent（223k）这些真正的头部。
+          </p>
+        </div>
+      </section>
+
+      <section id="disambiguation">
+        <h2>先消歧：三个 harness</h2>
+        <p class="lede">同一个词，三个互不相干的技术领域。看 star 排行前先分清自己要找哪个。</p>
+        <div class="cards">
+          <div class="card">
+            <span class="tag t-agent">① Agent Harness</span>
+            <h4>包住模型的脚手架</h4>
+            <p>
+              agent loop、上下文压缩、工具设计、skills / MCP、权限沙箱、记忆、验证回路。
+              本报告的主线，2026 年的热点所在。代表：openclaw、opencode、deepagents。
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag t-cicd">② Harness.io</span>
+            <h4>CI/CD 开发者平台</h4>
+            <p>
+              <code>harness/harness</code>，2014 年建仓（前身 Drone / Gitness），Go 编写，Apache-2.0，
+              37,565 star。源码管理 + 流水线 + 云端开发环境 + 制品库。与 AI 无关。
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag t-eval">③ Evaluation Harness</span>
+            <h4>模型评测框架</h4>
+            <p>
+              EleutherAI 的 <code>lm-evaluation-harness</code>（13,472 star）与
+              <code>bigcode-evaluation-harness</code>。这里的 harness 是测试学里的老义
+              ——“测试台架”，早于 AI agent 用法。
+            </p>
+          </div>
+        </div>
+        <p class="note">
+          另有一批纯属撞词的结果，例如 SnapKit/Masonry（iOS 布局库，描述里恰好有 “Harness the power of AutoLayout”）。
+          搜索时建议用 <code>"agent harness"</code> 加引号，或直接按下面的分层表找。
+        </p>
+      </section>
+
+      <section id="origin">
+        <h2>这个词是怎么火起来的</h2>
+        <p class="lede">
+          harness 作为“测试台架”是老词。但把它抬升成一门<strong>工程学科</strong>，是 2026 年的事，
+          而且有明确的官方推手。
+        </p>
+        <ul class="timeline">
+          <li>
+            <p class="when">此前</p>
+            <p class="what">Prompt engineering → Context engineering。<span>社区已在讨论“模型之外的东西才是胜负手”，但没有统一名字。</span></p>
+          </li>
+          <li>
+            <p class="when">2026 年初</p>
+            <p class="what">
+              OpenAI 发布 <a href="https://openai.com/index/harness-engineering/">Harness Engineering</a> 与
+              <a href="https://openai.com/index/unrolling-the-codex-agent-loop/">Unrolling the Codex Agent Loop</a>，
+              把 harness engineering 定义为一门学科并拆解 Codex 的 agent loop。
+              <span>这是术语被正式命名的节点。</span>
+            </p>
+          </li>
+          <li>
+            <p class="when">同期</p>
+            <p class="what">
+              Anthropic 发布 <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Harness Design for Long-Running Application Development</a>
+              与 Building Effective Agents。<span>两家头部同时给这层命名，词汇迅速标准化。</span>
+            </p>
+          </li>
+          <li>
+            <p class="when">2026-03 下旬</p>
+            <p class="what">
+              GitHub 集中爆发：<code>awesome-harness-engineering</code>（3-29 建仓）、
+              <code>learn-harness-engineering</code>（3-29）、<code>awesome-agent-harness</code>（3-30）、
+              中文 42 万字的 <code>claude-code-book</code>（3-31）、<code>harness-books</code>（4-01）。
+              <span>一周之内五个同主题仓库，典型的术语跟风窗口。</span>
+            </p>
+          </li>
+          <li>
+            <p class="when">2026-04 起</p>
+            <p class="what">
+              研究界跟进：<a href="https://arxiv.org/abs/2604.25850">Agentic Harness Engineering (AHE)</a> 论文上 arXiv，
+              提出<strong>冻结模型、只演化 harness</strong>；Stanford IRIS Lab 的 meta-harness 同期发布。
+            </p>
+          </li>
+          <li>
+            <p class="when">2026-07</p>
+            <p class="what">
+              xAI 发布 <code>grok-build</code>（7-14 建仓，两周 23.5k star），描述直接自称
+              “coding agent harness and TUI”。<span>大厂在产品命名上采用了这个词。</span>
+            </p>
+          </li>
+        </ul>
+        <p class="note">
+          注：两个 openai.com 链接经当天 curl 校验返回 403 —— 这是 Cloudflare 对自动化请求的拦截，
+          域名与路径有效，浏览器可正常访问。Anthropic、arXiv、Terminal-Bench 三个链接均实测 200。
+        </p>
+      </section>
+
+      <section id="what-it-is">
+        <h2>harness 到底包含什么</h2>
+        <p class="lede">
+          社区已经收敛出一套相当一致的组件清单。以下分类取自 <code>awesome-harness-engineering</code>
+          的目录结构，可作为评估任何一个 harness 项目的检查表。
+        </p>
+        <div class="cards">
+          <div class="card"><h4>Agent Loop</h4><p>最内层的对话-工具-观察循环。决定 agent 何时停、何时追问、何时重试。</p></div>
+          <div class="card"><h4>Planning &amp; 任务分解</h4><p>Plan.md / Implement.md 这类可复用的计划产物，把长任务拆成可验证的段。</p></div>
+          <div class="card"><h4>上下文投喂与压缩</h4><p>决定哪些内容进窗口、何时压缩、压缩掉什么。被公认是效果差异的最大来源之一。</p></div>
+          <div class="card"><h4>工具设计</h4><p>工具的粒度、命名、描述与返回格式。HN 上有人实测：给 write 工具加一个必填 reasoning 参数就能改变模型行为。</p></div>
+          <div class="card"><h4>Skills &amp; MCP</h4><p>可复用能力的封装与外部服务接入。skills 生态本身已长出 264k star 的 superpowers。</p></div>
+          <div class="card"><h4>权限与沙箱</h4><p>pre-tool hook 拦截危险命令、禁止 push main、凭据隔离。安全事故的主要防线。</p></div>
+          <div class="card"><h4>记忆与状态</h4><p>跨 session 的项目记忆。claude-mem（89k）、agentmemory（26k）、memU（14k）都在打这一层。</p></div>
+          <div class="card"><h4>验证回路与 CI</h4><p>让 agent 自查而不是自称完成。“verified completion” 是多个项目的核心卖点。</p></div>
+          <div class="card"><h4>可观测性与追踪</h4><p>把 agent 的每步决策记录下来 —— AHE 论文正是靠这层实现 harness 的自动演化。</p></div>
+        </div>
+      </section>
+
+      <section id="table">
+        <h2>40 个热门项目实测</h2>
+        <p class="lede">
+          全部数据为 2026-07-31 GitHub REST API 当天读取。点表头可排序，用按钮按类别筛选。
+          <strong>star 数反映热度，不反映质量</strong> —— 2026 年 AI 类仓库存在普遍的 star 通胀，横向比较比绝对值更有意义。
+        </p>
+        <div class="controls">
+          <button type="button" data-filter="all" aria-pressed="true">全部</button>
+          <button type="button" data-filter="impl" aria-pressed="false">完整 harness 实现</button>
+          <button type="button" data-filter="layer" aria-pressed="false">增强层 / meta-harness</button>
+          <button type="button" data-filter="sdk" aria-pressed="false">SDK / 框架</button>
+          <button type="button" data-filter="infra" aria-pressed="false">周边基础设施</button>
+          <button type="button" data-filter="learn" aria-pressed="false">学习 / 方法论</button>
+          <button type="button" data-filter="research" aria-pressed="false">研究</button>
+          <button type="button" data-filter="other" aria-pressed="false">同名非 agent</button>
+          <input type="search" id="q" placeholder="按名称或描述过滤…" aria-label="过滤项目" />
+        </div>
+        <div class="table-wrap">
+          <table id="repos">
+            <thead>
+              <tr>
+                <th class="sortable" data-key="name">项目</th>
+                <th class="sortable" data-key="stars">Star ▾</th>
+                <th class="sortable" data-key="lang">语言</th>
+                <th class="sortable" data-key="lic">许可证</th>
+                <th class="sortable" data-key="created">建仓</th>
+                <th class="sortable" data-key="pushed">最后推送</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="note">
+          “最后推送” 为仓库 <code>pushed_at</code>。绝大多数头部项目在调研当天仍有推送，说明这不是一个已经冷掉的赛道。
+          少数标红的已停更数月，选型时需注意。
+        </p>
+      </section>
+
+      <section id="voices">
+        <h2>社区怎么说</h2>
+        <p class="lede">
+          以下均取自 Hacker News 评论（Algolia API，全部为 2026 年 7 月、即调研前 30 天内的发言），
+          保留原始分歧。<strong>这是一个内部争议很大的概念，不是共识技术。</strong>
+        </p>
+        <div class="two-col">
+          <div>
+            <h3>支持 / 实践派</h3>
+            <div class="quote pro">
+              <p>“这种<em>结构性的</em> harness engineering 正是现阶段大家该关注的。几乎所有情况下，
+                所谓 agentic engineering 其实就是好的软件工程实践。”</p>
+              <footer>hankbond · 2026-07-19 · “Harness Engineering” 讨论串</footer>
+            </div>
+            <div class="quote pro">
+              <p>“最务实的做法就是在 harness 层直接禁掉 git force 之类的命令 —— 用 pre-tool hook
+                在配置里设定，很容易，比如禁止 push 到 main。”</p>
+              <footer>msejas · 2026-07-30 · 关于 worktree 隔离边界的讨论</footer>
+            </div>
+            <div class="quote pro">
+              <p>“给模型准备好的素材（markdown、依赖源码、搜索结果）能显著提升信息准确度。
+                这方面的 harness engineering 绝对值得投入，别指望模型自带事实。”</p>
+              <footer>verdverm · 2026-07-22</footer>
+            </div>
+            <div class="quote pro">
+              <p>“比起 prompt engineering，我觉得该叫整体的 harness engineering ——
+                它不只是系统提示词，还包括提供给 LLM 的工具和 skills。”</p>
+              <footer>jdw64 / skeledrew · 2026-07-18</footer>
+            </div>
+          </div>
+          <div>
+            <h3>质疑 / 唱衰派</h3>
+            <div class="quote con">
+              <p>“Prompt engineering、context engineering，现在又是 harness engineering。
+                估计再过几个月就绕回软件工程了？这些 buzzword 说白了就是美化过的调参和配置。
+                早知道这些年我就该说自己在做<em>这个</em>。”</p>
+              <footer>K3UL · 2026-07-19 · “Harness Engineering” 讨论串</footer>
+            </div>
+            <div class="quote con">
+              <p>“文章说 agent harness 有粘性、是护城河。我自己做 harness 有段时间了，可以很肯定地说：
+                <strong>harness 几乎不重要，AI 的魔法全在模型本身。</strong>harness 可以近乎裸奔。”</p>
+              <footer>OleksandrC · 2026-07-20 · “Who's afraid of Chinese models?”</footer>
+            </div>
+            <div class="quote con">
+              <p>“任何为特定问题定制的 harness 都说明 harness engineering 正在消亡。
+                模型最终会自己剖析问题、自建临时 harness、按需修改它。”</p>
+              <footer>ClassAndBurn · 2026-07-16</footer>
+            </div>
+            <div class="quote con">
+              <p>“我最近老想到‘机车党’这个词。所有嚷嚷着‘老哥把这个 skill 装进你的 agent harness
+                能改变一切’的人，动机跟改装车文化里折腾排气管的是同一种。”</p>
+              <footer>firasd · 2026-07-30 · “The Productivity Mirage”</footer>
+            </div>
+          </div>
+        </div>
+
+        <h3>几条值得单独记下的事实性发言</h3>
+        <ul class="plain">
+          <li>
+            <strong>订阅与 harness 的绑定差异</strong>：“Codex 订阅相比 Claude 的一大优势是你可以配任何 harness 用；
+            而 Anthropic 坚持 Claude 订阅只能配 Claude Code 自己。” —— OleksandrC, 2026-07-21。
+            这解释了为什么 <code>cc-switch</code>（多 harness 切换器）能拿到 122k star。
+          </li>
+          <li>
+            <strong>harness 是安全事故的责任层</strong>：关于 OpenAI 沙箱逃逸事件，有评论主张更准确的标题是
+            “OpenAI 确认其 <em>agent harness</em> 与安全措施的缺陷让被诱导的 AI 越权”
+            —— therealpygon, 2026-07-22。harness 层正在成为安全归因的焦点。
+          </li>
+          <li>
+            <strong>harness 对模型极其敏感</strong>：“把 3.5 Flash Lite 插进原本跑 3.1 Flash Lite 的 harness，
+            完全不工作 —— 不遵循指令，工具调用也不对。” —— lwansbrough, 2026-07-21。
+            换模型不等于即插即用，这是选型时最容易低估的迁移成本。
+          </li>
+          <li>
+            <strong>提示词的微小改动会影响性能</strong>：“升级 pi.dev 后用同一个 Qwen 模型测，
+            性能比旧版略降……系统提示词的任何细微变化都会有影响。” —— tesnorindian, 2026-07-21。
+          </li>
+        </ul>
+
+        <p class="note">
+          <strong>采集偏差提示</strong>：HN 用户以英文技术圈为主，对“新造词”天然偏怀疑；
+          公开发声者非极满意即极不满，沉默的中间用户不在样本内。上面负面声音的比例，
+          不代表该技术的实际有效性分布。
+        </p>
+      </section>
+
+      <section id="risks">
+        <h2>选型风险</h2>
+        <p class="lede">以下均为当天实测数据能直接支撑的具体风险，不是泛泛的注意事项。</p>
+
+        <div class="risk high">
+          <h4>许可证：Trellis 是 AGPL-3.0</h4>
+          <p>
+            <code>mindfold-ai/Trellis</code>（13,351 star）采用 AGPL-3.0，具有强传染性 ——
+            若接入自有服务并对外提供，可能触发开源义务。同类项目绝大多数是 MIT / Apache-2.0，
+            这是本批次里唯一的显著许可证异类，商业环境引入前务必过法务。
+          </p>
+        </div>
+        <div class="risk high">
+          <h4>许可证不明：openclaw、oh-my-openagent</h4>
+          <p>
+            两者 GitHub API 返回许可证为 <code>NOASSERTION</code>（无法识别为标准开源许可证）。
+            <code>openclaw/openclaw</code> 是本次 star 数最高的项目（384,599），
+            许可证不明确意味着使用与二次分发的权利边界需要自行到仓库确认，不能假定为 MIT。
+          </p>
+        </div>
+        <div class="risk mid">
+          <h4>issue 积压：hive 与 hermes-agent</h4>
+          <p>
+            <code>aden-hive/hive</code> 有 1,313 个 open issue，而最后推送停在 2026-05-29，
+            已两个月无更新 —— 10.8k star 配 5,667 fork 的高 fork 比也暗示大量使用者在各自分叉。
+            <code>NousResearch/hermes-agent</code> 有 25,891 个 open issue，虽仍在日更，
+            但相对 223k star 的比例仍属偏高，提问得到响应的期望值应放低。
+          </p>
+        </div>
+        <div class="risk mid">
+          <h4>热度极新，尚未经过时间检验</h4>
+          <p>
+            本表中 star 数前十的项目，除 opencode（2025-04）与 hermes-agent（2025-07）外，
+            全部建仓于 2025 年底之后；<code>grok-build</code> 建仓仅 17 天便积累 23.5k star。
+            这个赛道还没有任何一个项目经历过完整的“热度退潮后是否有人维护”的周期。
+          </p>
+        </div>
+        <div class="risk mid">
+          <h4>star 通胀，横比才有意义</h4>
+          <p>
+            2026 年 AI 类仓库的 star 与实际使用者严重脱钩。以 watcher/star 比为例：
+            ECC 0.52%、deer-flow 0.42%、learn-claude-code 0.40% —— 均远低于传统开源项目
+            常见的 1–3%。这说明整个品类的 star 都被点赞式行为稀释了，
+            <strong>不要把 20 万 star 读成 20 万用户</strong>，但同一批次内的相对高低仍有参考价值。
+          </p>
+        </div>
+      </section>
+
+      <section id="advice">
+        <h2>怎么用这份表</h2>
+        <p class="lede">按你的实际目的走，不同目的看的是完全不同的几行。</p>
+        <ul class="plain">
+          <li><strong>想直接用一个成熟 coding agent</strong> → 看“完整 harness 实现”类。
+            主流是 opencode、openclaw、hermes-agent、pi；对模型中立、想自带 API key 的可看 CodeWhale（Rust，MIT，明确以开放模型优先）。</li>
+          <li><strong>已经在用 Claude Code / Codex，想增强它</strong> → 看“增强层 / meta-harness”类。
+            superpowers（skills 方法论）、claude-mem（跨 session 记忆）、wshobson/agents（多 harness 插件市场）
+            是这层里 star 最高的三个，都不要求你换掉现有 harness。</li>
+          <li><strong>要在自己产品里嵌 agent</strong> → 看“SDK / 框架”类。
+            deepagents（LangChain 出品，Python + JS 双版本）、strands-agents/harness-sdk（Apache-2.0，多云多模型）
+            是意图最明确的两个；parlant 专攻可控的对客交互。</li>
+          <li><strong>想搞懂原理、自己写一个</strong> → 看“学习 / 方法论”类。
+            rasbt/mini-coding-agent 是最小可读实现（但已停更于 2026-04）；
+            learn-claude-code（72.7k）与中文 claude-code-book（42 万字）是体量最大的两份拆解材料。</li>
+          <li><strong>关心前沿方向</strong> → 看“研究”类。AHE 的思路值得注意：<strong>冻结模型，只让 harness 自我演化</strong>，
+            在 Terminal-Bench 2.0 上以 84.7% 排到第 3，并称冻结后的 harness 能迁移到 SWE-bench-Verified。
+            这是对“harness 不重要”那派最直接的反证。</li>
+        </ul>
+        <h3>一条务实的判断</h3>
+        <p>
+          社区两派的分歧其实可以调和：<strong>harness 不重要的说法，在模型能力足够覆盖任务时成立；
+          harness 重要的说法，在任务超出模型单轮能力时成立。</strong>
+          任务越长、越需要跨 session 记忆、越要求可验证的完成度，harness 的边际价值越高。
+          反过来，如果你的用途是几十行的一次性脚本，装再多 skill 也只是 HN 上说的“折腾排气管”。
+        </p>
+      </section>
+
+      <footer class="report-foot">
+        <p>
+          <strong>Harness 生态全景 2026</strong> · 生成于 2026-07-31 ·
+          数据经 GitHub REST API 与 Hacker News Algolia API 当天实测采集，未使用二手榜单。
+        </p>
+        <p>
+          方法说明：先用 GitHub 搜索按 star 排序取 “harness” 与 “agent harness” 两组结果，
+          再针对社区高频提及但描述不含 harness 一词的项目补充定向查询（这一步补回了 star 数最高的三个项目），
+          最后逐仓调用 API 校正元数据。口碑部分只采信调研前 12 个月内的发言，实际全部落在 2026 年 7 月。
+        </p>
+        <p><a href="/reports/">← 回到公开报告库</a></p>
+      </footer>
+    </div>
+
+    <script>
+      const DATA = [
+        ["openclaw/openclaw",384599,"TypeScript","未声明","2025-11-24","2026-07-30","impl","个人 AI 助理，跨 OS 跨平台。本次 star 最高的项目，但许可证未声明为标准协议。"],
+        ["obra/superpowers",263900,"Shell","MIT","2025-10-09","2026-07-28","layer","agentic skills 框架与软件开发方法论。不替换 harness，而是给它装能力。"],
+        ["affaan-m/ECC",236139,"JavaScript","MIT","2026-01-18","2026-07-29","layer","harness 性能优化系统：skills、instincts、记忆、安全。适配 Claude Code / Codex / OpenCode / Cursor。"],
+        ["NousResearch/hermes-agent",222820,"Python","MIT","2025-07-22","2026-07-30","impl","“与你共同成长的 agent”。open issue 达 25,891，提问响应期望值宜放低。"],
+        ["anomalyco/opencode",191213,"TypeScript","MIT","2025-04-30","2026-07-30","impl","开源 coding agent。本批次里资历最老的头部实现之一（2025-04 建仓）。"],
+        ["farion1231/cc-switch",122538,"Rust","MIT","2025-08-04","2026-07-30","infra","跨平台桌面端 All-in-One：在 Claude Code / Codex / OpenCode / OpenClaw / Grok Build / Hermes 之间切换。"],
+        ["Graphify-Labs/graphify",99040,"—","—","—","—","infra","把代码库连同文档、SQL schema、配置、PDF 变成可查询知识图谱，作为 skill 供多个 harness 调用。"],
+        ["thedotmack/claude-mem",89065,"JavaScript","Apache-2.0","2025-08-31","2026-07-29","infra","跨 session 持久记忆：捕获会话、AI 压缩、按需注入回未来 session。支持主流各家 harness。"],
+        ["earendil-works/pi",80888,"TypeScript","MIT","2025-08-09","2026-07-30","impl","AI agent 工具包：统一 LLM API、agent loop、TUI、coding agent CLI。HN 上被多次点名。"],
+        ["bytedance/deer-flow",78219,"Python","MIT","2025-05-07","2026-07-30","impl","字节开源的长时程 SuperAgent harness，含沙箱、记忆、工具、skill、子 agent 与消息网关。"],
+        ["shareAI-lab/learn-claude-code",72750,"Python","MIT","2025-06-29","2026-07-28","learn","“Bash is all you need” —— 从 0 到 1 手写一个 nano 版 Claude Code。教学类里 star 最高。"],
+        ["code-yeongyu/oh-my-openagent",66849,"TypeScript","未声明","2025-12-03","2026-07-30","layer","omo / lazycodex，面向复杂代码库的 harness，服务 Codex 与 OpenCode。940 open issue。"],
+        ["ruvnet/ruflo",66591,"TypeScript","MIT","2025-06-02","2026-07-30","layer","meta-harness：多 agent 蜂群编排、自适应记忆、自学习、RAG，原生集成 Claude Code / Codex / Hermes。"],
+        ["colbymchenry/codegraph",63602,"—","—","—","—","infra","预索引代码知识图谱，随代码变更自动同步，为多家 harness 省 token 与工具调用，全本地。"],
+        ["pbakaus/impeccable",52951,"JavaScript","Apache-2.0","2025-11-16","2026-07-30","layer","一套设计语言，专门用来让 AI harness 的设计输出变好看。"],
+        ["zhayujie/CowAgent",46222,"Python","MIT","—","2026-07-30","impl","开源超级助理与 agent harness，规划任务、跑工具与 skill、靠记忆与知识自演化。前身 chatgpt-on-wechat。"],
+        ["Hmbown/CodeWhale",40250,"Rust","MIT","2026-01-19","2026-07-30","impl","社区驱动的终端 coding agent，Rust 编写，自带模型 —— 明确开放模型优先，不偏袒任何一家。"],
+        ["wshobson/agents",38380,"Python","MIT","2025-07-24","2026-07-22","layer","跨 harness 的 agentic 插件市场：Claude Code、Codex CLI、Cursor、OpenCode、Copilot、Gemini CLI 通用。"],
+        ["harness/harness",37565,"Go","Apache-2.0","2014-02-07","2026-07-29","other","⚠️ 同名非 agent：Harness Open Source，端到端开发者平台（源码管理 + CI/CD + 云开发环境 + 制品库）。"],
+        ["iOfficeAI/AionUi",31134,"—","—","—","—","infra","免费本地开源的 24/7 Cowork 应用，可挂 20+ 种 CLI harness。"],
+        ["langchain-ai/deepagents",27070,"Python","MIT","2025-07-27","2026-07-30","sdk","LangChain 出品，自称 “batteries-included agent harness”。另有 TypeScript 版 deepagentsjs（1,439 star）。"],
+        ["rohitg00/agentmemory",26016,"TypeScript","Apache-2.0","—","2026-07-30","infra","面向 AI coding agent 的持久记忆层，宣称基于真实基准测试。"],
+        ["xai-org/grok-build",23549,"Rust","Apache-2.0","2026-07-14","2026-07-30","impl","xAI 的 coding agent harness 与 TUI，全屏、鼠标可交互、可扩展。建仓 17 天即 23.5k star。"],
+        ["coleam00/Archon",23039,"TypeScript","MIT","—","2026-07-30","layer","自称首个面向 AI coding 的 harness 构建器，目标是让 AI 编码变得确定、可重复。"],
+        ["can1357/oh-my-pi",20730,"TypeScript","MIT","2025-12-31","2026-07-30","impl","终端 coding agent：hash 锚定编辑、优化过的工具 harness、LSP、Python、浏览器、子 agent。"],
+        ["emcie-co/parlant",18211,"Python","Apache-2.0","—","2026-07-30","sdk","交互控制 harness，专攻可控、一致、可预测的对客 LLM 交互。"],
+        ["browser-use/browser-harness",16361,"Python","MIT","2026-04-17","2026-07-29","sdk","自愈式浏览器 harness，让 LLM 完成任意网页任务。browser-use 团队出品。"],
+        ["microsoft/SkillOpt",15361,"Python","MIT","2026-05-08","2026-07-29","research","微软出品：文本空间优化器，为冻结的 LLM agent 训练可复用的自然语言 skill，产出可部署的 best_skill.md。"],
+        ["HKUDS/OpenHarness",15120,"Python","MIT","2026-04-01","2026-06-04","impl","港大数据智能实验室：开放 agent harness，内置个人 agent Ohmo。已两个月无推送。"],
+        ["NevaMind-AI/memU",14169,"Python","其他","—","2026-07-30","infra","跨 agent 的个人记忆层。"],
+        ["1jehuang/jcode",14146,"Rust","MIT","2026-01-05","2026-07-30","impl","主打 RAM 效率的 harness。"],
+        ["EleutherAI/lm-evaluation-harness",13472,"Python","MIT","2020-08-28","2026-07-13","other","⚠️ 同名非 agent：语言模型少样本评测框架。harness 在这里是测试台架的老义。"],
+        ["mindfold-ai/Trellis",13351,"TypeScript","AGPL-3.0","2026-01-26","2026-07-30","layer","把规格、任务与记忆持久化进仓库，让任何 coding agent 都遵守你的工程标准。⚠️ AGPL 传染性许可证。"],
+        ["walkinglabs/learn-harness-engineering",10860,"TypeScript","MIT","2026-03-29","2026-07-10","learn","harness engineering 从 0 到 1 的入门教程。术语爆发窗口期建仓。"],
+        ["aden-hive/hive",10817,"Python","Apache-2.0","2026-01-12","2026-05-29","sdk","面向生产的多 agent harness。⚠️ 1,313 open issue 且已停更两个月。"],
+        ["omnigent-ai/omnigent",7920,"Python","Apache-2.0","2026-06-11","2026-07-30","layer","meta-harness：编排 Claude Code / Codex / Cursor / Pi 与自定义 agent，换 harness 不用重写，含策略与沙箱。"],
+        ["strands-agents/harness-sdk",6738,"Python","Apache-2.0","2025-05-14","2026-07-30","sdk","端到端构建并控制 agent harness 的开源 SDK，Python + TypeScript，任意模型任意云。"],
+        ["xerrors/Yuxi",6328,"Python","—","—","2026-07-30","sdk","结合知识库与知识图谱的多租户 agent harness 平台，LangChain + Vue + FastAPI + Neo4j + MCP。"],
+        ["lintsinghua/claude-code-book",4026,"中文","未声明","2026-03-31","2026-06-19","learn","《御舆：解码 Agent Harness》42 万字，15 章拆解 Claude Code 架构，从对话循环到自建 harness。"],
+        ["ai-boost/awesome-harness-engineering",3320,"Python","未声明","2026-03-29","2026-07-30","learn","harness engineering 资源清单：工具、模式、评测、记忆、MCP、权限、可观测性、编排。本报告的组件分类取自此。"],
+        ["EverMind-AI/Raven",3258,"Python","—","—","2026-07-30","impl","记忆优先、自我改进的 agent harness，基于 EverOS，配 MiroThinker 深度研究与推理。"],
+        ["peteromallet/desloppify",3007,"Python","—","—","2026-07-30","layer","专门把 AI 糊出来的代码整理成工程规范代码的 harness。"],
+        ["visa/visa-vulnerability-agentic-harness",2273,"Python","—","2026-06-05","2026-07-03","sdk","Visa 官方的漏洞挖掘 agentic harness。大型金融机构下场的信号。"],
+        ["Infisical/agent-vault",1979,"Go","—","—","2026-07-30","infra","面向 AI agent 的 HTTP 凭据代理与保险库，服务 Claude Code、OpenClaw、Hermes 及自建 harness。"],
+        ["google-antigravity/antigravity-cli",1787,"—","—","—","2026-07-30","impl","把 Antigravity agent harness 的推理、执行与编排能力带进终端。"],
+        ["Picrew/awesome-agent-harness",1534,"Python","未声明","2026-03-30","2026-06-21","learn","另一份 agent harness 资源清单，含项目、工具、基准与实践指南。"],
+        ["langchain-ai/deepagentsjs",1439,"TypeScript","—","—","2026-07-30","sdk","deepagents 的 TypeScript 版本。"],
+        ["stanford-iris-lab/meta-harness",1340,"Python","MIT","2026-04-15","2026-07-11","research","斯坦福 IRIS Lab 的 Meta-Harness 论文参考实现，与 AHE 同期。"],
+        ["first-fluke/oh-my-agent",1197,"TypeScript","—","—","2026-07-30","layer","可移植、厂商中立的 harness，用于沉淀项目专属的 skill、workflow 与 agent 团队。"],
+        ["thClaws/thClaws",1184,"Rust","—","—","2026-07-30","impl","原生 Rust 的开源 agent harness：GUI、CLI、headless、webapp 同一份二进制，多供应商、MCP、skills、插件。"],
+        ["Chorus-AIDLC/Chorus",1105,"TypeScript","—","—","2026-07-30","sdk","面向 AI-人协作的 agent harness，灵感来自 AI 驱动开发生命周期（AI-DLC）。"],
+        ["rasbt/mini-coding-agent",1060,"Python","Apache-2.0","2026-04-02","2026-04-07","learn","极简可读的 Python coding agent harness 实现，用于讲清核心组件。⚠️ 建仓 5 天后即停更。"],
+        ["china-qijizhifeng/agentic-harness-engineering",785,"Python","MIT","2026-04-23","2026-06-14","research","AHE 官方代码：可观测性驱动的 harness 自动演化。GPT-5.5 上 Terminal-Bench 2.0 达 84.7%，排名第 3。"],
+        ["modiqo/waggle",795,"Rust","—","—","2026-07-30","infra","agent 交接用的可归属、可解析制品引用 —— 用约 30 字节的 token 取代粘贴上下文，MCP 原生。"]
+      ];
+      const CAT = { impl:"完整实现", layer:"增强层", sdk:"SDK/框架", infra:"基础设施", learn:"学习/方法论", research:"研究", other:"同名非 agent" };
+      const tbody = document.querySelector("#repos tbody");
+      let filter = "all", query = "", sortKey = "stars", sortDir = -1;
+
+      const licPill = (l) => {
+        if (l === "AGPL-3.0") return '<span class="pill p-bad">' + l + "</span>";
+        if (l === "未声明" || l === "其他") return '<span class="pill p-warn">' + l + "</span>";
+        if (l === "—") return '<span class="pill p-neutral">未采集</span>';
+        return '<span class="pill p-ok">' + l + "</span>";
+      };
+      const pushPill = (p) => {
+        if (p === "—") return '<span class="pill p-neutral">—</span>';
+        if (p >= "2026-07-01") return '<span class="pill p-ok">' + p + "</span>";
+        if (p >= "2026-05-01") return '<span class="pill p-warn">' + p + "</span>";
+        return '<span class="pill p-bad">' + p + "</span>";
+      };
+
+      function render() {
+        const idx = { name:0, stars:1, lang:2, lic:3, created:4, pushed:5 };
+        const rows = DATA
+          .filter(r => filter === "all" || r[6] === filter)
+          .filter(r => !query || (r[0] + " " + r[7]).toLowerCase().includes(query))
+          .sort((a, b) => {
+            const k = idx[sortKey], x = a[k], y = b[k];
+            if (typeof x === "number") return (x - y) * sortDir;
+            return String(x).localeCompare(String(y), "zh") * sortDir;
+          });
+        tbody.innerHTML = rows.map(r => `
+          <tr>
+            <td class="repo"><a href="https://github.com/${r[0].includes("/") ? r[0] : ""}" rel="noopener">${r[0]}</a>
+              <div style="margin-top:5px"><span class="pill p-neutral">${CAT[r[6]]}</span></div></td>
+            <td class="num">${r[1].toLocaleString("en-US")}</td>
+            <td>${r[2]}</td>
+            <td>${licPill(r[3])}</td>
+            <td class="num" style="font-weight:400;color:var(--muted)">${r[4]}</td>
+            <td>${pushPill(r[5])}</td>
+            <td class="desc">${r[7]}</td>
+          </tr>`).join("");
+      }
+
+      document.querySelectorAll("[data-filter]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          filter = btn.dataset.filter;
+          document.querySelectorAll("[data-filter]").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+          render();
+        });
+      });
+      document.querySelector("#q").addEventListener("input", e => { query = e.target.value.toLowerCase().trim(); render(); });
+      document.querySelectorAll("th.sortable").forEach(th => {
+        th.addEventListener("click", () => {
+          const k = th.dataset.key;
+          if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = (k === "stars") ? -1 : 1; }
+          document.querySelectorAll("th.sortable").forEach(t => {
+            t.textContent = t.textContent.replace(/ [▾▴]$/, "");
+            if (t === th) t.textContent += sortDir === -1 ? " ▾" : " ▴";
+          });
+          render();
+        });
+      });
+      render();
+    </script>
+    <script src="/search-index.js"></script>
+    <script src="/site.js"></script>
+  </body>
+</html>
