@@ -14,6 +14,46 @@ window.ATOM_SEARCH_INDEX = [
     url: '/reports/'
   },
   {
+    title: '手机 GUI Agent 选型 2026',
+    type: '报告 · AI 工程技术选型',
+    summary: '已经有截图、视频流、触控、按键接口之后，该给手机自动化配哪个大模型。GUI-Plus、GUI-Owl-1.5、Holo3.1、Gemini Computer Use、Claude computer use、UI-TARS、AgentCPM-GUI 八条路线的动作集对齐度、AndroidWorld 成绩、许可证与价格实测对比。',
+    keywords: '手机 GUI Agent 自动操作手机 大模型操作手机 mobile use 手机自动化 安卓自动化 GUI-Plus gui-plus-2026-02-26 百炼 通义 UI Agent GUI-Owl-1.5 Mobile-Agent-v3.5 Holo3.1 H Company UI-TARS UI-TARS-2 AgentCPM-GUI Gemini Computer Use ENVIRONMENT_MOBILE Claude computer use AndroidWorld ScreenSpot grounding 坐标 归一化 ADB Keyboard adb keyevent 动作集 action space 选型 视频流 LivingScreen OmniGUI 2026年7月',
+    url: '/reports/2026/07/mobile-gui-agent-models/',
+    date: '2026-07-31'
+  },
+  {
+    title: '动作集对不对得上，比榜单分数重要',
+    type: '报告内主题 · 选型判据',
+    summary: '手机原生动作集（swipe、long_press、系统返回键、开 App）与桌面动作集的差别，以及归一化坐标与绝对像素坐标对集成成本的影响。',
+    keywords: 'action space 动作集 对齐 归一化坐标 绝对像素 scale factor swipe long_press system_button 集成成本 手机 桌面 差别',
+    url: '/reports/2026/07/mobile-gui-agent-models/#premise',
+    date: '2026-07-31'
+  },
+  {
+    title: 'GUI-Plus 的移动端动作与手机接口对照表',
+    type: '报告内主题 · 集成指南',
+    summary: 'click / swipe / long_press / system_button / key / type / open / wait 八个动作逐条映射到截图与触控接口，以及 ADB Keyboard 输入法这个唯一的意外成本。',
+    keywords: 'GUI-Plus 动作 映射 click swipe long_press system_button adb keyevent type open wait ADB Keyboard 输入法 限流 RPM 图像 token 公式 华北2 北京',
+    url: '/reports/2026/07/mobile-gui-agent-models/#guiplus',
+    date: '2026-07-31'
+  },
+  {
+    title: '手机上的视频流该怎么用',
+    type: '报告内主题 · 架构建议',
+    summary: '主循环仍是截图驱动，视频流的不可替代位置是判断动画是否结束、动作是否生效、以及短视频这类内容自己在变的界面。',
+    keywords: '视频流 screen recording 截图 主循环 LivingScreen 活屏 OmniGUI 帧间差分 动画 加载 短视频 直播 观测过度 观测不足',
+    url: '/reports/2026/07/mobile-gui-agent-models/#video',
+    date: '2026-07-31'
+  },
+  {
+    title: '手机 agent 上生产前必须知道的四件事',
+    type: '报告内主题 · 风险清单',
+    summary: '规模化下混合方案优于纯 agent、不可逆动作要设确认门、屏幕内容全是不可信输入（AgentRAE 后门攻击）、OS 级手机助手正遭遇生态反制。',
+    keywords: '生产风险 混合方案 确定性脚本 agent 恢复 不可逆动作 确认门 prompt injection AgentRAE 后门攻击 通知图标 触发器 豆包手机助手 生态限制 隐私',
+    url: '/reports/2026/07/mobile-gui-agent-models/#risks',
+    date: '2026-07-31'
+  },
+  {
     title: 'Harness 生态全景 2026',
     type: '报告 · AI 工程生态调研',
     summary: 'GitHub 上 harness 相关项目全景：agent harness 是什么、术语从哪来、40 个热门项目的 star 与许可证实测，以及 HN 上支持与质疑的一手声音。',
