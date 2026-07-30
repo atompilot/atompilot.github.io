@@ -37,7 +37,10 @@
     return scores.every(Boolean) ? scores.reduce((total, value) => total + value, 0) : 0;
   };
 
-  window.AtomSearch = { normalize, tokenize, score, matches: (text, query) => score(text, query) > 0 };
+  // `matches` filters in-report lists, where an empty query must show everything.
+  // Spotlight keeps using `score`, which returns 0 for an empty query so the
+  // dialog stays empty until something is typed.
+  window.AtomSearch = { normalize, tokenize, score, matches: (text, query) => !tokenize(query).length || score(text, query) > 0 };
 
   const createDialog = () => {
     const dialog = document.createElement('dialog');

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="macOS 上好用的 AI 软件调研：11 个领域 40 款应用，标注本地/云端、价格与已知的坑。" />
+    <meta name="keywords" content="Mac AI 软件, macOS AI 应用, 本地大模型, Ollama, Superwhisper, Granola, Raycast, Draw Things, Easydict, 2026年7月" />
+    <title>Mac 上好用的 AI 软件 | 2026-07-30</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      :root {
+        --ink: #1a1c2b;
+        --muted: #6b7086;
+        --line: #dedff0;
+        --paper: #f7f7fb;
+        --surface: #ffffff;
+        --accent: #4c46c9;
+        --accent-soft: #e8e7fb;
+        --warm: #c2632a;
+        --local: #1f7a63;
+        --local-soft: #dff2ec;
+        --cloud: #2f6bbd;
+        --cloud-soft: #e2eefb;
+        --hybrid: #8a5cc4;
+        --hybrid-soft: #efe6fa;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Geist, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.5;
+      }
+      .shell { width: min(1360px, calc(100% - 48px)); margin: 0 auto; }
+      header { border-bottom: 1px solid var(--line); padding: 18px 0; }
+      .topline { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: var(--muted); font-size: 13px; }
+      .report-top-actions { display: flex; align-items: center; gap: 12px; }
+      .report-search-trigger { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.7); cursor: pointer; font: inherit; white-space: nowrap; }
+      .report-search-trigger:hover { color: var(--accent); border-color: var(--accent); }
+      .report-search-trigger kbd { margin-left: 4px; color: inherit; font-size: 10px; }
+      .brand { color: var(--ink); font-weight: 750; letter-spacing: -0.02em; }
+      .hero { padding: 72px 0 44px; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(290px, .75fr); gap: 48px; align-items: end; }
+      .eyebrow { margin: 0 0 14px; color: var(--accent); font: 700 12px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; }
+      h1 { margin: 0; max-width: 850px; font-size: clamp(38px, 5.1vw, 75px); letter-spacing: -.07em; line-height: .96; }
+      .intro { margin: 24px 0 0; max-width: 670px; color: #454a60; font-size: 17px; }
+      .method { border-left: 3px solid var(--warm); padding: 8px 0 8px 18px; color: #4b5065; font-size: 14px; }
+      .method strong { color: var(--ink); }
+      .stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+      .stat { padding: 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .stat b { display: block; font-size: 30px; letter-spacing: -.06em; }
+      .stat span { color: var(--muted); font-size: 12px; }
+      .controls { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .search { min-width: 250px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; outline-color: var(--accent); }
+      .filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+      button { cursor: pointer; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; color: #454a60; background: transparent; font: 600 12px/1.2 inherit; transition: background .2s ease, color .2s ease, transform .2s ease; }
+      button:hover, button.active { background: var(--accent); border-color: var(--accent); color: white; }
+      button:active { transform: translateY(1px); }
+      .results-line { margin: 20px 0 12px; color: var(--muted); font-size: 13px; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+      article { min-height: 232px; display: flex; flex-direction: column; padding: 24px; background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform .24s cubic-bezier(.16, 1, .3, 1), box-shadow .24s ease; }
+      article:hover { position: relative; z-index: 1; transform: translateY(-4px); box-shadow: 0 18px 36px -25px rgba(30, 28, 80, .5); }
+      article.pick { background: linear-gradient(180deg, #fbfaff 0%, #ffffff 62%); }
+      .row { display: flex; justify-content: space-between; align-items: start; gap: 14px; }
+      .tag { flex: none; padding: 5px 7px; border-radius: 4px; color: #3f3a9c; background: var(--accent-soft); font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
+      .runtime { padding: 5px 7px; border-radius: 4px; font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
+      .runtime.本地 { color: var(--local); background: var(--local-soft); }
+      .runtime.云端 { color: var(--cloud); background: var(--cloud-soft); }
+      .runtime.混合 { color: var(--hybrid); background: var(--hybrid-soft); }
+      h2 { margin: 22px 0 10px; font-size: 20px; letter-spacing: -.04em; line-height: 1.1; }
+      h2 a { color: inherit; text-decoration: none; }
+      h2 a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+      .description { margin: 0; color: #5b6076; font-size: 13px; line-height: 1.55; }
+      .caveat { margin: 12px 0 0; padding-left: 11px; border-left: 2px solid #e5c4ad; color: #9a5b2c; font-size: 12px; line-height: 1.5; }
+      .foot { display: flex; flex-wrap: wrap; gap: 8px 17px; align-items: center; margin-top: auto; padding-top: 20px; color: var(--muted); font-size: 12px; }
+      .price { color: var(--ink); font-weight: 700; }
+      .starred { color: var(--accent); font-weight: 750; }
+      footer { padding: 36px 0 70px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+      footer a { color: var(--accent); }
+      .empty { grid-column: 1 / -1; padding: 48px 24px; color: var(--muted); background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      @media (max-width: 1080px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+      @media (max-width: 760px) {
+        .shell { width: min(100% - 32px, 680px); }
+        .hero { grid-template-columns: 1fr; gap: 30px; padding: 46px 0 32px; }
+        .controls { grid-template-columns: 1fr; }
+        .filters { justify-content: flex-start; }
+        .grid { grid-template-columns: 1fr; }
+        .topline { align-items: flex-start; flex-direction: column; gap: 8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell topline">
+        <span class="brand">MACOS · AI SOFTWARE SURVEY</span>
+        <span class="report-top-actions"><span>调研于 2026-07-30 · 11 个领域 · 公开信息</span><button class="report-search-trigger" type="button" data-site-search>全站搜索 <kbd>⌘ F</kbd></button></span>
+      </div>
+    </header>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">What actually runs well on a Mac</p>
+          <h1>Mac 上好用的<br />AI 软件。</h1>
+          <p class="intro">按 11 个领域整理的 40 款 macOS AI 应用：通用客户端、编程、语音输入、会议纪要、本地大模型、启动器、写作与知识库、AI 浏览器、图像、影音、翻译。每条都标了跑在本地还是云端、大致价位，以及已知的坑。</p>
+        </div>
+        <aside class="method">
+          <strong>口径：</strong>基于 2026 年 7 月的公开评测与官网信息交叉整理，<strong>不是实测评分</strong>。这类「最佳 App」文章大量出自软件厂商自家 blog，本报告只保留多来源交叉出现的结论，单一来源的自评已降权。价格与版本请以官网为准。
+        </aside>
+      </section>
+
+      <section class="stats" aria-label="调研概览">
+        <div class="stat"><b id="statTotal">—</b><span>收录应用</span></div>
+        <div class="stat"><b id="statCategories">—</b><span>覆盖领域</span></div>
+        <div class="stat"><b id="statLocal">—</b><span>可完全本地运行（数据不出机）</span></div>
+        <div class="stat"><b id="statFree">—</b><span>免费或开源</span></div>
+      </section>
+
+      <section class="controls" aria-label="筛选应用">
+        <input id="search" class="search" type="search" placeholder="搜索应用名、领域或关键词（支持空格分词）" aria-label="搜索应用" />
+        <div class="filters" id="filters"></div>
+      </section>
+      <p class="results-line" id="resultCount" aria-live="polite"></p>
+      <section id="apps" class="grid" aria-label="应用列表"></section>
+    </main>
+    <footer class="shell">
+      <p>调研日期 2026-07-30。信息来自公开评测与官网，属二手资料交叉整理，未经逐一实测；标 ★ 的是本次调研给出的起步推荐，不代表绝对最优。<strong>安全提示：</strong>AI 浏览器的 agent 模式普遍存在 prompt injection 风险，在已登录账号的环境里慎用自动执行；本地模型对内存有实际要求，装之前先看自己机器的规格。</p>
+      <p><a href="/reports/">← 返回报告库</a></p>
+    </footer>
+
+    <script src="/search-index.js"></script>
+    <script src="/site.js"></script>
+    <script>
+      const apps = [
+        { name: 'BoltAI', category: 'AI 客户端', runtime: '混合', price: '买断 + 自带 API Key', note: '原生 SwiftUI，一个 App 切换 300+ 模型（OpenAI / Anthropic / Gemini / xAI / 本地），MCP 支持成熟，可按会话管理工具。', url: 'https://boltai.com/', pick: true },
+        { name: 'Cherry Studio', category: 'AI 客户端', runtime: '混合', price: '免费开源', note: '多模型 + 知识库 RAG + 全平台（含 iOS / Android），功能覆盖面最全。', caveat: '功能多带来的代价是界面偏重，上手不如原生 App 干净。', url: 'https://www.cherry-ai.com/' },
+        { name: 'Chatbox', category: 'AI 客户端', runtime: '云端', price: '约 $3.5 / 月', note: '轻量多模型客户端，全平台原生 App，订阅即用不用配 Key。', url: 'https://chatboxai.app/' },
+        { name: 'Claude 桌面版', category: 'AI 客户端', runtime: '云端', price: '订阅', note: '官方 App，MCP 原生支持最完整，桌面端能直接接本机工具。', url: 'https://claude.ai/download' },
+        { name: 'ChatGPT 桌面版', category: 'AI 客户端', runtime: '云端', price: '订阅', note: '最通用的全能选手，写作、编程、头脑风暴都能接。', caveat: 'OpenAI 2026-03 宣布把桌面 App、浏览器与 Codex 合并为统一入口，形态可能还会变。', url: 'https://openai.com/' },
+
+        { name: 'Claude Code', category: '编程', runtime: '混合', price: '订阅', note: 'CLI agent，擅长复杂的多步骤任务和大仓库理解——「去把这整件事做完再回来报告」。', url: 'https://claude.com/claude-code', pick: true },
+        { name: 'Cursor', category: '编程', runtime: '云端', price: '订阅', note: 'AI 原生 IDE，Composer 做多文件编辑，逐键补全体验最好。与 Claude Code 互补而非竞争：一个管敲代码时，一个管整包任务。', url: 'https://cursor.com/' },
+        { name: 'Zed', category: '编程', runtime: '混合', price: '开源免费', note: 'Rust 写的原生编辑器，速度最快，内置可选 AI agent，适合反订阅的人。', url: 'https://zed.dev/' },
+        { name: 'Warp', category: '编程', runtime: '云端', price: '免费版 + 订阅', note: '已从「现代终端」进化为 AI 命令中心，把自然语言翻译成系统操作。', url: 'https://www.warp.dev/' },
+        { name: 'Ghostty', category: '编程', runtime: '本地', price: '开源免费', note: 'Mitchell Hashimoto 出品，1.3 版（2026-03）持续输出场景下文本渲染约为 iTerm2 / Kitty 的 4 倍。', caveat: '自身不带 AI，靠在里面跑 Claude Code / Codex CLI；要开箱即用的 AI 终端请看 Warp。', url: 'https://ghostty.org/' },
+
+        { name: 'Superwhisper', category: '语音输入', runtime: '本地', price: '$249.99 买断', note: '听写工具：按下快捷键说话，文字直接落进任何 App。模型最全、可定制度最高。', url: 'https://superwhisper.com/', pick: true },
+        { name: 'MacWhisper', category: '语音输入', runtime: '本地', price: '€59 买断', note: '转录工具：喂给它音频文件（播客、录音、语音备忘录），产出文本。离线跑，隐私最好。', caveat: '和 Superwhisper 解决的是两件不同的事，很多人买错——它不做实时听写。', url: 'https://goodsnooze.gumroad.com/l/macwhisper' },
+        { name: 'Wispr Flow', category: '语音输入', runtime: '云端', price: '订阅', note: '听写，输出的文本比传统听写更自然、更有结构。', url: 'https://wisprflow.ai/' },
+        { name: 'macOS 自带听写', category: '语音输入', runtime: '本地', price: '免费', note: '系统内置，零成本的兜底方案，短句够用。', url: 'https://www.apple.com/macos/' },
+
+        { name: 'Granola', category: '会议纪要', runtime: '混合', price: '订阅', note: '不派机器人进会议——本地抓系统音频，会后一键 Enhance 生成结构化纪要、决策与待办，且不存录音。', caveat: '评测称转写准确率约 90–92%（Otter 约 85–88%），该数字来自第三方对比而非官方基准。', url: 'https://www.granola.ai/', pick: true },
+        { name: 'Fathom', category: '会议纪要', runtime: '云端', price: '免费版 + 订阅', note: '跨平台老牌会议记录，免费额度大方。', caveat: '走机器人入会模式，参会者名单里会出现它。', url: 'https://fathom.video/' },
+        { name: 'Otter', category: '会议纪要', runtime: '云端', price: '免费版 + 订阅', note: '最老牌的会议转写服务，团队协作功能完整。', url: 'https://otter.ai/' },
+
+        { name: 'Ollama', category: '本地大模型', runtime: '本地', price: '免费开源', note: '0.19（2026-03-31）起在 Apple Silicon 上改用原生 MLX runner，不再只是 llama.cpp 套壳，便利性不再以性能为代价。', url: 'https://ollama.com/', pick: true },
+        { name: 'LM Studio', category: '本地大模型', runtime: '本地', price: '免费', note: 'GUI 优先：可视化浏览模型、调参数、管理对话，像本地版 ChatGPT。', url: 'https://lmstudio.ai/' },
+        { name: 'Apple MLX', category: '本地大模型', runtime: '本地', price: '开源', note: 'Apple 官方为 Apple Silicon 写的 ML 框架，裸性能最高——评测称比 llama.cpp 快 20–50%。', caveat: '是框架不是 App，类似 PyTorch 的层级，要自己写代码。', url: 'https://github.com/ml-explore/mlx' },
+        { name: 'Jan', category: '本地大模型', runtime: '本地', price: '开源免费', note: '本地优先的开源桌面端，界面模仿 ChatGPT，开箱即用。', url: 'https://jan.ai/' },
+
+        { name: 'Raycast', category: '启动器', runtime: '混合', price: '免费 / Pro $10 月', note: '唯一内置 AI 的主流启动器，扩展生态最大。免费版已含剪贴板历史、片段、窗口管理。', url: 'https://www.raycast.com/', pick: true },
+        { name: 'Alfred', category: '启动器', runtime: '本地', price: '买断', note: '自动化 workflow 做得更深，老牌生态稳定。', url: 'https://www.alfredapp.com/' },
+        { name: 'Sol', category: '启动器', runtime: '本地', price: 'MIT 开源', note: 'Swift + React Native 写的开源 Raycast 替代，启动 <100ms，不需要账号。', caveat: '没有 Raycast 那样的扩展商店，功能面窄很多。', url: 'https://github.com/ospfranco/sol' },
+
+        { name: 'Elephas', category: '写作 / 知识库', runtime: '混合', price: '订阅 / 买断', note: '系统级写作助手 + 第二大脑：能索引 Obsidian、DEVONthink、Apple Notes、Bear，基于自己的资料给带引用的回答，支持本地模型离线跑。', url: 'https://elephas.app/', pick: true },
+        { name: 'Ulysses', category: '写作 / 知识库', runtime: '本地', price: '订阅', note: '长文写作首选，编辑器干净、发布集成完善。', url: 'https://ulysses.app/' },
+        { name: 'Craft', category: '写作 / 知识库', runtime: '混合', price: '免费版 + 订阅', note: '文档美观度极高的笔记应用，内置 AI 辅助。', url: 'https://www.craft.do/' },
+
+        { name: 'ChatGPT Atlas', category: 'AI 浏览器', runtime: '云端', price: '随 ChatGPT 订阅', note: 'agent 能力目前最强的 AI 浏览器，仅 macOS。', caveat: '仅 Mac；且 agent 模式在已登录环境里执行操作有 prompt injection 风险。', url: 'https://openai.com/' },
+        { name: 'Perplexity Comet', category: 'AI 浏览器', runtime: '云端', price: '免费', note: '2026-03 起全平台免费，可选多种模型，擅长带来源的检索。', url: 'https://www.perplexity.ai/' },
+        { name: 'Dia', category: 'AI 浏览器', runtime: '云端', price: '免费', note: 'Arc 团队的「重新想象浏览器」路线，仅 macOS。', url: 'https://www.diabrowser.com/' },
+        { name: 'Brave Leo', category: 'AI 浏览器', runtime: '混合', price: '免费版 + 订阅', note: '隐私优先路线，AI 助手内置于 Brave 浏览器。', url: 'https://brave.com/leo/' },
+
+        { name: 'Draw Things', category: '图像生成', runtime: '本地', price: '免费', note: 'Mac 原生，自研 Metal 引擎 + Core ML，一键下载模型，支持 SD 1.5 → FLUX.2、Qwen Image，还能在本机训 LoRA。', url: 'https://drawthings.ai/', pick: true },
+        { name: 'DiffusionBee', category: '图像生成', runtime: '本地', price: '免费', note: '曾经最容易上手的本地 Stable Diffusion，Intel Mac 也能跑。', caveat: '自 2024 年 8 月起未再发布新版，跟不上新模型——2026 年不建议再装。', url: 'https://diffusionbee.com/' },
+
+        { name: 'DaVinci Resolve', category: '影音创作', runtime: '本地', price: '免费版 / 买断', note: '剪辑 + 调色 + Fairlight 音频后期一体，免费版就已经是专业级。', url: 'https://www.blackmagicdesign.com/products/davinciresolve', pick: true },
+        { name: 'Final Cut Pro', category: '影音创作', runtime: '本地', price: '买断', note: 'macOS 整合最深；Apple Silicon 的统一内存让 AI 处理全在本机完成，素材不出机器。', url: 'https://www.apple.com/final-cut-pro/' },
+        { name: 'Topaz Video AI', category: '影音创作', runtime: '本地', price: '买断', note: '视频超分与画质增强，可手动控制模型，专业剪辑师常用。', url: 'https://www.topazlabs.com/topaz-video-ai' },
+        { name: 'Descript', category: '影音创作', runtime: '云端', price: '免费版 + 订阅', note: '文本式剪辑：改字幕就等于剪片，播客和口播视频效率极高。', url: 'https://www.descript.com/' },
+
+        { name: 'Bob', category: '翻译', runtime: '混合', price: '买断', note: 'Mac 上划词翻译体验最好的一个，支持自定义 prompt，还能做中文扩写和错词检查，内存占用低。', url: 'https://bobtranslate.com/', pick: true },
+        { name: 'Easydict', category: '翻译', runtime: '混合', price: '免费开源', note: 'Bob 的免费平替：划词 / 输入 / 离线 OCR 截图翻译，接 DeepL、OpenAI、Gemini、有道与系统词典。', caveat: '相比 Bob 不支持自定义 prompt，内存占用也更高一些。', url: 'https://github.com/tisfeng/Easydict', pick: true },
+        { name: '沉浸式翻译', category: '翻译', runtime: '混合', price: '免费版 + 订阅', note: '网页双语对照翻译，读英文资料时的标配。', url: 'https://immersivetranslate.com/' }
+      ];
+
+      const filters = ['全部', '★ 起步推荐', ...new Set(apps.map(app => app.category))];
+      let selected = '全部';
+      const filtersEl = document.querySelector('#filters');
+      const listEl = document.querySelector('#apps');
+      const resultEl = document.querySelector('#resultCount');
+      const searchEl = document.querySelector('#search');
+      const safe = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+
+      function renderFilters() {
+        filtersEl.innerHTML = filters.map(filter => `<button class="${filter === selected ? 'active' : ''}" data-filter="${filter}">${filter}</button>`).join('');
+      }
+      function matchesFilter(app) {
+        if (selected === '全部') return true;
+        if (selected === '★ 起步推荐') return Boolean(app.pick);
+        return app.category === selected;
+      }
+      function render() {
+        const query = searchEl.value.trim();
+        const visible = apps.filter(app => matchesFilter(app) && AtomSearch.matches(`${app.name} ${app.category} ${app.runtime} ${app.price} ${app.note} ${app.caveat || ''}`, query));
+        resultEl.textContent = `显示 ${visible.length} / ${apps.length} 款应用 · 本地 = 数据不出本机，云端 = 需联网上传，混合 = 两种模式都支持`;
+        listEl.innerHTML = visible.length ? visible.map(app => `
+          <article class="${app.pick ? 'pick' : ''}">
+            <div class="row">
+              <span class="tag">${safe(app.category)}</span>
+              <span class="runtime ${safe(app.runtime)}">${safe(app.runtime)}</span>
+            </div>
+            <h2><a href="${safe(app.url)}" rel="noreferrer">${safe(app.name)}</a></h2>
+            <p class="description">${safe(app.note)}</p>
+            ${app.caveat ? `<p class="caveat">${safe(app.caveat)}</p>` : ''}
+            <div class="foot">
+              <span class="price">${safe(app.price)}</span>
+              ${app.pick ? '<span class="starred">★ 起步推荐</span>' : ''}
+            </div>
+          </article>`).join('') : '<div class="empty">没有匹配的应用。试试删掉搜索词或切换领域。</div>';
+      }
+      filtersEl.addEventListener('click', event => {
+        const button = event.target.closest('button[data-filter]');
+        if (!button) return;
+        selected = button.dataset.filter;
+        renderFilters();
+        render();
+      });
+      searchEl.addEventListener('input', render);
+      document.querySelector('#statTotal').textContent = apps.length;
+      document.querySelector('#statCategories').textContent = new Set(apps.map(app => app.category)).size;
+      document.querySelector('#statLocal').textContent = apps.filter(app => app.runtime === '本地').length;
+      document.querySelector('#statFree').textContent = apps.filter(app => /免费开源|开源免费|MIT 开源|^开源$|^免费$/.test(app.price)).length;
+      const initialQuery = new URLSearchParams(window.location.search).get('q');
+      if (initialQuery) searchEl.value = initialQuery;
+      renderFilters();
+      render();
+    </script>
+  </body>
+</html>

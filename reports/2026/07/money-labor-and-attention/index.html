@@ -1,0 +1,1624 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="通过可调参数理解工资与物价、财富分配、个人 IP 与文体娱乐收入机制的交互式学习报告。">
+<meta name="keywords" content="钱, 货币, 劳动收入, 工资, 物价, 财富分配, 个人IP, 广告, 文体娱乐, 经济学">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>钱、劳动与注意力：经济机制互动学习</title>
+<style>
+  :root { color-scheme: light dark; background: light-dark(#f5f5f7, #181818); color: light-dark(#1d1d1f, #f5f5f7); }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { padding: 0 1rem 2rem; background: inherit; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .report-shell { width: min(1180px, 100%); margin: 0 auto; }
+  .report-head { display: grid; gap: .75rem; padding: 2.5rem 0 1.5rem; }
+  .report-head a { width: fit-content; color: inherit; text-decoration-thickness: 1px; text-underline-offset: .22em; }
+  .report-head p { max-width: 760px; margin: 0; color: light-dark(#6e6e73, #a1a1a6); line-height: 1.6; }
+  .report-head h1 { max-width: 900px; margin: 0; font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 650; letter-spacing: -.055em; line-height: 1; }
+  .report-meta { font-size: .84rem; letter-spacing: .03em; }
+  iframe { display: block; width: 100%; height: min(840px, calc(100vh - 150px)); min-height: 640px; margin: 0 auto; border: 1px solid light-dark(#d2d2d7, #3a3a3c); border-radius: 18px; background: light-dark(#fff, #181818); }
+  .report-foot { display: grid; gap: .5rem; padding: 1.5rem 0 0; color: light-dark(#6e6e73, #a1a1a6); font-size: .84rem; line-height: 1.55; }
+  .report-foot p { margin: 0; }
+  @media (max-width: 640px) {
+    body { padding-right: .75rem; padding-left: .75rem; }
+    .report-head { padding-top: 1.5rem; }
+    iframe { min-height: 760px; border-radius: 12px; }
+  }
+</style>
+</head>
+<body>
+<main class="report-shell">
+<header class="report-head">
+  <a href="/reports/">← 返回报告库</a>
+  <p class="report-meta"><time datetime="2026-07-30">2026.07.30</time> · 互动学习</p>
+  <h1>钱、劳动与注意力</h1>
+  <p>调节关键条件，观察同样劳动为何出现不同收入、财富集中何时促进投资或变成控制，以及个人 IP 如何把注意力与信任转换为直接付费或广告收入。</p>
+</header>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="钱、劳动与注意力互动学习工具" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Money Economy Lab&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --red: light-dark(rgb(186 38 35), rgb(250 66 62));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;money-economy-lab&quot;&gt;
+  &lt;style&gt;
+    #money-economy-lab {
+      color: var(--foreground);
+      font-size: var(--font-size-base);
+      width: 100%;
+    }
+    #money-economy-lab .mel-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    #money-economy-lab .mel-stage[hidden] { display: none; }
+    #money-economy-lab .mel-stage {
+      display: grid;
+      gap: 18px;
+    }
+    #money-economy-lab .mel-controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 22px;
+    }
+    #money-economy-lab .mel-control {
+      min-width: 0;
+    }
+    #money-economy-lab .mel-label-row,
+    #money-economy-lab .mel-line,
+    #money-economy-lab .mel-legend {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    #money-economy-lab .mel-label-row output,
+    #money-economy-lab .mel-number {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    #money-economy-lab .mel-flow {
+      display: grid;
+      grid-template-columns: minmax(82px, 1fr) auto minmax(100px, 1fr) auto minmax(100px, 1fr) auto minmax(100px, 1fr);
+      align-items: stretch;
+      gap: 8px;
+    }
+    #money-economy-lab .mel-node {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      min-height: 76px;
+      padding: 10px;
+      background: color-mix(in srgb, var(--viz-series-1) 12%, transparent);
+    }
+    #money-economy-lab .mel-node strong { font-weight: 500; }
+    #money-economy-lab .mel-node span { color: var(--muted-foreground); }
+    #money-economy-lab .mel-arrow {
+      align-self: center;
+      color: var(--muted-foreground);
+    }
+    #money-economy-lab .mel-bars {
+      display: grid;
+      gap: 12px;
+    }
+    #money-economy-lab .mel-bar-row {
+      display: grid;
+      grid-template-columns: minmax(92px, 0.7fr) minmax(120px, 2fr) 54px;
+      align-items: center;
+      gap: 10px;
+    }
+    #money-economy-lab .mel-track {
+      height: 18px;
+      background: var(--muted);
+      overflow: hidden;
+    }
+    #money-economy-lab .mel-fill {
+      height: 100%;
+      width: 0;
+      background: var(--viz-series-1);
+      transition: width 180ms ease;
+    }
+    #money-economy-lab .mel-fill.reference { background: var(--viz-series-2); }
+    #money-economy-lab .mel-fill.advertising { background: var(--viz-series-3); }
+    #money-economy-lab .mel-dist {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      align-items: end;
+      gap: 7px;
+      min-height: 190px;
+      padding-top: 8px;
+    }
+    #money-economy-lab .mel-person {
+      display: grid;
+      grid-template-rows: 150px auto;
+      gap: 6px;
+      text-align: center;
+      min-width: 0;
+    }
+    #money-economy-lab .mel-person-bar {
+      display: flex;
+      align-items: end;
+      background: var(--muted);
+      overflow: hidden;
+    }
+    #money-economy-lab .mel-person-fill {
+      width: 100%;
+      min-height: 2px;
+      background: var(--viz-series-1);
+      transition: height 180ms ease;
+    }
+    #money-economy-lab .mel-person:first-child .mel-person-fill {
+      background: var(--viz-series-2);
+    }
+    #money-economy-lab .mel-swatch {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 5px;
+      vertical-align: -1px;
+      background: var(--viz-series-1);
+    }
+    #money-economy-lab .mel-swatch.top { background: var(--viz-series-2); }
+    #money-economy-lab .mel-revenue {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+    #money-economy-lab .mel-revenue-block {
+      display: grid;
+      gap: 7px;
+    }
+    #money-economy-lab .mel-stack {
+      display: flex;
+      height: 34px;
+      background: var(--muted);
+      overflow: hidden;
+    }
+    #money-economy-lab .mel-stack &gt; span {
+      min-width: 0;
+      transition: width 180ms ease;
+    }
+    #money-economy-lab .mel-stack-direct { background: var(--viz-series-1); }
+    #money-economy-lab .mel-stack-ad { background: var(--viz-series-3); }
+    #money-economy-lab .mel-detail { margin: 0; }
+    @media (max-width: 600px) {
+      #money-economy-lab .mel-controls,
+      #money-economy-lab .mel-revenue {
+        grid-template-columns: 1fr;
+      }
+      #money-economy-lab .mel-flow {
+        grid-template-columns: 1fr;
+      }
+      #money-economy-lab .mel-arrow {
+        transform: rotate(90deg);
+      }
+      #money-economy-lab .mel-bar-row {
+        grid-template-columns: 80px minmax(90px, 1fr) 46px;
+      }
+      #money-economy-lab .mel-dist { gap: 3px; }
+      #money-economy-lab .mel-person { grid-template-rows: 130px auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #money-economy-lab .mel-fill,
+      #money-economy-lab .mel-person-fill,
+      #money-economy-lab .mel-stack &gt; span { transition: none; }
+    }
+  &lt;/style&gt;
+
+  &lt;nav class=&quot;mel-tabs&quot; aria-label=&quot;学习场景&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-tab=&quot;wage&quot; aria-pressed=&quot;true&quot;&gt;工资与物价&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-tab=&quot;distribution&quot; aria-pressed=&quot;false&quot;&gt;财富分配&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-tab=&quot;ip&quot; aria-pressed=&quot;false&quot;&gt;个人 IP 与娱乐&lt;/button&gt;
+  &lt;/nav&gt;
+
+  &lt;section class=&quot;mel-stage&quot; data-panel=&quot;wage&quot; aria-label=&quot;工资与物价思想实验&quot;&gt;
+    &lt;div class=&quot;mel-controls&quot;&gt;
+      &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-productivity&quot;&gt;
+        &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;生产系统效率&lt;/span&gt;&lt;output id=&quot;mel-productivity-value&quot;&gt;100&lt;/output&gt;&lt;/span&gt;
+        &lt;input id=&quot;mel-productivity&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;40&quot; max=&quot;180&quot; value=&quot;100&quot; step=&quot;5&quot;&gt;
+      &lt;/label&gt;
+      &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-market&quot;&gt;
+        &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;客户支付能力&lt;/span&gt;&lt;output id=&quot;mel-market-value&quot;&gt;100&lt;/output&gt;&lt;/span&gt;
+        &lt;input id=&quot;mel-market&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;40&quot; max=&quot;180&quot; value=&quot;100&quot; step=&quot;5&quot;&gt;
+      &lt;/label&gt;
+      &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-bargain&quot;&gt;
+        &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;劳动者议价份额&lt;/span&gt;&lt;output id=&quot;mel-bargain-value&quot;&gt;40%&lt;/output&gt;&lt;/span&gt;
+        &lt;input id=&quot;mel-bargain&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;15&quot; max=&quot;65&quot; value=&quot;40&quot; step=&quot;1&quot;&gt;
+      &lt;/label&gt;
+      &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-price&quot;&gt;
+        &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;本地物价指数&lt;/span&gt;&lt;output id=&quot;mel-price-value&quot;&gt;100&lt;/output&gt;&lt;/span&gt;
+        &lt;input id=&quot;mel-price&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;40&quot; max=&quot;180&quot; value=&quot;100&quot; step=&quot;5&quot;&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mel-flow&quot; role=&quot;img&quot; id=&quot;mel-wage-flow&quot; aria-label=&quot;劳动通过生产系统、市场和议价形成名义收入，再由物价决定实际购买力&quot;&gt;
+      &lt;div class=&quot;mel-node&quot;&gt;&lt;strong&gt;个人劳动&lt;/strong&gt;&lt;span&gt;努力程度固定&lt;/span&gt;&lt;/div&gt;
+      &lt;span class=&quot;mel-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;div class=&quot;mel-node&quot;&gt;&lt;strong&gt;生产系统&lt;/strong&gt;&lt;span id=&quot;mel-flow-productivity&quot;&gt;效率 100&lt;/span&gt;&lt;/div&gt;
+      &lt;span class=&quot;mel-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;div class=&quot;mel-node&quot;&gt;&lt;strong&gt;可出售价值&lt;/strong&gt;&lt;span id=&quot;mel-flow-value&quot;&gt;指数 100&lt;/span&gt;&lt;/div&gt;
+      &lt;span class=&quot;mel-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;div class=&quot;mel-node&quot;&gt;&lt;strong&gt;收入与购买力&lt;/strong&gt;&lt;span id=&quot;mel-flow-income&quot;&gt;100 / 100&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mel-bars&quot; role=&quot;img&quot; id=&quot;mel-wage-chart&quot; aria-label=&quot;甲地与乙地的名义收入和实际购买力比较&quot;&gt;
+      &lt;div class=&quot;mel-bar-row&quot;&gt;&lt;span&gt;甲地收入&lt;/span&gt;&lt;div class=&quot;mel-track&quot;&gt;&lt;div class=&quot;mel-fill reference&quot; style=&quot;width:45.45%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span class=&quot;mel-number&quot;&gt;100&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-bar-row&quot;&gt;&lt;span&gt;乙地收入&lt;/span&gt;&lt;div class=&quot;mel-track&quot;&gt;&lt;div class=&quot;mel-fill&quot; id=&quot;mel-income-bar&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span class=&quot;mel-number&quot; id=&quot;mel-income-number&quot;&gt;100&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-bar-row&quot;&gt;&lt;span&gt;甲地购买力&lt;/span&gt;&lt;div class=&quot;mel-track&quot;&gt;&lt;div class=&quot;mel-fill reference&quot; style=&quot;width:45.45%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span class=&quot;mel-number&quot;&gt;100&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-bar-row&quot;&gt;&lt;span&gt;乙地购买力&lt;/span&gt;&lt;div class=&quot;mel-track&quot;&gt;&lt;div class=&quot;mel-fill&quot; id=&quot;mel-real-bar&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span class=&quot;mel-number&quot; id=&quot;mel-real-number&quot;&gt;100&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;p class=&quot;card mel-detail&quot; id=&quot;mel-wage-detail&quot;&gt;同样劳动，所在生产系统、客户市场和议价份额共同决定名义收入；本地物价再决定实际购买力。&lt;/p&gt;
+    &lt;span class=&quot;text-small text-muted&quot;&gt;思想实验：数值是相对指数，不是现实工资预测。&lt;/span&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;mel-stage&quot; data-panel=&quot;distribution&quot; aria-label=&quot;财富分配思想实验&quot; hidden&gt;
+    &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-concentration&quot;&gt;
+      &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;100 份索取权的集中程度&lt;/span&gt;&lt;output id=&quot;mel-concentration-value&quot;&gt;0&lt;/output&gt;&lt;/span&gt;
+      &lt;input id=&quot;mel-concentration&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;0&quot; step=&quot;5&quot;&gt;
+    &lt;/label&gt;
+
+    &lt;div class=&quot;viz-controls&quot; aria-label=&quot;财富来源&quot;&gt;
+      &lt;span&gt;主要来源&lt;/span&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-source=&quot;creation&quot; aria-pressed=&quot;true&quot;&gt;创新与承担风险&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-source=&quot;rent&quot; aria-pressed=&quot;false&quot;&gt;垄断与寻租&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;viz-controls&quot; aria-label=&quot;财富用途&quot;&gt;
+      &lt;span&gt;主要用途&lt;/span&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-use=&quot;investment&quot; aria-pressed=&quot;true&quot;&gt;扩大生产&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-use=&quot;control&quot; aria-pressed=&quot;false&quot;&gt;巩固控制&lt;/button&gt;
+      &lt;label class=&quot;form-check form-switch&quot;&gt;
+        &lt;input id=&quot;mel-pooling&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot; checked&gt;
+        &lt;span class=&quot;form-check-label&quot;&gt;允许联合融资&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;viz-grid&quot;&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;总索取权&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot; id=&quot;mel-total&quot;&gt;100&lt;/span&gt;&lt;span&gt;始终不变&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;最高持有者&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot; id=&quot;mel-top-share&quot;&gt;10%&lt;/span&gt;&lt;span id=&quot;mel-top-context&quot;&gt;与其他人相同&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;35 份大型项目&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot; id=&quot;mel-project-state&quot;&gt;可融资&lt;/span&gt;&lt;span id=&quot;mel-project-context&quot;&gt;通过联合融资&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mel-dist&quot; id=&quot;mel-distribution-chart&quot; role=&quot;img&quot; aria-label=&quot;十个人各持有十份索取权&quot;&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;1&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;2&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;3&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;4&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;5&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;6&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;7&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;8&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;9&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mel-person&quot;&gt;&lt;div class=&quot;mel-person-bar&quot;&gt;&lt;span class=&quot;mel-person-fill&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;span&gt;10&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mel-legend text-small&quot;&gt;&lt;span&gt;&lt;i class=&quot;mel-swatch top&quot;&gt;&lt;/i&gt;最高持有者&lt;/span&gt;&lt;span&gt;&lt;i class=&quot;mel-swatch&quot;&gt;&lt;/i&gt;其余九人&lt;/span&gt;&lt;/div&gt;
+    &lt;p class=&quot;card mel-detail&quot; id=&quot;mel-distribution-detail&quot;&gt;平均分配并没有增加真实产出；联合融资也说明大型项目不一定要求财富永久集中。&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;mel-stage&quot; data-panel=&quot;ip&quot; aria-label=&quot;个人 IP 与文体娱乐收入实验&quot; hidden&gt;
+    &lt;div class=&quot;viz-controls&quot; aria-label=&quot;商业模式预设&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-preset=&quot;tickets&quot; aria-pressed=&quot;true&quot;&gt;票房与订阅&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-preset=&quot;ads&quot; aria-pressed=&quot;false&quot;&gt;广告支持&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-preset=&quot;product&quot; aria-pressed=&quot;false&quot;&gt;个人 IP 产品&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mel-controls&quot;&gt;
+      &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-reach&quot;&gt;
+        &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;稳定触达人数&lt;/span&gt;&lt;output id=&quot;mel-reach-value&quot;&gt;20 万&lt;/output&gt;&lt;/span&gt;
+        &lt;input id=&quot;mel-reach&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;100&quot; value=&quot;20&quot; step=&quot;1&quot;&gt;
+      &lt;/label&gt;
+      &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-pay-rate&quot;&gt;
+        &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;信任后的付费率&lt;/span&gt;&lt;output id=&quot;mel-pay-rate-value&quot;&gt;8.0%&lt;/output&gt;&lt;/span&gt;
+        &lt;input id=&quot;mel-pay-rate&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;10&quot; value=&quot;8&quot; step=&quot;0.1&quot;&gt;
+      &lt;/label&gt;
+      &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-unit-price&quot;&gt;
+        &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;门票／订阅／产品价格&lt;/span&gt;&lt;output id=&quot;mel-unit-price-value&quot;&gt;¥300&lt;/output&gt;&lt;/span&gt;
+        &lt;input id=&quot;mel-unit-price&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;1000&quot; value=&quot;300&quot; step=&quot;10&quot;&gt;
+      &lt;/label&gt;
+      &lt;label class=&quot;mel-control form-label&quot; for=&quot;mel-cpm&quot;&gt;
+        &lt;span class=&quot;mel-label-row&quot;&gt;&lt;span&gt;每千次触达的广告收入&lt;/span&gt;&lt;output id=&quot;mel-cpm-value&quot;&gt;¥0&lt;/output&gt;&lt;/span&gt;
+        &lt;input id=&quot;mel-cpm&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;0&quot; step=&quot;5&quot;&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mel-flow&quot; role=&quot;img&quot; id=&quot;mel-ip-flow&quot; aria-label=&quot;内容触达受众，信任降低交易成本，受众直接付费或广告主购买注意力&quot;&gt;
+      &lt;div class=&quot;mel-node&quot;&gt;&lt;strong&gt;内容与表现&lt;/strong&gt;&lt;span&gt;创造体验&lt;/span&gt;&lt;/div&gt;
+      &lt;span class=&quot;mel-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;div class=&quot;mel-node&quot;&gt;&lt;strong&gt;注意力&lt;/strong&gt;&lt;span id=&quot;mel-flow-reach&quot;&gt;触达 20 万人&lt;/span&gt;&lt;/div&gt;
+      &lt;span class=&quot;mel-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;div class=&quot;mel-node&quot;&gt;&lt;strong&gt;认知与信任&lt;/strong&gt;&lt;span id=&quot;mel-flow-buyers&quot;&gt;1.6 万人付费&lt;/span&gt;&lt;/div&gt;
+      &lt;span class=&quot;mel-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+      &lt;div class=&quot;mel-node&quot;&gt;&lt;strong&gt;两类客户&lt;/strong&gt;&lt;span&gt;受众／广告主&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;viz-grid&quot;&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;受众直接付费&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot; id=&quot;mel-direct-revenue&quot;&gt;¥480 万&lt;/span&gt;&lt;span&gt;娱乐或产品本身&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;广告主付费&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot; id=&quot;mel-ad-revenue&quot;&gt;¥0&lt;/span&gt;&lt;span&gt;购买受众注意力&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;card viz-stat&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;合计收入&lt;/span&gt;&lt;span class=&quot;viz-stat-value&quot; id=&quot;mel-total-revenue&quot;&gt;¥480 万&lt;/span&gt;&lt;span&gt;两条收入路径&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mel-revenue&quot;&gt;
+      &lt;div class=&quot;mel-revenue-block&quot;&gt;&lt;div class=&quot;mel-line&quot;&gt;&lt;span&gt;收入构成&lt;/span&gt;&lt;span id=&quot;mel-revenue-ratio&quot;&gt;直接付费 100%&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;mel-stack&quot; role=&quot;img&quot; id=&quot;mel-revenue-chart&quot; aria-label=&quot;收入全部来自受众直接付费&quot;&gt;&lt;span class=&quot;mel-stack-direct&quot; style=&quot;width:100%&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mel-stack-ad&quot; style=&quot;width:0%&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;p class=&quot;card mel-detail&quot; id=&quot;mel-ip-detail&quot;&gt;广告收入为零时仍能赚钱：文体娱乐首先可以是观众直接购买的体验。&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;text-small text-muted&quot;&gt;收入仅用于比较商业模式，未扣除成本、平台分成和税费。&lt;/span&gt;
+  &lt;/section&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById(&#x27;money-economy-lab&#x27;);
+      if (!root) return;
+
+      const number = (id) =&gt; Number(root.querySelector(`#${id}`).value);
+      const setText = (id, value) =&gt; { root.querySelector(`#${id}`).textContent = value; };
+      const setPressedGroup = (selector, active) =&gt; {
+        root.querySelectorAll(selector).forEach((button) =&gt; {
+          const isActive = button === active;
+          button.setAttribute(&#x27;aria-pressed&#x27;, String(isActive));
+          button.classList.toggle(&#x27;btn-primary&#x27;, isActive);
+        });
+      };
+      const money = (value) =&gt; {
+        if (value &gt;= 100000000) return `¥${(value / 100000000).toFixed(2).replace(/\.00$/, &#x27;&#x27;)} 亿`;
+        if (value &gt;= 10000) return `¥${(value / 10000).toFixed(1).replace(/\.0$/, &#x27;&#x27;)} 万`;
+        return `¥${Math.round(value).toLocaleString(&#x27;zh-CN&#x27;)}`;
+      };
+
+      root.querySelectorAll(&#x27;[data-tab]&#x27;).forEach((button) =&gt; {
+        button.addEventListener(&#x27;click&#x27;, () =&gt; {
+          setPressedGroup(&#x27;[data-tab]&#x27;, button);
+          const target = button.dataset.tab;
+          root.querySelectorAll(&#x27;[data-panel]&#x27;).forEach((panel) =&gt; {
+            panel.hidden = panel.dataset.panel !== target;
+          });
+        });
+      });
+
+      const updateWage = () =&gt; {
+        const productivity = number(&#x27;mel-productivity&#x27;);
+        const market = number(&#x27;mel-market&#x27;);
+        const bargain = number(&#x27;mel-bargain&#x27;);
+        const price = number(&#x27;mel-price&#x27;);
+        const saleValue = productivity * market / 100;
+        const income = saleValue * bargain / 40;
+        const real = income * 100 / price;
+        setText(&#x27;mel-productivity-value&#x27;, productivity);
+        setText(&#x27;mel-market-value&#x27;, market);
+        setText(&#x27;mel-bargain-value&#x27;, `${bargain}%`);
+        setText(&#x27;mel-price-value&#x27;, price);
+        setText(&#x27;mel-flow-productivity&#x27;, `效率 ${productivity}`);
+        setText(&#x27;mel-flow-value&#x27;, `指数 ${Math.round(saleValue)}`);
+        setText(&#x27;mel-flow-income&#x27;, `${Math.round(income)} / ${Math.round(real)}`);
+        setText(&#x27;mel-income-number&#x27;, Math.round(income));
+        setText(&#x27;mel-real-number&#x27;, Math.round(real));
+        root.querySelector(&#x27;#mel-income-bar&#x27;).style.width = `${Math.min(100, income / 2.2)}%`;
+        root.querySelector(&#x27;#mel-real-bar&#x27;).style.width = `${Math.min(100, real / 2.2)}%`;
+        root.querySelector(&#x27;#mel-wage-chart&#x27;).setAttribute(&#x27;aria-label&#x27;, `甲地收入和购买力均为100；乙地名义收入${Math.round(income)}，实际购买力${Math.round(real)}`);
+        let detail = &#x27;同样劳动的市场价格会被所在生产系统、客户支付能力和议价能力共同改变。&#x27;;
+        if (income &gt; 110 &amp;&amp; real &lt; 95) detail = &#x27;乙地名义收入更高，但高物价抵消了优势：不能只比较工资数字。&#x27;;
+        if (income &lt; 90 &amp;&amp; real &gt; 105) detail = &#x27;乙地名义收入更低，但当地物价更低，实际购买力反而更高。&#x27;;
+        if (Math.abs(income - 100) &lt; 8 &amp;&amp; Math.abs(real - 100) &lt; 8) detail = &#x27;当前条件接近甲地：名义收入和实际购买力都相近。&#x27;;
+        setText(&#x27;mel-wage-detail&#x27;, detail);
+      };
+      [&#x27;mel-productivity&#x27;, &#x27;mel-market&#x27;, &#x27;mel-bargain&#x27;, &#x27;mel-price&#x27;].forEach((id) =&gt; root.querySelector(`#${id}`).addEventListener(&#x27;input&#x27;, updateWage));
+
+      let distributionSource = &#x27;creation&#x27;;
+      let distributionUse = &#x27;investment&#x27;;
+      const updateDistribution = () =&gt; {
+        const concentration = number(&#x27;mel-concentration&#x27;);
+        const top = 10 + concentration * 0.8;
+        const other = (100 - top) / 9;
+        const pooling = root.querySelector(&#x27;#mel-pooling&#x27;).checked;
+        const projectReady = top &gt;= 35 || pooling;
+        const holdings = [top, ...Array(9).fill(other)];
+        setText(&#x27;mel-concentration-value&#x27;, concentration);
+        setText(&#x27;mel-top-share&#x27;, `${top.toFixed(0)}%`);
+        setText(&#x27;mel-top-context&#x27;, top &lt; 15 ? &#x27;与其他人接近&#x27; : `其余每人 ${other.toFixed(1)}%`);
+        setText(&#x27;mel-project-state&#x27;, projectReady ? &#x27;可融资&#x27; : &#x27;无法融资&#x27;);
+        setText(&#x27;mel-project-context&#x27;, top &gt;= 35 ? &#x27;由最高持有者单独决定&#x27; : pooling ? &#x27;通过联合融资&#x27; : &#x27;个人资金都未达门槛&#x27;);
+        root.querySelectorAll(&#x27;.mel-person-fill&#x27;).forEach((bar, index) =&gt; {
+          bar.style.height = `${Math.max(2, holdings[index] / 90 * 100)}%`;
+        });
+        root.querySelector(&#x27;#mel-distribution-chart&#x27;).setAttribute(&#x27;aria-label&#x27;, `十个人共持有100份索取权，第一人持有${top.toFixed(1)}份，其余每人${other.toFixed(1)}份`);
+        let detail;
+        if (distributionSource === &#x27;rent&#x27;) {
+          detail = distributionUse === &#x27;control&#x27;
+            ? &#x27;集中来自垄断，又用于巩固控制：索取权在转移，真实生产能力未必增加。&#x27;
+            : &#x27;即使用于投资，也要先判断财富是否来自限制竞争，而不是创造新增价值。&#x27;;
+        } else if (distributionUse === &#x27;control&#x27;) {
+          detail = &#x27;财富最初可能来自创新，但若随后用于封锁竞争，它会从激励变成进入壁垒。&#x27;;
+        } else {
+          detail = pooling
+            ? &#x27;创新回报提供激励；联合融资说明大型项目并不要求财富永久集中在一个人手里。&#x27;
+            : &#x27;财富集中能让个人独立承担大型投资，但投资决策权也随之集中。&#x27;;
+        }
+        if (concentration &gt; 75) detail += &#x27; 此时经济权力与规则影响力尤其需要约束。&#x27;;
+        setText(&#x27;mel-distribution-detail&#x27;, detail);
+      };
+      root.querySelector(&#x27;#mel-concentration&#x27;).addEventListener(&#x27;input&#x27;, updateDistribution);
+      root.querySelector(&#x27;#mel-pooling&#x27;).addEventListener(&#x27;change&#x27;, updateDistribution);
+      root.querySelectorAll(&#x27;[data-source]&#x27;).forEach((button) =&gt; button.addEventListener(&#x27;click&#x27;, () =&gt; {
+        distributionSource = button.dataset.source;
+        setPressedGroup(&#x27;[data-source]&#x27;, button);
+        updateDistribution();
+      }));
+      root.querySelectorAll(&#x27;[data-use]&#x27;).forEach((button) =&gt; button.addEventListener(&#x27;click&#x27;, () =&gt; {
+        distributionUse = button.dataset.use;
+        setPressedGroup(&#x27;[data-use]&#x27;, button);
+        updateDistribution();
+      }));
+
+      const presets = {
+        tickets: { reach: 20, rate: 8, price: 300, cpm: 0 },
+        ads: { reach: 100, rate: 0.2, price: 20, cpm: 40 },
+        product: { reach: 30, rate: 3, price: 500, cpm: 5 }
+      };
+      const updateIp = () =&gt; {
+        const reach = number(&#x27;mel-reach&#x27;);
+        const rate = number(&#x27;mel-pay-rate&#x27;);
+        const price = number(&#x27;mel-unit-price&#x27;);
+        const cpm = number(&#x27;mel-cpm&#x27;);
+        const people = reach * 10000;
+        const buyers = people * rate / 100;
+        const direct = buyers * price;
+        const ads = people / 1000 * cpm;
+        const total = direct + ads;
+        const directRatio = total === 0 ? 0 : direct / total * 100;
+        const adRatio = 100 - directRatio;
+        setText(&#x27;mel-reach-value&#x27;, `${reach} 万`);
+        setText(&#x27;mel-pay-rate-value&#x27;, `${rate.toFixed(1)}%`);
+        setText(&#x27;mel-unit-price-value&#x27;, `¥${price}`);
+        setText(&#x27;mel-cpm-value&#x27;, `¥${cpm}`);
+        setText(&#x27;mel-flow-reach&#x27;, `触达 ${reach} 万人`);
+        setText(&#x27;mel-flow-buyers&#x27;, `${buyers &gt;= 10000 ? `${(buyers / 10000).toFixed(1)} 万` : Math.round(buyers).toLocaleString(&#x27;zh-CN&#x27;)}人付费`);
+        setText(&#x27;mel-direct-revenue&#x27;, money(direct));
+        setText(&#x27;mel-ad-revenue&#x27;, money(ads));
+        setText(&#x27;mel-total-revenue&#x27;, money(total));
+        setText(&#x27;mel-revenue-ratio&#x27;, total === 0 ? &#x27;尚无收入&#x27; : `直接付费 ${directRatio.toFixed(0)}% · 广告 ${adRatio.toFixed(0)}%`);
+        root.querySelector(&#x27;.mel-stack-direct&#x27;).style.width = `${directRatio}%`;
+        root.querySelector(&#x27;.mel-stack-ad&#x27;).style.width = `${adRatio}%`;
+        root.querySelector(&#x27;#mel-revenue-chart&#x27;).setAttribute(&#x27;aria-label&#x27;, total === 0 ? &#x27;尚无收入&#x27; : `直接付费占${directRatio.toFixed(1)}%，广告收入占${adRatio.toFixed(1)}%`);
+        let detail = &#x27;个人 IP 把稳定触达和信任连接到付费产品；注意力只有接上交易才会成为收入。&#x27;;
+        if (ads === 0 &amp;&amp; direct &gt; 0) detail = &#x27;广告收入为零时仍能赚钱：文体娱乐首先可以是观众直接购买的体验。&#x27;;
+        if (direct === 0 &amp;&amp; ads &gt; 0) detail = &#x27;此时观众主要贡献注意力，广告主才是实际付费客户。&#x27;;
+        if (total === 0) detail = &#x27;只有注意力、没有付费产品或广告客户时，流量本身不会自动变成钱。&#x27;;
+        setText(&#x27;mel-ip-detail&#x27;, detail);
+      };
+      [&#x27;mel-reach&#x27;, &#x27;mel-pay-rate&#x27;, &#x27;mel-unit-price&#x27;, &#x27;mel-cpm&#x27;].forEach((id) =&gt; root.querySelector(`#${id}`).addEventListener(&#x27;input&#x27;, () =&gt; {
+        root.querySelectorAll(&#x27;[data-preset]&#x27;).forEach((button) =&gt; {
+          button.setAttribute(&#x27;aria-pressed&#x27;, &#x27;false&#x27;);
+          button.classList.remove(&#x27;btn-primary&#x27;);
+        });
+        updateIp();
+      }));
+      root.querySelectorAll(&#x27;[data-preset]&#x27;).forEach((button) =&gt; button.addEventListener(&#x27;click&#x27;, () =&gt; {
+        const preset = presets[button.dataset.preset];
+        root.querySelector(&#x27;#mel-reach&#x27;).value = preset.reach;
+        root.querySelector(&#x27;#mel-pay-rate&#x27;).value = preset.rate;
+        root.querySelector(&#x27;#mel-unit-price&#x27;).value = preset.price;
+        root.querySelector(&#x27;#mel-cpm&#x27;).value = preset.cpm;
+        setPressedGroup(&#x27;[data-preset]&#x27;, button);
+        updateIp();
+      }));
+
+      updateWage();
+      updateDistribution();
+      updateIp();
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<footer class="report-foot">
+  <p>方法：基于货币、劳动市场、购买力、资本配置与注意力经济的基础机制构造可调思想实验。</p>
+  <p>边界：页面数值是用于比较方向的相对指数，不是现实工资、物价、财富效应或商业收入预测。</p>
+</footer>
+</main>
+</body>
+</html>
