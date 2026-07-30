@@ -173,6 +173,19 @@ h1, h2, h3, p { margin-top: 0; }
 .spotlight-result strong { overflow: hidden; font-size: .95rem; font-weight: 660; letter-spacing: -.015em; text-overflow: ellipsis; white-space: nowrap; }
 .spotlight-result-copy > span { overflow: hidden; color: var(--muted); font-size: .78rem; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
 .spotlight-result > svg { width: 18px; height: 18px; flex: none; color: var(--blue); fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.65; }
+/* Matched sub-topics hang under the report they belong to, drawn as a tree. */
+.spotlight-result.has-children { padding-bottom: 11px; border-bottom-color: transparent; }
+.spotlight-result.is-child { position: relative; padding: 9px 18px 9px 47px; }
+.spotlight-result.is-child::before, .spotlight-result.is-child::after { position: absolute; border: 0 solid rgba(198,198,206,.9); content: ''; }
+.spotlight-result.is-child::before { top: 0; bottom: 0; left: 30px; border-left-width: 1px; }
+.spotlight-result.is-child.is-last-child::before { bottom: auto; height: 50%; }
+.spotlight-result.is-child::after { top: 50%; left: 30px; width: 10px; border-top-width: 1px; }
+.spotlight-result.is-child small { color: #7a7a82; font-size: .63rem; }
+.spotlight-result.is-child strong { font-size: .855rem; font-weight: 615; }
+.spotlight-result.is-child .spotlight-result-copy > span:last-child { font-size: .72rem; }
+.spotlight-result.is-child > svg { width: 15px; height: 15px; opacity: .7; }
+/* A report shown only to host its matched topics keeps the head, drops the blurb. */
+.spotlight-result.is-context .spotlight-result-copy > span:last-child { display: none; }
 .spotlight-footer { display: flex; gap: 16px; padding: 10px 20px; color: var(--muted); font-size: .68rem; }
 
 @media (max-width: 720px) {
@@ -205,5 +218,8 @@ h1, h2, h3, p { margin-top: 0; }
   .spotlight-input-row { padding: 16px 15px 11px; }
   .spotlight-hint { padding-left: 48px; }
   .spotlight-results { max-height: 56vh; }
+  .spotlight-result.is-child { padding-left: 38px; }
+  .spotlight-result.is-child::before, .spotlight-result.is-child::after { left: 24px; }
+  .spotlight-result.is-child::after { width: 8px; }
   .spotlight-footer { gap: 10px; padding: 9px 15px; font-size: .61rem; }
 }
