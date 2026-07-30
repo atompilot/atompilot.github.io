@@ -14,6 +14,54 @@ window.ATOM_SEARCH_INDEX = [
     url: '/reports/'
   },
   {
+    title: '终端里还有哪些能用的编程 CLI',
+    type: '报告 · 开发工具调研',
+    summary: '除 Claude Code 与 Codex 之外的 26 款终端 AI 编程 agent，star 数与活跃度由 GitHub API 当天实测，含两条改变选型的关键变化。',
+    keywords: 'AI 编程 CLI coding agent 终端 命令行 claude code 替代 codex 替代 opencode pi coding agent goose crush antigravity cli gemini cli 停服 copilot cli amp sourcegraph factory droid cline qwen code kimi cli aider roo code 归档 开源 MCP AGENTS.md 选型',
+    url: '/reports/2026/07/code-cli-agents/',
+    date: '2026-07-30'
+  },
+  {
+    title: 'Gemini CLI 已对消费级用户停服',
+    type: '报告内主题 · 重大变化',
+    summary: 'Google 于 2026-05-19 I/O 宣布，Gemini CLI 自 2026-06-18 起停止服务个人用户，继任者是闭源 Go 写的 Antigravity CLI。',
+    keywords: 'gemini cli 停服 退役 deprecated antigravity cli agy google io 2026 迁移 闭源 企业版 例外',
+    url: '/reports/2026/07/code-cli-agents/?q=Gemini',
+    date: '2026-07-30'
+  },
+  {
+    title: 'Claude 订阅不能驱动第三方 CLI',
+    type: '报告内主题 · 成本约束',
+    summary: 'Anthropic 自 2026-04-04 起全面禁止用 Claude Pro/Max 订阅的 OAuth token 驱动第三方工具，换 CLI 无法复用订阅额度。',
+    keywords: 'claude pro max 订阅 oauth 第三方 工具 禁止 条款 opencode 法务 PR 18186 API key 成本 费用',
+    url: '/reports/2026/07/code-cli-agents/?q=opencode',
+    date: '2026-07-30'
+  },
+  {
+    title: 'opencode',
+    type: '报告内工具 · 开源通用',
+    summary: 'GitHub 上 star 最高的编程 agent（191k、MIT），模型无关、LSP 自动接入、认 AGENTS.md 与 Agent Skills。',
+    keywords: 'opencode anomaly 开源 MIT 模型无关 LSP AGENTS.md agent skills zen 终端 TUI',
+    url: '/reports/2026/07/code-cli-agents/?q=opencode',
+    date: '2026-07-30'
+  },
+  {
+    title: 'Pi coding agent',
+    type: '报告内工具 · 开源通用',
+    summary: '系统提示压到 1000 token 以内的极简 harness，靠 lazy skills 按需加载能力，四种运行形态。',
+    keywords: 'pi earendil mario zechner armin ronacher 极简 harness lazy skills 系统提示 token 扩展 typescript MIT',
+    url: '/reports/2026/07/code-cli-agents/?q=Pi',
+    date: '2026-07-30'
+  },
+  {
+    title: 'Goose',
+    type: '报告内工具 · 开源通用',
+    summary: 'Block 交给 Linux Foundation 旗下 Agentic AI Foundation 治理的 Rust 通用 agent，MCP 原生、治理中立。',
+    keywords: 'goose block square linux foundation agentic ai foundation rust MCP 本地模型 ollama apache 中立治理',
+    url: '/reports/2026/07/code-cli-agents/?q=Goose',
+    date: '2026-07-30'
+  },
+  {
     title: '港版 Switch 2，怎么买《赛博朋克 2077》？',
     type: '报告 · 游戏设备购买研究',
     summary: '区分港版本体、香港 eShop 账号、数字支付、实体完整卡带和 DLC 地区匹配，提供安全购买路径。',
@@ -111,7 +159,7 @@ window.ATOM_SEARCH_INDEX = [
   },
   {
     title: 'GitHub 本月热门项目',
-    type: '报告',
+    type: '报告 · 开源观察',
     summary: '23 个 GitHub Trending 月度项目的交互式快照，按近期新增 star 排序。',
     keywords: 'github trending 本月 热门项目 开源 热度 star ai agent mcp 调研 2026 07',
     url: '/reports/2026/07/github-hot-projects/'

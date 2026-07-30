@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="除了 Claude Code 和 Codex，2026 年还有哪些能用的终端 AI 编程 CLI：26 款工具的 star 数、许可证、活跃度与退场情况，含 Gemini CLI 已停服、Claude 订阅禁止驱动第三方 CLI 两条关键变化。" />
+    <meta name="keywords" content="AI 编程 CLI, coding agent, opencode, Pi coding agent, Goose, Crush, Antigravity CLI, Gemini CLI 停服, Copilot CLI, Amp, Factory Droid, Cline, Qwen Code, Kimi CLI, Claude Code 替代, Codex CLI 替代, 2026年7月" />
+    <title>终端编程 CLI 全景 2026 | 2026-07-30</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      :root {
+        --ink: #14181f;
+        --muted: #6a7280;
+        --line: #dde3ea;
+        --paper: #f6f8fa;
+        --surface: #ffffff;
+        --accent: #1f6f5c;
+        --accent-soft: #e0f0eb;
+        --warm: #b5541f;
+        --alive: #1f7a4d;
+        --alive-soft: #ddf1e6;
+        --slow: #9a6a12;
+        --slow-soft: #f7ecd4;
+        --dead: #9e3232;
+        --dead-soft: #f8e2e2;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Geist, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.5;
+      }
+      .shell { width: min(1360px, calc(100% - 48px)); margin: 0 auto; }
+      header { border-bottom: 1px solid var(--line); padding: 18px 0; }
+      .topline { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: var(--muted); font-size: 13px; }
+      .report-top-actions { display: flex; align-items: center; gap: 12px; }
+      .report-search-trigger { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.7); cursor: pointer; font: inherit; white-space: nowrap; }
+      .report-search-trigger:hover { color: var(--accent); border-color: var(--accent); }
+      .report-search-trigger kbd { margin-left: 4px; color: inherit; font-size: 10px; }
+      .brand { color: var(--ink); font-weight: 750; letter-spacing: -0.02em; }
+      .hero { padding: 72px 0 44px; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(290px, .75fr); gap: 48px; align-items: end; }
+      .eyebrow { margin: 0 0 14px; color: var(--accent); font: 700 12px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; }
+      h1 { margin: 0; max-width: 850px; font-size: clamp(38px, 5.1vw, 75px); letter-spacing: -.07em; line-height: .96; }
+      .intro { margin: 24px 0 0; max-width: 690px; color: #414852; font-size: 17px; }
+      .method { border-left: 3px solid var(--warm); padding: 8px 0 8px 18px; color: #48505b; font-size: 14px; }
+      .method strong { color: var(--ink); }
+
+      .alerts { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 18px; margin: 8px 0 44px; }
+      .alert { padding: 22px 24px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--dead); border-radius: 4px; }
+      .alert.money { border-left-color: var(--warm); }
+      .alert h3 { margin: 0 0 10px; font-size: 16px; letter-spacing: -.03em; }
+      .alert p { margin: 0; color: #4d545e; font-size: 13.5px; line-height: 1.6; }
+      .alert time { display: block; margin-top: 10px; color: var(--muted); font: 700 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .05em; }
+
+      .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+      .stat { padding: 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+      .stat b { display: block; font-size: 30px; letter-spacing: -.06em; }
+      .stat span { color: var(--muted); font-size: 12px; }
+
+      .controls { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 36px; }
+      .search { min-width: 250px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; outline-color: var(--accent); }
+      .filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+      button { cursor: pointer; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; color: #48505b; background: transparent; font: 600 12px/1.2 inherit; transition: background .2s ease, color .2s ease, transform .2s ease; }
+      button:hover, button.active { background: var(--accent); border-color: var(--accent); color: white; }
+      button:active { transform: translateY(1px); }
+      .results-line { margin: 20px 0 12px; color: var(--muted); font-size: 13px; }
+
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+      article { min-height: 250px; display: flex; flex-direction: column; padding: 24px; background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform .24s cubic-bezier(.16, 1, .3, 1), box-shadow .24s ease; }
+      article:hover { position: relative; z-index: 1; transform: translateY(-4px); box-shadow: 0 18px 36px -25px rgba(20, 40, 35, .5); }
+      article.pick { background: linear-gradient(180deg, #f6fcfa 0%, #ffffff 62%); }
+      article.retired { background: #fbfafa; }
+      article.retired h2 a { color: #7d7d7d; }
+      .row { display: flex; justify-content: space-between; align-items: start; gap: 14px; }
+      .tag { flex: none; padding: 5px 7px; border-radius: 4px; color: #14584a; background: var(--accent-soft); font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
+      .status { padding: 5px 7px; border-radius: 4px; font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; white-space: nowrap; }
+      .status.活跃 { color: var(--alive); background: var(--alive-soft); }
+      .status.放缓 { color: var(--slow); background: var(--slow-soft); }
+      .status.退场 { color: var(--dead); background: var(--dead-soft); }
+      h2 { margin: 22px 0 10px; font-size: 20px; letter-spacing: -.04em; line-height: 1.1; }
+      h2 a { color: inherit; text-decoration: none; }
+      h2 a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+      .description { margin: 0; color: #565d68; font-size: 13px; line-height: 1.58; }
+      .caveat { margin: 12px 0 0; padding-left: 11px; border-left: 2px solid #e0b9a2; color: #94512a; font-size: 12px; line-height: 1.5; }
+      .foot { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: auto; padding-top: 20px; color: var(--muted); font-size: 12px; }
+      .price { color: var(--ink); font-weight: 700; }
+      .stars { font: 700 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--accent); }
+      .lic { font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .starred { color: var(--accent); font-weight: 750; }
+      .empty { grid-column: 1 / -1; padding: 60px 24px; text-align: center; color: var(--muted); background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+      .verdict { margin: 66px 0 0; padding: 40px 0 0; border-top: 1px solid var(--line); }
+      .verdict h2 { margin: 0 0 26px; font-size: clamp(26px, 3.2vw, 40px); letter-spacing: -.05em; }
+      .picks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+      .pick-cell { padding: 26px; background: var(--surface); }
+      .pick-cell b { display: block; margin-bottom: 4px; font-size: 17px; letter-spacing: -.03em; }
+      .pick-cell .who { display: block; margin-bottom: 12px; color: var(--accent); font: 700 11px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .06em; text-transform: uppercase; }
+      .pick-cell p { margin: 0; color: #565d68; font-size: 13px; line-height: 1.6; }
+      .pick-cell code { padding: 2px 5px; background: var(--paper); border-radius: 3px; font-size: 11.5px; }
+
+      footer { padding: 54px 0 70px; margin-top: 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+      footer p { max-width: 900px; line-height: 1.65; }
+      footer a { color: var(--accent); }
+
+      @media (max-width: 1080px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stats { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 780px) {
+        .shell { width: calc(100% - 32px); }
+        .hero { grid-template-columns: 1fr; gap: 30px; padding: 46px 0 32px; }
+        .controls { grid-template-columns: 1fr; }
+        .filters { justify-content: flex-start; }
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="shell">
+      <div class="topline">
+        <span class="brand">TERMINAL CODING AGENTS · 2026 SURVEY</span>
+        <span class="report-top-actions"><span>调研于 2026-07-30 · 26 款工具 · GitHub API 实测</span><button class="report-search-trigger" type="button" data-site-search>全站搜索 <kbd>⌘ F</kbd></button></span>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Beyond Claude Code &amp; Codex</p>
+          <h1>终端里还有<br />哪些能用的<br />编程 CLI。</h1>
+          <p class="intro">26 款终端 AI 编程 agent，按「大厂原生 / 开源通用 / 商业独立 / 已退场」四类整理。star 数、许可证与最近提交时间全部由 GitHub API 于 2026-07-30 当天拉取，不引用二手文章里的数字——因为这个领域半年内已经发生过三次改名、迁移和停服。</p>
+        </div>
+        <aside class="method">
+          <strong>口径：</strong>活跃度指标（star / license / 最近 push）为 GitHub API 一手数据；定价与产品形态取自各家官网，属公开信息交叉整理，<strong>非实测评分</strong>。本次调研刻意排除了各家自媒体的「最佳工具榜」——这类文章多半出自其中一款工具的厂商，排名不可信。
+        </aside>
+      </section>
+
+      <section class="alerts" aria-label="本领域的两条关键变化">
+        <div class="alert">
+          <h3>Gemini CLI 已对消费级用户停服</h3>
+          <p>Google 在 2026-05-19 I/O 宣布，Gemini CLI 与 Gemini Code Assist IDE 扩展自 <strong>2026-06-18</strong> 起停止为 Google AI Pro、Ultra 及免费个人用户提供服务，继任者是闭源、Go 写的 <strong>Antigravity CLI</strong>（二进制 <code>agy</code>）。企业版 License 与付费 API Key 不受影响。任何还在推荐 Gemini CLI 的文章都已过期。</p>
+          <time>生效 2026-06-18 · Google 官方公告</time>
+        </div>
+        <div class="alert money">
+          <h3>Claude 订阅不能驱动第三方 CLI</h3>
+          <p>2026-01-09 Anthropic 部署服务端校验封堵第三方工具的 OAuth，2026-02-20 更新条款明确禁止，2026-04-04 全面执行；2026-03-19 OpenCode 因收到法务函合并 PR #18186，移除了全部 Claude Pro/Max 登录相关代码。结论：<strong>换一个 CLI 并不能复用你的 Claude 订阅额度</strong>，必须另付 API 或改用别家订阅。这是选型时最大的成本变量。</p>
+          <time>全面执行 2026-04-04</time>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="调研概览">
+        <div class="stat"><b id="statTotal">—</b><span>收录工具</span></div>
+        <div class="stat"><b id="statOSS">—</b><span>开源（可自行审计与改造）</span></div>
+        <div class="stat"><b id="statAlive">—</b><span>近 30 天有提交</span></div>
+        <div class="stat"><b id="statDead">—</b><span>已停服 / 归档 / 停滞</span></div>
+      </section>
+
+      <section class="controls" aria-label="筛选工具">
+        <input id="search" class="search" type="search" placeholder="搜索工具名、厂商或关键词（支持空格分词，如：开源 MCP）" aria-label="搜索工具" />
+        <div class="filters" id="filters"></div>
+      </section>
+      <p class="results-line" id="resultCount" aria-live="polite"></p>
+      <section id="tools" class="grid" aria-label="工具列表"></section>
+
+      <section class="verdict" id="verdict">
+        <h2>按你的处境选</h2>
+        <div class="picks">
+          <div class="pick-cell">
+            <span class="who">已在用 Claude Code + Codex</span>
+            <b>先加 opencode，别急着换</b>
+            <p>两个大厂 CLI 已经覆盖了主力场景，第三个的价值在于「模型无关」这一条：当某家限流、降智或涨价时你有退路。opencode 是当下最稳的开源底座（191k star、MIT、当天仍在提交），且认 <code>AGENTS.md</code>、支持 Agent Skills 与 MCP，迁移成本最低。注意它已无法用 Claude 订阅登录。</p>
+          </div>
+          <div class="pick-cell">
+            <span class="who">吃过 context 亏 / 重度自定义</span>
+            <b>Pi</b>
+            <p>系统提示压到 1000 token 以内（主流 agent 通常 7000–10000），靠「lazy skills」——每个能力平时只占一行描述，真正调用时才加载完整指令和工具 schema。四个核心工具 + TypeScript 扩展，缺什么让它自己写。适合把 agent 当可编程底座而不是成品软件的人。</p>
+          </div>
+          <div class="pick-cell">
+            <span class="who">想要免费额度</span>
+            <b>Antigravity CLI</b>
+            <p>Gemini CLI 的强制继任者，对所有人开放且免费，支持从 Gemini CLI 一次性导入扩展、skills 与设置。代价是闭源、配置文件从 <code>GEMINI.md</code> 换成 <code>AGENTS.md</code>、且 Google 自己承认「上线时没有 1:1 功能对等」。</p>
+          </div>
+          <div class="pick-cell">
+            <span class="who">CI / 批量无人值守</span>
+            <b>Droid 或 Copilot CLI</b>
+            <p><code>droid exec</code> 为非交互批处理而生，$20 起；Copilot CLI 的优势是原生读写 GitHub issue 与 PR，如果你的待办本来就跑在 GitHub Issues 上，这条链路最短。两者都需要订阅，不能白嫖。</p>
+          </div>
+          <div class="pick-cell">
+            <span class="who">不想被任何厂商绑住</span>
+            <b>Goose</b>
+            <p>Block 已把它交给 Linux Foundation 旗下的 Agentic AI Foundation 治理（仓库现在挂在 <code>aaif-goose</code> 组织下），Apache-2.0、Rust、MCP 原生、支持 15+ provider 含 Ollama 本地模型。治理中立性是其他项目给不了的。</p>
+          </div>
+          <div class="pick-cell">
+            <span class="who">按量付费、拒绝订阅</span>
+            <b>Amp</b>
+            <p>Sourcegraph 出品，纯 PAYG 信用点、个人与团队零平台加价、$5 起充。三档模式（deep / smart / rush）自动路由模型，省去「这个任务该用哪个模型」的决策成本。闭源，但成本结构最透明。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <p>调研日期 2026-07-30。star 数、许可证与最近提交时间由 GitHub API 当天拉取；定价与形态来自各家官网，可能随时变动，下单前请以官网为准。本报告不含实测跑分——公开榜单（Terminal-Bench、SWE-bench）的分数高度依赖模型而非 harness 本身，换一个模型排名就会翻转，因此这里只记录工具形态与工程事实。</p>
+      <p><strong>选型提醒：</strong>这个领域 2026 上半年发生了 opencode 迁移组织、Goose 转入基金会、Roo Code 自行归档、Gemini CLI 停服四起变动，任何超过三个月的推荐清单都应重新核对。给 agent 开放 shell 执行权限前，确认它支持沙箱或审批模式；在已登录凭据的环境里跑自动执行有实际风险。</p>
+      <p><a href="/reports/">← 返回报告库</a></p>
+    </footer>
+
+    <script src="/search-index.js"></script>
+    <script src="/site.js"></script>
+    <script>
+      const tools = [
+        // ── 大厂原生 ──
+        { name: 'Claude Code', vendor: 'Anthropic', category: '大厂原生', status: '活跃', stars: '139.6k', lic: '闭源', price: 'Max 订阅', note: '当前终端 agent 的体验标杆：hook 系统、plugin/skill 生态、subagent 编排最完整。作为本次调研的参照系列出。', caveat: '订阅仅限官方客户端使用，条款禁止把 OAuth token 用于第三方工具。', url: 'https://github.com/anthropics/claude-code' },
+        { name: 'Codex CLI', vendor: 'OpenAI', category: '大厂原生', status: '活跃', stars: '102.6k', lic: 'Apache-2.0', price: '随 ChatGPT 订阅', note: 'Rust 重写，开源。`codex exec` 是非交互入口，JSONL 输出 + `--output-last-message` 让 CI 抓结果很顺手；OS 级沙箱与审批模式有官方文档。', url: 'https://github.com/openai/codex' },
+        { name: 'Antigravity CLI', vendor: 'Google', category: '大厂原生', status: '活跃', stars: '闭源', lic: '专有', price: '免费', note: 'Gemini CLI 的强制继任者，Go 单二进制（`agy`）。异步多 agent、subagent、sandbox、权限、MCP、Plugins & Skills 齐全，支持从 Gemini CLI 一次性导入配置。', caveat: 'Google 明确说明上线时「不会有 1:1 功能对等」；从开源转为闭源。', url: 'https://antigravity.google/docs/cli/overview', pick: true },
+        { name: 'GitHub Copilot CLI', vendor: 'GitHub', category: '大厂原生', status: '活跃', stars: '11.0k', lic: '专有', price: '随 Copilot 订阅', note: '原生读写 GitHub issue / PR / repo，支持 MCP 与多模型切换。如果待办和代码评审都在 GitHub 上，这是链路最短的一个。', caveat: '每次提问计入 premium request 配额，重度使用容易触顶。', url: 'https://github.com/github/copilot-cli', pick: true },
+        { name: 'Qwen Code', vendor: '阿里 / 通义', category: '大厂原生', status: '活跃', stars: '26.5k', lic: 'Apache-2.0', price: '免费额度 + API', note: 'Gemini CLI 的 fork 路线，针对 Qwen 系列模型优化。国内网络环境下可用性明显好于海外 CLI，中文语境理解到位。', url: 'https://github.com/QwenLM/qwen-code' },
+        { name: 'Kimi CLI', vendor: 'Moonshot', category: '大厂原生', status: '活跃', stars: '11.0k', lic: 'Apache-2.0', price: '订阅 + API', note: 'Kimi K2 系列的官方终端 agent，Apache-2.0。国产模型里性价比路线最激进的一条，长上下文是强项。', url: 'https://github.com/MoonshotAI/kimi-cli' },
+        { name: 'Amazon Q Developer CLI', vendor: 'AWS', category: '大厂原生', status: '放缓', stars: '2.0k', lic: 'Apache-2.0', price: '免费版 + Pro', note: '终端里的 agentic chat，深度绑 AWS 资源与 IAM。只有在重度使用 AWS 时才有独特价值。', caveat: '最近提交停在 2026-06-22，节奏明显慢于同类。', url: 'https://github.com/aws/amazon-q-developer-cli' },
+
+        // ── 开源通用 ──
+        { name: 'opencode', vendor: 'Anomaly Innovations', category: '开源通用', status: '活跃', stars: '191.1k', lic: 'MIT', price: '免费（自带 Key）+ Zen', note: 'GitHub 上 star 最高的编程 agent，且是全场唯一超过 Claude Code 的。模型无关、LSP 自动接入、Agent Skills、Plan 模式、撤销/重做、认 AGENTS.md。安装：`curl -fsSL https://opencode.ai/install | bash`。', caveat: '2026-03 因 Anthropic 法务函移除了 Claude Pro/Max 登录，现在接 Claude 需要 API Key。', url: 'https://github.com/anomalyco/opencode', pick: true },
+        { name: 'Pi', vendor: 'Earendil（Mario Zechner / Armin Ronacher）', category: '开源通用', status: '活跃', stars: '80.8k', lic: 'MIT', price: '免费（自带 Key）', note: '极简 harness：系统提示 <1000 token（同类通常 7000–10000），四个核心工具，能力靠「lazy skills」按需加载。四种运行形态（TUI / print-JSON / RPC / SDK 内嵌），会话历史是可分叉的树。`npm i -g @earendil-works/pi-coding-agent`。', caveat: '扩展由模型现写 TypeScript，没有护栏防止扩展本身写错，复杂集成需人工过一遍。', url: 'https://github.com/earendil-works/pi', pick: true },
+        { name: 'OpenHands', vendor: 'All Hands AI', category: '开源通用', status: '活跃', stars: '82.6k', lic: 'MIT', price: '免费（自带 Key）+ 云', note: '容器隔离执行是它的核心卖点：agent 在沙箱容器里跑，能浏览网页、读文档、执行代码。无人值守和 CI 场景最放心的一个。', caveat: '审批开关多、启动重，做小改动比纯 CLI 慢。', url: 'https://github.com/OpenHands/OpenHands' },
+        { name: 'Cline', vendor: 'Cline Bot', category: '开源通用', status: '活跃', stars: '65.2k', lic: 'Apache-2.0', price: '免费（自带 Key）+ 托管', note: '2026 年已从 VS Code 扩展扩成 SDK + 扩展 + CLI 三形态。headless 模式配 `-y` 自动批准和 JSON 输出，跑 CI 很顺；Plan/Act 双模式让你先审方案再执行。', url: 'https://github.com/cline/cline' },
+        { name: 'Goose', vendor: 'Agentic AI Foundation（原 Block）', category: '开源通用', status: '活跃', stars: '52.0k', lic: 'Apache-2.0', price: '免费（自带 Key）', note: 'Rust 写的通用 agent，不止编程——装依赖、执行、编辑、测试全流程。MCP 原生，15+ provider 含 Ollama 本地模型，CLI 与桌面 App 双形态。', caveat: '规划优先的风格在「跨三个文件重命名一个函数」这类小手术上偏慢。', url: 'https://github.com/aaif-goose/goose', pick: true },
+        { name: 'Continue', vendor: 'Continue', category: '开源通用', status: '活跃', stars: '35.2k', lic: 'Apache-2.0', price: '免费 + 团队版', note: '同时覆盖 VS Code、JetBrains 与 CLI 的老牌开源 agent，团队统一配置与规则分发做得比同类完整。', url: 'https://github.com/continuedev/continue' },
+        { name: 'Crush', vendor: 'Charm', category: '开源通用', status: '活跃', stars: '27.0k', lic: '源码可见（Charm）', price: '免费（自带 Key）', note: 'Charm 家族的审美带进终端 agent：Go 写的，跨平台连 Android 都能跑。LSP 增强、MCP 可扩展、会话中途换模型（贵模型推理 + 便宜模型执行）、按文件与命令粒度的权限控制。', caveat: '许可证是 Charm 自定的源码可见协议，不是标准 OSI 开源，商用前要读条款。', url: 'https://github.com/charmbracelet/crush' },
+        { name: 'Kilo Code', vendor: 'Kilo', category: '开源通用', status: '活跃', stars: '26.6k', lic: 'MIT', price: '免费 + Gateway 计费', note: 'MIT 开源，BYOK 与自家 Gateway 双路，能接本地模型，同时打通 VS Code / JetBrains / 云端。', caveat: '这个领域的「最佳 CLI」排行文章相当一部分出自 kilo.ai 自家 blog，看到时请对排名打折。', url: 'https://github.com/Kilo-Org/kilocode' },
+        { name: 'Oh My Pi', vendor: 'can1357', category: '开源通用', status: '活跃', stars: '20.7k', lic: 'MIT', price: '免费（自带 Key）', note: 'Pi 生态里的增强发行版：hash 锚定编辑、优化过的工具 harness、LSP、Python、浏览器、subagent 全都预置好。想要 Pi 的架构又不想自己攒配置时用这个。', url: 'https://github.com/can1357/oh-my-pi' },
+        { name: 'mini-swe-agent', vendor: 'SWE-agent 团队', category: '开源通用', status: '活跃', stars: '6.1k', lic: 'MIT', price: '免费（自带 Key）', note: '100 行代码的 agent，没有巨型配置和 monorepo，却在 SWE-bench verified 上过 74%。想搞懂「agent 到底是什么」，读这份源码比读任何文档都快。', url: 'https://github.com/SWE-agent/mini-swe-agent' },
+
+        // ── 商业独立 ──
+        { name: 'Amp', vendor: 'Sourcegraph', category: '商业独立', status: '活跃', stars: '闭源', lic: '专有', price: 'PAYG，$5 起', note: '纯按量付费信用点，个人与团队零平台加价（企业版另计）。三档模式 deep / smart / rush 自动路由，另有 Oracle 工具做第二意见复核。支持 CLI + VS Code / JetBrains / Neovim / Zed。', caveat: '2026-03 起收缩为 CLI 优先，IDE 扩展形态被削弱。', url: 'https://ampcode.com', pick: true },
+        { name: 'Droid', vendor: 'Factory', category: '商业独立', status: '活跃', stars: '闭源', lic: '专有', price: '$20 / $100 / $200 月', note: '`droid exec` 非交互模式为脚本、批处理和 CI 而生；Missions 能把大任务拆给多个 agent 并回收校验。桌面 / CLI / SDK 三形态 + 云端后台 agent。', url: 'https://factory.ai/pricing', pick: true },
+        { name: 'Cursor CLI', vendor: 'Cursor', category: '商业独立', status: '活跃', stars: '闭源', lic: '专有', price: '随 Cursor 订阅（$20 起）', note: 'Cursor 的无头形态，复用同一套 `.cursor/rules/`、MCP 配置与账号额度。已经在用 Cursor IDE 的话，CI 里加这条最省事。', caveat: '有用户反馈命令偶发静默挂起、无可见解释；且不支持图片输入。', url: 'https://cursor.com/cli' },
+        { name: 'Warp', vendor: 'Warp', category: '商业独立', status: '活跃', stars: '63.8k', lic: 'AGPL-3.0（核心）', price: '免费版 + 订阅', note: '路线独特：不做第 N 个 agent，而是把 Claude Code、Codex、Gemini CLI、opencode 包在同一个终端界面下统一调度。核心已于 2026-05 开源。', url: 'https://www.warp.dev' },
+
+        // ── 已退场 / 慎入 ──
+        { name: 'Gemini CLI', vendor: 'Google', category: '已退场', status: '退场', stars: '106.3k', lic: 'Apache-2.0', price: '消费级已停', note: '曾经免费额度最慷慨的选项（1000 请求/天），累积 10 万+ star、6000+ 合并 PR。', caveat: '2026-06-18 起对 AI Pro / Ultra / 免费个人用户停止服务，迁移至闭源 Antigravity CLI。仅企业 License 与付费 API Key 仍可用。新项目不要再选。', url: 'https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli' },
+        { name: 'Roo Code', vendor: 'Roo Code Inc', category: '已退场', status: '退场', stars: '24.4k', lic: 'Apache-2.0', price: '—', note: '曾是 Cline 分支里功能最激进的一支，多模式 agent 团队概念做得早。', caveat: '仓库已被官方归档（archived），最后提交停在 2026-05-15。不要在新项目里引入。', url: 'https://github.com/RooCodeInc/Roo-Code' },
+        { name: 'Aider', vendor: 'Aider AI', category: '已退场', status: '放缓', stars: '47.8k', lic: 'Apache-2.0', price: '免费（自带 Key）', note: '终端 AI 结对编程的开创者，repo-map 上下文与自动 git commit 两个设计被后来者广泛抄袭。「改一处、看 diff、提交、再来」这种工作流至今仍难被替代。', caveat: '最近提交停在 2026-05-22，自 2025-08 起没有打过 tag release，节奏明显落后于 opencode / Goose / Crush。仍可用，但别指望跟进新模型。', url: 'https://aider.chat' },
+        { name: 'Plandex', vendor: 'Plandex AI', category: '已退场', status: '退场', stars: '15.5k', lic: 'MIT', price: '免费 + 云', note: '主打大型项目与长任务的开源 agent，沙箱与 diff 审阅机制设计得不错。', caveat: '最近提交停在 2025-10-03，已近 10 个月无更新，视为停滞项目。', url: 'https://github.com/plandex-ai/plandex' },
+        { name: 'iFlow CLI', vendor: 'iFlow', category: '已退场', status: '放缓', stars: '5.1k', lic: '未声明', price: '免费', note: '国产终端 agent，覆盖仓库分析到工作流自动化。', caveat: '最近提交停在 2026-03-20，且仓库未声明许可证——无 license 意味着默认保留全部权利，商用前须确认。', url: 'https://github.com/iflow-ai/iflow-cli' }
+      ];
+
+      const categories = ['全部', '大厂原生', '开源通用', '商业独立', '已退场'];
+      let selected = '全部';
+      const filtersEl = document.querySelector('#filters');
+      const searchEl = document.querySelector('#search');
+      const listEl = document.querySelector('#tools');
+      const countEl = document.querySelector('#resultCount');
+
+      const safe = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+      function renderFilters() {
+        filtersEl.innerHTML = categories.map(item =>
+          `<button type="button" data-filter="${safe(item)}" class="${item === selected ? 'active' : ''}">${safe(item)}</button>`).join('');
+      }
+
+      function render() {
+        const terms = searchEl.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        const matched = tools.filter(tool => {
+          if (selected !== '全部' && tool.category !== selected) return false;
+          if (!terms.length) return true;
+          const haystack = [tool.name, tool.vendor, tool.category, tool.status, tool.lic, tool.price, tool.note, tool.caveat].join(' ').toLowerCase();
+          return terms.every(term => haystack.includes(term));
+        });
+        countEl.textContent = `显示 ${matched.length} / ${tools.length} 款${selected === '全部' ? '' : ' · ' + selected}`;
+        listEl.innerHTML = matched.length ? matched.map(tool => `
+          <article class="${tool.pick ? 'pick' : ''} ${tool.category === '已退场' ? 'retired' : ''}">
+            <div class="row">
+              <span class="tag">${safe(tool.category)}</span>
+              <span class="status ${safe(tool.status)}">${safe(tool.status)}</span>
+            </div>
+            <h2><a href="${safe(tool.url)}" rel="noreferrer">${safe(tool.name)}</a></h2>
+            <p class="description">${safe(tool.note)}</p>
+            ${tool.caveat ? `<p class="caveat">${safe(tool.caveat)}</p>` : ''}
+            <div class="foot">
+              <span class="price">${safe(tool.price)}</span>
+              <span class="lic">${safe(tool.lic)}</span>
+              <span class="stars">★ ${safe(tool.stars)}</span>
+              ${tool.pick ? '<span class="starred">◆ 值得试</span>' : ''}
+            </div>
+          </article>`).join('') : '<div class="empty">没有匹配的工具。试试删掉搜索词或切换分类。</div>';
+      }
+
+      filtersEl.addEventListener('click', event => {
+        const button = event.target.closest('button[data-filter]');
+        if (!button) return;
+        selected = button.dataset.filter;
+        renderFilters();
+        render();
+      });
+      searchEl.addEventListener('input', render);
+
+      document.querySelector('#statTotal').textContent = tools.length;
+      document.querySelector('#statOSS').textContent = tools.filter(t => /MIT|Apache|AGPL|源码可见/.test(t.lic)).length;
+      document.querySelector('#statAlive').textContent = tools.filter(t => t.status === '活跃').length;
+      document.querySelector('#statDead').textContent = tools.filter(t => t.category === '已退场').length;
+
+      const initialQuery = new URLSearchParams(window.location.search).get('q');
+      if (initialQuery) searchEl.value = initialQuery;
+      renderFilters();
+      render();
+    </script>
+  </body>
+</html>
