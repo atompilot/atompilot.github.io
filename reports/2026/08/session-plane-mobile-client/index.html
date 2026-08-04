@@ -3,18 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=/reports/2026/08/session-plane-mobile-client/" />
-    <meta name="robots" content="noindex,follow" />
     <link rel="canonical" href="https://atompilot.github.io/reports/2026/08/session-plane-mobile-client/" />
     <meta
       name="description"
-      content="SessionDeck 移动客户端技术决策：比较 PWA、React Native 与混合方案，并给出 Web-first、Native-ready 的实施建议。"
+      content="SessionPlane 移动客户端技术决策：比较 PWA、React Native 与混合方案，并给出 Web-first、Native-ready 的实施建议。"
     />
     <meta
       name="keywords"
-      content="SessionDeck, PWA, React Native, Expo, xterm.js, WebView, iPhone, iPad, 远程终端, 技术选型"
+      content="SessionPlane, PWA, React Native, Expo, xterm.js, WebView, iPhone, iPad, 远程终端, 技术选型"
     />
-    <title>已更名为 SessionPlane</title>
+    <title>SessionPlane 移动客户端：PWA 还是 React Native？</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <style>
       :root {
@@ -128,7 +126,7 @@
       </nav>
       <div class="hero">
         <div>
-          <p class="eyebrow">SessionDeck · Client decision</p>
+          <p class="eyebrow">SessionPlane · Client decision</p>
           <h1>PWA 先行，<br />原生能力后接。</h1>
           <p class="lede">React Native 可以做，但它不该成为第一版的前置条件。先用网页把“看见同一会话、明确目标后输入”做可靠，再把通知、Face ID 和系统入口放进原生壳。</p>
         </div>
@@ -143,7 +141,7 @@
     <div class="decision-strip">
       <div class="shell">
         <span>一句话判断</span>
-        <p>原生 App 的优势集中在“系统集成”，而 SessionDeck 最难、最核心的部分是“终端正确性”。终端生态本来就在浏览器侧，因此先做 PWA 能更快验证核心，又不会堵死 React Native。</p>
+        <p>原生 App 的优势集中在“系统集成”，而 SessionPlane 最难、最核心的部分是“终端正确性”。终端生态本来就在浏览器侧，因此先做 PWA 能更快验证核心，又不会堵死 React Native。</p>
       </div>
     </div>
 
@@ -230,7 +228,7 @@
     </main>
 
     <footer class="shell">
-      <span>SessionDeck mobile client decision · 2026-08-04</span>
+      <span>SessionPlane mobile client decision · 2026-08-04</span>
       <a href="/reports/">返回报告库</a>
     </footer>
   </body>
