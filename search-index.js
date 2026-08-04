@@ -1,5 +1,13 @@
 window.ATOM_SEARCH_INDEX = [
   {
+    title: 'SessionDeck 移动客户端：PWA 还是 React Native？',
+    type: '开发工具 · 技术选型',
+    summary: '比较 PWA、React Native 与分阶段混合路线，结论是 Web-first、Native-ready：先验证终端闭环，再用 Expo 原生壳补通知、Face ID 与系统入口。',
+    keywords: 'SessionDeck PWA React Native Expo xterm WebView iPhone iPad 远程终端 移动客户端 技术选型',
+    url: '/reports/2026/08/sessiondeck-mobile-client/',
+    date: '2026-08-04'
+  },
+  {
     title: '50 个行业 × 商业模式',
     type: '报告 · 商业研究',
     summary: '50 个行业的商业模式全景，区分现在依然有效的赚钱方式与已经失效的模式，共 326 种有效模式、285 种失效模式。',
