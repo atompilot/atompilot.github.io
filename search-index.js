@@ -1,5 +1,61 @@
 window.ATOM_SEARCH_INDEX = [
   {
+    title: '当工作不再必要：社会如何继续合作',
+    type: '社会机制 · 互动学习',
+    summary: '从商业、政治、制度与货币一路推演到自动化社会，比较所有权、基本保障、社会分红与市场保留怎样重新连接生产和分配。',
+    keywords: '商业 政治 资本主义 社会主义 共同外敌 货币 劳动 自动化 后工作社会 基本收入 社会分红 全民基本服务 社会协作',
+    url: '/reports/2026/08/social-cooperation-after-work/',
+    date: '2026-08-09'
+  },
+  {
+    title: '商业和政治的边界是什么',
+    type: '报告内主题 · 社会协作',
+    summary: '商业在既定权利与规则内通过交换协调合作；政治决定对共同体成员有约束力的权利、规则与冲突处理方式。',
+    keywords: '商业和政治区别 商业 政治 自愿交易 共同规则 合同 权力 公共品 垄断 隐私',
+    url: '/reports/2026/08/social-cooperation-after-work/#commerce-politics',
+    date: '2026-08-09'
+  },
+  {
+    title: '社会主义和资本主义的核心区别',
+    type: '报告内主题 · 制度比较',
+    summary: '不只看有没有市场，而是比较生产资料所有权、投资决定权、剩余控制权、收入依据和公共保障。',
+    keywords: '社会主义 资本主义 区别 生产资料 所有权 市场 计划 剩余 投资 分配 公共保障',
+    url: '/reports/2026/08/social-cooperation-after-work/#systems',
+    date: '2026-08-09'
+  },
+  {
+    title: '为什么共同外敌容易让人团结',
+    type: '报告内主题 · 群体协作',
+    summary: '共同威胁通过压缩身份差异、对齐合作收益和提高背叛成本，让内部冲突暂时延后；制造敌人则可能把团结变成权力工具。',
+    keywords: '共同外敌 团结 共同威胁 群体身份 合作 背叛 服从 替罪羊 制造敌人',
+    url: '/reports/2026/08/social-cooperation-after-work/#common-enemy',
+    date: '2026-08-09'
+  },
+  {
+    title: '货币为什么存在，什么时候会被废弃',
+    type: '报告内主题 · 货币机制',
+    summary: '货币是跨商品、跨时间、跨陌生人的社会记账与索取凭证；只要稀缺仍在，废除货币通常只是把价格换成配给、排队、审批或关系。',
+    keywords: '货币 为什么存在 废除货币 交换媒介 计价单位 索取权 稀缺 配给 排队 黑市',
+    url: '/reports/2026/08/social-cooperation-after-work/#meaning-money',
+    date: '2026-08-09'
+  },
+  {
+    title: '大部分人无法参与工作以后怎么办',
+    type: '报告内主题 · 自动化社会',
+    summary: '当机器继续生产而劳动收入消失，危机从生产不足转为取得资格不足；互动比较私人集中、税收转移、共同持有及三种基本保障。',
+    keywords: '自动化 失业 大部分人无法工作 后工作社会 人工智能 机器生产 有效需求 所有权 共同持有',
+    url: '/reports/2026/08/social-cooperation-after-work/#automation',
+    date: '2026-08-09'
+  },
+  {
+    title: '后工作社会有哪些解决机制',
+    type: '报告内主题 · 制度设计',
+    summary: '比较全民基本服务、基本收入、社会分红、社会财富基金、缩短工时、公共贡献与保留市场各自解决的问题和失败路径。',
+    keywords: '全民基本服务 UBI 基本收入 社会分红 社会财富基金 缩短工时 工作保障 公共服务 自动化分配',
+    url: '/reports/2026/08/social-cooperation-after-work/#mechanisms',
+    date: '2026-08-09'
+  },
+  {
     title: 'SessionPlane 移动客户端：PWA 还是 React Native？',
     type: '开发工具 · 技术选型',
     summary: '比较 PWA、React Native 与分阶段混合路线，结论是 Web-first、Native-ready：先验证终端闭环，再用 Expo 原生壳补通知、Face ID 与系统入口。',

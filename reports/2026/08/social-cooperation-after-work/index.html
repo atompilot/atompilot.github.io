@@ -1,0 +1,2537 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="从商业与政治、资本主义与社会主义、共同外敌、货币机制一路推演到自动化社会：当工作不再是多数人的收入来源，生产、分配、治理与意义应如何重新连接。"
+    />
+    <meta
+      name="keywords"
+      content="商业, 政治, 资本主义, 社会主义, 共同外敌, 货币, 劳动, 自动化, 后工作社会, 基本收入, 社会分红, 全民基本服务"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#242724" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'"
+    />
+    <title>当工作不再必要：社会如何继续合作</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f3f0e8;
+        --paper-deep: #e9e4d9;
+        --ink: #242724;
+        --ink-soft: #343935;
+        --muted: #656962;
+        --line: #c9c5bb;
+        --line-dark: #4a504a;
+        --accent: #b95738;
+        --accent-soft: #ead2c7;
+        --white: #fbfaf6;
+        --max: 1400px;
+        --sans: "Avenir Next", "SF Pro Display", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        --mono: "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 36px;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+        content: "";
+        opacity: 0.42;
+        pointer-events: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
+        text-underline-offset: 0.22em;
+      }
+
+      button {
+        color: inherit;
+        font: inherit;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      .skip-link {
+        position: fixed;
+        z-index: 30;
+        top: 12px;
+        left: 12px;
+        padding: 10px 14px;
+        color: var(--white);
+        background: var(--accent);
+        transform: translateY(-160%);
+        transition: transform 180ms ease;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .hero {
+        min-height: 92dvh;
+        color: var(--paper);
+        background: var(--ink);
+        border-bottom: 1px solid var(--line-dark);
+      }
+
+      .hero-nav {
+        display: flex;
+        width: min(calc(100% - 48px), var(--max));
+        min-height: 70px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        border-bottom: 1px solid var(--line-dark);
+      }
+
+      .hero-nav a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .wordmark {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .wordmark-mark {
+        display: grid;
+        width: 29px;
+        height: 29px;
+        place-items: center;
+        border: 1px solid var(--line-dark);
+        border-radius: 50%;
+        font-family: var(--mono);
+        font-size: 0.66rem;
+      }
+
+      .hero-nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .quiet-button {
+        min-height: 38px;
+        padding: 0 14px;
+        border: 1px solid var(--line-dark);
+        border-radius: 999px;
+        color: var(--paper);
+        background: transparent;
+        cursor: pointer;
+        transition: background 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 160ms ease;
+      }
+
+      .quiet-button:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .quiet-button:active {
+        transform: translateY(1px) scale(0.98);
+      }
+
+      .hero-grid {
+        display: grid;
+        width: min(calc(100% - 48px), var(--max));
+        min-height: calc(92dvh - 71px);
+        grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.65fr);
+        gap: clamp(48px, 8vw, 140px);
+        align-items: center;
+        margin: 0 auto;
+        padding: clamp(72px, 10vw, 140px) 0;
+      }
+
+      .eyebrow {
+        margin: 0 0 24px;
+        color: var(--accent-soft);
+        font-family: var(--mono);
+        font-size: 0.73rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 840px;
+        margin-bottom: 32px;
+        font-size: clamp(3.4rem, 7.2vw, 6.7rem);
+        font-weight: 560;
+        letter-spacing: -0.075em;
+        line-height: 0.91;
+      }
+
+      .hero-lede {
+        max-width: 670px;
+        margin-bottom: 38px;
+        color: #c8cbc5;
+        font-size: clamp(1.05rem, 1.55vw, 1.31rem);
+        line-height: 1.68;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 28px;
+        color: #929890;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+      }
+
+      .engine {
+        position: relative;
+        padding: 30px 0;
+      }
+
+      .engine::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 21px;
+        width: 1px;
+        background: var(--line-dark);
+        content: "";
+      }
+
+      .engine-row {
+        position: relative;
+        display: grid;
+        grid-template-columns: 44px 72px minmax(0, 1fr);
+        gap: 14px;
+        align-items: baseline;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line-dark);
+        opacity: 0;
+        transform: translateY(12px);
+        animation: engine-in 650ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: calc(var(--i) * 120ms + 220ms);
+      }
+
+      .engine-row:last-of-type {
+        border-bottom: 0;
+      }
+
+      .engine-dot {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border: 1px solid var(--line-dark);
+        border-radius: 50%;
+        color: var(--accent-soft);
+        background: var(--ink);
+        font-family: var(--mono);
+        font-size: 0.66rem;
+      }
+
+      .engine-row strong {
+        color: var(--paper);
+        font-size: 0.96rem;
+        font-weight: 560;
+      }
+
+      .engine-row span:last-child {
+        color: #9fa49d;
+        font-size: 0.91rem;
+        line-height: 1.55;
+      }
+
+      .engine-alert {
+        margin: 22px 0 0 58px;
+        padding: 16px 18px;
+        border-left: 2px solid var(--accent);
+        color: #c9ccc6;
+        background: rgba(255, 255, 255, 0.035);
+        font-size: 0.86rem;
+        line-height: 1.6;
+      }
+
+      @keyframes engine-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .page-shell {
+        display: grid;
+        width: min(calc(100% - 48px), var(--max));
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: clamp(50px, 7vw, 112px);
+        align-items: start;
+        margin: 0 auto;
+      }
+
+      .chapter-nav {
+        position: sticky;
+        top: 24px;
+        padding: 38px 0;
+      }
+
+      .chapter-nav p {
+        margin-bottom: 18px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .chapter-nav a {
+        display: grid;
+        grid-template-columns: 26px 1fr;
+        gap: 8px;
+        padding: 9px 0;
+        color: var(--muted);
+        font-size: 0.79rem;
+        line-height: 1.35;
+        text-decoration: none;
+        transition: color 180ms ease, transform 180ms ease;
+      }
+
+      .chapter-nav a::before {
+        color: var(--line-dark);
+        content: attr(data-index);
+        font-family: var(--mono);
+        font-size: 0.63rem;
+      }
+
+      .chapter-nav a:hover,
+      .chapter-nav a[aria-current="true"] {
+        color: var(--ink);
+        transform: translateX(3px);
+      }
+
+      .content {
+        min-width: 0;
+      }
+
+      .chapter {
+        padding: clamp(86px, 12vw, 168px) 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .chapter:first-child {
+        border-top: 0;
+      }
+
+      .chapter-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.6fr);
+        gap: 60px;
+        align-items: end;
+        margin-bottom: clamp(48px, 7vw, 86px);
+      }
+
+      .chapter-number {
+        display: block;
+        margin-bottom: 18px;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+      }
+
+      h2 {
+        max-width: 820px;
+        margin-bottom: 0;
+        font-size: clamp(2.55rem, 5vw, 5.1rem);
+        font-weight: 560;
+        letter-spacing: -0.065em;
+        line-height: 0.97;
+      }
+
+      .chapter-summary {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 620ms cubic-bezier(0.16, 1, 0.3, 1), transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .four-problems {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        border-top: 1px solid var(--ink);
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .problem {
+        display: grid;
+        min-height: 180px;
+        grid-template-columns: 54px 1fr;
+        gap: 20px;
+        padding: 30px 24px 30px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .problem:nth-child(odd) {
+        border-right: 1px solid var(--line);
+      }
+
+      .problem:nth-child(even) {
+        padding-left: 28px;
+      }
+
+      .problem:nth-last-child(-n + 2) {
+        border-bottom: 0;
+      }
+
+      .problem-index {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.7rem;
+      }
+
+      .problem h3 {
+        margin-bottom: 11px;
+        font-size: 1.5rem;
+        font-weight: 590;
+        letter-spacing: -0.035em;
+      }
+
+      .problem p {
+        max-width: 48ch;
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .thesis {
+        margin: clamp(55px, 8vw, 98px) 0 0 clamp(0px, 8vw, 120px);
+        padding-left: 24px;
+        border-left: 3px solid var(--accent);
+        font-size: clamp(1.45rem, 2.8vw, 2.4rem);
+        font-weight: 520;
+        letter-spacing: -0.035em;
+        line-height: 1.35;
+      }
+
+      .comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid var(--ink);
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .comparison-side {
+        padding: 36px 34px 42px 0;
+      }
+
+      .comparison-side + .comparison-side {
+        padding-right: 0;
+        padding-left: 38px;
+        border-left: 1px solid var(--line);
+      }
+
+      .comparison-label {
+        margin-bottom: 28px;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.69rem;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .comparison-side h3 {
+        margin-bottom: 18px;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 560;
+        letter-spacing: -0.05em;
+      }
+
+      .comparison-side p {
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .comparison-side dl {
+        margin: 30px 0 0;
+      }
+
+      .comparison-side dl div {
+        display: grid;
+        grid-template-columns: 94px 1fr;
+        gap: 16px;
+        padding: 13px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      dt {
+        color: var(--muted);
+        font-size: 0.77rem;
+      }
+
+      dd {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .interactive-stage {
+        margin-top: clamp(54px, 8vw, 96px);
+        padding: clamp(26px, 5vw, 54px);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: color-mix(in srgb, var(--white) 62%, transparent);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 26px 70px -55px rgba(36, 39, 36, 0.5);
+      }
+
+      .stage-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 34px;
+      }
+
+      .stage-top h3 {
+        margin-bottom: 8px;
+        font-size: 1.45rem;
+        font-weight: 590;
+        letter-spacing: -0.035em;
+      }
+
+      .stage-top p {
+        max-width: 62ch;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.6;
+      }
+
+      .stage-tag {
+        flex: 0 0 auto;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.63rem;
+      }
+
+      .segmented {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 34px;
+      }
+
+      .segmented button {
+        min-height: 42px;
+        padding: 0 15px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: transparent;
+        cursor: pointer;
+        transition: color 220ms ease, background 220ms ease, border-color 220ms ease, transform 160ms ease;
+      }
+
+      .segmented button:hover {
+        border-color: var(--ink);
+      }
+
+      .segmented button[aria-pressed="true"] {
+        color: var(--white);
+        border-color: var(--ink);
+        background: var(--ink);
+      }
+
+      .segmented button:active {
+        transform: translateY(1px) scale(0.98);
+      }
+
+      .case-output {
+        display: grid;
+        grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+
+      .case-verdict {
+        color: var(--accent);
+        font-size: clamp(1.6rem, 3vw, 2.5rem);
+        font-weight: 580;
+        letter-spacing: -0.045em;
+      }
+
+      .case-output p {
+        margin-bottom: 0;
+        color: var(--ink-soft);
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      .boundary-note {
+        display: grid;
+        grid-template-columns: 160px minmax(0, 1fr);
+        gap: 26px;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+
+      .boundary-note strong {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .boundary-note p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .system-intro {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .system-intro article {
+        padding: clamp(28px, 5vw, 52px);
+        background: var(--paper);
+      }
+
+      .system-intro article:nth-child(2) {
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .system-intro h3 {
+        margin-bottom: 20px;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 550;
+        letter-spacing: -0.055em;
+      }
+
+      .system-intro p {
+        max-width: 56ch;
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .system-intro article:nth-child(2) p {
+        color: #b7bbb5;
+      }
+
+      .axis-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px 40px;
+      }
+
+      .axis {
+        padding: 22px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .axis:nth-child(-n + 2) {
+        border-top: 0;
+      }
+
+      .axis-label {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 12px;
+      }
+
+      .axis-label span:first-child {
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+
+      .axis-label strong {
+        text-align: right;
+        font-size: 0.9rem;
+        font-weight: 570;
+      }
+
+      .axis-track {
+        height: 4px;
+        overflow: hidden;
+        background: var(--paper-deep);
+      }
+
+      .axis-fill {
+        width: 100%;
+        height: 100%;
+        background: var(--accent);
+        transform: scaleX(var(--level));
+        transform-origin: left;
+        transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .axis-scale {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 8px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.58rem;
+      }
+
+      .system-reading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 0.42fr);
+        gap: 34px;
+        margin-top: 24px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+
+      .system-reading p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.75;
+      }
+
+      .system-risk {
+        padding-left: 22px;
+        border-left: 2px solid var(--accent);
+      }
+
+      .system-risk span {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .system-risk strong {
+        font-size: 0.92rem;
+        font-weight: 570;
+        line-height: 1.55;
+      }
+
+      .dark-break {
+        position: relative;
+        width: auto;
+        margin-left: 0;
+        color: var(--paper);
+        background: var(--ink);
+      }
+
+      .dark-break-inner {
+        width: auto;
+        margin: 0;
+        padding: clamp(70px, 10vw, 136px) clamp(28px, 5vw, 72px);
+      }
+
+      .dark-break .chapter-head {
+        border-color: var(--line-dark);
+      }
+
+      .dark-break .chapter-summary {
+        color: #acb0aa;
+      }
+
+      .threat-chain {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin: 50px 0;
+      }
+
+      .threat-node {
+        position: relative;
+        min-height: 142px;
+        padding: 22px;
+        border: 1px solid var(--line-dark);
+      }
+
+      .threat-node:not(:last-child)::after {
+        position: absolute;
+        top: 50%;
+        right: -13px;
+        z-index: 1;
+        width: 13px;
+        height: 1px;
+        background: var(--accent);
+        content: "";
+      }
+
+      .threat-node span {
+        display: block;
+        margin-bottom: 22px;
+        color: var(--accent-soft);
+        font-family: var(--mono);
+        font-size: 0.64rem;
+      }
+
+      .threat-node strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1rem;
+        font-weight: 570;
+      }
+
+      .threat-node p {
+        margin: 0;
+        color: #9da29b;
+        font-size: 0.79rem;
+        line-height: 1.55;
+      }
+
+      .dark-stage {
+        border-color: var(--line-dark);
+        background: rgba(255, 255, 255, 0.035);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+
+      .dark-stage .stage-top p,
+      .dark-stage .threat-metric span,
+      .dark-stage .threat-explanation {
+        color: #a8ada6;
+      }
+
+      .dark-stage .stage-tag,
+      .dark-stage .segmented button {
+        border-color: var(--line-dark);
+      }
+
+      .dark-stage .segmented button:hover {
+        border-color: var(--paper);
+      }
+
+      .dark-stage .segmented button[aria-pressed="true"] {
+        color: var(--ink);
+        border-color: var(--paper);
+        background: var(--paper);
+      }
+
+      .threat-output {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        border-top: 1px solid var(--line-dark);
+        border-bottom: 1px solid var(--line-dark);
+      }
+
+      .threat-metric {
+        min-height: 126px;
+        padding: 22px 20px;
+        border-right: 1px solid var(--line-dark);
+      }
+
+      .threat-metric:last-child {
+        border-right: 0;
+      }
+
+      .threat-metric span {
+        display: block;
+        margin-bottom: 14px;
+        font-size: 0.7rem;
+      }
+
+      .threat-metric strong {
+        font-size: 1.08rem;
+        font-weight: 570;
+        line-height: 1.4;
+      }
+
+      .threat-explanation {
+        margin: 28px 0 0;
+        line-height: 1.75;
+      }
+
+      .meaning-grid {
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        gap: clamp(40px, 7vw, 100px);
+        align-items: start;
+      }
+
+      .meaning-statement {
+        position: sticky;
+        top: 36px;
+        padding-top: 8px;
+      }
+
+      .meaning-statement p:first-child {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .meaning-statement p:last-child {
+        margin-bottom: 0;
+        font-size: clamp(1.65rem, 3.2vw, 3rem);
+        font-weight: 530;
+        letter-spacing: -0.045em;
+        line-height: 1.3;
+      }
+
+      .meaning-layers {
+        border-top: 1px solid var(--ink);
+      }
+
+      .meaning-layer {
+        display: grid;
+        grid-template-columns: 60px 120px 1fr;
+        gap: 20px;
+        padding: 30px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .meaning-layer > span {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.68rem;
+      }
+
+      .meaning-layer strong {
+        font-size: 0.95rem;
+        font-weight: 580;
+      }
+
+      .meaning-layer p {
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .money-interface {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+        gap: clamp(32px, 6vw, 82px);
+        margin-top: clamp(70px, 10vw, 128px);
+        padding-top: clamp(45px, 7vw, 78px);
+        border-top: 1px solid var(--ink);
+      }
+
+      .money-interface h3 {
+        max-width: 690px;
+        margin-bottom: 24px;
+        font-size: clamp(2.2rem, 4.5vw, 4.4rem);
+        font-weight: 550;
+        letter-spacing: -0.06em;
+        line-height: 1;
+      }
+
+      .money-interface .lead {
+        max-width: 65ch;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .money-functions {
+        margin-top: 38px;
+      }
+
+      .money-function {
+        display: grid;
+        grid-template-columns: 38px 1fr;
+        gap: 18px;
+        padding: 18px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .money-function span {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.68rem;
+      }
+
+      .money-function strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+        font-weight: 580;
+      }
+
+      .money-function p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.87rem;
+        line-height: 1.6;
+      }
+
+      .abolition-box {
+        padding: 30px;
+        color: var(--paper);
+        background: var(--ink);
+      }
+
+      .abolition-box > span {
+        color: var(--accent-soft);
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .abolition-box h4 {
+        margin: 20px 0 28px;
+        font-size: 1.5rem;
+        font-weight: 550;
+        letter-spacing: -0.035em;
+        line-height: 1.35;
+      }
+
+      .replacement-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .replacement-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px 0;
+        border-top: 1px solid var(--line-dark);
+        color: #b7bbb5;
+        font-size: 0.84rem;
+      }
+
+      .replacement-list li span:last-child {
+        color: var(--paper);
+      }
+
+      .abolition-box p {
+        margin: 26px 0 0;
+        color: #a8ada6;
+        font-size: 0.78rem;
+        line-height: 1.65;
+      }
+
+      .rupture {
+        display: grid;
+        grid-template-columns: 1fr 56px 1fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .loop {
+        padding: clamp(28px, 5vw, 48px);
+        border: 1px solid var(--line);
+      }
+
+      .loop.broken {
+        color: var(--paper);
+        border-color: var(--ink);
+        background: var(--ink);
+      }
+
+      .loop-label {
+        display: block;
+        margin-bottom: 36px;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .loop-step {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 14px;
+        align-items: center;
+        padding: 13px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .broken .loop-step {
+        border-color: var(--line-dark);
+      }
+
+      .loop-step span {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.62rem;
+      }
+
+      .broken .loop-step span {
+        border-color: var(--line-dark);
+        color: var(--accent-soft);
+      }
+
+      .loop-step strong {
+        font-size: 0.92rem;
+        font-weight: 560;
+      }
+
+      .rupture-mark {
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        writing-mode: vertical-rl;
+      }
+
+      .adult-note {
+        margin-top: 44px;
+        padding: 26px 28px;
+        border-left: 3px solid var(--accent);
+        background: var(--paper-deep);
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      .policy-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-bottom: 38px;
+      }
+
+      .control-group > span {
+        display: block;
+        margin-bottom: 13px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .control-group .segmented {
+        margin-bottom: 0;
+      }
+
+      .policy-flow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        margin: 0 0 34px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .policy-node {
+        position: relative;
+        min-height: 138px;
+        padding: 22px;
+        background: var(--white);
+      }
+
+      .policy-node span {
+        display: block;
+        margin-bottom: 22px;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.65rem;
+      }
+
+      .policy-node strong {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 0.94rem;
+        font-weight: 580;
+      }
+
+      .policy-node p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.76rem;
+        line-height: 1.5;
+      }
+
+      .signal-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 28px;
+      }
+
+      .signal span {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+        color: var(--muted);
+        font-size: 0.73rem;
+      }
+
+      .signal span strong {
+        color: var(--ink);
+        font-weight: 580;
+      }
+
+      .signal-track {
+        height: 4px;
+        overflow: hidden;
+        background: var(--paper-deep);
+      }
+
+      .signal-fill {
+        width: 100%;
+        height: 100%;
+        background: var(--accent);
+        transform: scaleX(var(--level));
+        transform-origin: left;
+        transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .policy-reading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 0.45fr);
+        gap: 34px;
+        margin-top: 34px;
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
+      }
+
+      .policy-reading p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.75;
+      }
+
+      .policy-risk {
+        padding-left: 22px;
+        border-left: 2px solid var(--accent);
+      }
+
+      .policy-risk span {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .policy-risk strong {
+        font-size: 0.88rem;
+        font-weight: 560;
+        line-height: 1.55;
+      }
+
+      .mechanism-list {
+        border-top: 1px solid var(--ink);
+      }
+
+      .mechanism {
+        display: grid;
+        grid-template-columns: 55px minmax(190px, 0.65fr) minmax(0, 1fr) minmax(0, 1fr);
+        gap: 28px;
+        padding: 30px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mechanism-index {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.68rem;
+      }
+
+      .mechanism h3 {
+        margin: 0;
+        font-size: 1.18rem;
+        font-weight: 590;
+        letter-spacing: -0.025em;
+      }
+
+      .mechanism p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.65;
+      }
+
+      .mechanism p strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink);
+        font-size: 0.72rem;
+        font-weight: 580;
+      }
+
+      .stack-answer {
+        display: grid;
+        grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+        gap: clamp(38px, 7vw, 94px);
+        margin-top: clamp(68px, 10vw, 126px);
+        padding: clamp(42px, 7vw, 78px);
+        color: var(--paper);
+        background: var(--ink);
+      }
+
+      .stack-answer .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      .stack-answer h3 {
+        margin-bottom: 0;
+        font-size: clamp(2.3rem, 4.6vw, 4.5rem);
+        font-weight: 550;
+        letter-spacing: -0.06em;
+        line-height: 0.98;
+      }
+
+      .stack-steps {
+        margin: 0;
+        padding: 0;
+        counter-reset: stack;
+        list-style: none;
+      }
+
+      .stack-steps li {
+        display: grid;
+        grid-template-columns: 38px 1fr;
+        gap: 16px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line-dark);
+        color: #bcc0ba;
+        line-height: 1.6;
+        counter-increment: stack;
+      }
+
+      .stack-steps li::before {
+        color: var(--accent-soft);
+        content: "0" counter(stack);
+        font-family: var(--mono);
+        font-size: 0.65rem;
+      }
+
+      .final-thesis {
+        padding: clamp(92px, 13vw, 180px) 0;
+        text-align: left;
+      }
+
+      .final-thesis p:first-child {
+        max-width: 980px;
+        margin-bottom: 34px;
+        font-size: clamp(2.45rem, 5.8vw, 5.8rem);
+        font-weight: 540;
+        letter-spacing: -0.07em;
+        line-height: 1;
+      }
+
+      .final-thesis p:last-child {
+        max-width: 680px;
+        margin: 0 0 0 auto;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      .report-footer {
+        color: #b7bbb5;
+        background: var(--ink);
+      }
+
+      .footer-inner {
+        display: grid;
+        width: min(calc(100% - 48px), var(--max));
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        margin: 0 auto;
+        padding: 64px 0;
+      }
+
+      .footer-inner h2 {
+        color: var(--paper);
+        font-size: clamp(1.8rem, 3.2vw, 3rem);
+        letter-spacing: -0.05em;
+      }
+
+      .footer-meta {
+        display: grid;
+        gap: 14px;
+        font-size: 0.8rem;
+        line-height: 1.65;
+      }
+
+      .footer-meta p {
+        margin: 0;
+      }
+
+      .footer-meta a {
+        color: var(--paper);
+      }
+
+      @media (max-width: 1080px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .engine {
+          max-width: 720px;
+        }
+
+        .page-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .chapter-nav {
+          position: sticky;
+          z-index: 10;
+          top: 0;
+          display: flex;
+          gap: 4px;
+          margin: 0 -24px;
+          padding: 10px 24px;
+          overflow-x: auto;
+          background: color-mix(in srgb, var(--paper) 93%, transparent);
+          border-bottom: 1px solid var(--line);
+          backdrop-filter: blur(14px);
+          scrollbar-width: none;
+        }
+
+        .chapter-nav::-webkit-scrollbar {
+          display: none;
+        }
+
+        .chapter-nav p {
+          display: none;
+        }
+
+        .chapter-nav a {
+          display: block;
+          flex: 0 0 auto;
+          padding: 8px 12px;
+          border-radius: 999px;
+          white-space: nowrap;
+        }
+
+        .chapter-nav a::before {
+          margin-right: 6px;
+        }
+
+        .chapter-nav a[aria-current="true"] {
+          color: var(--white);
+          background: var(--ink);
+          transform: none;
+        }
+
+        .dark-break-inner {
+          width: min(calc(100% - 48px), var(--max));
+          margin-right: auto;
+          margin-left: auto;
+        }
+
+        .threat-chain,
+        .threat-output,
+        .policy-flow,
+        .signal-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .threat-node:nth-child(2)::after {
+          display: none;
+        }
+
+        .threat-metric:nth-child(2) {
+          border-right: 0;
+        }
+
+        .threat-metric:nth-child(-n + 2) {
+          border-bottom: 1px solid var(--line-dark);
+        }
+
+        .mechanism {
+          grid-template-columns: 45px minmax(180px, 0.65fr) minmax(0, 1.35fr);
+        }
+
+        .mechanism p:last-child {
+          grid-column: 3;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .hero-nav,
+        .hero-grid,
+        .page-shell,
+        .dark-break-inner,
+        .footer-inner {
+          width: min(calc(100% - 32px), var(--max));
+        }
+
+        .hero-nav-actions .quiet-button:first-child {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-grid {
+          min-height: auto;
+          gap: 44px;
+          padding: 72px 0 80px;
+        }
+
+        h1 {
+          font-size: clamp(3rem, 16vw, 4.9rem);
+        }
+
+        .engine-row {
+          grid-template-columns: 38px 60px minmax(0, 1fr);
+          gap: 10px;
+        }
+
+        .engine-dot {
+          width: 38px;
+          height: 38px;
+        }
+
+        .engine::before {
+          left: 18px;
+        }
+
+        .engine-alert {
+          margin-left: 48px;
+        }
+
+        .chapter-nav {
+          margin-right: -16px;
+          margin-left: -16px;
+          padding-right: 16px;
+          padding-left: 16px;
+        }
+
+        .chapter {
+          padding: 86px 0;
+        }
+
+        .chapter-head,
+        .meaning-grid,
+        .money-interface,
+        .stack-answer,
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .four-problems,
+        .comparison,
+        .system-intro,
+        .rupture,
+        .policy-controls {
+          grid-template-columns: 1fr;
+        }
+
+        .problem,
+        .problem:nth-child(odd),
+        .problem:nth-child(even),
+        .problem:nth-last-child(-n + 2) {
+          min-height: 0;
+          padding: 26px 0;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .problem:last-child {
+          border-bottom: 0;
+        }
+
+        .comparison-side,
+        .comparison-side + .comparison-side {
+          padding: 32px 0;
+          border-left: 0;
+        }
+
+        .comparison-side + .comparison-side {
+          border-top: 1px solid var(--line);
+        }
+
+        .case-output,
+        .boundary-note,
+        .system-reading,
+        .policy-reading {
+          grid-template-columns: 1fr;
+        }
+
+        .axis-grid,
+        .threat-chain,
+        .threat-output,
+        .meaning-layer,
+        .policy-flow,
+        .signal-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .axis:nth-child(2) {
+          border-top: 1px solid var(--line);
+        }
+
+        .threat-node:not(:last-child)::after {
+          top: auto;
+          right: auto;
+          bottom: -13px;
+          left: 28px;
+          width: 1px;
+          height: 13px;
+        }
+
+        .threat-metric,
+        .threat-metric:nth-child(2),
+        .threat-metric:nth-child(-n + 2) {
+          border-right: 0;
+          border-bottom: 1px solid var(--line-dark);
+        }
+
+        .threat-metric:last-child {
+          border-bottom: 0;
+        }
+
+        .meaning-statement {
+          position: static;
+        }
+
+        .meaning-layer {
+          gap: 10px;
+        }
+
+        .meaning-layer p {
+          grid-column: 1;
+        }
+
+        .rupture-mark {
+          min-height: 44px;
+          writing-mode: horizontal-tb;
+        }
+
+        .policy-node {
+          min-height: 0;
+        }
+
+        .mechanism {
+          grid-template-columns: 36px 1fr;
+          gap: 14px 18px;
+        }
+
+        .mechanism p,
+        .mechanism p:last-child {
+          grid-column: 2;
+        }
+
+        .stack-answer {
+          padding: 38px 28px;
+        }
+
+        .final-thesis p:last-child {
+          margin-left: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .reveal,
+        .engine-row {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media print {
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-nav,
+        .chapter-nav,
+        .quiet-button {
+          display: none !important;
+        }
+
+        .page-shell {
+          display: block;
+          width: 100%;
+        }
+
+        .chapter,
+        .dark-break-inner {
+          padding: 48px 0;
+        }
+
+        .dark-break {
+          left: auto;
+          width: auto;
+          margin-left: 0;
+        }
+
+        .dark-break-inner {
+          width: auto;
+          margin: 0;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+
+    <header class="hero">
+      <nav class="hero-nav" aria-label="报告导航">
+        <a class="wordmark" href="/reports/">
+          <span class="wordmark-mark" aria-hidden="true">AW</span>
+          <span>Public report</span>
+        </a>
+        <div class="hero-nav-actions">
+          <a class="quiet-button" href="/reports/"><span>返回报告库</span></a>
+          <button class="quiet-button" id="print-report" type="button">打印 / 存为 PDF</button>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Social coordination · 2026.08.09</p>
+          <h1>当工作<br />不再必要</h1>
+          <p class="hero-lede">
+            商业、政治、货币与主义之争，本质上都在回答同一个问题：陌生人怎样共同生产、分配稀缺资源，并接受一套对所有人有效的规则。自动化把这个问题推到了新的断裂点。
+          </p>
+          <div class="hero-meta">
+            <span>机制地图</span>
+            <span>定性思想实验</span>
+            <span>非未来预测</span>
+          </div>
+        </div>
+
+        <div class="engine" aria-label="社会必须解决的四层问题">
+          <div class="engine-row" style="--i: 0">
+            <span class="engine-dot">01</span>
+            <strong>生产</strong>
+            <span>东西由谁创造，技术能把产出推到哪里。</span>
+          </div>
+          <div class="engine-row" style="--i: 1">
+            <span class="engine-dot">02</span>
+            <strong>分配</strong>
+            <span>谁拥有索取产出的权利，凭什么取得。</span>
+          </div>
+          <div class="engine-row" style="--i: 2">
+            <span class="engine-dot">03</span>
+            <strong>治理</strong>
+            <span>谁制定共同规则，谁能监督和更换他。</span>
+          </div>
+          <div class="engine-row" style="--i: 3">
+            <span class="engine-dot">04</span>
+            <strong>意义</strong>
+            <span>生存解决以后，人为什么仍愿意行动。</span>
+          </div>
+          <p class="engine-alert">自动化真正可能打断的不是生产，而是“劳动 → 收入 → 获得产出”这条旧连接。</p>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="page-shell">
+      <nav class="chapter-nav" aria-label="章节导航">
+        <p>Contents</p>
+        <a href="#map" data-index="00">总地图</a>
+        <a href="#commerce-politics" data-index="01">商业与政治</a>
+        <a href="#systems" data-index="02">两种制度</a>
+        <a href="#common-enemy" data-index="03">共同外敌</a>
+        <a href="#meaning-money" data-index="04">意义与货币</a>
+        <a href="#automation" data-index="05">自动化断裂</a>
+        <a href="#mechanisms" data-index="06">解决机制</a>
+      </nav>
+
+      <div class="content">
+        <section class="chapter" id="map" data-chapter>
+          <header class="chapter-head reveal">
+            <div>
+              <span class="chapter-number">00 / MAP</span>
+              <h2>先别急着选主义</h2>
+            </div>
+            <p class="chapter-summary">任何制度都必须交付四种结果。标签只能说明倾向，不能代替对所有权、反馈、权力和失败路径的逐项检查。</p>
+          </header>
+
+          <div class="four-problems reveal">
+            <article class="problem">
+              <span class="problem-index">P</span>
+              <div>
+                <h3>生产能力</h3>
+                <p>有没有足够的食物、住房、能源、医疗和服务。自动化主要改变这一层。</p>
+              </div>
+            </article>
+            <article class="problem">
+              <span class="problem-index">D</span>
+              <div>
+                <h3>取得权利</h3>
+                <p>需要不等于有效需求。没有收入的人，即使需要真实存在，也可能无法从市场取得产出。</p>
+              </div>
+            </article>
+            <article class="problem">
+              <span class="problem-index">G</span>
+              <div>
+                <h3>权力约束</h3>
+                <p>私人所有与公共所有都会产生控制者；区别在于控制者靠什么获得权力，又怎样被纠错。</p>
+              </div>
+            </article>
+            <article class="problem">
+              <span class="problem-index">M</span>
+              <div>
+                <h3>行动意义</h3>
+                <p>收入只能购买生存条件，不能自动提供关系、尊严、责任、创造和被需要的感觉。</p>
+              </div>
+            </article>
+          </div>
+
+          <p class="thesis reveal">制度争论的核心不是“谁更善良”，而是谁拥有生产资料、谁取得收益、信息怎样反馈、权力怎样被约束。</p>
+        </section>
+
+        <section class="chapter" id="commerce-politics" data-chapter>
+          <header class="chapter-head reveal">
+            <div>
+              <span class="chapter-number">01 / BOUNDARY</span>
+              <h2>商业在规则内交换，政治决定规则</h2>
+            </div>
+            <p class="chapter-summary">商业擅长把差异变成交易；政治处理那些无法靠逐个自愿交易解决，却仍必须对共同体成员产生约束的事情。</p>
+          </header>
+
+          <div class="comparison reveal">
+            <article class="comparison-side">
+              <p class="comparison-label">Commerce</p>
+              <h3>把合作做成可交换</h3>
+              <p>在所有权和法律边界已经确定以后，人们用价格、合同和退出协调分工。</p>
+              <dl>
+                <div><dt>核心问题</dt><dd>怎样让双方都愿意成交</dd></div>
+                <div><dt>主要信号</dt><dd>价格、利润、销量、复购</dd></div>
+                <div><dt>典型纠错</dt><dd>拒绝交易、换供应者、企业退出</dd></div>
+              </dl>
+            </article>
+            <article class="comparison-side">
+              <p class="comparison-label">Politics</p>
+              <h3>把冲突变成共同规则</h3>
+              <p>当污染、安全、权利、垄断或再分配不能靠每个人单独协商时，集体作出有约束力的决定。</p>
+              <dl>
+                <div><dt>核心问题</dt><dd>谁有权决定所有人都必须遵守什么</dd></div>
+                <div><dt>主要信号</dt><dd>授权、法律、组织、抗议与选举等反馈</dd></div>
+                <div><dt>典型纠错</dt><dd>监督、申诉、权力更替、规则修订</dd></div>
+              </dl>
+            </article>
+          </div>
+
+          <div class="interactive-stage reveal" aria-labelledby="case-title">
+            <div class="stage-top">
+              <div>
+                <h3 id="case-title">这是谁的问题？</h3>
+                <p>切换情境，观察“自愿交易”何时越过边界，变成对不在合同中的人也有影响的共同规则问题。</p>
+              </div>
+              <span class="stage-tag">可交互</span>
+            </div>
+            <div class="segmented" role="group" aria-label="选择商业或政治情境">
+              <button type="button" data-case="pricing" aria-pressed="true">软件定价</button>
+              <button type="button" data-case="privacy" aria-pressed="false">平台收集隐私</button>
+              <button type="button" data-case="monopoly" aria-pressed="false">基础平台垄断</button>
+              <button type="button" data-case="health" aria-pressed="false">全民医疗</button>
+            </div>
+            <div class="case-output" aria-live="polite">
+              <strong class="case-verdict" id="case-verdict">商业问题</strong>
+              <p id="case-explanation">买卖双方可以比较价格、拒绝购买或选择替代品；在真实竞争和充分信息存在时，主要由交换机制处理。</p>
+            </div>
+            <div class="boundary-note">
+              <strong>边界提醒</strong>
+              <p>企业内部的晋升、平台规则与基础设施控制也具有政治性，因为它们分配的是权力，不只是商品。政府也会采用招标、价格和竞争等商业机制。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="systems" data-chapter>
+          <header class="chapter-head reveal">
+            <div>
+              <span class="chapter-number">02 / SYSTEMS</span>
+              <h2>资本主义与社会主义，争的是“谁控制剩余”</h2>
+            </div>
+            <p class="chapter-summary">有没有市场不是最短判据。资本主义企业内部也会计划，社会主义方案也可以保留市场。先看所有权、投资权和收益权。</p>
+          </header>
+
+          <div class="system-intro reveal">
+            <article>
+              <h3>资本主义</h3>
+              <p>关键生产资料主要私人所有，投资由资本所有者和企业决定，收入主要来自劳动合同与资产所有权。竞争存在时，价格和利润提供分散反馈；资本集中时，购买力与真实需要可能分离。</p>
+            </article>
+            <article>
+              <h3>社会主义</h3>
+              <p>关键生产资料强调社会、公共、集体或劳动者共同所有，剩余与投资更直接服务公共目标。它能绕过购买力直接保障需要；但“谁代表社会”若无法被监督，行政权力会取代资本权力。</p>
+            </article>
+          </div>
+
+          <div class="interactive-stage reveal" aria-labelledby="system-title">
+            <div class="stage-top">
+              <div>
+                <h3 id="system-title">不要看名字，看制度结构</h3>
+                <p>下面是方向图，不是对任何现实国家的评分。现实制度通常处于多个轴的混合位置。</p>
+              </div>
+              <span class="stage-tag">定性模型</span>
+            </div>
+            <div class="segmented" role="group" aria-label="选择制度结构">
+              <button type="button" data-system="capital" aria-pressed="true">资本所有主导</button>
+              <button type="button" data-system="mixed" aria-pressed="false">混合制度</button>
+              <button type="button" data-system="social" aria-pressed="false">社会所有主导</button>
+            </div>
+            <div class="axis-grid">
+              <div class="axis">
+                <div class="axis-label"><span>生产资料</span><strong id="axis-ownership-label">私人资本</strong></div>
+                <div class="axis-track"><div class="axis-fill" id="axis-ownership" style="--level: 0.12"></div></div>
+                <div class="axis-scale"><span>私人</span><span>社会</span></div>
+              </div>
+              <div class="axis">
+                <div class="axis-label"><span>资源配置</span><strong id="axis-allocation-label">市场与利润</strong></div>
+                <div class="axis-track"><div class="axis-fill" id="axis-allocation" style="--level: 0.18"></div></div>
+                <div class="axis-scale"><span>市场</span><span>公共决定</span></div>
+              </div>
+              <div class="axis">
+                <div class="axis-label"><span>收入依据</span><strong id="axis-income-label">工资与资本回报</strong></div>
+                <div class="axis-track"><div class="axis-fill" id="axis-income" style="--level: 0.2"></div></div>
+                <div class="axis-scale"><span>合同与资产</span><span>成员权与需要</span></div>
+              </div>
+              <div class="axis">
+                <div class="axis-label"><span>公共保障</span><strong id="axis-guarantee-label">依赖再分配</strong></div>
+                <div class="axis-track"><div class="axis-fill" id="axis-guarantee" style="--level: 0.34"></div></div>
+                <div class="axis-scale"><span>低</span><span>高</span></div>
+              </div>
+            </div>
+            <div class="system-reading" aria-live="polite">
+              <p id="system-reading">真实竞争存在时，分散的价格信号允许快速试错；但机器收益首先归所有者，劳动需求下降时，大多数人的收入资格可能与生产能力脱节。</p>
+              <div class="system-risk">
+                <span>主要失败路径</span>
+                <strong id="system-risk">资本、市场控制与政治影响力相互强化</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="dark-break" id="common-enemy" data-chapter>
+          <div class="dark-break-inner">
+            <header class="chapter-head reveal">
+              <div>
+                <span class="chapter-number">03 / THREAT</span>
+                <h2>外敌没有消灭内部分歧，只是改变了排序</h2>
+              </div>
+              <p class="chapter-summary">共同威胁把“我们内部如何分”暂时改写成“我们能否共同活下来”。身份边界、合作收益和背叛成本同时变化。</p>
+            </header>
+
+            <div class="threat-chain reveal" aria-label="共同威胁产生团结的因果链">
+              <article class="threat-node">
+                <span>01</span>
+                <strong>威胁被感知</strong>
+                <p>安全与生存压过日常分配矛盾。</p>
+              </article>
+              <article class="threat-node">
+                <span>02</span>
+                <strong>身份被压缩</strong>
+                <p>原先的甲乙群体暂时变成同一个“我们”。</p>
+              </article>
+              <article class="threat-node">
+                <span>03</span>
+                <strong>收益被对齐</strong>
+                <p>合作的即时价值上升，背叛代价增加。</p>
+              </article>
+              <article class="threat-node">
+                <span>04</span>
+                <strong>内部冲突延后</strong>
+                <p>不是消失；威胁退去后仍可能重新出现。</p>
+              </article>
+            </div>
+
+            <div class="interactive-stage dark-stage reveal" aria-labelledby="threat-title">
+              <div class="stage-top">
+                <div>
+                  <h3 id="threat-title">威胁不同，团结的性质也不同</h3>
+                  <p>共同目标可能促成真实合作，也可能被用来制造服从。关键是威胁是否可核验、负担是否公平、反对意见是否仍有空间。</p>
+                </div>
+                <span class="stage-tag">情境切换</span>
+              </div>
+              <div class="segmented" role="group" aria-label="选择威胁情境">
+                <button type="button" data-threat="ordinary" aria-pressed="true">没有共同威胁</button>
+                <button type="button" data-threat="real" aria-pressed="false">真实共同威胁</button>
+                <button type="button" data-threat="manufactured" aria-pressed="false">被制造的敌人</button>
+              </div>
+              <div class="threat-output" aria-live="polite">
+                <div class="threat-metric"><span>主导身份</span><strong id="threat-identity">内部群体</strong></div>
+                <div class="threat-metric"><span>合作方式</span><strong id="threat-cooperation">局部交换</strong></div>
+                <div class="threat-metric"><span>异议空间</span><strong id="threat-dissent">通常开放</strong></div>
+                <div class="threat-metric"><span>主要风险</span><strong id="threat-risk">内耗与碎片化</strong></div>
+              </div>
+              <p class="threat-explanation" id="threat-explanation">没有压倒性的共同目标时，人们会重新关注内部地位、资源和规则分配；这不等于社会必然分裂，只是矛盾不再被外部生存问题覆盖。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="meaning-money" data-chapter>
+          <header class="chapter-head reveal">
+            <div>
+              <span class="chapter-number">04 / MEANING & MONEY</span>
+              <h2>人不是为了货币而活，货币也不负责提供意义</h2>
+            </div>
+            <p class="chapter-summary">货币是让陌生人协作的接口。它可以衡量和转移索取权，却不能回答什么值得追求，也不能把支付能力变成人的价值。</p>
+          </header>
+
+          <div class="meaning-grid reveal">
+            <div class="meaning-statement">
+              <p>Three layers</p>
+              <p>“为什么活着”不是一个经济学问题，也没有能被科学证明的统一终极答案。</p>
+            </div>
+            <div class="meaning-layers">
+              <div class="meaning-layer">
+                <span>01</span><strong>生命层</strong><p>生命会维持自身、适应环境并延续。这解释生命为何继续，不等于个人应当为何而活。</p>
+              </div>
+              <div class="meaning-layer">
+                <span>02</span><strong>心理层</strong><p>关系、能动性、成长、创造、责任与被需要，常常构成人持续行动的动力。</p>
+              </div>
+              <div class="meaning-layer">
+                <span>03</span><strong>意义层</strong><p>意义通常不是被发现的一条统一答案，而是人在爱、承诺、理解和创造中逐步建立的方向。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="money-interface reveal">
+            <div>
+              <h3>货币是一种可转让的社会记账权</h3>
+              <p class="lead">它并非某一天被单独设计出来，而是在交易、债务、记账、税收与国家信用等多种实践中演化。它最重要的作用，是让彼此不认识的人也能跨商品、跨时间结算合作。</p>
+              <div class="money-functions">
+                <div class="money-function">
+                  <span>01</span><div><strong>交换媒介</strong><p>我需要你的东西，不再要求你同时需要我的东西。</p></div>
+                </div>
+                <div class="money-function">
+                  <span>02</span><div><strong>计价单位</strong><p>不同商品与承诺获得一个共同的比较尺度。</p></div>
+                </div>
+                <div class="money-function">
+                  <span>03</span><div><strong>跨期索取权</strong><p>今天的贡献能够换成未来对可售资源的购买请求。</p></div>
+                </div>
+                <div class="money-function">
+                  <span>04</span><div><strong>分散反馈</strong><p>价格告诉生产者有购买力的需求在哪里，但不会自动呈现没有购买力的需要。</p></div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="abolition-box">
+              <span>If money disappears</span>
+              <h4>稀缺不会因为废除货币而消失。</h4>
+              <ul class="replacement-list">
+                <li><span>价格</span><span>排队</span></li>
+                <li><span>购买</span><span>配给</span></li>
+                <li><span>合同</span><span>审批</span></li>
+                <li><span>支付能力</span><span>身份与关系</span></li>
+                <li><span>公开交易</span><span>黑市</span></li>
+              </ul>
+              <p>因此更现实的变化，是让生存必需品退出纯市场分配，同时保留货币处理非必需、仍然稀缺且偏好多样的商品。</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter" id="automation" data-chapter>
+          <header class="chapter-head reveal">
+            <div>
+              <span class="chapter-number">05 / RUPTURE</span>
+              <h2>机器带来的可能不是生产危机，而是取得资格危机</h2>
+            </div>
+            <p class="chapter-summary">下面是条件推演，不是对未来就业比例的预测。假设机器能够生产大部分产出，而劳动仍是多数人取得收入的前提，旧循环就会断裂。</p>
+          </header>
+
+          <div class="rupture reveal">
+            <article class="loop">
+              <span class="loop-label">工资社会的闭环</span>
+              <div class="loop-step"><span>01</span><strong>人出售劳动</strong></div>
+              <div class="loop-step"><span>02</span><strong>企业支付工资</strong></div>
+              <div class="loop-step"><span>03</span><strong>家庭购买商品</strong></div>
+              <div class="loop-step"><span>04</span><strong>企业获得收入并继续雇佣</strong></div>
+            </article>
+            <div class="rupture-mark" aria-hidden="true">结构断裂</div>
+            <article class="loop broken">
+              <span class="loop-label">高度自动化的错配</span>
+              <div class="loop-step"><span>01</span><strong>机器继续生产</strong></div>
+              <div class="loop-step"><span>02</span><strong>收益流向机器所有者</strong></div>
+              <div class="loop-step"><span>03</span><strong>多数人失去工资索取权</strong></div>
+              <div class="loop-step"><span>04</span><strong>需要仍在，有效需求下降</strong></div>
+            </article>
+          </div>
+
+          <p class="adult-note reveal">成年人不是“变成了小孩”。他们可能不再拥有市场愿意购买的劳动，但仍然是有完整自主权的公民。比“由父母供养”更准确的身份，是技术文明的共同继承人、共同股东与共同治理者。</p>
+
+          <div class="interactive-stage reveal" aria-labelledby="policy-title">
+            <div class="stage-top">
+              <div>
+                <h3 id="policy-title">改变所有权与保障方式，观察循环如何变化</h3>
+                <p>所有结果都是定性方向，不是量化预测。单一政策通常只能修复一段链路。</p>
+              </div>
+              <span class="stage-tag">制度实验</span>
+            </div>
+
+            <div class="policy-controls">
+              <div class="control-group">
+                <span>机器与资本归谁</span>
+                <div class="segmented" role="group" aria-label="选择自动化资本所有权">
+                  <button type="button" data-ownership="concentrated" aria-pressed="true">私人集中</button>
+                  <button type="button" data-ownership="transfer" aria-pressed="false">税收转移</button>
+                  <button type="button" data-ownership="shared" aria-pressed="false">共同持有</button>
+                </div>
+              </div>
+              <div class="control-group">
+                <span>基本生活怎样取得</span>
+                <div class="segmented" role="group" aria-label="选择基本生活保障方式">
+                  <button type="button" data-access="wage" aria-pressed="true">仍靠工资</button>
+                  <button type="button" data-access="cash" aria-pressed="false">现金保障</button>
+                  <button type="button" data-access="services" aria-pressed="false">服务加分红</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="policy-flow" aria-live="polite">
+              <div class="policy-node"><span>01</span><strong id="policy-owner">少数资本所有者</strong><p>控制机器、数据与投资</p></div>
+              <div class="policy-node"><span>02</span><strong id="policy-return">自动化收益集中</strong><p>产出与索取权分离</p></div>
+              <div class="policy-node"><span>03</span><strong id="policy-household">家庭仍依赖工资</strong><p>劳动需求下降时收入断裂</p></div>
+              <div class="policy-node"><span>04</span><strong id="policy-market">有效需求收缩</strong><p>有需要，不一定能购买</p></div>
+            </div>
+
+            <div class="signal-grid" aria-label="制度结果的定性方向">
+              <div class="signal"><span>基本可及性 <strong id="signal-access-label">低</strong></span><div class="signal-track"><div class="signal-fill" id="signal-access" style="--level: 0.24"></div></div></div>
+              <div class="signal"><span>有效需求 <strong id="signal-demand-label">低</strong></span><div class="signal-track"><div class="signal-fill" id="signal-demand" style="--level: 0.24"></div></div></div>
+              <div class="signal"><span>个人选择 <strong id="signal-choice-label">低</strong></span><div class="signal-track"><div class="signal-fill" id="signal-choice" style="--level: 0.24"></div></div></div>
+              <div class="signal"><span>权力集中风险 <strong id="signal-power-label">高</strong></span><div class="signal-track"><div class="signal-fill" id="signal-power" style="--level: 0.88"></div></div></div>
+            </div>
+
+            <div class="policy-reading" aria-live="polite">
+              <p id="policy-reading">生产能力仍在，但多数人取得产出的资格继续依赖逐渐稀缺的岗位。企业也会面对购买力不足，社会矛盾从“做不出来”转向“谁有权拿到”。</p>
+              <div class="policy-risk">
+                <span>这个组合的薄弱点</span>
+                <strong id="policy-risk">机器所有权、收入和政治影响力同时集中</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="mechanisms" data-chapter>
+          <header class="chapter-head reveal">
+            <div>
+              <span class="chapter-number">06 / MECHANISMS</span>
+              <h2>没有一个按钮能同时解决收入、服务、权力与意义</h2>
+            </div>
+            <p class="chapter-summary">每种机制修复一段链路，也引入自己的失败路径。稳健方案必须组合，而不是把一种工具当成完整制度。</p>
+          </header>
+
+          <div class="mechanism-list reveal">
+            <article class="mechanism">
+              <span class="mechanism-index">01</span>
+              <h3>全民基本服务</h3>
+              <p><strong>解决什么</strong>让医疗、教育、基本住房与能源不再完全取决于就业。</p>
+              <p><strong>失败路径</strong>没有使用者监督和退出机制时，可能形成低质量、僵化的行政供给。</p>
+            </article>
+            <article class="mechanism">
+              <span class="mechanism-index">02</span>
+              <h3>基本收入或社会分红</h3>
+              <p><strong>解决什么</strong>维持选择权与有效需求，使收入不再完全依赖岗位。</p>
+              <p><strong>失败路径</strong>住房等供给受限或存在垄断时，现金可能被租金与涨价吸收。</p>
+            </article>
+            <article class="mechanism">
+              <span class="mechanism-index">03</span>
+              <h3>社会财富基金与共同持股</h3>
+              <p><strong>解决什么</strong>让机器收益从源头成为公民的资产回报，而不只是事后救济。</p>
+              <p><strong>失败路径</strong>谁管理公共资产、怎样投资和怎样防止内部人控制，决定它是否真是共同所有。</p>
+            </article>
+            <article class="mechanism">
+              <span class="mechanism-index">04</span>
+              <h3>缩短工时与分享岗位</h3>
+              <p><strong>解决什么</strong>在过渡期把仍然必要的人类劳动分给更多人，同时增加自由时间。</p>
+              <p><strong>失败路径</strong>如果劳动需求接近于零，它只能缓解分配，不能创造足够岗位。</p>
+            </article>
+            <article class="mechanism">
+              <span class="mechanism-index">05</span>
+              <h3>公共贡献与社会认可</h3>
+              <p><strong>解决什么</strong>让照料、学习、研究、创作和社区治理获得结构、资源与认可。</p>
+              <p><strong>失败路径</strong>一旦与生存资格绑定，就可能退化成强迫劳动和为了岗位而制造的无效任务。</p>
+            </article>
+            <article class="mechanism">
+              <span class="mechanism-index">06</span>
+              <h3>市场保留在选择层</h3>
+              <p><strong>解决什么</strong>对非必需、仍然稀缺且偏好多样的商品，保留价格反馈与分散试错。</p>
+              <p><strong>失败路径</strong>必须约束垄断、外部性以及财富直接转化为政治支配。</p>
+            </article>
+          </div>
+
+          <div class="stack-answer reveal">
+            <div>
+              <p class="eyebrow">A robust stack</p>
+              <h3>更稳健的组合，不是彻底废除货币</h3>
+            </div>
+            <ol class="stack-steps">
+              <li>基本生存按公民权利保障，不再以是否被市场雇佣为前提。</li>
+              <li>公民通过社会基金、合作社或公共持股分享一部分自动化资本收益。</li>
+              <li>货币继续配置非必需、仍然稀缺并且需要个人选择的商品。</li>
+              <li>缩短必要劳动时间，让照料、学习、创造与公共参与不再被视为“没有工作”。</li>
+              <li>所有控制机器、数据和基础设施的人，都必须面对透明、监督、申诉与更换机制。</li>
+            </ol>
+          </div>
+
+          <div class="final-thesis reveal">
+            <p>最可能被废弃的，不是货币，而是“必须先出售劳动，才有资格生存”。</p>
+            <p>技术可以减少稀缺，却不会自动决定产出归谁，也不会自动产生意义。后工作社会首先是一个所有权与政治权利问题，其次才是发多少钱的问题。</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="report-footer">
+      <div class="footer-inner">
+        <div>
+          <p class="eyebrow">Method & boundary</p>
+          <h2>这是一张机制地图，不是一份未来预言。</h2>
+        </div>
+        <div class="footer-meta">
+          <p>生成日期：<time datetime="2026-08-09">2026 年 8 月 9 日</time></p>
+          <p>方法：基于政治经济学中的所有权、资源配置、有效需求、公共品与权力约束等基础概念，构造定性比较与思想实验。</p>
+          <p>边界：页面不预测自动化将在何时消灭多少岗位；交互条形仅表达因果方向，不是实证评分。资本主义、社会主义及其混合制度都存在多个现实变体。</p>
+          <p>前置阅读：<a href="/reports/2026/07/money-labor-and-attention/">钱、劳动与注意力</a></p>
+          <p><a href="/reports/">返回公开报告库</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const all = (selector, root = document) => [...root.querySelectorAll(selector)];
+        const setPressed = (buttons, active) => {
+          buttons.forEach((button) => button.setAttribute("aria-pressed", String(button === active)));
+        };
+
+        const cases = {
+          pricing: {
+            verdict: "商业问题",
+            explanation: "买卖双方可以比较价格、拒绝购买或选择替代品；在真实竞争和充分信息存在时，主要由交换机制处理。"
+          },
+          privacy: {
+            verdict: "政治问题",
+            explanation: "数据收集会影响未充分理解合同的人，并产生长期、跨平台和群体性后果。个人点击同意不足以决定整个社会的隐私边界。"
+          },
+          monopoly: {
+            verdict: "商业 + 政治",
+            explanation: "平台仍在提供商品与交易，但一旦控制基础入口、缺少真实替代者，它就在事实上制定别人不得不接受的规则。"
+          },
+          health: {
+            verdict: "政治决定底线",
+            explanation: "哪些医疗应当按成员权利保障、由谁共同承担，是集体规则；底线确定以后，采购、服务和运营仍可采用商业机制。"
+          }
+        };
+
+        const caseButtons = all("[data-case]");
+        caseButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setPressed(caseButtons, button);
+            const current = cases[button.dataset.case];
+            document.querySelector("#case-verdict").textContent = current.verdict;
+            document.querySelector("#case-explanation").textContent = current.explanation;
+          });
+        });
+
+        const systems = {
+          capital: {
+            ownership: ["私人资本", 0.12],
+            allocation: ["市场与利润", 0.18],
+            income: ["工资与资本回报", 0.2],
+            guarantee: ["依赖再分配", 0.34],
+            reading: "真实竞争存在时，分散的价格信号允许快速试错；但机器收益首先归所有者，劳动需求下降时，大多数人的收入资格可能与生产能力脱节。",
+            risk: "资本、市场控制与政治影响力相互强化"
+          },
+          mixed: {
+            ownership: ["私人 + 公共", 0.52],
+            allocation: ["市场 + 公共规则", 0.48],
+            income: ["工资、资产与转移", 0.5],
+            guarantee: ["公共底线", 0.66],
+            reading: "市场承担大量日常配置，公共制度提供社会保险、服务和竞争约束。它的结果取决于公共底线能否跟上技术变化，以及资本是否能够俘获规则。",
+            risk: "公共承诺不足，或私人利益反过来控制监管"
+          },
+          social: {
+            ownership: ["公共、集体与劳动者", 0.82],
+            allocation: ["公共目标 + 市场反馈", 0.68],
+            income: ["成员权、劳动与共同收益", 0.72],
+            guarantee: ["直接保障", 0.88],
+            reading: "共同所有可以让自动化收益直接服务成员，而不必先经过失业再救济。但制度成败取决于代表机制、信息反馈与控制者能否被公开纠错。",
+            risk: "行政控制者缺少竞争、退出和问责"
+          }
+        };
+
+        const systemAxis = {
+          ownership: ["#axis-ownership-label", "#axis-ownership"],
+          allocation: ["#axis-allocation-label", "#axis-allocation"],
+          income: ["#axis-income-label", "#axis-income"],
+          guarantee: ["#axis-guarantee-label", "#axis-guarantee"]
+        };
+        const systemButtons = all("[data-system]");
+        systemButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setPressed(systemButtons, button);
+            const current = systems[button.dataset.system];
+            Object.entries(systemAxis).forEach(([key, selectors]) => {
+              document.querySelector(selectors[0]).textContent = current[key][0];
+              document.querySelector(selectors[1]).style.setProperty("--level", current[key][1]);
+            });
+            document.querySelector("#system-reading").textContent = current.reading;
+            document.querySelector("#system-risk").textContent = current.risk;
+          });
+        });
+
+        const threats = {
+          ordinary: {
+            identity: "内部群体",
+            cooperation: "局部交换",
+            dissent: "通常开放",
+            risk: "内耗与碎片化",
+            explanation: "没有压倒性的共同目标时，人们会重新关注内部地位、资源和规则分配；这不等于社会必然分裂，只是矛盾不再被外部生存问题覆盖。"
+          },
+          real: {
+            identity: "共同体成员",
+            cooperation: "收益迅速对齐",
+            dissent: "容易被延后",
+            risk: "牺牲分配不公",
+            explanation: "可核验的共同威胁会提高合作收益并压低内部分歧的重要性。但如果风险与牺牲分配不均，团结会在最需要持续时破裂。"
+          },
+          manufactured: {
+            identity: "被敌我边界定义",
+            cooperation: "服从多于协商",
+            dissent: "被视作背叛",
+            risk: "替罪羊与权力扩张",
+            explanation: "当敌人主要由宣传维持时，团结可能成为权力工具：复杂的内部问题被归因给外部对象，领导者借紧急状态减少监督。"
+          }
+        };
+
+        const threatButtons = all("[data-threat]");
+        threatButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setPressed(threatButtons, button);
+            const current = threats[button.dataset.threat];
+            document.querySelector("#threat-identity").textContent = current.identity;
+            document.querySelector("#threat-cooperation").textContent = current.cooperation;
+            document.querySelector("#threat-dissent").textContent = current.dissent;
+            document.querySelector("#threat-risk").textContent = current.risk;
+            document.querySelector("#threat-explanation").textContent = current.explanation;
+          });
+        });
+
+        const ownershipModels = {
+          concentrated: {
+            owner: "少数资本所有者",
+            returns: "自动化收益集中",
+            accessBoost: 0,
+            demandBoost: 0,
+            choiceBoost: 0,
+            power: 0.88,
+            summary: "生产能力仍在，但机器收益与多数人的索取权分离。",
+            risk: "机器所有权、收入和政治影响力同时集中"
+          },
+          transfer: {
+            owner: "私人资本 + 公共税制",
+            returns: "部分收益再分配",
+            accessBoost: 0.1,
+            demandBoost: 0.12,
+            choiceBoost: 0.08,
+            power: 0.65,
+            summary: "私人部门继续决定大部分投资，公共税制把部分收益转回家庭。",
+            risk: "税基迁移、规则游说与转移支付的政治脆弱性"
+          },
+          shared: {
+            owner: "公民基金与共同持有者",
+            returns: "收益在源头社会化",
+            accessBoost: 0.18,
+            demandBoost: 0.18,
+            choiceBoost: 0.12,
+            power: 0.42,
+            summary: "公民以共同资产持有者身份分享机器收益，而不只是等待事后救济。",
+            risk: "公共资产管理者被内部人控制，名义共同所有失去实质"
+          }
+        };
+
+        const accessModels = {
+          wage: {
+            household: "家庭仍依赖工资",
+            market: "有效需求收缩",
+            access: 0.24,
+            demand: 0.24,
+            choice: 0.24,
+            reading: "多数人取得产出的资格继续依赖逐渐稀缺的岗位。企业也会面对购买力不足，社会矛盾从“做不出来”转向“谁有权拿到”。",
+            risk: "劳动需求下降时，生存资格随岗位一起消失"
+          },
+          cash: {
+            household: "家庭获得现金权利",
+            market: "购买力重新进入市场",
+            access: 0.64,
+            demand: 0.76,
+            choice: 0.82,
+            reading: "现金把选择权交给个人，并修复有效需求；但它没有自动增加稀缺住房、医疗等供给，也没有改变资本控制权。",
+            risk: "供给受限时，现金被租金、涨价或垄断利润吸收"
+          },
+          services: {
+            household: "基本服务 + 社会分红",
+            market: "生存与选择分层",
+            access: 0.9,
+            demand: 0.68,
+            choice: 0.67,
+            reading: "生存必需品按成员权保障，分红保留个人选择，市场继续配置非必需稀缺品。它同时要求稳定供给和可问责的公共治理。",
+            risk: "公共服务缺乏质量、选择与使用者监督"
+          }
+        };
+
+        let selectedOwnership = "concentrated";
+        let selectedAccess = "wage";
+        const levelLabel = (value) => value >= 0.78 ? "高" : value >= 0.52 ? "中" : "低";
+        const updatePolicy = () => {
+          const ownership = ownershipModels[selectedOwnership];
+          const access = accessModels[selectedAccess];
+          const accessLevel = Math.min(1, access.access + ownership.accessBoost);
+          const demandLevel = Math.min(1, access.demand + ownership.demandBoost);
+          const choiceLevel = Math.min(1, access.choice + ownership.choiceBoost);
+          const powerLevel = ownership.power;
+          const signals = {
+            access: accessLevel,
+            demand: demandLevel,
+            choice: choiceLevel,
+            power: powerLevel
+          };
+
+          document.querySelector("#policy-owner").textContent = ownership.owner;
+          document.querySelector("#policy-return").textContent = ownership.returns;
+          document.querySelector("#policy-household").textContent = access.household;
+          document.querySelector("#policy-market").textContent = access.market;
+          document.querySelector("#policy-reading").textContent = `${ownership.summary}${access.reading}`;
+          document.querySelector("#policy-risk").textContent = `${access.risk}；同时要防止${ownership.risk}`;
+
+          Object.entries(signals).forEach(([key, value]) => {
+            document.querySelector(`#signal-${key}`).style.setProperty("--level", value);
+            document.querySelector(`#signal-${key}-label`).textContent = levelLabel(value);
+          });
+        };
+
+        const ownershipButtons = all("[data-ownership]");
+        ownershipButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            selectedOwnership = button.dataset.ownership;
+            setPressed(ownershipButtons, button);
+            updatePolicy();
+          });
+        });
+
+        const accessButtons = all("[data-access]");
+        accessButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            selectedAccess = button.dataset.access;
+            setPressed(accessButtons, button);
+            updatePolicy();
+          });
+        });
+
+        document.querySelector("#print-report").addEventListener("click", () => window.print());
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealItems = all(".reveal");
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+          revealItems.forEach((item) => item.classList.add("is-visible"));
+        } else {
+          const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          }, { rootMargin: "0px 0px -10%", threshold: 0.08 });
+          revealItems.forEach((item) => revealObserver.observe(item));
+        }
+
+        const navLinks = all(".chapter-nav a");
+        const chapters = all("[data-chapter]");
+        if ("IntersectionObserver" in window) {
+          const chapterObserver = new IntersectionObserver((entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (!visible) return;
+            navLinks.forEach((link) => {
+              const current = link.getAttribute("href") === `#${visible.target.id}`;
+              if (current) link.setAttribute("aria-current", "true");
+              else link.removeAttribute("aria-current");
+            });
+          }, { rootMargin: "-18% 0px -62%", threshold: [0, 0.12, 0.3] });
+          chapters.forEach((chapter) => chapterObserver.observe(chapter));
+        }
+
+        updatePolicy();
+      })();
+    </script>
+  </body>
+</html>
