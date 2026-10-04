@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hypit 是什么：一个给 Claude Code / Codex 使用的开源 AI 短视频生产系统，用 SVML 把爆款视频拆成可复用、可批量变体的工作流。定位、原理、成本、许可证、风险与适用场景。" />
+    <meta name="keywords" content="Hypit, hypit-ai, SVML, AI 视频, 爆款复刻, 视频克隆, Claude Code skill, Codex, Seedance, GPT Image, WhisperX, HypiHub, UGC 广告, TikTok" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#1f2328" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+    <title>Hypit 产品调研</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f5f1; --card: #fffefb; --ink: #1f2328; --muted: #5f6368;
+        --line: #d8d5cc; --accent: #c2410c; --accent-soft: #fbe3d6;
+        --good: #166534; --bad: #9f1239;
+        --sans: "Avenir Next", "SF Pro Display", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        --mono: "SFMono-Regular", Menlo, Consolas, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #16181b; --card: #1e2125; --ink: #e8e6e1; --muted: #a2a5aa; --line: #34383d; --accent: #fb923c; --accent-soft: #3a2418; --good: #4ade80; --bad: #fb7185; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+      main { max-width: 920px; margin: 0 auto; padding: 32px 16px 80px; }
+      a { color: var(--accent); }
+      .back { font-size: 14px; text-decoration: none; }
+      .eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 28px 0 4px; }
+      h1 { font-size: clamp(28px, 6vw, 44px); line-height: 1.15; margin: 0 0 12px; }
+      h2 { font-size: 22px; margin: 44px 0 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+      .meta { color: var(--muted); font-size: 14px; }
+      .verdict { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 16px 18px; border-radius: 6px; margin: 24px 0; font-size: 17px; }
+      .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 20px 0; }
+      .stat { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+      .stat b { display: block; font-size: 24px; }
+      .stat span { color: var(--muted); font-size: 13px; }
+      .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0; }
+      .flow div { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; font-size: 14px; }
+      .flow i { color: var(--muted); font-style: normal; }
+      .table-wrap { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--card); }
+      th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+      th { white-space: nowrap; color: var(--muted); font-weight: 600; }
+      code { font-family: var(--mono); font-size: .9em; background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+      .pros li::marker { color: var(--good); }
+      .cons li::marker { color: var(--bad); }
+      .note { color: var(--muted); font-size: 14px; }
+      footer { margin-top: 56px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/reports/">← 报告库</a>
+      <p class="eyebrow">AI 视频 · 产品调研</p>
+      <h1>Hypit：让 AI 编程助手“复刻”爆款短视频</h1>
+      <p class="meta">生成日期 2026-10-04 · 调研对象 <a href="https://github.com/hypit-ai/hypit" rel="noreferrer">github.com/hypit-ai/hypit</a> · 数据截至当日 GitHub API 回读</p>
+
+      <div class="verdict"><b>一句话：</b>Hypit 是一个开源的 AI 短视频生产系统，以 skill 形式装进 Claude Code / Codex。把一条爆款视频丢给它，agent 会把视频拆成可编辑的“工作流”（素材、字幕、B-roll、特效、配乐），再换人、换词、换产品、换语言，批量生成同结构的变体。主要客户是投流广告、TikTok 带货、AI UGC 和营销号矩阵。</div>
+
+      <div class="stats">
+        <div class="stat"><b>19.2k</b><span>Stars（2026-07-29 建仓）</span></div>
+        <div class="stat"><b>2.2k</b><span>Forks</span></div>
+        <div class="stat"><b>v0.2.17</b><span>最新版本 · 2026-10-01</span></div>
+        <div class="stat"><b>~$1</b><span>官方示例单条成本（模型费）</span></div>
+      </div>
+
+      <h2 id="what">它到底做什么</h2>
+      <p>官方口号是 “Clone any viral video with AI agents — 1 command, 100 variants, 100M views”。拆开看是三件事：</p>
+      <ol>
+        <li><b>拆解：</b>输入参考视频，agent 用 WhisperX 做逐词对齐、识别画面结构（谁在说话、何时切镜、字幕样式、音效触发点），写出一份 SVML 源文件。</li>
+        <li><b>改写：</b>在 SVML 里替换主持人、台词、产品、语言、画幅；没改的部分直接复用。</li>
+        <li><b>生成与渲染：</b>需要新画面时调用视频/图像/语音模型（如 Seedance、GPT Image、ElevenLabs），然后在本地用多个无头 Chromium 并发渲染，ffmpeg 合成成片。</li>
+      </ol>
+      <p>不一定要从参考视频开始：也可以从模板起步，或直接口头描述想要的视频。纯字幕、动效图形、代码渲染的视频可以完全不调用生成模型。</p>
+
+      <div class="flow"><div>参考视频 / 描述</div><i>→</i><div>Agent 写 SVML</div><i>→</i><div>换脸·换词·换 B-roll</div><i>→</i><div>调用模型补素材</div><i>→</i><div>Chromium 并发渲染</div><i>→</i><div>N 条变体</div></div>
+
+      <h2 id="svml">核心设计：SVML，以“词”为时间轴</h2>
+      <p>SVML（Speech Video Markup Language）是 Hypit 自己的视频标记语言，GitHub topics 里把项目归为 <code>compiler</code>、<code>dsl</code>、<code>programming-language</code>。关键点是<b>所有元素锚定在台词的词上，而不是秒数上</b>：B-roll 跟着某句话出现，字幕跟着某个词高亮。好处是改一句台词或换语言后，时间线会自动重新排布，不用手动对时间——这正是“一套结构批量出 100 条变体”能成立的技术前提。</p>
+      <p>仓库是 TypeScript monorepo，<code>packages/</code> 下有 100 多个包：编译器、时间线、字幕、排行榜/采访/弹幕贴纸等可插拔组件、Studio 预览界面，以及十几个模型 Provider（Seedance、GPT Image、Nano Banana、Wan、PixVerse、Grok Imagine、MiniMax、ElevenLabs、Fish Audio、WhisperX、火山引擎抠图等）。</p>
+
+      <h2 id="examples">官方示例</h2>
+      <div class="table-wrap"><table>
+        <tr><th>类型</th><th>内容</th><th>官方标注成本</th></tr>
+        <tr><td>UGC 排行榜</td><td>20 秒足球 tier list，附 3 个克隆：换主播、翻转排名、把球员换成科技创始人</td><td>$1.15</td></tr>
+        <tr><td>播客切片</td><td>18 秒分屏采访卖肌酸，克隆成 3 个不同广告垂类</td><td>$1.07</td></tr>
+        <tr><td>街头采访</td><td>26 秒采访，带人脸追踪字幕；克隆含西班牙语版本</td><td>$1.09</td></tr>
+      </table></div>
+      <p class="note">成本是官方自报的模型调用费，不含 Claude Code / Codex 本身的 token 费用。</p>
+
+      <h2 id="business">商业模式与成本</h2>
+      <ul>
+        <li><b>软件本身免费：</b>不收席位费、不按渲染次数收费、不加水印。</li>
+        <li><b>钱花在模型上：</b>官方推荐自家托管服务 <b>HypiHub</b>（积分制），也接入 Monid、HiAPI、Pollo、TokenDance、BeatAPI 等模型网关（README 里多为带邀请码/返佣的链接），也可以接自己的 API 或本地模型。</li>
+        <li><b>典型“开源引流 + 托管服务变现”</b>：工具免费，模型调用走 HypiHub 或合作网关分成。</li>
+      </ul>
+
+      <h2 id="license">许可证：不是标准 Apache 2.0</h2>
+      <p>LICENSE 是“修改版 Apache 2.0 + 附加条件”（GitHub 显示为 NOASSERTION），结构类似 Dify 的许可证：</p>
+      <ul>
+        <li>✅ 自己公司内部使用、作为自家应用的渲染后端：可以商用。</li>
+        <li>❌ 未经书面授权，不能拿它做<b>多租户 SaaS</b>（两个以上外部主体各有独立工作区就算，收不收费都算）。</li>
+        <li>❌ 不能去掉 CLI、运行报告等用户可见界面上的 Hypit 名称、Logo 和版权信息。</li>
+        <li>✅ 生成的视频归使用者所有，许可证对成片不设限制；但第三方模型生成的内容另受该服务条款约束。</li>
+      </ul>
+
+      <h2 id="signals">热度与质量信号</h2>
+      <ul>
+        <li><b>增长极快：</b>2026-07-29 建仓；第三方目录在 9/17 记录约 6.7k stars，到 10/04 已 19.2k，并拿到 Trendshift 日榜第一。</li>
+        <li><b>核心团队集中：</b>前两名贡献者共约 1,365 次提交，第三名仅 15 次，实际上是一个小团队在推进。</li>
+        <li><b>迭代密集：</b>9 月下旬到 10 月初几乎隔天发一个 0.2.x 版本。</li>
+        <li><b>Issue 反映的真实问题</b>（2026-09 至 10 月）：HypiHub 积分扣费报 402“余额不足”而实际余额充足（#367、#368 仍开着）、模型目录接口不可达（#369）、新环境 Chromium 未下载导致无法渲染（#222）、ffmpeg 6/7 版本兼容问题（#315、#343）、Windows/WSL 路径问题。另有本地 HTML 快照可读取目录外文件、凭证路径可能越出状态目录等安全类修复（#311、#309，均已关闭）。</li>
+        <li><b>独立评价稀少：</b>HN 没有相关讨论；能搜到的多是 YouTube/Facebook 搬运介绍和安装教程，缺少长期用户的独立反馈。</li>
+      </ul>
+
+      <h2 id="tradeoffs">优点与风险</h2>
+      <div class="table-wrap"><table>
+        <tr><th>优点</th><td><ul class="pros">
+          <li>产出的是<b>可编辑、可重复运行的工作流</b>，而不是一次性成片，适合 A/B 测试和广告素材疲劳后的快速换开头。</li>
+          <li>以词为锚的时间轴让改台词、多语言本地化成本很低。</li>
+          <li>模型可插拔，不绑定单一供应商；不需要生成的部分可以零模型费。</li>
+          <li>以 skill 形式运行在已有的 Claude Code / Codex 里，没有新界面要学。</li>
+        </ul></td></tr>
+        <tr><th>风险</th><td><ul class="cons">
+          <li><b>版权与平台合规：</b>核心卖点是“克隆别人的爆款”，换脸、换声、仿冒结构容易碰到肖像权、版权和平台 AI 内容标注规则。许可证只说成片归你，不替你承担这些风险。</li>
+          <li><b>还很早期：</b>0.2.x 版本，托管计费链路有未关闭的 bug，环境依赖（Node 22.15+、pnpm、Chromium、ffmpeg 版本）比较脆弱。</li>
+          <li><b>真实成本高于 ~$1：</b>官方数字不含 agent 的 token 消耗，也不含出错重跑的费用。</li>
+          <li><b>商业化受限：</b>想把它做成对外的多租户服务需要商业授权。</li>
+          <li><b>热度≠口碑：</b>star 增速很快，但缺少独立的长期使用评价，判断需要自己做小规模试用。</li>
+        </ul></td></tr>
+      </table></div>
+
+      <h2 id="fit">适合谁</h2>
+      <ul>
+        <li><b>适合：</b>做投流广告、TikTok Shop 带货、AI UGC、营销矩阵，需要“一个跑通的结构 × 大量变体”的团队；已经在用 Claude Code / Codex 的个人创作者。</li>
+        <li><b>不太适合：</b>追求原创叙事、精剪质感的内容；需要稳定生产 SLA 的团队（建议先观望到 1.0）；想直接拿来做对外 SaaS 的公司。</li>
+        <li><b>建议试用路径：</b><code>npx skills add hypit-ai/hypit -g</code>，先用不调用生成模型的模板或代码渲染视频验证流程，再用自有素材小额测试模型费用。</li>
+      </ul>
+
+      <footer>
+        <p><b>来源与方法：</b>GitHub REST API（仓库元数据、贡献者、releases、issues，2026-10-04 回读）；仓库 README、README.zh-CN、LICENSE 原文；HN Algolia 搜索（无相关讨论）；Tavily 网页搜索（第三方目录 aiagentskills.net、YouTube、Reddit r/coolgithubprojects、addrom.com 教程）。示例成本为官方自报，未实际运行验证。</p>
+        <p><a href="/reports/">返回报告库</a></p>
+      </footer>
+    </main>
+  </body>
+</html>

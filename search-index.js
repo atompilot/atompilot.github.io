@@ -1,5 +1,21 @@
 window.ATOM_SEARCH_INDEX = [
   {
+    title: 'Hypit：让 AI 编程助手复刻爆款短视频',
+    type: 'AI 视频 · 产品调研',
+    summary: '开源 AI 短视频生产系统，Claude Code / Codex skill；用 SVML 以词为锚拆解爆款视频，批量生成换人、换词、换产品的变体。',
+    keywords: 'Hypit hypit-ai SVML AI视频 爆款复刻 视频克隆 Claude Code skill Codex Seedance HypiHub UGC 广告 TikTok',
+    url: '/reports/2026/10/hypit-ai-video-clone/',
+    date: '2026-10-04'
+  },
+  {
+    title: 'SVML 是什么',
+    type: '报告内主题 · Hypit',
+    summary: 'Hypit 的视频标记语言，所有元素锚定台词的词而非秒数，改台词或换语言时时间线自动重排。',
+    keywords: 'SVML Speech Video Markup Language 视频DSL 逐词对齐 WhisperX 时间轴',
+    url: '/reports/2026/10/hypit-ai-video-clone/#svml',
+    date: '2026-10-04'
+  },
+  {
     title: '当工作不再必要：社会如何继续合作',
     type: '社会机制 · 互动学习',
     summary: '从商业、政治、制度与货币一路推演到自动化社会，比较所有权、基本保障、社会分红与市场保留怎样重新连接生产和分配。',
