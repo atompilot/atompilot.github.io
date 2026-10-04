@@ -8,6 +8,14 @@ window.ATOM_SEARCH_INDEX = [
     date: '2026-10-04'
   },
   {
+    title: 'Hypit 的技术方案与开源边界',
+    type: '报告内主题 · Hypit',
+    summary: '开源部分覆盖 DSL、编译执行、组件、模型适配和制作知识库；渲染用 HeyGen HyperFrames，闭源的只有 HypiHub 计费网关。',
+    keywords: 'Hypit 技术方案 开源 闭源 HyperFrames HeyGen HypiHub 核心技术 壁垒 Puppeteer 渲染',
+    url: '/reports/2026/10/hypit-ai-video-clone/#core',
+    date: '2026-10-04'
+  },
+  {
     title: 'SVML 是什么',
     type: '报告内主题 · Hypit',
     summary: 'Hypit 的视频标记语言，所有元素锚定台词的词而非秒数，改台词或换语言时时间线自动重排。',

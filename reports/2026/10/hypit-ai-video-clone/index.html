@@ -81,6 +81,35 @@
       <p>SVML（Speech Video Markup Language）是 Hypit 自己的视频标记语言，GitHub topics 里把项目归为 <code>compiler</code>、<code>dsl</code>、<code>programming-language</code>。关键点是<b>所有元素锚定在台词的词上，而不是秒数上</b>：B-roll 跟着某句话出现，字幕跟着某个词高亮。好处是改一句台词或换语言后，时间线会自动重新排布，不用手动对时间——这正是“一套结构批量出 100 条变体”能成立的技术前提。</p>
       <p>仓库是 TypeScript monorepo，<code>packages/</code> 下有 100 多个包：编译器、时间线、字幕、排行榜/采访/弹幕贴纸等可插拔组件、Studio 预览界面，以及十几个模型 Provider（Seedance、GPT Image、Nano Banana、Wan、PixVerse、Grok Imagine、MiniMax、ElevenLabs、Fish Audio、WhisperX、火山引擎抠图等）。</p>
 
+      <h2 id="stack">技术方案（源码核实，commit 7f730ab）</h2>
+      <p>浅克隆仓库后逐层核对，整条链路是“agent 写源码 → 编译成依赖图 → 调模型补素材 → 编译成 HTML → 无头浏览器逐帧渲染”：</p>
+      <div class="table-wrap"><table>
+        <tr><th>层</th><th>做什么</th><th>谁的代码</th></tr>
+        <tr><td>Skill 知识库</td><td><code>skills/hypit/</code> 下约 640KB 的 Markdown：系统概念、SVML 语法、字幕/音效/镜头制作手册、克隆参考视频的方法。教 agent 怎么“读懂”一条爆款并写出 SVML</td><td>Hypit，开源</td></tr>
+        <tr><td>源码格式</td><td>SVML（XML 风格，<code>&lt;script&gt;</code> 里写台词并用 <code>@{标记}</code> 圈出语义片段）+ SVS 数据/配方文件 + SVRun 运行记录</td><td>Hypit，开源</td></tr>
+        <tr><td>编译与执行</td><td>markup / temporal-markup / elaborator / visual-ir / timeline / runtime 等包：把源码展开成带类型的依赖图，按需执行、缓存结果（SQLite / 本地 / S3）</td><td>Hypit，开源</td></tr>
+        <tr><td>组件</td><td>字幕、排行榜、评论贴纸、分屏、文字动效等可插拔组件，每个配套 Studio 预览插件</td><td>Hypit，开源</td></tr>
+        <tr><td>模型 Provider</td><td>10 个网关 Provider + 十几个模型定义包，统一封装图像、视频、语音、转写请求</td><td>Hypit 写的客户端，开源；模型本身是第三方</td></tr>
+        <tr><td>本地服务</td><td>WhisperX 逐词对齐、OpenCV 图像处理、yt-dlp 下载，用 Python 包装成本地服务</td><td>Hypit 包装，底层是开源项目</td></tr>
+        <tr><td>渲染引擎</td><td>把视觉中间表示编译成 HTML，交给 <code>@hyperframes/engine</code> / <code>producer</code>，用 Puppeteer 驱动无头 Chromium 并发截帧，ffmpeg 合成</td><td><b>HeyGen 开源的 HyperFrames</b>（Apache-2.0，5.6 万 star，npm 月下载约 72 万）</td></tr>
+        <tr><td>HypiHub</td><td>托管模型网关：OAuth 登录、积分计费，接口 <code>hypit.ai/v1</code>，客户端只看到图像、图像编辑、视频、语音、转写五类操作</td><td>Hypit，<b>闭源服务端</b></td></tr>
+      </table></div>
+      <p>规模：约 14.3 万行 TypeScript，100 多个包，213 个测试文件。最大的包是 Studio 预览界面（约 1.1 万行）和 CLI（约 6 千行）。</p>
+      <p><b>两个容易误解的地方：</b></p>
+      <ul>
+        <li><b>“克隆”这一步没有写成代码。</b>源码里没有调用任何对话大模型（未找到 Anthropic / OpenAI chat 接口调用）。分析参考视频、判断切镜和笑点、写出 SVML，全部由用户自己的 Claude Code / Codex 按 skill 文档完成，模型费用也由用户承担。</li>
+        <li><b>README 示例里的人脸追踪字幕不是内置功能。</b>采访示例的说明要求 agent 在第一次构建后自行用 Google Video Intelligence、其他检测器或人工观察取人脸框，写成逐帧数据文件。</li>
+      </ul>
+
+      <h2 id="core">开源的部分是它的核心技术吗？</h2>
+      <p><b>基本是。</b>Hypit 自己写出的差异化技术都在仓库里：以词为锚的语义时间轴（SVML）、组件化的编译和执行系统、模型适配层，以及那套教 agent 拍短视频的制作知识库。没有发现被抽走的闭源核心模块。</p>
+      <p>没有开源的部分，以及不属于它的部分：</p>
+      <ul>
+        <li><b>HypiHub 服务端</b>是唯一的闭源件，但从客户端代码看它是模型转发 + 计费网关，不承担编辑和渲染逻辑。服务端内部是否有额外处理无法从仓库验证。</li>
+        <li><b>最“重”的两块不是它的：</b>逐帧渲染用的是 HeyGen 的 HyperFrames，画面和声音靠 Seedance、GPT Image 等第三方模型，“看懂爆款”的智能来自用户自己的 coding agent。</li>
+      </ul>
+      <p><b>所以它的壁垒不在代码，而在：</b>①一套设计得很完整的视频 DSL 和组件生态，先发占位；②沉淀在 skill 里的短视频制作经验；③许可证禁止他人用这套代码做多租户 SaaS，竞争对手不能直接拿去开托管服务；④HypiHub 作为默认推荐入口带来的模型费分成。换句话说：<b>开源的是产品本身，变现靠托管服务和生态入口</b>，这和 Dify 等“开源核心 + 限制商业托管”的模式一致。</p>
+
       <h2 id="examples">官方示例</h2>
       <div class="table-wrap"><table>
         <tr><th>类型</th><th>内容</th><th>官方标注成本</th></tr>
