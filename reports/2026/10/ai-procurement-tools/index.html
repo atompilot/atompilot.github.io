@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>淘宝、闲鱼 AI 采购工具调研</title>
+<meta name="description" content="核对淘宝与闲鱼搜索、比价 MCP 和采购 skill，比较 SKU、运费、二手成色与报价证据，给出可验证的采购清单方案。">
+<meta name="keywords" content="淘宝,闲鱼,采购,比价,AI,MCP,skill,SKU,采购清单,千问">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#172a29;--muted:#546965;--line:#d5dfd8;--bg:#f6f7f1;--accent:#13654c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"PingFang SC",sans-serif;line-height:1.8}main{max-width:1120px;margin:auto;padding:32px 24px 70px}a{color:var(--accent);text-underline-offset:4px}nav{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:20px;font-size:14px}header{padding:52px 0 30px;max-width:860px}.eyebrow{color:var(--muted);letter-spacing:.1em;font-size:13px}h1{font-size:clamp(34px,6vw,64px);line-height:1.2;letter-spacing:-.05em;margin:15px 0 22px}h2{font-size:27px;line-height:1.4;margin-top:44px}h3{font-size:20px;margin:10px 0}p{margin:12px 0}.lead{font-size:21px}.callout{border-left:4px solid var(--accent);padding:16px 22px;background:#e8f0e4;border-radius:0 12px 12px 0}.small{font-size:13px;color:var(--muted)}.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}input,select,button{font:inherit;border:1px solid #b9c8bd;background:white;border-radius:8px;padding:9px 12px}input{flex:1;min-width:170px}button{cursor:pointer}button:hover{background:#e8f0e4}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:white;border:1px solid var(--line);border-radius:13px;padding:23px}.card[hidden]{display:none}.tag{font-size:12px;letter-spacing:.04em;color:var(--accent)}.meta{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin-top:15px}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}.flow div{border-top:3px solid var(--accent);padding:13px;background:#eaf0e7}.flow b{display:block}table{border-collapse:collapse;width:100%;background:white;font-size:14px}td,th{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line)}th{background:#e8eee5}.scroll{overflow:auto}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#172a29;color:#edf4ea;padding:22px;border-radius:10px;font-size:14px}li{margin:7px 0}code{font-size:.92em}footer{border-top:1px solid var(--line);margin-top:45px;padding-top:20px}.sources{font-size:14px}.sources li{overflow-wrap:anywhere}@media(max-width:720px){.grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}main{padding:22px 17px}.lead{font-size:18px}header{padding-top:32px}}@media print{.toolbar,button{display:none}body{background:white}.card{break-inside:avoid}}
+</style>
+</head>
+<body><main>
+<nav><a href="/reports/">← 公开报告库</a><span>2026.10.14 · 工具选型</span></nav>
+<header><p class="eyebrow">AI PROCUREMENT · TAOBAO / GOOFISH</p><h1>让 AI 帮你采购，<br>从搜索走到可信清单。</h1><p class="lead">有相关工具，但本次没有找到经充分验证、同时覆盖淘宝和闲鱼、能直接交付可靠采购清单的完整成品。</p></header>
+<div class="callout"><strong>建议先做小范围验证：</strong>一个采购 skill 负责需求、同规格比较和清单；浏览器负责读取商品页；专用 MCP 通过真实样本后再接入。第一版交付候选与采购建议，由用户决定购买。</div>
+<p class="small">证据范围：官方公告、GitHub README / Issues、GitHub API 当前快照、部分源码静态核对，以及一次 Shopme 公共搜索请求。没有运行上述第三方 MCP，没有使用购物账号验证搜索、价格或交易。源码能力、作者自述、第三方体验和本次实测分别标注。</p>
+
+<section id="ready"><h2>可以直接使用的购物助手</h2>
+<div class="scroll"><table><thead><tr><th>方案</th><th>已证实的定位</th><th>对采购清单的作用与边界</th></tr></thead><tbody>
+<tr><td>千问 App / 淘宝千问购物助手</td><td>阿里官方 2026-05-11 公告：接入淘宝、天猫商品目录，支持对话发现商品、比较与购物服务。</td><td>适合作为淘宝选品入口。本次官方公告没有证明覆盖闲鱼、京东或提供可供个人 Codex 调用的通用购物 MCP；不能据此承诺跨平台清单。<a href="#s1">来源 1</a></td></tr>
+<tr><td>慢慢买</td><td>官网提供全网比价、历史价格等购物助手，并列出淘宝、京东等商城。</td><td>适合补充历史价与促销信息。本次没有核实闲鱼覆盖或可直接使用的官方 MCP；历史价不代替当前所选 SKU 报价。<a href="#s2">来源 2</a></td></tr>
+</tbody></table></div></section>
+
+<section id="tools"><h2>六个相关 MCP / skill 候选</h2><p>“值得验证”表示能力与场景吻合，不表示已在当前账号跑通。可按平台筛选或搜索名称。</p>
+<div class="toolbar"><input id="q" type="search" aria-label="搜索候选工具" placeholder="搜索工具，例如 SKU、闲鱼、模拟"><select id="platform" aria-label="按平台筛选"><option value="all">全部平台</option><option value="taobao">淘宝 / 天猫</option><option value="xianyu">闲鱼</option><option value="multi">多平台</option></select></div><p id="count" class="small" aria-live="polite"></p>
+<div class="grid" id="cards">
+<article class="card" data-platform="taobao"><span class="tag">最贴近采购清单 · 值得验证</span><h3><a href="https://github.com/randunun-eng/taobao-sourcing-mcp">taobao-sourcing-mcp</a></h3><p>带采购 skill；源码有搜索、SKU 与价格关联、评价和 XLSX 导出，能作为淘宝端的实现参考。</p><p><b>优点：</b>SKU 表与商品、评价分表，处理多规格比较。</p><p><b>缺点：</b>仅淘宝 / 天猫；导出的比较表仍需补需求数量、运费和最终推荐。深度价格读取超过 24 个 SKU 会跳过，部分读取失败可能保留原价格，接入时必须记录每个价格的口径。</p><p>开放 Issue #1（2026-08-16）有一位使用者报告核心流程可用，也提出 XLSX 文本注入和依赖兼容问题；这是一条第三方体验，不能代表稳定性。<a href="https://github.com/randunun-eng/taobao-sourcing-mcp/issues/1">查看 Issue</a>。仓库未检出 LICENSE，复制或分发代码前需确认授权。</p><p class="meta">GitHub API：0 stars · 最近推送 2026-07-02<br>检查版本 f38527c68b1d · 源码：src/extract/product.py、src/output/xlsx_writer.py</p></article>
+<article class="card" data-platform="taobao multi"><span class="tag">淘宝 + 京东 · 值得验证</span><h3><a href="https://github.com/HaonanYu123/JD-Taobao-MCP">JD-Taobao-MCP</a></h3><p>本地 Playwright 浏览器工具，搜索和提取商品、店铺、参数、部分评价；源码默认阻止购买、加购等动作。</p><p><b>优点：</b>一次接入可提供淘宝和京东的数据入口；有独立浏览器资料目录。</p><p><b>缺点：</b>不覆盖闲鱼；读取价格字段不等于完成所有 SKU 的匹配与最终到手价确认，仍需采购 skill 组织核对和导出。</p><p class="meta">GitHub API：12 stars · MIT · 最近推送 2026-08-26<br>检查版本 63a4e143ad54 · 源码：extractors/detail.py、safety.py</p></article>
+<article class="card" data-platform="xianyu"><span class="tag">买家搜索 / 询价 · 需加强核对</span><h3><a href="https://github.com/xhjiang1998/xianyu-buyer-mcp">xianyu-buyer-mcp</a></h3><p>搜索标题、价格、商品链接和卖家 ID；提供发送询价、批量询价和读取会话工具。</p><p><b>优点：</b>面向买家，有询价与回复整理入口。</p><p><b>缺点：</b>搜索代码缺价时设为 0；成色、维修史、配件和库存数量没有完成可信核实。发送工具没有独立确认参数，不能将所有工具直接开放给只做调研的采购流程。第一版建议仅开放搜索，询价先生成草稿。</p><p class="meta">GitHub API：0 stars · 最近推送 2026-08-25<br>README 声明 MIT，仓库未检出 LICENSE<br>检查版本 a39b2187188b · 源码：xianyu_buyer/search.py、server.py</p></article>
+<article class="card" data-platform="taobao multi"><span class="tag">远程数据服务 · 本次未跑通</span><h3><a href="https://github.com/shopmeskills/mcp">Shopme cn-ecommerce-search</a></h3><p>免 API key 的客户端，源码将搜索和详情请求发往第三方统一商品数据库；列出的平台是淘宝、天猫、小红书。</p><p><b>优点：</b>接口有结构化商品和 SKU 字段，不要求交出个人购物 Cookie。</p><p><b>缺点：</b>无闲鱼；数据来源、覆盖和刷新情况需要额外核实，查询会发送至第三方服务。</p><p>本次对公开搜索端点发送一条普通关键词请求，返回 HTTP 403；只证明此次访问失败，无法判定是服务权限、请求策略还是网络环境。不能当作当前可用方案推荐。</p><p class="meta">GitHub API：4 stars · MIT · 最近推送 2026-02-20<br>检查版本 81f9813f632a · 源码：shopme-client.ts</p></article>
+<article class="card" data-platform="taobao multi"><span class="tag">联盟 API 路线 · 不作为首版</span><h3><a href="https://github.com/h382110229/price-hunter">Price Hunter</a></h3><p>设计为淘宝联盟、京东联盟、多多进宝的统一搜索、优惠券和比价接口。</p><p><b>优点：</b>平台适配器与商品结构分离，适合参考多源数据模型。</p><p><b>缺点：</b>需要联盟凭据和实际接口权限；不覆盖闲鱼。源码在缺凭据时自动生成模拟商品，不能把安装后的“有结果”当成真实报价。</p><p>若未来验证此路线，必须禁用采购流程中的模拟结果，逐个平台证明真实 API 返回、数据覆盖和所选 SKU 价格；本次未验证。</p><p class="meta">GitHub API：1 star · 最近推送 2026-09-01<br>README 声明 MIT，仓库未检出 LICENSE<br>检查版本 c428245b5336 · 源码：src/engines/base.py</p></article>
+<article class="card" data-platform="taobao"><span class="tag">议价话术参考 · 非完整采集系统</span><h3><a href="https://github.com/likaku/ai-kanjia">ai-kanjia / 爱砍价</a></h3><p>提供议价流程与话术，依赖另一个 taobao-native CLI 和第三方 MCP 获取商品信息。</p><p><b>优点：</b>可参考询价草稿的组织方式。</p><p><b>缺点：</b>检查到的 price_monitor.py 主要记录传入价格、分析本地历史和文本提价，没有独立实现全网商品搜索。不能仅安装这个 skill 就获得淘宝 + 闲鱼比价能力；文中的节省比例未见实测依据。</p><p class="meta">GitHub API：2 stars · LICENSE 为 Apache-2.0，skill 末尾许可文本不同，复用前需核对 · 最近推送 2026-03-28<br>检查版本 4b4c9a0a3828</p></article>
+</div></section>
+
+<section id="design"><h2>推荐的采购 skill 应该怎样工作</h2><p><code>my-procurement</code> 是建议的入口名称，本次未创建或安装。它负责跨平台采购方法，数据读取交给浏览器或经过验证的 MCP。</p>
+<div class="flow"><div><b>01 需求</b>用途、规格、数量、预算、全新 / 二手、交期与收货区域。</div><div><b>02 搜索</b>每项从淘宝、闲鱼等来源找候选；记录覆盖范围。</div><div><b>03 核对</b>指定 SKU、含税口径、包装数量、运费、成色、退换与兼容。</div><div><b>04 清单</b>推荐、备选、待询价、总额与证据时间；购买前复查。</div></div>
+<p><b>第一版主路径：</b>复用现有浏览器工具读取可见商品页，暂不依赖上述新 MCP。优点是能先验证整个采购方法，并保留页面依据；缺点是会遇到登录、验证码和网页变化，尚未实测的账号访问不能承诺无人值守。</p>
+<p><b>后续替换：</b>如果真实样本证明淘宝搜索或 SKU 读取反复需要人工整理，再引入经审查的专用适配器。保持同一份采购清单格式，避免每接入一个平台重新设计输出。</p>
+<p><b>浏览器与 MCP 的共同限制：</b>工具不会自行保证“同款”。标题相似只能作为候选，必须核对型号、接口、尺寸、套装内容和成色。网页推荐排序和样本最低价都不能代表全市场最低价。</p>
+<p>淘宝采购项目作者明确提示自动化访问的账号限制风险，闲鱼买家项目也提示反爬和会话过期。登录与验证码需要用户在浏览器内处理；降低访问频率不能保证账号安全。采购 skill 不应承诺持续无人值守。</p>
+<div class="scroll"><table><thead><tr><th>清单字段</th><th>记录要求</th></tr></thead><tbody>
+<tr><td>物品 / 用途 / 数量</td><td>区分需求件数、每包件数、购买包数；套装列明内含物。</td></tr>
+<tr><td>指定型号 / SKU</td><td>保存商品 ID、SKU 标签或 ID、平台、店铺与商品链接。</td></tr>
+<tr><td>价格 / 运费 / 优惠</td><td>区分标价、所选 SKU 页面价、卖家报价和用户确认的结算价；运费未知不能填零，条件优惠单独列。</td></tr>
+<tr><td>全新 / 二手证据</td><td>卖家描述与已确认事实分开；二手记录维修史、故障、缺件、测试证明和售后待确认项。</td></tr>
+<tr><td>推荐 / 备选 / 待询价</td><td>说明满足哪些要求、为何推荐、什么情况下换备选；关键字段缺失时保持待确认。</td></tr>
+<tr><td>合计与时效</td><td>商品合计按购买单位计算，运费按订单或卖家核对避免重复；显示已知金额与待确认费用，不用未知项计算虚假的完整总价。</td></tr>
+<tr><td>来源与时间</td><td>每条报价附观察时间和可回读链接；报价变化或下架后重新核验。</td></tr>
+</tbody></table></div>
+<p>最终交付三份内容：<b>采购清单</b>（推荐与备选）、<b>候选比价表</b>（包含淘汰理由）、<b>待确认与询价草稿</b>。保存为本地 Markdown / CSV / XLSX；实际报价、聊天和采购记录默认保留本地。</p>
+<pre>示例调用（目标描述，不是已经安装的命令）
+
+/my-procurement
+采购：2 个 USB 摄像头，供 macOS 使用。
+硬要求：UVC、1080p、明确尺寸；数量按单个计算。
+比较淘宝全新与闲鱼二手，总预算和收货区域另行给出。
+交付：推荐清单、备选、含运费估算、型号依据与待确认项。
+仅做搜索和整理；询价消息输出草稿。</pre>
+</section>
+
+<section id="poc"><h2>一次真实采购就能检验的最小实验</h2><ol>
+<li>选择 2–3 种实际要买的物品，至少包含一个多 SKU 商品和一个二手候选。</li>
+<li>每项尽量找 3 个候选，覆盖淘宝与闲鱼；搜索失败或没有合适商品时明确写出缺口，不补模拟结果。</li>
+<li>逐项核对具体 SKU、数量单位与价格来源；二手成色和功能证据缺失时放入待询价。</li>
+<li>输出清单并人工复查。通过标准：链接可回读、规格一致、价格口径明确、计算正确、未知项完整；涉及最终成交价必须有结算或卖家报价依据。</li>
+</ol><p>实验失败时定位具体环节：访问失败、价格提取错误、规格匹配错误或清单计算错误。验证码交回用户处理；没有验证成功的数据入口不能承诺自动完成。</p></section>
+
+<section id="method"><h2>来源与核对方法</h2><p>截至 2026-10-14。star 与最近推送时间来自 GitHub API，仅作规模与活跃度快照，不当作质量评分；README 和 Issues 是作者或使用者的报告。本报告检查了部分源码，没有完成整体安全审计或登录后的端到端验收。</p>
+<ol class="sources">
+<li id="s1"><a href="https://www.alibabagroup.com/en-US/document-1991231293551017984">Alibaba：Qwen 与淘宝完整接入公告，2026-05-11</a></li>
+<li id="s2"><a href="https://manmanbuy.com/">慢慢买官网：比价与历史价格服务</a></li>
+<li><a href="https://github.com/randunun-eng/taobao-sourcing-mcp/blob/f38527c68b1d7ae1f4aba902089b95c83050e799/skill/SKILL.md">淘宝采购 skill 原文与固定版本</a>；<a href="https://github.com/randunun-eng/taobao-sourcing-mcp/blob/f38527c68b1d7ae1f4aba902089b95c83050e799/src/extract/product.py">SKU / 深度价格源码</a>；<a href="https://github.com/randunun-eng/taobao-sourcing-mcp/blob/f38527c68b1d7ae1f4aba902089b95c83050e799/src/output/xlsx_writer.py">XLSX 源码</a></li>
+<li><a href="https://github.com/HaonanYu123/JD-Taobao-MCP/blob/63a4e143ad54d1d7ea9d7fa85615283beaaf3f1d/jd_taobao_mcp/safety.py">JD-Taobao 默认操作限制源码</a></li>
+<li><a href="https://github.com/xhjiang1998/xianyu-buyer-mcp/blob/a39b2187188beb51f36e4fec2ab59d84790e1daf/xianyu_buyer/search.py">闲鱼买家搜索源码</a>；<a href="https://github.com/xhjiang1998/xianyu-buyer-mcp/blob/a39b2187188beb51f36e4fec2ab59d84790e1daf/server.py">工具注册与发送入口</a></li>
+<li><a href="https://github.com/shopmeskills/mcp/blob/81f9813f632ad3abfbd8b48985bee6c69d2653d8/packages/cn-ecommerce-search-mcp/src/shopme-client.ts">Shopme 客户端源码</a>；本次普通关键词搜索返回 HTTP 403，未读取到商品。</li>
+<li><a href="https://github.com/h382110229/price-hunter/blob/c428245b53363b1032140dd81c49e7f9b01afead/src/engines/base.py">Price Hunter 模拟数据生成源码</a></li>
+<li><a href="https://github.com/likaku/ai-kanjia/blob/4b4c9a0a38285a7d38b62c0f028810ae1e9fd7fa/scripts/price_monitor.py">爱砍价价格记录脚本</a></li>
+</ol></section>
+<footer><p>建议：先验证浏览器读取 + 采购清单闭环，再决定接入哪个 MCP。</p><a href="/reports/">返回报告库</a></footer>
+</main><script>
+const q=document.querySelector('#q'),platform=document.querySelector('#platform'),cards=[...document.querySelectorAll('.card')];
+function filter(){const terms=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);let n=0;for(const card of cards){const match=terms.every(t=>card.textContent.toLowerCase().includes(t))&&(platform.value==='all'||card.dataset.platform.split(' ').includes(platform.value));card.hidden=!match;if(match)n++;}document.querySelector('#count').textContent=`显示 ${n} / ${cards.length} 个候选`;}q.addEventListener('input',filter);platform.addEventListener('change',filter);filter();
+</script></body></html>

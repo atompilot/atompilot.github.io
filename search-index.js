@@ -1,5 +1,29 @@
 window.ATOM_SEARCH_INDEX = [
   {
+    title: '淘宝、闲鱼 AI 采购工具调研',
+    type: '报告 · AI 采购工具',
+    summary: '核对淘宝和闲鱼搜索、比价 MCP 与采购 skill，推荐先验证浏览器读取、同规格比较和采购清单闭环。',
+    keywords: '淘宝 闲鱼 京东 采购 比价 AI MCP skill SKU 采购清单 千问 慢慢买 my-procurement',
+    url: '/reports/2026/10/ai-procurement-tools/',
+    date: '2026-10-14'
+  },
+  {
+    title: '六个淘宝与闲鱼 MCP 候选',
+    type: '报告内主题 · AI 采购',
+    summary: 'taobao-sourcing、JD-Taobao、xianyu-buyer、Shopme、Price Hunter、ai-kanjia 的源码能力与验证边界。',
+    keywords: 'taobao-sourcing-mcp JD-Taobao-MCP xianyu-buyer-mcp Shopme price-hunter ai-kanjia 搜索 SKU 模拟数据',
+    url: '/reports/2026/10/ai-procurement-tools/#tools',
+    date: '2026-10-14'
+  },
+  {
+    title: '采购 skill 与清单字段设计',
+    type: '报告内主题 · AI 采购',
+    summary: '从需求与候选搜索到 SKU、运费、成色核对，生成推荐、备选和待询价，并用一次真实采购验证。',
+    keywords: '采购清单 设计 浏览器 价格 规格 运费 二手 成色 POC my-procurement',
+    url: '/reports/2026/10/ai-procurement-tools/#design',
+    date: '2026-10-14'
+  },
+  {
     title: 'Hypit：让 AI 编程助手复刻爆款短视频',
     type: 'AI 视频 · 产品调研',
     summary: '开源 AI 短视频生产系统，Claude Code / Codex skill；用 SVML 以词为锚拆解爆款视频，批量生成换人、换词、换产品的变体。',
