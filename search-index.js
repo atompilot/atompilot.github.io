@@ -2,8 +2,8 @@ window.ATOM_SEARCH_INDEX = [
   {
     title: '淘宝、闲鱼 AI 采购工具调研',
     type: '报告 · AI 采购工具',
-    summary: '核对淘宝和闲鱼搜索、比价 MCP 与采购 skill，推荐先验证浏览器读取、同规格比较和采购清单闭环。',
-    keywords: '淘宝 闲鱼 京东 采购 比价 AI MCP skill SKU 采购清单 千问 慢慢买 my-procurement',
+    summary: '优先验证淘宝官方桌面版 MCP / CLI 和采购助手；对照第三方工具、账号风险与现行访问规则，设计采购清单。',
+    keywords: '淘宝 桌面版 官方 闲鱼 京东 采购宝 比价 AI MCP CLI skill SKU 采购清单 千问 my-procurement 账号风险 Cookie',
     url: '/reports/2026/10/ai-procurement-tools/',
     date: '2026-10-14'
   },
@@ -18,9 +18,17 @@ window.ATOM_SEARCH_INDEX = [
   {
     title: '采购 skill 与清单字段设计',
     type: '报告内主题 · AI 采购',
-    summary: '从需求与候选搜索到 SKU、运费、成色核对，生成推荐、备选和待询价，并用一次真实采购验证。',
-    keywords: '采购清单 设计 浏览器 价格 规格 运费 二手 成色 POC my-procurement',
+    summary: '官方实际开放的能力与用户提供的候选资料，结合 SKU、运费、成色核对，生成推荐、备选和待询价。',
+    keywords: '采购清单 设计 官方 MCP CLI 价格 规格 运费 二手 成色 POC my-procurement',
     url: '/reports/2026/10/ai-procurement-tools/#design',
+    date: '2026-10-14'
+  },
+  {
+    title: '采购工具的原理与账号安全',
+    type: '报告内主题 · AI 采购',
+    summary: '官方桌面 MCP、浏览器自动化、联盟 API 与第三方服务的登录态和权限边界；当前淘宝、闲鱼访问规则。',
+    keywords: '账号安全 泄露 Cookie token 封号 只读 MCP 授权 平台规则',
+    url: '/reports/2026/10/ai-procurement-tools/#security',
     date: '2026-10-14'
   },
   {
