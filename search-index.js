@@ -1,5 +1,29 @@
 window.ATOM_SEARCH_INDEX = [
   {
+    "title": "3D打印机：从看懂，到会挑",
+    "type": "报告 · 制作工具",
+    "summary": "以图解快速认识打印路线、材料、工作流程、选购判断、使用成本和二手验机。",
+    "keywords": "3D打印机 选购 入门 科普 FDM FFF SLA MSLA SLS 树脂 光固化 机箱 支架",
+    "url": "/reports/2026/10/3d-printer-buying-guide/",
+    "date": "2026-10-16"
+  },
+  {
+    "title": "3D打印材料怎么选",
+    "type": "报告内主题 · 材料",
+    "summary": "PLA、PETG、ABS、ASA、TPU的用途与取舍，先按零件需求选材料。",
+    "keywords": "PLA PETG ABS ASA TPU 耐热 韧性 材料",
+    "url": "/reports/2026/10/3d-printer-buying-guide/#materials",
+    "date": "2026-10-16"
+  },
+  {
+    "title": "闲鱼二手3D打印机验机清单",
+    "type": "报告内主题 · 二手采购",
+    "summary": "核对型号、配件、维修、召回、连续试打、账号与交接条件。",
+    "keywords": "闲鱼 二手 打印机 验机 A1 热床 召回 首层",
+    "url": "/reports/2026/10/3d-printer-buying-guide/#used",
+    "date": "2026-10-16"
+  },
+  {
     title: '淘宝、闲鱼 AI 采购工具调研',
     type: '报告 · AI 采购工具',
     summary: '优先验证淘宝官方桌面版 MCP / CLI 和采购助手；对照第三方工具、账号风险与现行访问规则，设计采购清单。',
