@@ -1,5 +1,13 @@
 window.ATOM_SEARCH_INDEX = [
   {
+  "title": "Agent Use Cases：内容与变现拆解",
+  "type": "报告 · 网站商业模式",
+  "summary": "AI 案例目录怎样通过每周赞助与月费课程社区变现；区分公开报价、作者收入自述和自动化边界。",
+  "keywords": "agentusecases.ai Alex Finn AI案例 赞助 广告 课程 Vibe Coding Academy",
+  "url": "/reports/2026/10/agent-use-cases-business-model/",
+  "date": "2026-10-18"
+},
+  {
     "title": "3D打印机：从看懂，到会挑",
     "type": "报告 · 制作工具",
     "summary": "以图解快速认识打印路线、材料、工作流程、选购判断、使用成本和二手验机。",
