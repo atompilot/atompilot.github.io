@@ -1,0 +1,1448 @@
+{
+  "note": "照片原样保存；图注和网页排版与原图分开。原创概念 SVG 不是具体板型针序或真机实验结果。",
+  "photos": [
+    {
+      "id": "photo-bridge",
+      "title": "CH340G 转串口模块",
+      "src": "assets/photo-bridge.jpg",
+      "kind": "实物参考",
+      "caption": "右边是 Micro-B USB 接口，中间是 CH340G 芯片，左边是一排串口与电源接点。照片对应 SparkFun Serial Basic CH340G，不是所有模块的通用针序。",
+      "alt": "CH340G 转串口模块，SparkFun 原教程图片",
+      "author": "SparkFun Electronics",
+      "source": "https://learn.sparkfun.com/tutorials/serial-basic-hookup-guide/all",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "39cbdf473aacaf40bec557924efdf8fc19cc55ed1c4181ecbb4fbb5b2b9085d5",
+      "bytes": 152023,
+      "originalImage": "https://cdn.sparkfun.com/assets/learn_tutorials/5/9/7/Top_of_Serial_Basic_CH340G.jpg"
+    },
+    {
+      "id": "photo-headers",
+      "title": "排针与排母",
+      "src": "assets/photo-headers.jpg",
+      "kind": "实物参考",
+      "caption": "长条插孔是排母，露出的成排金属针是排针。照片使用 Arduino Uno 示范接头，不是 ESP32-S3；每个接点的功能仍看各板资料。",
+      "alt": "排针与排母，SparkFun 原教程图片",
+      "author": "SparkFun Electronics",
+      "source": "https://learn.sparkfun.com/tutorials/connector-basics/all",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "52b379d568fc2bf334a5dbd8af914214d733ce0aa4b69b4a5d67f7f5fa8e7c53",
+      "bytes": 116178,
+      "originalImage": "https://cdn.sparkfun.com/assets/b/c/9/7/1/5148c334ce395f8e55000000.jpg"
+    },
+    {
+      "id": "photo-breadboard",
+      "title": "面包板外观与内部金属条",
+      "src": "assets/photo-breadboard.jpg",
+      "kind": "实物参考",
+      "caption": "拆开后能看到内部成组金属条：插孔并不是全部互通。具体电源轨是否分段仍要确认。",
+      "alt": "面包板外观与内部金属条，SparkFun 原教程图片",
+      "author": "SparkFun Electronics",
+      "source": "https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "33b7f28767a002d664a39512918b82345e5225e6375e4327e32db52f4c6ef930",
+      "bytes": 114568,
+      "originalImage": "https://cdn.sparkfun.com/r/600-600/assets/3/d/f/a/9/518c0b34ce395fea62000002.jpg"
+    },
+    {
+      "id": "photo-usbc",
+      "title": "USB-C 插头实物",
+      "src": "assets/photo-usbc.jpg",
+      "kind": "实物参考",
+      "caption": "照片左侧是 USB-C，右侧是 USB-A：这是一条 A-to-C 线，不是 C-to-C。看形状能认接口，不能据此确定全部功能。",
+      "alt": "USB-C 插头实物，SparkFun 原教程图片",
+      "author": "SparkFun Electronics",
+      "source": "https://learn.sparkfun.com/tutorials/connector-basics/all",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "ea2c8f28f1b59e1332c28e53601d4a2d1e4321eaa02d30d2c44a1e2c6246ac5e",
+      "bytes": 50882,
+      "originalImage": "https://cdn.sparkfun.com/r/600-600/assets/parts/1/2/9/7/2/14743-USB_3.1_Cable_A_to_C_-_3_Foot-02.jpg"
+    },
+    {
+      "id": "photo-otg",
+      "title": "Micro-USB OTG 转接器示例",
+      "src": "assets/photo-otg.jpg",
+      "kind": "实物参考",
+      "caption": "一端是 USB-A 插孔，另一端是旧式 Micro-USB 插头。它用来认识转接器外观，不是 Lightning 或 USB-C iPhone 的购买建议。",
+      "alt": "Micro-USB OTG 转接器示例，SparkFun 原教程图片",
+      "author": "SparkFun Electronics",
+      "source": "https://learn.sparkfun.com/tutorials/connector-basics/all",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "155d3647537b87967b76dda598a754d63d50dc98c717a5c9dce68d2a3b86a9ab",
+      "bytes": 91376,
+      "originalImage": "https://cdn.sparkfun.com/assets/2/7/d/4/f/5113e730ce395f8d7e000000.jpg"
+    },
+    {
+      "id": "photo-meter",
+      "title": "数字万用表实物",
+      "src": "assets/photo-meter.jpg",
+      "kind": "实物参考",
+      "caption": "看清显示屏、旋钮与表笔插孔的位置。实际测量按你自己的表具说明选择插孔和档位。",
+      "alt": "数字万用表实物，SparkFun 原教程图片",
+      "author": "SparkFun Electronics",
+      "source": "https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter/all",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sha256": "9252a812939afbeabaacc81b1bedc3e3a69a466cb35a78f35612d9eaa31e3a8d",
+      "bytes": 179797,
+      "originalImage": "https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/1/01_Multimeter_Tutorial-01.jpg"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "otg",
+      "title": "同一部手机，两种 USB 角色",
+      "src": "assets/diagram-otg.svg",
+      "kind": "原理示意",
+      "caption": "接电脑时手机通常是设备；接有线鼠标时，手机需要作为主机。能否连接取决于手机、转接器、供电和设备兼容。",
+      "alt": "同一部手机，两种 USB 角色：接电脑时手机通常是设备；接有线鼠标时，手机需要作为主机。能否连接取决于手机、转接器、供电和设备兼容。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "otg",
+        "host",
+        "device",
+        "trust"
+      ]
+    },
+    {
+      "id": "bridge",
+      "title": "USB-UART 桥，像接口翻译员",
+      "src": "assets/diagram-bridge.svg",
+      "kind": "原理示意",
+      "caption": "电脑通过 USB 找到桥接芯片；桥接芯片通过 UART 与另一块板通信。图中是功能链，不是实际排针线序。",
+      "alt": "USB-UART 桥，像接口翻译员：电脑通过 USB 找到桥接芯片；桥接芯片通过 UART 与另一块板通信。图中是功能链，不是实际排针线序。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "bridge",
+        "ch340",
+        "cp210x",
+        "serial",
+        "driver",
+        "python"
+      ]
+    },
+    {
+      "id": "connectors",
+      "title": "先认外形，再确认功能",
+      "src": "assets/diagram-connectors.svg",
+      "kind": "原理示意",
+      "caption": "USB-A、USB-C 和 Lightning 的外形示意，不是针脚图。蓝色舌片仅用于区分轮廓，不据此判断具体线缆能力。",
+      "alt": "先认外形，再确认功能：USB-A、USB-C 和 Lightning 的外形示意，不是针脚图。蓝色舌片仅用于区分轮廓，不据此判断具体线缆能力。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "usb",
+        "usbc",
+        "usba",
+        "lightning",
+        "port"
+      ]
+    },
+    {
+      "id": "hub",
+      "title": "Hub 扩展下游，不增加主机",
+      "src": "assets/diagram-hub.svg",
+      "kind": "原理示意",
+      "caption": "多个设备经 Hub 连接同一主机，共享相应带宽、供电及控制器资源。它不能让 S3 同时成为相机的主机和手机的 USB 键盘。",
+      "alt": "Hub 扩展下游，不增加主机：多个设备经 Hub 连接同一主机，共享相应带宽、供电及控制器资源。它不能让 S3 同时成为相机的主机和手机的 USB 键盘。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "hub",
+        "endpoint",
+        "composite"
+      ]
+    },
+    {
+      "id": "nesting",
+      "title": "芯片、模组、开发板，三层关系",
+      "src": "assets/diagram-nesting.svg",
+      "kind": "原理示意",
+      "caption": "功能从芯片向外扩展到模组，再到方便连接的开发板。不同板型并不拥有相同插座去向或针脚布局。",
+      "alt": "芯片、模组、开发板，三层关系：功能从芯片向外扩展到模组，再到方便连接的开发板。不同板型并不拥有相同插座去向或针脚布局。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "chip",
+        "mcu",
+        "s3",
+        "esp32",
+        "board",
+        "module",
+        "pcb",
+        "wroom",
+        "silkscreen"
+      ]
+    },
+    {
+      "id": "native",
+      "title": "独立桥与原生 USB，走不同路径",
+      "src": "assets/diagram-native.svg",
+      "kind": "原理示意",
+      "caption": "带桥接芯片的板子可让桥接芯片处理电脑通信，原生 USB 分工处理其他角色。芯片内部 USB Serial/JTAG 与 OTG 的 PHY 共享需另行核对。",
+      "alt": "独立桥与原生 USB，走不同路径：带桥接芯片的板子可让桥接芯片处理电脑通信，原生 USB 分工处理其他角色。芯片内部 USB Serial/JTAG 与 OTG 的 PHY 共享需另行核对。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "native",
+        "jtag",
+        "phy"
+      ]
+    },
+    {
+      "id": "headers",
+      "title": "排针和排母，先看接点",
+      "src": "assets/diagram-headers.svg",
+      "kind": "原理示意",
+      "caption": "两种连接形式示意。引出 GPIO、电源或其他信号，要按原理图和丝印确认，不能只看接头形状。",
+      "alt": "排针和排母，先看接点：两种连接形式示意。引出 GPIO、电源或其他信号，要按原理图和丝印确认，不能只看接头形状。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "header",
+        "male",
+        "pin"
+      ]
+    },
+    {
+      "id": "uart",
+      "title": "发送接接收，双方要共地",
+      "src": "assets/diagram-uart.svg",
+      "kind": "原理示意",
+      "caption": "TX → RX，RX ← TX，GND 共地。此图不画电源线，电压、参数、实际引脚仍需按板型确认。",
+      "alt": "发送接接收，双方要共地：TX → RX，RX ← TX，GND 共地。此图不画电源线，电压、参数、实际引脚仍需按板型确认。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "uart",
+        "tx",
+        "rx",
+        "gnd",
+        "jumper"
+      ]
+    },
+    {
+      "id": "voltage",
+      "title": "供电 5 V，不等于信号可输入 5 V",
+      "src": "assets/diagram-voltage.svg",
+      "kind": "原理示意",
+      "caption": "示意开发板把供电转换为芯片所需电压；另一条路径是数字信号。普通 GPIO 不承担大电流负载供电。",
+      "alt": "供电 5 V，不等于信号可输入 5 V：示意开发板把供电转换为芯片所需电压；另一条路径是数字信号。普通 GPIO 不承担大电流负载供电。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "voltage",
+        "level",
+        "levelshift",
+        "regulator",
+        "ldo",
+        "dcdc",
+        "vcc",
+        "signal"
+      ]
+    },
+    {
+      "id": "power",
+      "title": "把同一电压轨的电流预算相加",
+      "src": "assets/diagram-power.svg",
+      "kind": "原理示意",
+      "caption": "示例数值用于理解单位和计算，不代表你的设备功耗。不同电压轨、启动峰值、转换损耗与线缆压降另行核算。",
+      "alt": "把同一电压轨的电流预算相加：示例数值用于理解单位和计算，不代表你的设备功耗。不同电压轨、启动峰值、转换损耗与线缆压降另行核算。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "current",
+        "power",
+        "load",
+        "rail",
+        "drop",
+        "v-unit",
+        "a-unit",
+        "w-unit",
+        "formula-power"
+      ]
+    },
+    {
+      "id": "serial-bits",
+      "title": "一字节数据，线路还需标记开始结束",
+      "src": "assets/diagram-serial-bits.svg",
+      "kind": "原理示意",
+      "caption": "波形是 8N1 结构示意：空闲高、起始位低、8 个数据位、停止位高。图中位值仅为示例，不是某条芯片命令。",
+      "alt": "一字节数据，线路还需标记开始结束：波形是 8N1 结构示意：空闲高、起始位低、8 个数据位、停止位高。图中位值仅为示例，不是某条芯片命令。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "baud",
+        "8n1",
+        "bits",
+        "parity",
+        "clock",
+        "ttl",
+        "rs232"
+      ]
+    },
+    {
+      "id": "memory",
+      "title": "储物柜与工作桌，不是同一种容量",
+      "src": "assets/diagram-memory.svg",
+      "kind": "原理示意",
+      "caption": "N8R2 / N16R8 这里分别标 Flash 与 PSRAM 容量；PSRAM 不是芯片全部运行内存，也不直接让 CPU 变快。",
+      "alt": "储物柜与工作桌，不是同一种容量：N8R2 / N16R8 这里分别标 Flash 与 PSRAM 容量；PSRAM 不是芯片全部运行内存，也不直接让 CPU 变快。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "cpu",
+        "flash",
+        "sram",
+        "psram",
+        "n8r2",
+        "n16r8",
+        "buffer"
+      ]
+    },
+    {
+      "id": "hid",
+      "title": "HID 报告表达此刻的输入状态",
+      "src": "assets/diagram-hid.svg",
+      "kind": "原理示意",
+      "caption": "按下、保持、移动与释放共同组成交互。这里不是可直接发送的协议字节；实际字段按相应 HID 描述符定义。",
+      "alt": "HID 报告表达此刻的输入状态：按下、保持、移动与释放共同组成交互。这里不是可直接发送的协议字节；实际字段按相应 HID 描述符定义。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "hid",
+        "report",
+        "descriptor",
+        "packet",
+        "ack",
+        "composite"
+      ]
+    },
+    {
+      "id": "coordinates",
+      "title": "移动增量与目标坐标分开看",
+      "src": "assets/diagram-coordinates.svg",
+      "kind": "原理示意",
+      "caption": "相对输入表示移动多少；绝对输入表示约定范围内的目标坐标。两者都需验证手机解释方式，不等同于直接触屏。",
+      "alt": "移动增量与目标坐标分开看：相对输入表示移动多少；绝对输入表示约定范围内的目标坐标。两者都需验证手机解释方式，不等同于直接触屏。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "relative",
+        "absolute",
+        "touchscreen",
+        "calibration"
+      ]
+    },
+    {
+      "id": "camera",
+      "title": "相机输出协议不同，接法也不同",
+      "src": "assets/diagram-camera.svg",
+      "kind": "原理示意",
+      "caption": "三行是不同路线，不是把三种相机同时接到一块 S3。MIPI、DVP 与 USB 不能靠一条被动尾线任意转换。",
+      "alt": "相机输出协议不同，接法也不同：三行是不同路线，不是把三种相机同时接到一块 S3。MIPI、DVP 与 USB 不能靠一条被动尾线任意转换。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "uvc",
+        "dvp",
+        "mipi",
+        "pinout"
+      ]
+    },
+    {
+      "id": "pixels",
+      "title": "图像是一格格像素的数据",
+      "src": "assets/diagram-pixels.svg",
+      "kind": "原理示意",
+      "caption": "小网格只是示意；RGB24 常按每像素 3 字节计算。分辨率表示网格宽高，不自动代表对焦与识字质量。",
+      "alt": "图像是一格格像素的数据：小网格只是示意；RGB24 常按每像素 3 字节计算。分辨率表示网格宽高，不自动代表对焦与识字质量。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "pixel",
+        "rgb24",
+        "grayscale"
+      ]
+    },
+    {
+      "id": "video",
+      "title": "帧率越高，需处理的图像通常越多",
+      "src": "assets/diagram-video.svg",
+      "kind": "原理示意",
+      "caption": "算式使用每像素 2 字节的未压缩示例；MJPEG 为压缩形式，实际码率要看画面与设置，不套固定压缩倍数。",
+      "alt": "帧率越高，需处理的图像通常越多：算式使用每像素 2 字节的未压缩示例；MJPEG 为压缩形式，实际码率要看画面与设置，不套固定压缩倍数。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "fps",
+        "bandwidth",
+        "units",
+        "yuy2",
+        "mjpeg",
+        "fs",
+        "latency"
+      ]
+    },
+    {
+      "id": "perspective",
+      "title": "用对应点，把两个平面位置联系起来",
+      "src": "assets/diagram-perspective.svg",
+      "kind": "原理示意",
+      "caption": "四角标定可用于建立平面透视映射。概念图没有证明某个 HID 报告范围或你的相机已标定成功。",
+      "alt": "用对应点，把两个平面位置联系起来：四角标定可用于建立平面透视映射。概念图没有证明某个 HID 报告范围或你的相机已标定成功。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "perspective",
+        "calibration"
+      ]
+    },
+    {
+      "id": "optics",
+      "title": "清晰度、条纹与采样干扰不是一回事",
+      "src": "assets/diagram-optics.svg",
+      "kind": "原理示意",
+      "caption": "合成示意，不是相机实拍或算法效果对比。对焦、曝光和摩尔纹要在同一屏幕内容上分别比较，不凭这个示意选择参数。",
+      "alt": "清晰度、条纹与采样干扰不是一回事：合成示意，不是相机实拍或算法效果对比。对焦、曝光和摩尔纹要在同一屏幕内容上分别比较，不凭这个示意选择参数。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "focus",
+        "exposure",
+        "moire",
+        "ocr"
+      ]
+    },
+    {
+      "id": "software",
+      "title": "上层调用、电脑驱动与板上固件",
+      "src": "assets/diagram-software.svg",
+      "kind": "原理示意",
+      "caption": "三层职责示意；固件运行在板上，电脑程序负责与设备通信。存在一个 API 名字不代表底层已经实现。",
+      "alt": "上层调用、电脑驱动与板上固件：三层职责示意；固件运行在板上，电脑程序负责与设备通信。存在一个 API 名字不代表底层已经实现。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "api",
+        "firmware",
+        "driver",
+        "flashwrite",
+        "reset",
+        "sdk",
+        "python",
+        "agent",
+        "protocol",
+        "stack",
+        "latest"
+      ]
+    },
+    {
+      "id": "wireless",
+      "title": "无线连接，也需要对应的软件规则",
+      "src": "assets/diagram-wireless.svg",
+      "kind": "原理示意",
+      "caption": "图中表示候选无线通道，不是吞吐量或连接距离保证。S3 的 BLE 与经典蓝牙不同；天线形式也需按型号确认。",
+      "alt": "无线连接，也需要对应的软件规则：图中表示候选无线通道，不是吞吐量或连接距离保证。S3 的 BLE 与经典蓝牙不同；天线形式也需按型号确认。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "ble",
+        "btclassic",
+        "pair",
+        "wifi",
+        "antenna",
+        "airplay"
+      ]
+    },
+    {
+      "id": "buses",
+      "title": "先认总线，再查各根信号",
+      "src": "assets/diagram-buses.svg",
+      "kind": "原理示意",
+      "caption": "线路数量与名称是入门示意，供电、地、上拉和其他辅助线未画全。它不是可以直接照接的完整电路图。",
+      "alt": "先认总线，再查各根信号：线路数量与名称是入门示意，供电、地、上拉和其他辅助线未画全。它不是可以直接照接的完整电路图。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "i2c",
+        "sda",
+        "spi",
+        "spipins",
+        "clock"
+      ]
+    },
+    {
+      "id": "measure",
+      "title": "测量前，先确认档位与插孔",
+      "src": "assets/diagram-measure.svg",
+      "kind": "原理示意",
+      "caption": "电压和通断是不同测量方式；电流测量通常需要串入电路。按实际表具说明操作，本图不表示表笔已插到正确实物位置。",
+      "alt": "测量前，先确认档位与插孔：电压和通断是不同测量方式；电流测量通常需要串入电路。按实际表具说明操作，本图不表示表笔已插到正确实物位置。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "meter",
+        "com",
+        "parallel",
+        "analyzer",
+        "short"
+      ]
+    },
+    {
+      "id": "components",
+      "title": "元件符号，表达不同的电气作用",
+      "src": "assets/diagram-components.svg",
+      "kind": "原理示意",
+      "caption": "电阻、电容、LED 的概念符号；这不是完整、可上电的电路。LED 一般需按条件限流并核对极性。",
+      "alt": "元件符号，表达不同的电气作用：电阻、电容、LED 的概念符号；这不是完整、可上电的电路。LED 一般需按条件限流并核对极性。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "resistor",
+        "capacitor",
+        "ohm",
+        "led"
+      ]
+    },
+    {
+      "id": "pinout",
+      "title": "距离、编号与功能，三个问题",
+      "src": "assets/diagram-pinout.svg",
+      "kind": "原理示意",
+      "caption": "针距表示相邻接点中心间距；线序表示各位置的功能。图中没有给出真实电压或实际相机的针距，需查准确型号。",
+      "alt": "距离、编号与功能，三个问题：针距表示相邻接点中心间距；线序表示各位置的功能。图中没有给出真实电压或实际相机的针距，需查准确型号。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "pitch",
+        "pinout",
+        "male",
+        "pin",
+        "solder",
+        "crimp",
+        "tolerance"
+      ]
+    },
+    {
+      "id": "encoding",
+      "title": "位、字节与字符，是不同层次",
+      "src": "assets/diagram-encoding.svg",
+      "kind": "原理示意",
+      "caption": "01000001 为 ASCII 字母 A 的示例。Unicode 为更多字符提供编号，但发送一个字符仍要选择相应编码或已验证输入通道。",
+      "alt": "位、字节与字符，是不同层次：01000001 为 ASCII 字母 A 的示例。Unicode 为更多字符提供编号，但发送一个字符仍要选择相应编码或已验证输入通道。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "ascii",
+        "unicode",
+        "bits"
+      ]
+    },
+    {
+      "id": "phone-input",
+      "title": "系统设置与外部输入的关系",
+      "src": "assets/diagram-phone-input.svg",
+      "kind": "原理示意",
+      "caption": "手机图是概念轮廓，不是 iOS 设置截图。辅助触控用于相应指针路径，键盘和开发者模式属于不同设置与用途。",
+      "alt": "系统设置与外部输入的关系：手机图是概念轮廓，不是 iOS 设置截图。辅助触控用于相应指针路径，键盘和开发者模式属于不同设置与用途。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "assist",
+        "fka",
+        "devmode",
+        "trust",
+        "iphone",
+        "fn"
+      ]
+    },
+    {
+      "id": "motor",
+      "title": "控制信号，不是电机的电源",
+      "src": "assets/diagram-motor.svg",
+      "kind": "原理示意",
+      "caption": "原理示意。实际驱动、供电、电平、保护及电机规格按具体器件确认，不直接把电机挂到 GPIO。",
+      "alt": "控制信号，不是电机的电源：原理示意。实际驱动、供电、电平、保护及电机规格按具体器件确认，不直接把电机挂到 GPIO。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "motor",
+        "gpio"
+      ]
+    },
+    {
+      "id": "formats",
+      "title": "图像格式与文档格式，各有用途",
+      "src": "assets/diagram-formats.svg",
+      "kind": "原理示意",
+      "caption": "本教程用 SVG 画概念图，用网页提供交互。另存 PDF 主要保存可打印内容，不能期待网页弹层继续工作。",
+      "alt": "图像格式与文档格式，各有用途：本教程用 SVG 画概念图，用网页提供交互。另存 PDF 主要保存可打印内容，不能期待网页弹层继续工作。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "svg",
+        "pdf"
+      ]
+    },
+    {
+      "id": "evidence",
+      "title": "数据发出，不等于手机已经完成",
+      "src": "assets/diagram-evidence.svg",
+      "kind": "原理示意",
+      "caption": "用于理解回执、执行效果和端到端检查。观察一个中间层成功，不能自动宣称最后的手机输入成功。",
+      "alt": "数据发出，不等于手机已经完成：用于理解回执、执行效果和端到端检查。观察一个中间层成功，不能自动宣称最后的手机输入成功。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "ack",
+        "latency",
+        "enumeration"
+      ]
+    },
+    {
+      "id": "pd",
+      "title": "数据主从与供受电，是两组角色",
+      "src": "assets/diagram-pd.svg",
+      "kind": "原理示意",
+      "caption": "合适的连接方案可让手机在 USB 数据上作为主机，同时接受外部电源。它不是普通 Y 线并接两根电源，实际兼容性要确认。",
+      "alt": "数据主从与供受电，是两组角色：合适的连接方案可让手机在 USB 数据上作为主机，同时接受外部电源。它不是普通 Y 线并接两根电源，实际兼容性要确认。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "pd"
+      ]
+    },
+    {
+      "id": "ctoc",
+      "title": "C-to-C，就是两头都是 USB-C",
+      "src": "assets/diagram-ctoc.svg",
+      "kind": "原理示意",
+      "caption": "接口外形示意。数据线、角色配置、速率及供电能力仍要确认；不能只看两个插头相同就任意连接板子。",
+      "alt": "C-to-C，就是两头都是 USB-C：接口外形示意。数据线、角色配置、速率及供电能力仍要确认；不能只看两个插头相同就任意连接板子。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "ctoc"
+      ]
+    },
+    {
+      "id": "touch",
+      "title": "鼠标位置，不等于多个触摸点",
+      "src": "assets/diagram-touch.svg",
+      "kind": "原理示意",
+      "caption": "只是不同输入模型的概念对照，不表示 iPhone 接受某个外部触摸屏报告。要按具体芯片报告与系统逐项验证。",
+      "alt": "鼠标位置，不等于多个触摸点：只是不同输入模型的概念对照，不表示 iPhone 接受某个外部触摸屏报告。要按具体芯片报告与系统逐项验证。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "touchscreen"
+      ]
+    },
+    {
+      "id": "logic",
+      "title": "同样传 0 和 1，也不一定能直接互接",
+      "src": "assets/diagram-logic.svg",
+      "kind": "原理示意",
+      "caption": "电平与电气标准的概念比较，不是电压阈值图或真实器件规格。按数据手册匹配接口和转换电路。",
+      "alt": "同样传 0 和 1，也不一定能直接互接：电平与电气标准的概念比较，不是电压阈值图或真实器件规格。按数据手册匹配接口和转换电路。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "ttl",
+        "rs232",
+        "level"
+      ]
+    },
+    {
+      "id": "levelshift",
+      "title": "电平转换，不是电源稳压",
+      "src": "assets/diagram-levelshift.svg",
+      "kind": "原理示意",
+      "caption": "两种逻辑信号通过匹配转换电路通信的概念图。转换器仍需匹配方向、速度、驱动方式，不是给任意接口通用。",
+      "alt": "电平转换，不是电源稳压：两种逻辑信号通过匹配转换电路通信的概念图。转换器仍需匹配方向、速度、驱动方式，不是给任意接口通用。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "levelshift"
+      ]
+    },
+    {
+      "id": "ohm",
+      "title": "欧姆定律，把三个量联系起来",
+      "src": "assets/diagram-ohm.svg",
+      "kind": "原理示意",
+      "caption": "适用于相应工作条件下的电阻，是算术概念示例，不是为某个 LED 或模块选出的参数。",
+      "alt": "欧姆定律，把三个量联系起来：适用于相应工作条件下的电阻，是算术概念示例，不是为某个 LED 或模块选出的参数。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "formula-ohm",
+        "ohm",
+        "resistor"
+      ]
+    },
+    {
+      "id": "short",
+      "title": "短路：不该直接相通的点形成通路",
+      "src": "assets/diagram-short.svg",
+      "kind": "原理示意",
+      "caption": "这里只说明有负载与意外低阻通路的区别，不是完整电源电路。测量时避免表笔打滑或把电流档跨接电源两极。",
+      "alt": "短路：不该直接相通的点形成通路：这里只说明有负载与意外低阻通路的区别，不是完整电源电路。测量时避免表笔打滑或把电流档跨接电源两极。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "short"
+      ]
+    },
+    {
+      "id": "antenna",
+      "title": "板载天线与外接天线连接器",
+      "src": "assets/diagram-antenna.svg",
+      "kind": "原理示意",
+      "caption": "外形为概念插画，不是连接器型号图。具体射频接口、匹配天线与板上切换方式以模组资料为准，不保证外接信号更好。",
+      "alt": "板载天线与外接天线连接器：外形为概念插画，不是连接器型号图。具体射频接口、匹配天线与板上切换方式以模组资料为准，不保证外接信号更好。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "antenna"
+      ]
+    },
+    {
+      "id": "system",
+      "title": "画面、输入和供电三条链",
+      "src": "assets/diagram-system.svg",
+      "kind": "原理示意",
+      "caption": "原教程总览。蓝色是画面，绿色是输入，橙色是供电与固定；概念连接不是机箱内部接线。",
+      "alt": "画面、输入和供电三条链",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "terms": [
+        "iarm",
+        "imouse",
+        "mac"
+      ]
+    },
+    {
+      "id": "breadboard",
+      "title": "面包板的内部导通分组",
+      "src": "assets/diagram-breadboard.svg",
+      "kind": "原理示意",
+      "caption": "原教程的五孔连接示意。中沟两侧不通，电源轨可能分段；按实际型号断电确认。",
+      "alt": "面包板的内部导通分组",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "terms": [
+        "breadboard",
+        "rail"
+      ]
+    },
+    {
+      "id": "ch9329",
+      "title": "串口转 HID，和 USB 转串口分工不同",
+      "src": "assets/diagram-ch9329.svg",
+      "kind": "原理示意",
+      "caption": "CH9329 系列以串口命令驱动 USB HID 设备功能。图为功能分工，不表示芯片封装、模块接线或 iPhone 已兼容；F 型号额外能力另核对。",
+      "alt": "串口转 HID，和 USB 转串口分工不同：CH9329 系列以串口命令驱动 USB HID 设备功能。图为功能分工，不表示芯片封装、模块接线或 iPhone 已兼容；F 型号额外能力另核对。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "ch9329",
+        "ch9329f"
+      ]
+    },
+    {
+      "id": "pcb-design",
+      "title": "先定义连接，再决定板上怎么放",
+      "src": "assets/diagram-pcb-design.svg",
+      "kind": "原理示意",
+      "caption": "电子设计流程的概念图。KiCad 是设计工具；完成文件不表示制造、供电或通信已通过验证。",
+      "alt": "先定义连接，再决定板上怎么放：电子设计流程的概念图。KiCad 是设计工具；完成文件不表示制造、供电或通信已通过验证。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "kicad"
+      ]
+    },
+    {
+      "id": "versions",
+      "title": "固定版本和 latest，不是同一个入口",
+      "src": "assets/diagram-versions.svg",
+      "kind": "原理示意",
+      "caption": "文档地址或软件版本的示意，不是新版本优劣比较。实验复现需要记录准确版本；latest 页面会随更新变化。",
+      "alt": "固定版本和 latest，不是同一个入口：文档地址或软件版本的示意，不是新版本优劣比较。实验复现需要记录准确版本；latest 页面会随更新变化。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "latest"
+      ]
+    },
+    {
+      "id": "usb-pair",
+      "title": "一对数据线，与供电和地分开看",
+      "src": "assets/diagram-usb-pair.svg",
+      "kind": "原理示意",
+      "caption": "只示意 USB 常见数据线对与供电、地的不同职责，不是某种连接器的物理针序；不是 UART 的 TX/RX 交叉接法。",
+      "alt": "一对数据线，与供电和地分开看：只示意 USB 常见数据线对与供电、地的不同职责，不是某种连接器的物理针序；不是 UART 的 TX/RX 交叉接法。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "data-pair"
+      ]
+    },
+    {
+      "id": "phy",
+      "title": "两种内部功能，共用一个物理收发部分",
+      "src": "assets/diagram-phy.svg",
+      "kind": "原理示意",
+      "caption": "S3 的内部 PHY 共享关系示意，没有画全部芯片结构或外部 PHY 方案。加外部 PHY 不表示增加第二个可任意 Host/Device 的 OTG 控制器。",
+      "alt": "两种内部功能，共用一个物理收发部分：S3 的内部 PHY 共享关系示意，没有画全部芯片结构或外部 PHY 方案。加外部 PHY 不表示增加第二个可任意 Host/Device 的 OTG 控制器。",
+      "author": "Atom Wang / 本教程原创",
+      "license": "MIT",
+      "source": "https://github.com/atompilot/atompilot.github.io",
+      "width": 600,
+      "height": 360,
+      "terms": [
+        "phy",
+        "jtag"
+      ]
+    }
+  ],
+  "termImages": {
+    "otg": [
+      "photo-otg",
+      "otg"
+    ],
+    "host": [
+      "otg"
+    ],
+    "device": [
+      "otg"
+    ],
+    "trust": [
+      "otg",
+      "phone-input"
+    ],
+    "bridge": [
+      "photo-bridge",
+      "bridge"
+    ],
+    "ch340": [
+      "photo-bridge",
+      "bridge"
+    ],
+    "cp210x": [
+      "bridge"
+    ],
+    "serial": [
+      "bridge"
+    ],
+    "driver": [
+      "bridge",
+      "software"
+    ],
+    "python": [
+      "bridge",
+      "software"
+    ],
+    "usb": [
+      "photo-usbc",
+      "connectors"
+    ],
+    "usbc": [
+      "photo-usbc",
+      "connectors"
+    ],
+    "usba": [
+      "photo-usbc",
+      "connectors"
+    ],
+    "lightning": [
+      "connectors"
+    ],
+    "port": [
+      "connectors"
+    ],
+    "hub": [
+      "hub"
+    ],
+    "endpoint": [
+      "hub"
+    ],
+    "composite": [
+      "hub",
+      "hid"
+    ],
+    "chip": [
+      "nesting"
+    ],
+    "mcu": [
+      "nesting"
+    ],
+    "s3": [
+      "nesting"
+    ],
+    "esp32": [
+      "nesting"
+    ],
+    "board": [
+      "nesting"
+    ],
+    "module": [
+      "nesting"
+    ],
+    "pcb": [
+      "photo-headers",
+      "nesting"
+    ],
+    "wroom": [
+      "nesting"
+    ],
+    "silkscreen": [
+      "photo-headers",
+      "nesting"
+    ],
+    "native": [
+      "native"
+    ],
+    "jtag": [
+      "phy"
+    ],
+    "phy": [
+      "phy"
+    ],
+    "header": [
+      "photo-headers",
+      "headers"
+    ],
+    "male": [
+      "photo-headers",
+      "headers",
+      "pinout"
+    ],
+    "pin": [
+      "photo-headers",
+      "headers",
+      "pinout"
+    ],
+    "uart": [
+      "uart"
+    ],
+    "tx": [
+      "uart"
+    ],
+    "rx": [
+      "uart"
+    ],
+    "gnd": [
+      "uart"
+    ],
+    "jumper": [
+      "uart"
+    ],
+    "voltage": [
+      "voltage"
+    ],
+    "level": [
+      "logic",
+      "voltage"
+    ],
+    "levelshift": [
+      "levelshift"
+    ],
+    "regulator": [
+      "voltage"
+    ],
+    "ldo": [
+      "voltage"
+    ],
+    "dcdc": [
+      "voltage"
+    ],
+    "vcc": [
+      "voltage"
+    ],
+    "signal": [
+      "voltage"
+    ],
+    "current": [
+      "power"
+    ],
+    "power": [
+      "power"
+    ],
+    "load": [
+      "power"
+    ],
+    "rail": [
+      "photo-breadboard",
+      "breadboard",
+      "power"
+    ],
+    "drop": [
+      "power"
+    ],
+    "v-unit": [
+      "voltage",
+      "power"
+    ],
+    "a-unit": [
+      "power"
+    ],
+    "w-unit": [
+      "power"
+    ],
+    "formula-power": [
+      "power"
+    ],
+    "baud": [
+      "serial-bits"
+    ],
+    "8n1": [
+      "serial-bits"
+    ],
+    "bits": [
+      "serial-bits",
+      "encoding"
+    ],
+    "parity": [
+      "serial-bits"
+    ],
+    "clock": [
+      "serial-bits",
+      "buses"
+    ],
+    "ttl": [
+      "serial-bits",
+      "logic"
+    ],
+    "rs232": [
+      "logic",
+      "serial-bits"
+    ],
+    "cpu": [
+      "memory"
+    ],
+    "flash": [
+      "memory"
+    ],
+    "sram": [
+      "memory"
+    ],
+    "psram": [
+      "memory"
+    ],
+    "n8r2": [
+      "memory"
+    ],
+    "n16r8": [
+      "memory"
+    ],
+    "buffer": [
+      "memory"
+    ],
+    "hid": [
+      "hid"
+    ],
+    "report": [
+      "hid"
+    ],
+    "descriptor": [
+      "hid"
+    ],
+    "packet": [
+      "hid"
+    ],
+    "ack": [
+      "evidence",
+      "hid"
+    ],
+    "relative": [
+      "coordinates"
+    ],
+    "absolute": [
+      "coordinates"
+    ],
+    "touchscreen": [
+      "touch",
+      "coordinates"
+    ],
+    "calibration": [
+      "perspective",
+      "coordinates"
+    ],
+    "uvc": [
+      "camera"
+    ],
+    "dvp": [
+      "camera"
+    ],
+    "mipi": [
+      "camera"
+    ],
+    "pinout": [
+      "pinout",
+      "camera"
+    ],
+    "pixel": [
+      "pixels"
+    ],
+    "rgb24": [
+      "pixels"
+    ],
+    "grayscale": [
+      "pixels"
+    ],
+    "fps": [
+      "video"
+    ],
+    "bandwidth": [
+      "video"
+    ],
+    "units": [
+      "video"
+    ],
+    "yuy2": [
+      "video"
+    ],
+    "mjpeg": [
+      "video"
+    ],
+    "fs": [
+      "video"
+    ],
+    "latency": [
+      "video",
+      "evidence"
+    ],
+    "perspective": [
+      "perspective"
+    ],
+    "focus": [
+      "optics"
+    ],
+    "exposure": [
+      "optics"
+    ],
+    "moire": [
+      "optics"
+    ],
+    "ocr": [
+      "optics"
+    ],
+    "api": [
+      "software"
+    ],
+    "firmware": [
+      "software"
+    ],
+    "flashwrite": [
+      "software"
+    ],
+    "reset": [
+      "software"
+    ],
+    "sdk": [
+      "software"
+    ],
+    "agent": [
+      "software"
+    ],
+    "protocol": [
+      "software"
+    ],
+    "stack": [
+      "software"
+    ],
+    "latest": [
+      "versions"
+    ],
+    "ble": [
+      "wireless"
+    ],
+    "btclassic": [
+      "wireless"
+    ],
+    "pair": [
+      "wireless"
+    ],
+    "wifi": [
+      "wireless"
+    ],
+    "antenna": [
+      "wireless",
+      "antenna"
+    ],
+    "airplay": [
+      "wireless"
+    ],
+    "i2c": [
+      "buses"
+    ],
+    "sda": [
+      "buses"
+    ],
+    "spi": [
+      "buses"
+    ],
+    "spipins": [
+      "buses"
+    ],
+    "meter": [
+      "photo-meter",
+      "measure"
+    ],
+    "com": [
+      "photo-meter",
+      "measure"
+    ],
+    "parallel": [
+      "photo-meter",
+      "measure"
+    ],
+    "analyzer": [
+      "serial-bits"
+    ],
+    "short": [
+      "short",
+      "measure"
+    ],
+    "resistor": [
+      "components",
+      "ohm"
+    ],
+    "capacitor": [
+      "components"
+    ],
+    "ohm": [
+      "ohm"
+    ],
+    "led": [
+      "components"
+    ],
+    "pitch": [
+      "pinout"
+    ],
+    "solder": [
+      "pinout"
+    ],
+    "crimp": [
+      "pinout"
+    ],
+    "tolerance": [
+      "pinout"
+    ],
+    "ascii": [
+      "encoding"
+    ],
+    "unicode": [
+      "encoding"
+    ],
+    "assist": [
+      "phone-input"
+    ],
+    "fka": [
+      "phone-input"
+    ],
+    "devmode": [
+      "phone-input"
+    ],
+    "iphone": [
+      "phone-input"
+    ],
+    "fn": [
+      "phone-input"
+    ],
+    "motor": [
+      "motor"
+    ],
+    "gpio": [
+      "motor",
+      "nesting"
+    ],
+    "svg": [
+      "formats"
+    ],
+    "pdf": [
+      "formats"
+    ],
+    "enumeration": [
+      "evidence"
+    ],
+    "pd": [
+      "pd"
+    ],
+    "ctoc": [
+      "ctoc"
+    ],
+    "formula-ohm": [
+      "ohm"
+    ],
+    "iarm": [
+      "system"
+    ],
+    "imouse": [
+      "system"
+    ],
+    "mac": [
+      "system"
+    ],
+    "breadboard": [
+      "photo-breadboard",
+      "breadboard"
+    ],
+    "micro-usb": [
+      "photo-otg",
+      "photo-bridge"
+    ],
+    "schematic": [
+      "components"
+    ],
+    "data-pair": [
+      "usb-pair"
+    ],
+    "ch9329": [
+      "ch9329"
+    ],
+    "ch9329f": [
+      "ch9329"
+    ],
+    "kicad": [
+      "pcb-design"
+    ]
+  }
+}

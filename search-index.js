@@ -1,6 +1,6 @@
 window.ATOM_SEARCH_INDEX = [
   {
-    title: '随读词典：OTG、USB-UART桥与153组硬件术语',
+    title: '随读词典：OTG、USB-UART桥与154组硬件术语',
     type: '报告内主题 · 术语讲解',
     summary: '正文、接线图和动态演示中的专业术语可点开解释，包含定义、机箱用途、容易混淆的概念及资料链接。',
     keywords: 'OTG USB-UART 桥 CP210x USB Serial JTAG PHY MCU UART GPIO HID 波特率 全速 PSRAM popover 术语 词典',
@@ -10,7 +10,7 @@ window.ATOM_SEARCH_INDEX = [
   {
   "title": "iArm 硬件入门：从接线到手机输入",
   "type": "报告 · 硬件入门",
-  "summary": "13章图解供电、接线、ESP32-S3、UART、USB、HID与摄像头，含153组术语弹层、5个交互演示和动手路线。",
+  "summary": "13章图解供电、接线、ESP32-S3、UART、USB、HID与摄像头，含154组术语弹层、43幅新增图解、6张实物照片与动手演示。",
   "keywords": "iArm 硬件 入门 教程 ESP32-S3 CH340 CH9329 GPIO 排针 面包板 iPhone OTG USB-UART 桥 popover 术语 词典 摄像头",
   "url": "/reports/2026/10/iarm-hardware-primer/",
   "date": "2026-10-22"
