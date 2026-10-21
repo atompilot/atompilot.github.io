@@ -1,5 +1,45 @@
 window.ATOM_SEARCH_INDEX = [
   {
+  "title": "iArm 硬件入门：从接线到手机输入",
+  "type": "报告 · 硬件入门",
+  "summary": "13章图解供电、接线、ESP32-S3、UART、USB、HID与摄像头，含5个交互演示和动手路线。",
+  "keywords": "iArm 硬件 入门 教程 ESP32-S3 CH340 CH9329 GPIO 排针 面包板 iPhone OTG 摄像头",
+  "url": "/reports/2026/10/iarm-hardware-primer/",
+  "date": "2026-10-22"
+},
+  {
+  "title": "USB主从与Hub：一个原生USB口如何分工",
+  "type": "报告内主题 · USB",
+  "summary": "分清接口形状、数据角色与供电角色，理解Hub为何不能让同一OTG同时当Host和Device。",
+  "keywords": "USB Host Device Hub OTG PD Type-C 原生USB 控制器 PHY",
+  "url": "/reports/2026/10/iarm-hardware-primer/#usb",
+  "date": "2026-10-22"
+},
+  {
+  "title": "CH340与CH9329：Python怎样变成手机键鼠输入",
+  "type": "报告内主题 · HID",
+  "summary": "USB转串口与串口转HID各自的作用；按下、移动、松开，以及相对与绝对鼠标的区别。",
+  "keywords": "CH340 CH9329 CH9329F HID Python UART 键盘 鼠标 驱动",
+  "url": "/reports/2026/10/iarm-hardware-primer/#hid",
+  "date": "2026-10-22"
+},
+  {
+  "title": "摄像头连接与视频带宽计算",
+  "type": "报告内主题 · 摄像头",
+  "summary": "用实物案例理解连接器与线序，区分USB和DVP；交互计算未压缩视频数据量。",
+  "keywords": "摄像头 USB UVC DVP MIPI MJPEG 带宽 fps 像素 线序 排线",
+  "url": "/reports/2026/10/iarm-hardware-primer/#camera",
+  "date": "2026-10-22"
+},
+  {
+  "title": "四种iArm候选连接方案",
+  "type": "报告内主题 · 硬件架构",
+  "summary": "相机直连Mac、S3相机加BLE、S3加CH9329、DVP加USB HID；分别列出待验证项。",
+  "keywords": "iArm 连接 ESP32-S3 BLE 蓝牙 CH9329 架构 iPhone 开发者模式",
+  "url": "/reports/2026/10/iarm-hardware-primer/#architectures",
+  "date": "2026-10-22"
+},
+  {
   "title": "Agent Use Cases：内容与变现拆解",
   "type": "报告 · 网站商业模式",
   "summary": "AI 案例目录怎样通过每周赞助与月费课程社区变现；区分公开报价、作者收入自述和自动化边界。",
