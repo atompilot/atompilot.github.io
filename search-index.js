@@ -1,5 +1,21 @@
 window.ATOM_SEARCH_INDEX = [
   {
+    title: '闲鱼官方 API：准入条件与权限边界',
+    type: '报告 · 官方接口准入',
+    summary: '官方小程序邀请与企业主体要求，卡券发码和同城IM能力，以及单店自研尚未明确的资格。',
+    keywords: '闲鱼 官方 API 准入 邀请 企业 个人 开发者 自研 AppKey 卡券 发码 同城 IM 聚石塔',
+    url: '/reports/2026/10/xianyu-official-api-access/',
+    date: '2026-10-23'
+  },
+  {
+    title: '闲鱼单店自研：未明确条件与官方咨询模板',
+    type: '报告内主题 · 接入申请',
+    summary: '核实单店自研、个人及个体户资格、API权限、普通订单范围、聊天接收与发码要求。',
+    keywords: '闲鱼 自研 个体工商户 企业 软著 保证金 申请 审核 咨询模板',
+    url: '/reports/2026/10/xianyu-official-api-access/#inquiry',
+    date: '2026-10-23'
+  },
+  {
     title: '闲鱼卡密是什么：商品、发货与生意模式',
     type: '报告 · 虚拟商品',
     summary: '区分卡密、无卡、直充与自动发货，解释转售流程、收益口径和品牌转售限制。',
