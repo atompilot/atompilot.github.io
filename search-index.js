@@ -1,4 +1,20 @@
 window.ATOM_SEARCH_INDEX = [
+{
+  "title": "闲鱼与阿奇索：GitHub 自动回复和发卡密项目",
+  "type": "报告 · GitHub项目调研",
+  "summary": "7个候选的真实源码、接入方式、维护快照和许可证；包括XianYuApis、XianyuAutoAgent与阿奇索接口知识库。",
+  "keywords": "闲鱼 阿奇索 Agiso GitHub 自动回复 发卡密 SDK Python TypeScript XianYuApis XianyuAutoAgent",
+  "url": "/reports/2026/10/xianyu-agiso-github-projects/",
+  "date": "2026-10-23"
+},
+{
+  "title": "阿奇索接口研究仓库与消息推送范围",
+  "type": "报告内主题 · 阿奇索接口",
+  "summary": "agiso-open-platform-workspace中的闲鱼API快照、签名脚本与消息类型；区分接口资料和核心源码。",
+  "keywords": "阿奇索 Agiso 开放平台 Assistant SendImMsg IdleReceiveClientMsg 文本消息 签名",
+  "url": "/reports/2026/10/xianyu-agiso-github-projects/#agiso",
+  "date": "2026-10-23"
+},
   {
     title: '阿奇索如何自动发货与回复？',
     type: '报告 · 自动发货原理',
