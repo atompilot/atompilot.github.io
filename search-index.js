@@ -1,5 +1,21 @@
 window.ATOM_SEARCH_INDEX = [
   {
+    title: '阿奇索如何自动发货与回复？',
+    type: '报告 · 自动发货原理',
+    summary: '店铺授权、付款后发密、91卡券与货源接口，以及依赖鱼店长在线的关键词答复。',
+    keywords: '阿奇索 Agiso 闲鱼 原理 自动发货 卡密 91卡券 鱼店长 智能答复 挂机 自研 API IM',
+    url: '/reports/2026/10/agiso-xianyu-mechanism/',
+    date: '2026-10-23'
+  },
+  {
+    title: '阿奇索自研接口与买家消息权限',
+    type: '报告内主题 · 自研接入',
+    summary: '订单推送、卡券加卡提卡、标准货源与电影票场景的IM授权，区分图片消息和任意文本聊天。',
+    keywords: '阿奇索 开放平台 Token AppId IM 图片消息 自研 AI客服 标准货源',
+    url: '/reports/2026/10/agiso-xianyu-mechanism/#integration',
+    date: '2026-10-23'
+  },
+  {
     title: '闲鱼官方 API：准入条件与权限边界',
     type: '报告 · 官方接口准入',
     summary: '官方小程序邀请与企业主体要求，卡券发码和同城IM能力，以及单店自研尚未明确的资格。',
