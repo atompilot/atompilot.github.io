@@ -1,5 +1,21 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "Airtap：给 AI 一部云手机",
+  "type": "报告 · 手机智能体",
+  "summary": "核对聊天入口、云端 Android、定时任务、邀请制、免费额度与隐私边界。",
+  "keywords": "Airtap 云手机 Android 手机智能体 GUI Agent Autopilot PocketPilot",
+  "url": "/reports/2026/10/airtap-ai-cloud-phone/",
+  "date": "2026-10-24"
+},
+{
+  "title": "Airtap 的 Codex 接入与 iPhone 控制边界",
+  "type": "报告内主题 · 接入能力",
+  "summary": "公开 skill 通过云端任务 API 委托执行；iMessage 入口不能证明能控制 iPhone 本机 App。",
+  "keywords": "Airtap Codex Claude OpenClaw skill API iPhone iOS 本机控制",
+  "url": "/reports/2026/10/airtap-ai-cloud-phone/#integration",
+  "date": "2026-10-24"
+},
+{
   "title": "闲鱼与阿奇索：GitHub 自动回复和发卡密项目",
   "type": "报告 · GitHub项目调研",
   "summary": "7个候选的真实源码、接入方式、维护快照和许可证；包括XianYuApis、XianyuAutoAgent与阿奇索接口知识库。",

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Airtap 产品调研：聊天入口、云端 Android、定时任务、Codex 接入，以及邀请制、隐私与 iPhone 控制边界。">
+  <meta name="keywords" content="Airtap,云手机,Android,手机智能体,GUI Agent,Codex,Claude,Autopilot,PocketPilot">
+  <title>Airtap：给 AI 一部云手机 — Atom Wang</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/search-index.js"></script>
+  <script defer src="/site.js"></script>
+  <style>
+    body{background:#f7f7fa;color:#20202b}main{max-width:960px;margin:auto;padding:32px 24px 70px}nav{display:flex;justify-content:space-between;gap:16px}header{padding:64px 0 32px}h1{font-size:clamp(36px,7vw,66px);line-height:1.12;letter-spacing:-.04em;margin:12px 0 20px}h2{font-size:26px;margin:0 0 18px}h3{font-size:18px;margin:0 0 10px}p,li,td{line-height:1.85}p{margin:10px 0}.meta,.note{color:#626273;font-size:14px}.lead{font-size:21px;max-width:770px}.tag{color:#6544d5;font-size:14px;font-weight:650}section{background:#fff;border:1px solid #e3e3ec;border-radius:18px;padding:28px;margin:20px 0}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}.step{background:#f1edff;padding:18px;border-radius:12px}.step b{display:block;margin-bottom:6px}.step span{font-size:14px;color:#575468}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:15px}td,th{text-align:left;vertical-align:top;padding:13px 10px;border-bottom:1px solid #e6e6ef}th{background:#f7f7fb;white-space:nowrap}code{background:#f2f1f8;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}.callout{border-left:4px solid #7952e4;padding-left:18px}.sources li{margin-bottom:9px}a{color:#6242c3}footer{padding-top:20px}@media(max-width:640px){main{padding:24px 16px 48px}header{padding:42px 0 20px}section{padding:21px 18px}.flow{grid-template-columns:1fr 1fr}.lead{font-size:19px}}
+  </style>
+</head>
+<body>
+<main>
+  <nav><a href="/reports/">← 返回报告库</a><button class="search-trigger" data-site-search type="button">搜索报告</button></nav>
+  <header>
+    <div class="tag">产品调研 · 手机智能体</div>
+    <h1>Airtap：<br>给 AI 一部云手机</h1>
+    <p class="lead">你用聊天消息交代任务，Airtap 在云端 Android 中操作 App，再把结果发回来。它把手机执行、定时流程和消息入口包装成个人助理服务。</p>
+    <p class="meta">调研日期：2026-10-24 · 依据官网、公开接入代码与未登录页面；未注册、未执行手机任务。</p>
+  </header>
+  <section id="what">
+    <h2>它怎么工作</h2>
+    <div class="flow" aria-label="任务执行流程">
+      <div class="step"><b>1 · 发消息</b><span>通过聊天入口描述目标</span></div>
+      <div class="step"><b>2 · 云端理解</b><span>智能体规划与执行任务</span></div>
+      <div class="step"><b>3 · 操作手机</b><span>在 App 中点击、输入、滚动</span></div>
+      <div class="step"><b>4 · 返回结果</b><span>查看进度，或保存成定时流程</span></div>
+    </div>
+    <p>官方介绍的消息入口包括 iMessage、RCS、短信与 Telegram；Web 控制台可查看云手机画面和任务记录。运营主体为 Airtap AI Inc.。<a href="https://airtap.ai/about-us">[1]</a></p>
+    <p>官方列举的用途包括领优惠券、领取奖励、迁移音乐歌单、汇总社交内容、叫车和定时预约。这些是产品公布的用途，本次未验证成功率或运行耗时。<a href="https://airtap.ai/support">[2]</a></p>
+  </section>
+  <section id="devices">
+    <h2>云手机与本机控制，要分开看</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>路径</th><th>公开资料说明</th><th>证据边界</th></tr></thead>
+      <tbody>
+        <tr><td>云端 Android</td><td>为用户提供云手机，登录自己的 App 账号，由智能体执行任务。</td><td>核心产品路径；未登录实测。</td></tr>
+        <tr><td>实体 Android</td><td>安装 Autopilot APK，与 Web 控制台配对。</td><td>支持文档明确给出安装路径。</td></tr>
+        <tr><td>iPhone</td><td>可通过 iMessage 使用服务，任务在云手机执行。</td><td>不能由此推出能控制 iPhone 本机任意 App。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">技术宣传页把设备范围写到 iOS、TV、PC，但支持页和条款把 Autopilot 本机控制限定为 Android。现有资料存在口径差异；具体本机能力应以可用客户端和实测为准。<a href="https://airtap.ai/technology">[3]</a> <a href="https://airtap.ai/support">[2]</a> <a href="https://airtap.ai/terms">[6]</a></p>
+  </section>
+  <section id="integration">
+    <h2>Codex 可以接，但接的是任务服务</h2>
+    <p>官方公开了 <a href="https://github.com/airtap-ai/airtap-skill">airtap-ai/airtap-skill</a>，README 包含 Claude Code、Codex 等宿主的安装说明，需要 Airtap 账号和 personal access token。公开接入代码不能等同于整个平台、模型或云手机基础设施开源。<a href="https://github.com/airtap-ai/airtap-skill">[4]</a></p>
+    <p>从 skill 和 Python 代码看，接入方式是：创建自然语言任务、查询状态、补充消息与取消任务；请求发往 Airtap 云端 API。本次看到的接口主要是任务委托，不能据此认定它提供独立于 Airtap 服务的逐步坐标控制能力。<a href="https://raw.githubusercontent.com/airtap-ai/airtap-skill/main/skills/airtap/SKILL.md">[5]</a> <a href="https://raw.githubusercontent.com/airtap-ai/airtap-skill/main/skills/airtap/scripts/airtap_common.py">[8]</a></p>
+    <p class="note">状态包含等待用户输入、等待用户操作设备、达到步数上限等待继续等情况，因此不能将“可自动执行”理解为每个任务都完全无人参与。[5]</p>
+  </section>
+  <section id="availability">
+    <h2>现在能用吗，怎么收费</h2>
+    <p><strong>目前仍是邀请制。</strong>官网首页与本次浏览器回读的登录页都显示邀请限制。登录页采用手机号验证码，和题图一致。默认出现的 +61 是号码区号选择，不能证明只对澳大利亚开放。<a href="https://airtap.ai/">[9]</a> <a href="https://airtap.ai/app">[10]</a></p>
+    <p>官方 About 页写明建设期间免费、有每日用量上限；条款把首版列为免费，未来计划推出付费档位。本次未确认具体日额度、未来价格、中国大陆手机号接码或国内 App 可用性。<a href="https://airtap.ai/about-us">[1]</a> <a href="https://airtap.ai/terms">[6]</a></p>
+  </section>
+  <section id="limits">
+    <h2>判断它时，最有用的几个边界</h2>
+    <p><strong>隐私：</strong>官网声称屏蔽密码等敏感输入；隐私政策同时说明，会把任务指令、云手机截图和提取的屏幕文本等交给第三方模型服务商处理，任务数据通常最多保留 30 天。密码字段保护不等于任务内容不出云端，具体保护机制本次未审计。<a href="https://airtap.ai/privacy">[7]</a></p>
+    <p><strong>使用范围：</strong>本次读取的条款限定个人、非商业使用；若打算作为商业自动化基础设施，需先向厂商确认授权。这里是对现有服务条文的摘要。<a href="https://airtap.ai/terms">[6]</a></p>
+    <p><strong>成熟度：</strong>本次检索未找到足以支持稳定性判断的独立长期实测。公开仓库和产品页面能证明存在产品与接入方案，不能证明复杂任务的完成率、速度或国内适配。</p>
+    <div class="callout"><p><strong>调研判断：</strong>它值得作为“消息入口＋手机执行＋定时流程”的产品参考。是否适合实际使用，仍需拿到邀请后，以一个具体 App 任务核对完成结果、人工介入点和耗时；本轮没有安装、登录或接入。</p></div>
+  </section>
+  <section id="sources">
+    <h2>来源与方法</h2>
+    <p class="note">优先采用官方当前页面及官方公开仓库；宣传能力、代码证据、未登录页面和实际任务效果分开陈述。技术页与支持页的设备范围差异已在正文说明。没有以目录站评分代替用户实测。</p>
+    <ol class="sources">
+      <li><a href="https://airtap.ai/about-us">About：产品形态、消息入口、免费与额度</a></li>
+      <li><a href="https://airtap.ai/support">Support：任务示例、Android Autopilot、iPhone 使用方式</a></li>
+      <li><a href="https://airtap.ai/technology">Technology：Brain／Hands／Devices 架构与宣传范围</a></li>
+      <li><a href="https://github.com/airtap-ai/airtap-skill">GitHub：官方接入仓库</a></li>
+      <li><a href="https://raw.githubusercontent.com/airtap-ai/airtap-skill/main/skills/airtap/SKILL.md">SKILL.md：配置、任务状态与操作命令</a></li>
+      <li><a href="https://airtap.ai/terms">Terms：主体、价格阶段、个人非商业使用</a></li>
+      <li><a href="https://airtap.ai/privacy">Privacy：屏幕内容、模型服务商与保留期</a></li>
+      <li><a href="https://raw.githubusercontent.com/airtap-ai/airtap-skill/main/skills/airtap/scripts/airtap_common.py">Python API 实现：云端任务接口</a></li>
+      <li><a href="https://airtap.ai/">官网首页：邀请制</a></li>
+      <li><a href="https://airtap.ai/app">Web App：本轮未登录浏览器回读</a></li>
+    </ol>
+  </section>
+  <footer class="note">公开资料快照 · 2026-10-24 · <a href="/reports/">返回报告库</a></footer>
+</main>
+</body>
+</html>
