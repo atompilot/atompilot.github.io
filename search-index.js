@@ -2,9 +2,17 @@ window.ATOM_SEARCH_INDEX = [
 {
   "title": "Airtap：给 AI 一部云手机",
   "type": "报告 · 手机智能体",
-  "summary": "核对聊天入口、云端 Android、定时任务、邀请制、免费额度与隐私边界。",
-  "keywords": "Airtap 云手机 Android 手机智能体 GUI Agent Autopilot PocketPilot",
+  "summary": "核对云端手机执行、BlueStacks 创业班底、SEC 1200 万美元股权融资、未披露收入与当前免费额度。",
+  "keywords": "Airtap 云手机 Android 手机智能体 GUI Agent Autopilot PocketPilot Suman Saraf Rosen Sharma 融资 收入 收费 Foothill",
   "url": "/reports/2026/10/airtap-ai-cloud-phone/",
+  "date": "2026-10-24"
+},
+{
+  "title": "Airtap 创始班底、融资、收入与收费",
+  "type": "报告内主题 · 商业背景",
+  "summary": "Suman 发起产品、Rosen 任 CEO；SEC 申报1200万美元股权融资，Foothill 种子投资，收入不披露，消费者产品免费限额。",
+  "keywords": "Airtap 创始人 CEO CTO Suman Saraf Rosen Sharma BlueStacks Foothill SEC 融资 收入 ARR MRR 收费 订阅",
+  "url": "/reports/2026/10/airtap-ai-cloud-phone/#business",
   "date": "2026-10-24"
 },
 {

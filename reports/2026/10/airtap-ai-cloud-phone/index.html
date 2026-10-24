@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Airtap 产品调研：聊天入口、云端 Android、定时任务、Codex 接入，以及邀请制、隐私与 iPhone 控制边界。">
-  <meta name="keywords" content="Airtap,云手机,Android,手机智能体,GUI Agent,Codex,Claude,Autopilot,PocketPilot">
+  <meta name="description" content="Airtap 产品与商业调研：BlueStacks 创业班底、SEC 1200 万美元股权融资、Foothill 投资、未披露收入与当前免费额度。">
+  <meta name="keywords" content="Airtap,云手机,Android,Codex,Suman Saraf,Rosen Sharma,BlueStacks,融资,收入,收费,Foothill">
   <title>Airtap：给 AI 一部云手机 — Atom Wang</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
@@ -21,7 +21,7 @@
     <div class="tag">产品调研 · 手机智能体</div>
     <h1>Airtap：<br>给 AI 一部云手机</h1>
     <p class="lead">你用聊天消息交代任务，Airtap 在云端 Android 中操作 App，再把结果发回来。它把手机执行、定时流程和消息入口包装成个人助理服务。</p>
-    <p class="meta">调研日期：2026-10-24 · 依据官网、公开接入代码与未登录页面；未注册、未执行手机任务。</p>
+    <p class="meta">调研及商业资料补充：2026-10-24 · 依据官网、SEC 申报、投资方页面、团队自述与公开代码；未注册、未执行手机任务。</p>
   </header>
   <section id="what">
     <h2>它怎么工作</h2>
@@ -57,6 +57,33 @@
     <p><strong>目前仍是邀请制。</strong>官网首页与本次浏览器回读的登录页都显示邀请限制。登录页采用手机号验证码，和题图一致。默认出现的 +61 是号码区号选择，不能证明只对澳大利亚开放。<a href="https://airtap.ai/">[9]</a> <a href="https://airtap.ai/app">[10]</a></p>
     <p>官方 About 页写明建设期间免费、有每日用量上限；条款把首版列为免费，未来计划推出付费档位。本次未确认具体日额度、未来价格、中国大陆手机号接码或国内 App 可用性。<a href="https://airtap.ai/about-us">[1]</a> <a href="https://airtap.ai/terms">[6]</a></p>
   </section>
+  <section id="business">
+    <h2>创始班底、融资、收入与收费</h2>
+    <p class="lead">可核实的核心结论：BlueStacks 背景的创业班底；一笔已申报 1,200 万美元的股权融资；收入不披露；消费者产品目前免费、有每日额度。</p>
+    <h3 id="founders">创始人与核心团队</h3>
+    <p><strong>Suman Saraf：</strong>公司 LinkedIn 明确称其为 CTO。SaaSHub 上标为 Airtap 团队回答的创业故事，描述 Suman 先做手机事务自动化，随后邀请 Harvinder、Sharad、Nitin 等 BlueStacks 老同事共同建设产品。因此可将其描述为产品发起者与技术负责人；这属于团队自述，尚未找到正式、完整的联合创始人名单。<a href="https://www.linkedin.com/company/airtap-ai">[11]</a> <a href="https://www.saashub.com/compare-airtap-ai-vs-manus">[12]</a></p>
+    <p><strong>Rosen Sharma：</strong>2025 年融资申报签名栏列其为 CEO，关联人员栏列为高管及董事。<strong>Hue Harguindeguy：</strong>同一文件列为高管，不能仅据此认定其为联合创始人。<a href="https://www.sec.gov/Archives/edgar/data/2092947/000209294725000001/xslFormDX01/primary_doc.xml">[13]</a></p>
+    <p class="note">既往背景：BlueStacks 的 Wellfound 团队页把 Suman 与 Rosen 列在创始人栏目，并显示 Suman 为 CTO；Harvinder Singh Sawhney 的个人介绍为 BlueStacks 联合创始人及首席软件架构师。这能支持团队的 Android 技术经历，但不能代替 Airtap 当前股权关系证明。<a href="https://wellfound.com/company/bluestacks/people">[14]</a></p>
+    <h3 id="funding">融资：有原始申报支持的 1,200 万美元</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>项目</th><th>SEC Form D 披露值</th></tr></thead>
+      <tbody>
+        <tr><td>发行主体</td><td>AirTap AI Inc.，CIK 0002092947</td></tr>
+        <tr><td>申报日期／首次出售日期</td><td>2025-10-21／2025-09-04</td></tr>
+        <tr><td>证券类型</td><td>股权</td></tr>
+        <tr><td>拟发行／已售出／剩余</td><td>1,200 万／1,200 万／0 美元</td></tr>
+        <tr><td>投资者数量</td><td>7 名</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">以上是发行人的监管申报，含已售出金额，不只是融资目标；估值和完整投资人名单未披露。[13]</p>
+    <p><strong>已确认投资方：Foothill Ventures。</strong>其官网 portfolio 的 Airtap AI 条目使用 Airtap 标志并链接 <code>airtap.ai</code>，标注 Seed，描述为云端手机 App 执行智能体。该条目存在于页面 HTML，文本抓取未完整展现，已直接核对 HTML。SEC 不标注“Seed”，两者分别支持金额与投资关系／轮次口径；不能把 Foothill 写成已确认领投方，也不能把聚合站的收录日期当成交割日期。<a href="https://www.foothill.ventures/portfolio">[15]</a></p>
+    <h3 id="revenue">收入：未取得可信的公开经营数据</h3>
+    <p>上述 SEC 文件的收入栏勾选 <code>Decline to Disclose</code>，不是 <code>No Revenues</code>。本次未找到公司确认的当前营业收入、MRR、ARR、付费用户数或盈利数据；免费提供消费者产品，也不能推出公司整体收入为零。[13]</p>
+    <p class="note">D&amp;B 搜索快照曾出现该公司销售额 <code>$0.1M</code>，但本轮无法核实其统计期间、来源及是否估算，因此不采用为实际收入。类似地，团队既往公司的收入和融资不归入 Airtap。<a href="https://www.dnb.com/business-directory/company-information.computer_systems_design_and_related_services.us.california.campbell.html?page=4">[16]</a></p>
+    <h3 id="pricing">收费：当前免费限额，未来计划订阅</h3>
+    <p>官网 About 写明开发期间免费、有每日上限；当前条款第 8.1 条规定 Release 1 免费，第 8.2 条计划未来推出付费订阅。具体日额度、付费档位、月费、按次费用及企业报价，本次均未确认。<a href="https://airtap.ai/about-us">[1]</a> <a href="https://airtap.ai/terms">[6]</a></p>
+    <p class="note">同名排除：<code>airtapapp.com</code> 的 $19.99/月对应手势控制应用；<code>airtapai.com</code> 的 $26／$80／$342 套餐对应销售与营销工作流网站。这些报价不应直接归给本报告的 <code>airtap.ai</code>，本轮未找到证明这些站点同属该产品的证据。<a href="https://airtapapp.com/en/pricing">[17]</a> <a href="https://www.airtapai.com/">[18]</a></p>
+  </section>
   <section id="limits">
     <h2>判断它时，最有用的几个边界</h2>
     <p><strong>隐私：</strong>官网声称屏蔽密码等敏感输入；隐私政策同时说明，会把任务指令、云手机截图和提取的屏幕文本等交给第三方模型服务商处理，任务数据通常最多保留 30 天。密码字段保护不等于任务内容不出云端，具体保护机制本次未审计。<a href="https://airtap.ai/privacy">[7]</a></p>
@@ -78,6 +105,14 @@
       <li><a href="https://raw.githubusercontent.com/airtap-ai/airtap-skill/main/skills/airtap/scripts/airtap_common.py">Python API 实现：云端任务接口</a></li>
       <li><a href="https://airtap.ai/">官网首页：邀请制</a></li>
       <li><a href="https://airtap.ai/app">Web App：本轮未登录浏览器回读</a></li>
+      <li><a href="https://www.linkedin.com/company/airtap-ai">公司 LinkedIn：Suman 的 CTO 身份</a></li>
+      <li><a href="https://www.saashub.com/compare-airtap-ai-vs-manus">SaaSHub：标为厂商回答的产品创业故事</a></li>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/2092947/000209294725000001/xslFormDX01/primary_doc.xml">SEC 原始 Form D：融资金额、人数、CEO 与收入选择</a></li>
+      <li><a href="https://wellfound.com/company/bluestacks/people">Wellfound：BlueStacks 创始团队既往背景</a></li>
+      <li><a href="https://www.foothill.ventures/portfolio">Foothill Ventures 官网：Airtap AI 的 Seed 投资条目</a></li>
+      <li><a href="https://www.dnb.com/business-directory/company-information.computer_systems_design_and_related_services.us.california.campbell.html?page=4">D&amp;B 目录：仅作为未采信数字的来源，不作收入结论</a></li>
+      <li><a href="https://airtapapp.com/en/pricing">同名站：手势控制应用的价格</a></li>
+      <li><a href="https://www.airtapai.com/">同名站：销售营销工作流的价格</a></li>
     </ol>
   </section>
   <footer class="note">公开资料快照 · 2026-10-24 · <a href="/reports/">返回报告库</a></footer>
