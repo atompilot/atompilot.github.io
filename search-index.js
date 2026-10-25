@@ -1,5 +1,37 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "iOS 快捷指令：零基础图解课",
+  "type": "报告 · 学习教程",
+  "summary": "14页动作卡片与流程图：Text按行拆分、变量、剪贴板读写、图片导入和清空相册，附互动演示及PDF。",
+  "keywords": "iOS 快捷指令 Shortcuts 教学 零基础 Text splitlines plist 变量 词典 签名 phoneId",
+  "url": "/reports/2026/10/ios-shortcuts-beginner/",
+  "date": "2026-10-25"
+},
+{
+  "title": "快捷指令读取与写入剪贴板",
+  "type": "报告内主题 · 剪贴板",
+  "summary": "获取剪贴板读出已有内容；拷贝至剪贴板写入新文字，再到App里手动粘贴。",
+  "keywords": "快捷指令 iOS 剪贴板 复制 粘贴 获取剪贴板 拷贝至剪贴板",
+  "url": "/reports/2026/10/ios-shortcuts-beginner/#p5",
+  "date": "2026-10-25"
+},
+{
+  "title": "快捷指令导入图片与清空指定相册",
+  "type": "报告内主题 · 照片",
+  "summary": "将文件图片存入相簿，区分移除相册归属与删除原图，以及iCloud同步删除的实际后果。",
+  "keywords": "iOS 快捷指令 图片 相册 相簿 清空 移除 删除 照片 iCloud",
+  "url": "/reports/2026/10/ios-shortcuts-beginner/#p7",
+  "date": "2026-10-25"
+},
+{
+  "title": "Text按换行拆分与底层plist代码",
+  "type": "报告内主题 · 动作语法",
+  "summary": "把三行文字拆成列表，理解从1开始的索引与UUID输出引用，底层代码作为选读。",
+  "keywords": "Text splitlines Split Text New Lines 换行 拆分 列表 UUID plist JSON",
+  "url": "/reports/2026/10/ios-shortcuts-beginner/#p3",
+  "date": "2026-10-25"
+},
+{
   "title": "Airtap：给 AI 一部云手机",
   "type": "报告 · 手机智能体",
   "summary": "核对云端手机执行、BlueStacks 创业班底、SEC 1200 万美元股权融资、未披露收入与当前免费额度。",
