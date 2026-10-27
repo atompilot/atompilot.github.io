@@ -1,5 +1,21 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "最近新建、星最多的 GitHub 项目",
+  "type": "报告 · 新仓库热度",
+  "summary": "2026-10-28 的 API 快照：7月1日后新建仓库里，DeepSeek Harness 约 26.4 万星，其后是 Rust 重写的桌面软件和 10 月的电视工具。",
+  "keywords": "GitHub 新项目 DeepSeek Harness PhotoCraft CleanYourTV Harness2 Magpie Strata DeepInfer 2026",
+  "url": "/reports/2026/10/github-new-hot-projects/",
+  "date": "2026-10-28"
+},
+{
+  "title": "10月新建的 GitHub 热门仓库",
+  "type": "报告内主题 · 10月新仓",
+  "summary": "CleanYourTV、DeepInfer、anatomy、Harness²、OpenAI 数学手稿，以及 storytold 的文字、绘图和表格仓库。",
+  "keywords": "CleanYourTV DeepInfer Harness2 openai/math WordCraft SolidCraft Aerial TV",
+  "url": "/reports/2026/10/github-new-hot-projects/#october",
+  "date": "2026-10-28"
+},
+{
   "title": "Coding agent 这一季在往前走的四件事",
   "type": "报告 · 前沿简报",
   "summary": "2026年10月的前沿是合入质量、模型自写编排、任务离开本机，以及分类器或系统沙箱放行。",
