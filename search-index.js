@@ -1,5 +1,21 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "Hypit 是怎么火起来的",
+  "type": "报告 · 开源传播",
+  "summary": "仓库 7 月 29 日建仓后几乎没有星。9 月 14 日发布帖之后，15 日和 16 日新增约 5900 星，10 月仍每天几百星。",
+  "keywords": "Hypit hypit-ai GitHub stars Trendshift 发布帖 Claude Code Codex 短视频",
+  "url": "/reports/2026/10/hypit-how-it-spread/",
+  "date": "2026-10-28"
+},
+{
+  "title": "Hypit 登顶那几天的日增星",
+  "type": "报告内主题 · 星数时间线",
+  "summary": "9 月 14 日 +314，15 日 +2774，16 日 +3123 并登上 Trendshift 全语言第一。四天合计 +8483。",
+  "keywords": "Hypit Trendshift 9月15日 9月16日 日增星 全语言第一",
+  "url": "/reports/2026/10/hypit-how-it-spread/#spike",
+  "date": "2026-10-28"
+},
+{
   "title": "最近新建、星最多的 GitHub 项目",
   "type": "报告 · 新仓库热度",
   "summary": "2026-10-28 的 API 快照：7月1日后新建仓库里，DeepSeek Harness 约 26.4 万星，其后是 Rust 重写的桌面软件和 10 月的电视工具。",

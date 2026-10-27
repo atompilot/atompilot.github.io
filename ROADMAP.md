@@ -8,9 +8,9 @@
 
 ## 当前状态
 
-- 新增[GitHub 新仓库热度](reports/2026/10/github-new-hot-projects/)：2026-10-28 用 API 统计 7 月 1 日后新建、星数最高的仓库。星数是当天快照。
-- 上一份仍在：[Coding agent 前沿简报](reports/2026/10/coding-agent-frontier/)。
+- 新增[Hypit 传播过程](reports/2026/10/hypit-how-it-spread/)：用 Trendshift 日增和 9 月 14 日发布帖，拆开建仓、登顶和之后每天几百星这三段。
+- 上一份仍在：[GitHub 新仓库热度](reports/2026/10/github-new-hot-projects/)。
 
 ## 下次滚动
 
-下次新增或更新报告时，继续按 REPORTS.md 维护来源、报告库及搜索索引。这份星数表不逐日刷新；下次要看新项目时重新拉 API，不沿用这张表。
+下次新增或更新报告时，继续按 REPORTS.md 维护来源、报告库及搜索索引。Hypit 这页的日增不逐日改；要更新结论时重新读 Trendshift 和仓库星数。
