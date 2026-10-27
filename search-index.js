@@ -1,5 +1,29 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "Coding agent 这一季在往前走的四件事",
+  "type": "报告 · 前沿简报",
+  "summary": "2026年10月的前沿是合入质量、模型自写编排、任务离开本机，以及分类器或系统沙箱放行。",
+  "keywords": "coding agent Claude Code Codex Grok FrontierCode Coding Agent Index harness workflow ACP MCP 沙箱",
+  "url": "/reports/2026/10/coding-agent-frontier/",
+  "date": "2026-10-27"
+},
+{
+  "title": "维护者愿不愿意合：FrontierCode 与 Coding Agent Index",
+  "type": "报告内主题 · 验收标准",
+  "summary": "10月23日指数第一是 Claude Code 加 Opus 5.5，61.7 分；Codex 加 GPT-6.1 Sol 为 54.1 分、约 1.50 美元一题。",
+  "keywords": "FrontierCode Coding Agent Index Opus 5.5 GPT-6.1 Sol Terminal-Bench 合入",
+  "url": "/reports/2026/10/coding-agent-frontier/#score",
+  "date": "2026-10-27"
+},
+{
+  "title": "模型自己写编排，任务离开这台电脑",
+  "type": "报告内主题 · 编排与云端",
+  "summary": "动态 workflow 用脚本调度很多代理；云端任务和 MCP Tasks 让慢工作不再堵住当前这一轮。",
+  "keywords": "dynamic workflows MCP Tasks 云端 agent 并行 Codex Claude Code",
+  "url": "/reports/2026/10/coding-agent-frontier/#orchestration",
+  "date": "2026-10-27"
+},
+{
   "title": "iOS 快捷指令：零基础图解课",
   "type": "报告 · 学习教程",
   "summary": "14页动作卡片与流程图：Text按行拆分、变量、剪贴板读写、图片导入和清空相册，附互动演示及PDF。",

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="2026年10月 coding agent 的前沿不在能不能改代码，而在合入质量、模型自己写编排、任务离开这台电脑，以及用分类器或系统沙箱放行。" />
+    <meta name="keywords" content="coding agent, Claude Code, Codex, Grok Build, FrontierCode, Coding Agent Index, harness, workflow, ACP, MCP, 沙箱, 2026" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#1f2328" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+    <title>Coding agent 前沿 · 2026年10月</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f5f1; --card: #fffefb; --ink: #1f2328; --muted: #5f6368;
+        --line: #d8d5cc; --accent: #1d4ed8; --accent-soft: #dbe7ff;
+        --sans: "Avenir Next", "SF Pro Display", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        --mono: "SFMono-Regular", Menlo, Consolas, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #16181b; --card: #1e2125; --ink: #e8e6e1; --muted: #a2a5aa; --line: #34383d; --accent: #93c5fd; --accent-soft: #1e2a44; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+      main { max-width: 920px; margin: 0 auto; padding: 32px 16px 80px; }
+      a { color: var(--accent); }
+      .back { font-size: 14px; text-decoration: none; }
+      .eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 28px 0 4px; }
+      h1 { font-size: clamp(28px, 6vw, 44px); line-height: 1.15; margin: 0 0 12px; }
+      h2 { font-size: 22px; margin: 44px 0 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+      .meta { color: var(--muted); font-size: 14px; }
+      .verdict { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 16px 18px; border-radius: 6px; margin: 24px 0; font-size: 17px; }
+      figure { margin: 20px 0 8px; }
+      figcaption { color: var(--muted); font-size: 13px; margin-top: 8px; }
+      svg { width: 100%; height: auto; display: block; }
+      .table-wrap { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--card); }
+      th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+      th { white-space: nowrap; color: var(--muted); font-weight: 600; }
+      code { font-family: var(--mono); font-size: .9em; }
+      .note { color: var(--muted); font-size: 14px; }
+      footer { margin-top: 56px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/reports/">← 报告库</a>
+      <p class="eyebrow">AI 工程 · 前沿简报</p>
+      <h1>Coding agent 这一季在往前走的四件事</h1>
+      <p class="meta">生成日期 2026-10-27 · 公开资料核对到当天 · 成绩以 10 月 23 日公布的指数为准</p>
+
+      <div class="verdict"><b>一句话：</b>能改代码已经是及格线。现在比的是：改完的东西维护者愿不愿意合，模型会不会自己把一大摊活拆开，任务能不能离开你眼前这台电脑，以及人还要不要每次点一次允许。</div>
+
+      <figure>
+        <svg viewBox="0 0 880 168" role="img" aria-labelledby="flowTitle flowDesc">
+          <title id="flowTitle">四件前沿变化的示意</title>
+          <desc id="flowDesc">从左到右四格：合入质量、自己写编排、离开这台电脑、分类器或沙箱放行。</desc>
+          <rect width="880" height="168" rx="12" fill="var(--card)" stroke="var(--line)"/>
+          <g font-family="Avenir Next, PingFang SC, sans-serif" font-size="15" fill="var(--ink)">
+            <rect x="16" y="36" width="190" height="96" rx="10" fill="var(--accent-soft)"/>
+            <text x="111" y="78" text-anchor="middle" font-weight="650">1 合入质量</text>
+            <text x="111" y="102" text-anchor="middle" font-size="13" fill="var(--muted)">测试过了还不够</text>
+            <rect x="236" y="36" width="190" height="96" rx="10" fill="var(--accent-soft)"/>
+            <text x="331" y="78" text-anchor="middle" font-weight="650">2 自己写编排</text>
+            <text x="331" y="102" text-anchor="middle" font-size="13" fill="var(--muted)">脚本去叫很多代理</text>
+            <rect x="456" y="36" width="190" height="96" rx="10" fill="var(--accent-soft)"/>
+            <text x="551" y="78" text-anchor="middle" font-weight="650">3 离开这台电脑</text>
+            <text x="551" y="102" text-anchor="middle" font-size="13" fill="var(--muted)">云端接着跑</text>
+            <rect x="676" y="36" width="188" height="96" rx="10" fill="var(--accent-soft)"/>
+            <text x="770" y="78" text-anchor="middle" font-weight="650">4 怎么放行</text>
+            <text x="770" y="102" text-anchor="middle" font-size="13" fill="var(--muted)">分类器或沙箱</text>
+          </g>
+        </svg>
+        <figcaption>示意。四格是这一季产品在补的四件事，不是某一次实测的界面截图。</figcaption>
+      </figure>
+
+      <h2 id="score">验收从「测试过了」改成「维护者愿不愿意合」</h2>
+      <p>以前的编程榜问：改完之后测试能不能过。Cognition 的 FrontierCode 换了一个问题：这个仓库的维护者会不会把这次改动合进去。出题的是这些开源仓库自己的维护者。评分同时看对不对、测试写得是否有用、改动有没有铺得太大、风格是否像这个仓库。跑去看原解答或原 PR 的，记 0 分。</p>
+      <p>10 月 12 日，Artificial Analysis 用同一套运行壳比较模型。领先的 Claude Opus 5.5 得分 52%，把全部硬条件都通过的尝试占 58%。也就是最好的模型仍有四成多的尝试过不了维护者的硬条件。100 题里有 9 题，没有任何模型任何一次通过。六家实验室的 9 个模型挤在 43% 到 52%。</p>
+      <p>10 月 23 日这套题进了 Coding Agent Index v2.0。指数把三件事等权加在一起：合入质量、终端里的多步任务、读仓库回答问题，共 290 题，每题跑 3 次。它评的是「模型加上这家自己的运行壳」，不是裸模型。</p>
+      <div class="table-wrap"><table>
+        <tr><th>组合</th><th>指数</th><th>口径</th></tr>
+        <tr><td>Claude Code + Opus 5.5（max）</td><td>61.7</td><td>约 $11.42 / 题，按 token 的 API 价</td></tr>
+        <tr><td>Claude Code + Sonnet 5.5（max）</td><td>59.3</td><td>同上次公布</td></tr>
+        <tr><td>Muse Code + Muse Wonder Full（max）</td><td>58.9</td><td>同上</td></tr>
+        <tr><td>Claude Code + Fable 5.1（max）</td><td>57.6</td><td>同上</td></tr>
+        <tr><td>Codex + GPT-6.1 Sol</td><td>54.1</td><td>约 $1.50 / 题</td></tr>
+      </table></div>
+      <p class="note">第一名大约贵 7 倍，多大约 7 分。这是 10 月 23 日这次公布的分。9 月旧指数上的 68 分换过题，不能横比。各家自己报的 Terminal-Bench 绝对分互相不一致，这篇不用那些分排座次。Terminal-Bench 4.0 还说明旧榜会失效：有汇总转引 Cognition，SWE-2 在 2.1 上是 92.8%，到 4.0 掉到 27.3%。</p>
+
+      <h2 id="orchestration">编排交给模型自己写的脚本</h2>
+      <p>一个会话里再叫几个帮手，已经不够用。Claude Code 让模型写一段 JavaScript，由运行时去拉起几十到几百个代理。中间结果放在脚本里，主会话可以继续跟人说话。做到一半关掉，打开后能接着跑。这个能力 5 月 28 日发布，后来变为一般可用。10 月 9 日进入托管代理的公开测试，单次运行的上限写到 1000 个代理。</p>
+      <p>Anthropic 自己报过一组对照：70 个事先埋好的 bug，单个代理三次找到 14、15、27 个；用 workflow 跑，三次都是 66 个。这是他们自己的实验，还没有独立复现。</p>
+      <p>人的用法已经变了。OpenAI 的工作论文（数据到 2026 年 6 月）里，超过 10% 的 Codex 用户每周至少有一段时间同时开着 3 个以上代理；26.6% 的人在用可共享的 skills。提交过「熟练的人估计要做 8 小时以上」这类任务的用户，今年以来增加了近 10 倍。在 OpenAI 内部，Codex 占掉 Codex 加 ChatGPT 输出 token 的 99.8%。</p>
+
+      <h2 id="offmachine">任务离开这台电脑，慢工具不再堵住这一轮</h2>
+      <p>云端接着干、把云端会话拉回自己的终端、按日程或 GitHub 事件触发、在客户自己的机器上跑，Claude 和 Codex 都已经做成产品。手机可以接着管一台已经连上的电脑。</p>
+      <p>工具协议也在跟。10 月 23 日，Claude Code 命令行（v2.1.304 起，公开测试）接上了 MCP Tasks：很慢的工具先还一个任务号，做完再交结果，这一轮不用干等。服务器如果缺一个字段，或需要人去浏览器登录，可以中途停下来问。</p>
+
+      <h2 id="permission">每次点允许，换成分类器或系统沙箱</h2>
+      <p>Claude Code 从 8 月 14 日起，付费个人档和团队档的新会话默认走自动模式：另一个检查器放行它认为安全的动作，危险的直接拦住，让模型换一条路。10 月 22 日的更新说，这个默认要扩到多数 Claude 应用。Anthropic 称，企业和团队里开着这个模式的人，合并进去的改动大约多 25%。这是他们的使用统计。</p>
+      <p>Codex 用操作系统沙箱把两件事拆开：能碰哪些文件和网络，以及要不要问你。未信任的目录先只读。非交互运行默认也是只读。macOS 上用系统的 Seatbelt 去限制。</p>
+      <p>图形界面也进了闭环：代理可以打开本机应用、点击、看屏幕，用来检查只有界面上才看得到的结果。严格做完的比例还低。厂商公布的电脑操作评测里，宽松计分能到七成多，严格完成大约四成。点得动，不等于一整段操作能自己收口。</p>
+
+      <h2 id="protocol">编辑器和 agent 正在拆开</h2>
+      <p>Agent Client Protocol 在 7 月 20 日放出第 2 版草案。编辑器管界面和权限，agent 作为旁边的程序说话。注册表已经能发现和安装 agent。Cursor 以这种 agent 的身份出现在 10 月 22 日的注册表里。仓库说明（<code>AGENTS.md</code>、skills、hooks）可以在 Claude、Codex、Grok 之间带着走；会话和沙箱带不走。</p>
+
+      <h2 id="open">还没过的线</h2>
+      <p>能写、能跑，离能合还远。最好的模型在「维护者愿不愿意合」上仍有四成多的尝试失败。把思考档拉满，买来的常常是几分，账单是几倍到十几倍。开放权重模型已经挤进 FrontierCode 四成多的那一档，还没有拿到指数第一。</p>
+      <p>下次看这个领域，先看四件事有没有变：合入质量的分、编排是不是脚本在跑、任务离不离得开这台电脑、放行靠的是人点、分类器，还是系统沙箱。产品名单每周都在变，这四件事更稳。</p>
+
+      <h2 id="sources">来源与适用边界</h2>
+      <ul>
+        <li>Artificial Analysis，2026-10-23：Coding Agent Index v2.0 公布。三部分等权：FrontierCode v1.1、Terminal-Bench 4.0、SWE-Atlas-QnA-AA。文中指数和单价来自这次公布及其转述。</li>
+        <li>Artificial Analysis，2026-10-12：同一运行壳下的 FrontierCode 1.1。Opus 5.5 得分 52%，硬条件通过的尝试占 58%。</li>
+        <li>Cognition：FrontierCode 由仓库维护者出题，并检查是否偷看解答。</li>
+        <li>Anthropic，2026-05-28 与 2026-10-09：Claude Code 的 dynamic workflows，以及托管代理里单次最多 1000 个代理。70 个埋点 bug 的对照是 Anthropic 自己的实验。</li>
+        <li>OpenAI 工作论文 arXiv:2606.26959，用量统计到 2026 年 6 月。</li>
+        <li>Anthropic，2026-08-14 与 2026-10-22：自动模式成为新会话默认，以及「合并改动大约多 25%」的自报统计。</li>
+        <li>Claude Code 文档与 2026-10-23 的客户端更新：MCP Tasks 从 v2.1.304 起公开测试；电脑操作较早进入研究预览。</li>
+        <li>OpenAI Codex 文档：沙箱与批准分开，云端任务，App 里的电脑操作。</li>
+        <li>Agent Client Protocol，2026-07-20 的 v2 草案，以及 2026-10-22 注册表中的 Cursor。</li>
+      </ul>
+      <p class="note">官网页面有的在核对时打不开，指数绝对分以 10 月 23 日公布文本为准。电脑操作「严格完成大约四成」来自厂商公布分数的转述。订阅套餐价和按 token 计的单价不是同一个数。这篇不比较某个人该买哪一个工具。</p>
+
+      <footer>
+        <a href="/reports/">返回报告库</a>
+        <span> · 2026-10-27</span>
+      </footer>
+    </main>
+  </body>
+</html>
