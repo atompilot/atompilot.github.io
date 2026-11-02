@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Token 价格不是一条曲线。固定能力的最低价在对数图上接近直线下降，大约每年便宜一个数量级；同一型号是台阶，当天最强模型的标价下降慢得多。" />
-    <meta name="keywords" content="token价格, LLM API定价, LLMflation, 指数下降, GPT-4, DeepSeek, Epoch AI, 推理成本" />
+    <meta name="description" content="Token 价格不是一条曲线。固定能力的最低价在对数图上接近直线下降。2026年11月国内按量价：Flash 与 Lite 约输入 0.8 元、输出 2.7 元/百万 token，旗舰约输入 6–13 元、输出 28–36 元。" />
+    <meta name="keywords" content="token价格, LLM API定价, 国内大模型价格, 千问, 智谱GLM, 豆包, Kimi, DeepSeek, LLMflation, 指数下降" />
     <meta name="referrer" content="no-referrer" />
     <meta name="theme-color" content="#1f2328" />
     <title>Token 价格是什么曲线 · 2026-11-03</title>
@@ -41,6 +41,7 @@
       th,td { text-align:left; vertical-align:top; padding:12px 14px; border-bottom:1px solid var(--line); }
       th { color:var(--muted); font-weight:600; }
       td:first-child { font-weight:600; white-space:nowrap; }
+      .price td:first-child { white-space:normal; }
       .note { color:var(--muted); font-size:14px; }
       .callout { background:var(--warnbg); border-left:4px solid var(--warn); padding:14px 16px; margin:18px 0; }
       .sources { padding-left:22px; font-size:14px; }
@@ -58,7 +59,7 @@
       <a class="back" href="/reports/">← 报告库</a>
       <p class="eyebrow">AI 成本 · 调研简报</p>
       <h1>Token 的价格<br />是三条线，不是一条</h1>
-      <p class="meta">2026-11-03 · 对照 Epoch AI、a16z 与各家价目 · 图为根据公开数字绘制的示意</p>
+      <p class="meta">2026-11-03 · 对照 Epoch AI、a16z 与各家价目 · 同日补入国内按量价 · 图为根据公开数字绘制的示意</p>
       <p class="lead"><strong>把「同样聪明」的最低价画在对数图上，接近一条向下的直线。这就是指数下降：每隔一段时间，价格乘上一个小于 1 的常数。口语里，大约每年便宜一个数量级。</strong></p>
       <p>Token 是模型计费用的小块文本。各家切分方式不同，所以比较时看「每百万 token 多少钱」，不看某一句话用了几个 token。输入、缓存命中、输出是三种价。输出通常是输入的 4 到 5 倍。</p>
 
@@ -151,6 +152,26 @@
       <p>a16z 在 2026 年 10 月 31 日的图表写：2026 年 5 月以来，token 均价大约下降 67%，token 总支出上升约 122% 到 160%。他们把主要增量归于 Agent：一次任务带着更长上下文、走更多步，消耗的 token 大约是人直接对话的 5 倍。</p>
       <p>Epoch 在 2026 年 5 月另有一个方向相反的判断：若按当时价格估算，token 需求的增速可能快过推理供给。那样的话，人们仍愿意付钱的前沿能力会变贵，日常任务则继续挪到更小的模型。两件事可以同时发生：旧能力更便宜，最前沿的有效供给变紧。</p>
 
+      <h2 id="china">国内模型现在的按量价</h2>
+      <p>2026 年 11 月 3 日核对的是各家文本对话目录价，单位是元/百万 token。国内已经分成两档：Flash、Lite 大约输入 0.8 元、输出 2.7 元；旗舰大约输入 6–13 元、输出 28–36 元。Kimi 当前旗舰的输出更高。按「3 份输入 + 1 份输出」合成，便宜档大约 1.3 元/百万 token，豆包和智谱旗舰大约 12–13 元，千问 Max 大约 18 元，Kimi K3.1 Pro 大约 27 元。</p>
+      <div class="table-wrap"><table class="price">
+        <thead><tr><th>模型</th><th>输入</th><th>缓存命中</th><th>输出</th><th>出处</th></tr></thead>
+        <tbody>
+          <tr><td>千问 qwen3.8-flash</td><td>0.8</td><td>0.1</td><td>2.7</td><td>阿里云模型页，华北 2（北京）</td></tr>
+          <tr><td>智谱 GLM-5.3-Flash</td><td>0.8</td><td>0.23</td><td>2.8</td><td>智谱定价文档</td></tr>
+          <tr><td>豆包 2.1-lite</td><td>0.80</td><td>0.16</td><td>2.70</td><td>火山方舟价格文档，2026-11-02</td></tr>
+          <tr><td>千问 qwen3.8-27b</td><td>3</td><td>—</td><td>12</td><td>百炼价格页，北京</td></tr>
+          <tr><td>豆包 Seed-Evolving / 2.1-pro</td><td>6</td><td>1.20</td><td>30</td><td>火山官网首页与价格文档主表</td></tr>
+          <tr><td>智谱 GLM-5.3</td><td>8</td><td>2</td><td>28</td><td>智谱定价文档，1M 上下文</td></tr>
+          <tr><td>千问 qwen3.8-max</td><td>12</td><td>1.5</td><td>36</td><td>阿里云模型页，北京原价</td></tr>
+          <tr><td>Kimi K3.1 Pro</td><td>13</td><td>1.30</td><td>68</td><td>Kimi 开放平台首页；另收缓存写入 13</td></tr>
+          <tr><td>Kimi K3</td><td>20</td><td>2</td><td>100</td><td>同上；缓存写入 20</td></tr>
+        </tbody>
+      </table></div>
+      <p>DeepSeek 现行文档用美元。模型名 <code>deepseek-flash</code> 由 V4.1-Flash 提供。高峰是缓存命中 $0.006、未命中 $0.30、输出 $1.20；<code>deepseek-v4-pro</code> 高峰是命中 $0.044、未命中 $1.32、输出 $3.96。低谷是高峰的一半。高峰时段是工作日 UTC 01:00–04:00 和 06:00–10:00。按 7.2 的汇率粗算，Flash 高峰输出约 8.6 元。这只是换算，不是官方人民币标价。2026 年 8 月 17 日生效的人民币价目是另一代型号：V4-Flash 高峰为未命中输入 3 元、输出 9 元，低谷减半。</p>
+      <p>还会改账单的几件事。千问 Max 的批量文件调用是半价，输入 6 元、输出 18 元，缓存和批量不能同时用。部分 Plus 模型超过 256K 后，输入和输出都跳到短上下文的数倍。豆包 2.0-pro 在 32K 以内大约输入 3.2 元、输出 16 元，上下文拉长后单价上升。价格文档里还能看到大约一半的数字，下单以控制台为准。Kimi K3.1 Pro 和 K3 的批量是标准价的 60%。高速版 K3.1 Pro Highspeed 是输入 26 元、输出 136 元。K2 系列已停止向新用户开放，计划 2026 年 12 月底下线。智谱 GLM-5 在 32K 以内是输入 4 元、输出 18 元，超过 32K 是 6 元和 22 元。</p>
+      <p>Coding Plan、Agent Plan 是订阅额度，不是这张表上的按量价，也不能拿月费倒推每百万 token。腾讯混元和百度千帆这次没有打开到可以逐行抄录的现行价目。MiniMax 国际站公开口径大约是输入 $0.30、输出 $1.20，国内人民币价目没有逐行核对。</p>
+
       <h2 id="howto">下次怎么用这条曲线</h2>
       <p>给一个会反复调用的功能估价时，先写清要守住的能力，再去找这一档现在的地板价，不要用旗舰价，也不要把每年 10 倍写成合同假设。过几个月用更小的模型重测同一批例子。旗舰适合能力刚出现、小模型还过不了线的那段时间，那段也是降价最快的时候。</p>
       <p>算单次成本时把四件事分开：输入 token、缓存命中、输出 token、思考 token。GPT-5 在本次读到的价目上，输入 $1.25，缓存输入 $0.125，输出 $10。缓存命中一次，输入这项就便宜 10 倍；输出仍是输入的 8 倍。批量接口通常再打五折，但要等异步结果。</p>
@@ -164,7 +185,8 @@
         <li>Guido Appenzeller，<a href="https://a16z.com/llmflation-llm-inference-cost/">LLMflation</a>（2024-11-12）：同等性能约每年 10 倍；MMLU 42 分三年约 1000 倍，MMLU 83 分约 62 倍。作者写明 MMLU 可能被污染，方法不完美。</li>
         <li>斯坦福 2025 AI Index 的 GPT-3.5 档「约 280 倍」与 Epoch 序列端点一致。本次未能打开 hai.stanford.edu 原文，280 这个约数来自 Epoch 数字与多家对 AI Index 的转述。</li>
         <li>OpenAI 定价文档 <a href="https://platform.openai.com/docs/pricing">platform.openai.com/docs/pricing</a>，本次读取：GPT-4 8K 仍为 $30/$60，GPT-4 Turbo $10/$30，gpt-4o-2024-05-13 为 $5/$15，现行 gpt-4o 为 $2.50/$10，GPT-5 与 GPT-5.1 为 $1.25/$10（缓存输入 $0.125），o1 为 $15/$60，o1-pro 为 $150/$600。2026 年若已有更新型号，以打开价目时的页面为准，本页不采用互相矛盾的第三方价目聚合。</li>
-        <li>DeepSeek 优惠结束：<a href="https://www.thepaper.cn/newsDetail_forward_30119856">澎湃新闻 2025-02-10</a>，输出由 2 元/百万回到 8 元。现行价目：<a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek Models &amp; Pricing</a>（页面标注 2026-10-30）。</li>
+        <li>DeepSeek 优惠结束：<a href="https://www.thepaper.cn/newsDetail_forward_30119856">澎湃新闻 2025-02-10</a>，输出由 2 元/百万回到 8 元。现行美元价目：<a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek Models &amp; Pricing</a>（页面标注 2026-10-30）。2026-08-17 人民币峰谷价见 <a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpez7944044.shtml">TechWeb / 新浪</a>，对应的是当时的 V4，不是现在的 V4.1-Flash。</li>
+        <li>国内按量价，2026-11-03 核对：<a href="https://help.aliyun.com/zh/model-studio/qwen3-8-max">千问 Max</a>、<a href="https://help.aliyun.com/zh/model-studio/qwen3-8-flash">千问 Flash</a>、<a href="https://help.aliyun.com/zh/model-studio/model-pricing">百炼价格页</a>；<a href="https://docs.bigmodel.cn/cn/guide/start/pricing">智谱定价</a>；<a href="https://ark.volcengine.com/region:cn-beijing/docs/model-pricing">火山方舟模型价格</a>（2026-11-02）及官网首页 Seed-Evolving 6 元 / 30 元；<a href="https://platform.kimi.com/">Kimi 开放平台首页</a>。文档里若同时出现半价列，以控制台当日结算为准。</li>
         <li>a16z 2026-10-31 关于均价下降、支出上升的转述，见当周对其 Charts of the Week 的报道。原图未在本次逐项复核到 a16z 原文的每个百分比。</li>
       </ul>
       <p class="note">适用边界：这些是目录价和研究机构算出的「过某条基准线的最低价」，不是你的发票，也不是模型在真实业务上的质量。基准可以被针对训练；思考 token 会让每题成本偏离每 token 标价；高峰、低谷、缓存和批量都会改有效价。2024 到 2026 年最快的那段下降，Epoch 已写明不一定持续。</p>

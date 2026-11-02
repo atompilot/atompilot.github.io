@@ -2,8 +2,8 @@ window.ATOM_SEARCH_INDEX = [
 {
   "title": "Token 的价格是三条线，不是一条",
   "type": "报告 · 调研简报",
-  "summary": "固定能力的最低价在对数图上接近直线下降，大约每年便宜一个数量级。同一型号是台阶，当天最强模型的标价下降慢得多。",
-  "keywords": "token价格 LLM API LLMflation 指数下降 对数直线 GPT-4 DeepSeek Epoch 推理成本",
+  "summary": "固定能力的最低价在对数图上接近直线下降。2026年11月国内 Flash 与 Lite 约输入 0.8 元、输出 2.7 元/百万 token，旗舰约输入 6–13 元、输出 28–36 元。",
+  "keywords": "token价格 LLM API 千问 智谱 豆包 Kimi DeepSeek 国内大模型价格 LLMflation",
   "url": "/reports/2026/11/token-price-curve/",
   "date": "2026-11-03"
 },
@@ -13,6 +13,14 @@ window.ATOM_SEARCH_INDEX = [
   "summary": "地板价是指数下降，单型号标价是台阶，旗舰价是高位横带。DeepSeek 优惠结束会涨价，o1-pro 把天花板抬高。",
   "keywords": "地板价 旗舰价 阶梯定价 DeepSeek o1-pro 缓存 token",
   "url": "/reports/2026/11/token-price-curve/#curves",
+  "date": "2026-11-03"
+},
+{
+  "title": "国内模型 API 按量价",
+  "type": "报告内主题 · 国内价目",
+  "summary": "2026-11-03：千问 Flash、智谱 GLM-5.3-Flash、豆包 2.1-lite 约 0.8 元进、2.7 元出；千问 Max 12/36，智谱 GLM-5.3 8/28，豆包旗舰 6/30，Kimi K3.1 Pro 13/68。",
+  "keywords": "千问 qwen3.8-max 智谱 GLM-5.3 豆包 Kimi K3.1 DeepSeek flash 元/百万token",
+  "url": "/reports/2026/11/token-price-curve/#china",
   "date": "2026-11-03"
 },
 {
