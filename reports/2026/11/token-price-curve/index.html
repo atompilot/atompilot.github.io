@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Token 价格不是一条曲线。固定能力的最低价在对数图上接近直线下降。2026年11月国内按量价：Flash 与 Lite 约输入 0.8 元、输出 2.7 元/百万 token，旗舰约输入 6–13 元、输出 28–36 元。" />
-    <meta name="keywords" content="token价格, LLM API定价, 国内大模型价格, 千问, 智谱GLM, 豆包, Kimi, DeepSeek, LLMflation, 指数下降" />
+    <meta name="description" content="Token 价格不是一条曲线。固定能力的最低价在对数图上接近直线下降。2026年11月旗舰对照：同样一次冷请求，国内约 12–27 元，GPT-6 Astra 与 Claude Fable 约 20 美元。缓存、批量和订阅分开算。" />
+    <meta name="keywords" content="token价格, LLM API定价, 旗舰模型价格, GPT-6, Claude, Gemini, Grok, 千问, 智谱GLM, 豆包, Kimi, DeepSeek" />
     <meta name="referrer" content="no-referrer" />
     <meta name="theme-color" content="#1f2328" />
     <title>Token 价格是什么曲线 · 2026-11-03</title>
@@ -59,7 +59,7 @@
       <a class="back" href="/reports/">← 报告库</a>
       <p class="eyebrow">AI 成本 · 调研简报</p>
       <h1>Token 的价格<br />是三条线，不是一条</h1>
-      <p class="meta">2026-11-03 · 对照 Epoch AI、a16z 与各家价目 · 同日补入国内按量价 · 图为根据公开数字绘制的示意</p>
+      <p class="meta">2026-11-03 · 对照 Epoch AI、a16z 与各家价目 · 同日补入国内按量价和国内外旗舰对照 · 图为根据公开数字绘制的示意</p>
       <p class="lead"><strong>把「同样聪明」的最低价画在对数图上，接近一条向下的直线。这就是指数下降：每隔一段时间，价格乘上一个小于 1 的常数。口语里，大约每年便宜一个数量级。</strong></p>
       <p>Token 是模型计费用的小块文本。各家切分方式不同，所以比较时看「每百万 token 多少钱」，不看某一句话用了几个 token。输入、缓存命中、输出是三种价。输出通常是输入的 4 到 5 倍。</p>
 
@@ -172,9 +172,59 @@
       <p>还会改账单的几件事。千问 Max 的批量文件调用是半价，输入 6 元、输出 18 元，缓存和批量不能同时用。部分 Plus 模型超过 256K 后，输入和输出都跳到短上下文的数倍。豆包 2.0-pro 在 32K 以内大约输入 3.2 元、输出 16 元，上下文拉长后单价上升。价格文档里还能看到大约一半的数字，下单以控制台为准。Kimi K3.1 Pro 和 K3 的批量是标准价的 60%。高速版 K3.1 Pro Highspeed 是输入 26 元、输出 136 元。K2 系列已停止向新用户开放，计划 2026 年 12 月底下线。智谱 GLM-5 在 32K 以内是输入 4 元、输出 18 元，超过 32K 是 6 元和 22 元。</p>
       <p>Coding Plan、Agent Plan 是订阅额度，不是这张表上的按量价，也不能拿月费倒推每百万 token。腾讯混元和百度千帆这次没有打开到可以逐行抄录的现行价目。MiniMax 国际站公开口径大约是输入 $0.30、输出 $1.20，国内人民币价目没有逐行核对。</p>
 
+      <h2 id="flagship">国内外旗舰怎么比</h2>
+      <p>这里的旗舰，是各家价目最前面的通用型号，不是最便宜的 Flash。能力没有放在同一张考卷上，下面只比价。短上下文、标准速度，核对日是 2026 年 11 月 3 日。单位是美元或人民币每百万 token。</p>
+      <p>冷请求按 100 万输入加 20 万输出，不用缓存。八成命中是这 100 万里有 80 万按缓存读、20 万按普通输入，输出仍是 20 万。写入只在第一次把前缀放进缓存时发生，所以不摊进「八成命中」这一列。思考 token 若被厂商算进输出，就在输出里。</p>
+      <div class="table-wrap"><table class="price">
+        <thead><tr><th>模型</th><th>输入</th><th>缓存读</th><th>缓存写</th><th>输出</th><th>冷请求</th><th>八成命中</th></tr></thead>
+        <tbody>
+          <tr><td>GPT-6 Astra</td><td>$10</td><td>$1.00</td><td>$12.50 / $25</td><td>$50</td><td>$20.00</td><td>$12.80</td></tr>
+          <tr><td>GPT-6.1 Sol</td><td>$2</td><td>$0.10</td><td>$2.50 / $5</td><td>$10</td><td>$4.00</td><td>$2.48</td></tr>
+          <tr><td>Claude Fable 5.1</td><td>$10</td><td>$0.25</td><td>$12.50</td><td>$50</td><td>$20.00</td><td>$12.20</td></tr>
+          <tr><td>Claude Opus 5.5</td><td>$4</td><td>$0.20</td><td>$5</td><td>$20</td><td>$8.00</td><td>$4.96</td></tr>
+          <tr><td>Gemini 4 Argon，至 11 月 30 日</td><td>$2</td><td>$0.10</td><td>无单独写入</td><td>$10</td><td>$4.00</td><td>$2.48</td></tr>
+          <tr><td>Gemini 4 Argon，12 月 1 日起</td><td>$4</td><td>$0.20</td><td>无单独写入</td><td>$20</td><td>$8.00</td><td>$4.96</td></tr>
+          <tr><td>Grok 4.7</td><td>$2</td><td>$0.50</td><td>无单独写入</td><td>$6</td><td>$3.20</td><td>$2.00</td></tr>
+          <tr><td>DeepSeek V4 Pro，高峰</td><td>$1.32</td><td>$0.044</td><td>无单独写入</td><td>$3.96</td><td>$2.11</td><td>$1.09</td></tr>
+          <tr><td>DeepSeek V4 Pro，低谷</td><td>$0.66</td><td>$0.022</td><td>无单独写入</td><td>$1.98</td><td>$1.06</td><td>$0.55</td></tr>
+          <tr><td>千问 qwen3.8-max</td><td>¥12</td><td>¥1.5</td><td>显式创建 ¥15</td><td>¥36</td><td>¥19.2</td><td>¥10.8</td></tr>
+          <tr><td>智谱 GLM-5.3</td><td>¥8</td><td>¥2</td><td>未单列</td><td>¥28</td><td>¥13.6</td><td>¥8.8</td></tr>
+          <tr><td>豆包 Seed-Evolving</td><td>¥6</td><td>¥1.20</td><td>未单列</td><td>¥30</td><td>¥12.0</td><td>¥8.16</td></tr>
+          <tr><td>Kimi K3.1 Pro</td><td>¥13</td><td>¥1.30</td><td>¥13</td><td>¥68</td><td>¥26.6</td><td>¥17.24</td></tr>
+        </tbody>
+      </table></div>
+      <p>OpenAI 的两个写入价是 30 分钟和 12 小时。Claude 卡片上的写入是 5 分钟。DeepSeek 的输入列是缓存未命中价，低谷是高峰的一半。豆包用的是官网首页与价格文档主表的 6 元 / 30 元；文档里若还有大约一半的数字，以控制台为准。</p>
+      <p>同样一次冷请求，国内四家是 12 到 27 元。2026 年 10 月 26 日美元兑人民币的市场价大约是 6.67，拿来粗算约 1.8 到 4.0 美元。当天 Gemini 的促销价和 GPT-6.1 Sol 是 4 美元，Grok 4.7 是 3.2 美元，Claude Opus 5.5 是 8 美元，GPT-6 Astra 和 Claude Fable 5.1 是 20 美元。这不是能力排名。6.67 也不是 11 月 3 日的人民币中间价，不能当结算汇率。11 月 3 日的中间价这次没有抄到。</p>
+      <p>缓存读相对输入的比例差很多：Fable 约 2.5%，Sol 和 Argon 是 5%，Astra 和 Kimi 约 10%，千问约 12.5%，豆包是 20%，Grok 和智谱是 25%。八成命中之后，输出仍是大头。Astra 的 12.80 美元里有 10 美元是输出。缓存削的是重复前缀，削不掉回答和思考。</p>
+      <p>写入是另一笔，命中不再收写入。OpenAI 的 30 分钟写入是输入的 1.25 倍，12 小时是 2.5 倍。Claude 的 5 分钟写入也是 1.25 倍。Gemini 和 Grok 的价目没有单独写入行，Gemini 还写明 Argon 只有隐式缓存。Kimi 首页的写入与输入同价。千问的 15 元是显式缓存创建，和自动命中的 1.5 元不是同一项。千问写明缓存和批量不能一起用。</p>
+      <p>长上下文按整段请求升档。OpenAI 输入超过 27.2 万 token：输入和缓存 2 倍，输出 1.5 倍，Astra 长上下文是输入 $20、输出 $75。Grok 达到 20 万：输入、缓存、输出都 2 倍，4.7 变成 $4 / $1 / $12。Gemini Argon 这张卡没有按长度分档。</p>
+      <p>速度和批量再改一档。OpenAI 的 Batch 和 Flex 是标准价的一半，Fast 是 2 倍，Ultrafast 下 Astra 短上下文是输入 $60、输出 $300。Claude 的 Batch 五折，Opus 5.5 的 fast mode 是 2 倍。Gemini 的 Batch 和 Flex 是当时标准价的一半；Priority 在促销期内是输入 $3.60、输出 $18，12 月 1 日起是 $7.20 / $36。Grok 的 Batch 只减 20%，输入、输出和缓存都减；Priority 是 2 倍，先按折扣价再乘。OpenAI 的数据驻留、Claude 的美国推理、Grok 的美国端点都大约再加 10%。DeepSeek 的减半来自低谷时段，不是 Batch。价目上更老的 GPT-5 仍是输入 $1.25、输出 $10；GPT-5.6 Sol 标着输入 $4、输出 $20，并写明促销价至少维持到 2026 年 11 月 21 日。名字更老，不等于更便宜，也不等于当天旗舰。</p>
+
+      <h2 id="plans">订阅是另一本账</h2>
+      <p>月费买的是人用的额度和功能，不是每百万 token 的另一种标价。额度大多不公布 token 数，用尽之后有的能按 API 价继续，有的要等窗口刷新。不能拿月费除以感觉上的用量，再去和目录价比。</p>
+      <div class="table-wrap"><table class="price">
+        <thead><tr><th>订阅</th><th>月费</th><th>旗舰怎么给</th><th>和 API 的关系</th></tr></thead>
+        <tbody>
+          <tr><td>ChatGPT Go</td><td>$8</td><td>日常文本是 GPT-6 Luna，没有 Astra、Sol</td><td>没有 API 抵用金</td></tr>
+          <tr><td>ChatGPT Plus</td><td>$20</td><td>可以用 Astra 和 Sol，按会话限额</td><td>明确不能领 API 抵用金</td></tr>
+          <tr><td>ChatGPT Pro</td><td>$100 / $200 / $500</td><td>Astra 用量更大，含 Pro reasoning</td><td>每月 API 抵用金与档位等额；不提高聊天额度</td></tr>
+          <tr><td>Claude Pro</td><td>$20，年付相当于 $17</td><td>含 Opus；Fable 走 usage credits</td><td>没有月度 API 抵用金；超出可按 API 价继续</td></tr>
+          <tr><td>Claude Max</td><td>$100 起，5 倍或 20 倍</td><td>Fable 只占每周额度的一半</td><td>每月另有 $100 或 $200 API 抵用金</td></tr>
+          <tr><td>Google AI Pro</td><td>$19.99</td><td>含 Gemini 4 Argon，用量约无 AI 套餐的 4 倍</td><td>另有每月 $10 Cloud 抵用金；Studio 日配额用完改走 API</td></tr>
+          <tr><td>Google AI Ultra</td><td>$99.99 或 $199.99</td><td>约 Pro 的 5 倍或 20 倍</td><td>每月 $40 Cloud 抵用金，仍不是 token 包</td></tr>
+          <tr><td>X 订阅 Plus 到 Ultra</td><td>$8 / $30 / $100 / $200</td><td>Premium 起标「最新模型」，用量为 Plus 的 4、15、50 倍</td><td>API 按目录价另计，不从每周额度扣</td></tr>
+          <tr><td>百炼 Coding Plan Pro</td><td>¥200</td><td>帮助中心列出的是 qwen3.7-plus、kimi-k2.5、glm-5 等</td><td>按请求次数限额，不是 qwen3.8-max 的按量价</td></tr>
+          <tr><td>智谱 Coding Plan</td><td>¥118 / ¥538 / ¥1078</td><td>含 GLM-5.3，按积分扣</td><td>套餐用尽不自动扣 API 余额</td></tr>
+        </tbody>
+      </table></div>
+      <p>ChatGPT 免费档的日常文本也是 GPT-6 Luna，上传、研究和 Codex 另有限制。Claude 免费档没有 Fable 和 Opus。年付 Pro 是一次付 $200。Max 的 5 倍、20 倍指每 5 小时窗口相对 Pro 的用量，另外还有周限额，没有固定消息条数。Google AI Plus 在不同官方页上出现过 $4.99 和 $9.99，这次不写成单一数字。Ultra 的两档来自英文计划对比表。</p>
+      <p>X 订阅的额度按周刷新，Grok 和 Cursor 共用。付费档写着含 Grok API access，文档同时写明 API 仍按标准 token 价另付。Cursor 里的 Claude、GPT 等第三方模型也按各家目录价另付。Grok 4.7 Fast 只在 Cursor 和 Grok Build 里，短上下文是输入 $4、输出 $12，不是公开 API 的标价。</p>
+      <p>智谱三档是 Lite、Pro、Max 的标价月费。页面同时显示八折后的 94.4、430.4、862.4 元，和季付折扣对应，不是另一个套餐。积分按每万 token 乘系数：GLM-5.3 大约是输入 6.9、缓存 1.7、输出 24。每周积分是 1 万、6 万、14 万，另有 5 小时上限。工作日北京时间 14:00–18:00 按全额积分，其余时段五折。官方在 95% 缓存命中的例子里，Pro 一周大约 2.9 到 5.8 亿 token，宽的一头是躲开高峰。这是套餐说明里的估算。只许在指定编程工具里用。</p>
+      <p>百炼 Pro 的限额是每 5 小时 6,000 次请求、每周 45,000 次、每月 90,000 次，只覆盖帮助中心点名的模型，并且限于交互式编程。Kimi 的按量 API 不包含在会员里；K3 的现行会员月费这次没有逐行抄录，不用更早的 K2 套餐价。火山方舟另有 Agent Plan 月费档，也不在按量表里倒推。DeepSeek 这次没有看到与 Plus 对等的公开月费，它的折扣是高峰和低谷。</p>
+
       <h2 id="howto">下次怎么用这条曲线</h2>
       <p>给一个会反复调用的功能估价时，先写清要守住的能力，再去找这一档现在的地板价，不要用旗舰价，也不要把每年 10 倍写成合同假设。过几个月用更小的模型重测同一批例子。旗舰适合能力刚出现、小模型还过不了线的那段时间，那段也是降价最快的时候。</p>
-      <p>算单次成本时把四件事分开：输入 token、缓存命中、输出 token、思考 token。GPT-5 在本次读到的价目上，输入 $1.25，缓存输入 $0.125，输出 $10。缓存命中一次，输入这项就便宜 10 倍；输出仍是输入的 8 倍。批量接口通常再打五折，但要等异步结果。</p>
+      <p>算单次成本时把四件事分开：输入 token、缓存命中、输出 token、思考 token。价目上的 GPT-5 仍是输入 $1.25、缓存输入 $0.125、输出 $10。当天旗舰是另一档，见上面的对照。缓存命中把输入这项打下来；输出通常仍是大头。批量往往再打折，但要等异步结果，而且常常不能和缓存一起用。</p>
       <p>免费额度和目录价是两套东西。免费档够试调用；一旦用量稳定，就按上面的地板价估算，并把「模型突然涨价或优惠结束」留在预算里。DeepSeek 从 2 元回到 8 元只用了一天切换。</p>
 
       <h2 id="sources">来源与适用边界</h2>
@@ -184,8 +234,13 @@
         <li>Epoch AI，<a href="https://epoch.ai/trends">Trends</a>：AI 芯片性能每美元自 2023 年起约每年 1.49 倍。</li>
         <li>Guido Appenzeller，<a href="https://a16z.com/llmflation-llm-inference-cost/">LLMflation</a>（2024-11-12）：同等性能约每年 10 倍；MMLU 42 分三年约 1000 倍，MMLU 83 分约 62 倍。作者写明 MMLU 可能被污染，方法不完美。</li>
         <li>斯坦福 2025 AI Index 的 GPT-3.5 档「约 280 倍」与 Epoch 序列端点一致。本次未能打开 hai.stanford.edu 原文，280 这个约数来自 Epoch 数字与多家对 AI Index 的转述。</li>
-        <li>OpenAI 定价文档 <a href="https://platform.openai.com/docs/pricing">platform.openai.com/docs/pricing</a>，本次读取：GPT-4 8K 仍为 $30/$60，GPT-4 Turbo $10/$30，gpt-4o-2024-05-13 为 $5/$15，现行 gpt-4o 为 $2.50/$10，GPT-5 与 GPT-5.1 为 $1.25/$10（缓存输入 $0.125），o1 为 $15/$60，o1-pro 为 $150/$600。2026 年若已有更新型号，以打开价目时的页面为准，本页不采用互相矛盾的第三方价目聚合。</li>
+        <li>OpenAI 定价文档 <a href="https://developers.openai.com/api/docs/pricing">developers.openai.com/api/docs/pricing</a>（含页面提供的 Markdown）。短上下文不超过 27.2 万输入 token。GPT-6 Astra 为输入 $10、缓存读 $1、30 分钟写入 $12.50、12 小时写入 $25、输出 $50；长上下文整段为 $20 / $2 / $25 / $50 / $75。GPT-6.1 Sol 短上下文为 $2 / $0.10 / $2.50 / $5 / $10。GPT-5 与 GPT-5.1 仍为 $1.25 / $10，缓存输入 $0.125。GPT-4 8K 仍为 $30 / $60。Batch 与 Flex 为标准价的一半，Fast 为 2 倍。模型页写明超过 27.2 万时输入和缓存 2 倍、输出 1.5 倍，且按整段请求计。</li>
+        <li>ChatGPT 套餐：<a href="https://openai.com/chatgpt/pricing/">openai.com/chatgpt/pricing</a>，Go $8、Plus $20、Pro 自 $100 起。API 抵用金：<a href="https://developers.openai.com/api/docs/guides/chatgpt-api-credits">API credits for ChatGPT subscribers</a>，仅 Pro 的 $100 / $200 / $500 三档按月等额发放；Plus、Go、免费档不能领，抵用金也不提高聊天额度。</li>
+        <li>Anthropic：<a href="https://claude.com/pricing">claude.com/pricing</a>。Fable 5.1 输入 $10、5 分钟写入 $12.50、缓存读 $0.25、输出 $50。Opus 5.5 为 $4 / $5 / $0.20 / $20。Batch 五折。Pro 月付 $20 或年付 $200；Max 自 $100 起，并含每月 $100 或 $200 API 抵用金。用量按 5 小时窗口和周限额，没有固定消息条数。</li>
+        <li>Gemini：<a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini Developer API pricing</a>。Argon 标准价至 2026-11-30 为输入 $2、输出 $10、隐式缓存 $0.10，12 月 1 日起为 $4 / $20 / $0.20；无免费档，无显式缓存。Batch 与 Flex 为当时标准价的一半。订阅：<a href="https://one.google.com/intl/en_us/about/google-ai-plans/">Google AI plans</a> 对比表为 Pro $19.99、Ultra 5 倍 $99.99、Ultra 20 倍 $199.99；<a href="https://ai.google.dev/gemini-api/docs/google-ai-plans">AI Studio 说明</a>写明日配额用完后改走 API。Pro、Ultra 的每月 Cloud 抵用金为 $10 和 $40。Plus 在不同官方页上出现过 $4.99 和 $9.99，本页不取单一数字。</li>
+        <li>xAI：<a href="https://docs.x.ai/developers/pricing">docs.x.ai/developers/pricing</a>。Grok 4.7 短上下文输入 $2、缓存 $0.50、输出 $6；满 20 万 token 整段变为 $4 / $1 / $12。Batch 减 20%，Priority 为 2 倍。订阅：<a href="https://x.ai/pricing">x.ai/pricing</a>，Plus $8、Premium $30、Super $100、Ultra $200。文档写明 API 按目录价另计，不从每周额度扣除；Cursor 中的第三方模型也另计。</li>
         <li>DeepSeek 优惠结束：<a href="https://www.thepaper.cn/newsDetail_forward_30119856">澎湃新闻 2025-02-10</a>，输出由 2 元/百万回到 8 元。现行美元价目：<a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek Models &amp; Pricing</a>（页面标注 2026-10-30）。2026-08-17 人民币峰谷价见 <a href="https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininqpez7944044.shtml">TechWeb / 新浪</a>，对应的是当时的 V4，不是现在的 V4.1-Flash。</li>
+        <li>编程套餐，2026-11-03 核对：<a href="https://help.aliyun.com/zh/model-studio/coding-plan">百炼 Coding Plan</a>，Pro 为 ¥200/月，按请求次数限额，帮助中心列出的模型不含 qwen3.8-max。智谱见 <a href="https://docs.bigmodel.cn/cn/coding-plan/overview">Coding Plan 概览</a>与<a href="https://bigmodel.cn/glm-coding">产品页</a>，标价 ¥118 / ¥538 / ¥1078，页面另显示八折；积分系数和高峰时段以概览为准。Kimi 现行会员月费、火山 Agent Plan 各档月费这次没有逐行抄进正文。</li>
         <li>国内按量价，2026-11-03 核对：<a href="https://help.aliyun.com/zh/model-studio/qwen3-8-max">千问 Max</a>、<a href="https://help.aliyun.com/zh/model-studio/qwen3-8-flash">千问 Flash</a>、<a href="https://help.aliyun.com/zh/model-studio/model-pricing">百炼价格页</a>；<a href="https://docs.bigmodel.cn/cn/guide/start/pricing">智谱定价</a>；<a href="https://ark.volcengine.com/region:cn-beijing/docs/model-pricing">火山方舟模型价格</a>（2026-11-02）及官网首页 Seed-Evolving 6 元 / 30 元；<a href="https://platform.kimi.com/">Kimi 开放平台首页</a>。文档里若同时出现半价列，以控制台当日结算为准。</li>
         <li>a16z 2026-10-31 关于均价下降、支出上升的转述，见当周对其 Charts of the Week 的报道。原图未在本次逐项复核到 a16z 原文的每个百分比。</li>
       </ul>

@@ -8,7 +8,7 @@
 
 ## 当前状态
 
-- 更新[Token 价格曲线](reports/2026/11/token-price-curve/)：补入 2026-11-03 国内按量价。价格数字截止各来源页，不逐日改。
+- 更新[Token 价格曲线](reports/2026/11/token-price-curve/)：2026-11-03 补入国内按量价，并加上国内外旗舰的按量、缓存和订阅对照。价格数字截止各来源页，不逐日改。
 - 新增[主动式与被动式 Agent](reports/2026/11/proactive-reactive-agents/)短讲：按任务发起方式解释区别，以官方现行文档比较六个项目；已同步报告库和搜索索引，手机与桌面阅读、站内链接检查通过。
 - 新增[Hypit 传播过程](reports/2026/10/hypit-how-it-spread/)：用 Trendshift 日增和 9 月 14 日发布帖，拆开建仓、登顶和之后每天几百星这三段。
 - 上一份仍在：[GitHub 新仓库热度](reports/2026/10/github-new-hot-projects/)。

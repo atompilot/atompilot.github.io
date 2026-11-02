@@ -2,8 +2,8 @@ window.ATOM_SEARCH_INDEX = [
 {
   "title": "Token 的价格是三条线，不是一条",
   "type": "报告 · 调研简报",
-  "summary": "固定能力的最低价在对数图上接近直线下降。2026年11月国内 Flash 与 Lite 约输入 0.8 元、输出 2.7 元/百万 token，旗舰约输入 6–13 元、输出 28–36 元。",
-  "keywords": "token价格 LLM API 千问 智谱 豆包 Kimi DeepSeek 国内大模型价格 LLMflation",
+  "summary": "固定能力的最低价在对数图上接近直线下降。2026-11-03 另有国内外旗舰对照：冷请求国内约 12–27 元，GPT-6 Astra 与 Claude Fable 约 20 美元。缓存和订阅分开算。",
+  "keywords": "token价格 LLM API 旗舰模型 GPT-6 Claude Fable Gemini Argon Grok 千问 智谱 豆包 Kimi DeepSeek 订阅 Coding Plan",
   "url": "/reports/2026/11/token-price-curve/",
   "date": "2026-11-03"
 },
@@ -21,6 +21,22 @@ window.ATOM_SEARCH_INDEX = [
   "summary": "2026-11-03：千问 Flash、智谱 GLM-5.3-Flash、豆包 2.1-lite 约 0.8 元进、2.7 元出；千问 Max 12/36，智谱 GLM-5.3 8/28，豆包旗舰 6/30，Kimi K3.1 Pro 13/68。",
   "keywords": "千问 qwen3.8-max 智谱 GLM-5.3 豆包 Kimi K3.1 DeepSeek flash 元/百万token",
   "url": "/reports/2026/11/token-price-curve/#china",
+  "date": "2026-11-03"
+},
+{
+  "title": "国内外旗舰模型价格对照",
+  "type": "报告内主题 · 旗舰对照",
+  "summary": "冷请求按 100 万输入加 20 万输出。Astra 与 Fable 为 20 美元，Opus 与 12 月起的 Argon 为 8 美元，Sol 与促销期 Argon 为 4 美元，Grok 4.7 为 3.20 美元。国内四家约 12–27 元。",
+  "keywords": "GPT-6 Astra GPT-6.1 Sol Claude Fable Opus Gemini 4 Argon Grok 4.7 缓存命中 冷请求 千问Max GLM-5.3 Kimi K3.1",
+  "url": "/reports/2026/11/token-price-curve/#flagship",
+  "date": "2026-11-03"
+},
+{
+  "title": "订阅和 API 是两本账",
+  "type": "报告内主题 · 订阅",
+  "summary": "ChatGPT Plus 20 美元不能领 API 抵用金，Pro 按档发等额抵用金。Claude Max、Google AI Pro/Ultra 另有额度。百炼 Coding Plan Pro 200 元，智谱三档 118/538/1078 元。不能用月费倒推每百万 token。",
+  "keywords": "ChatGPT Plus Pro Claude Max Google AI Ultra xAI 订阅 百炼 Coding Plan 智谱 Coding Plan API credit",
+  "url": "/reports/2026/11/token-price-curve/#plans",
   "date": "2026-11-03"
 },
 {
