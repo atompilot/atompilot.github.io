@@ -1,5 +1,29 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "Token 的价格是三条线，不是一条",
+  "type": "报告 · 调研简报",
+  "summary": "固定能力的最低价在对数图上接近直线下降，大约每年便宜一个数量级。同一型号是台阶，当天最强模型的标价下降慢得多。",
+  "keywords": "token价格 LLM API LLMflation 指数下降 对数直线 GPT-4 DeepSeek Epoch 推理成本",
+  "url": "/reports/2026/11/token-price-curve/",
+  "date": "2026-11-03"
+},
+{
+  "title": "Token 价格的三条曲线",
+  "type": "报告内主题 · 价格形状",
+  "summary": "地板价是指数下降，单型号标价是台阶，旗舰价是高位横带。DeepSeek 优惠结束会涨价，o1-pro 把天花板抬高。",
+  "keywords": "地板价 旗舰价 阶梯定价 DeepSeek o1-pro 缓存 token",
+  "url": "/reports/2026/11/token-price-curve/#curves",
+  "date": "2026-11-03"
+},
+{
+  "title": "下次怎么用 token 价格曲线",
+  "type": "报告内主题 · 用法",
+  "summary": "按要守住的能力找地板价，把输入、缓存、输出和思考 token 分开算，不要把每年便宜十倍写进合同。",
+  "keywords": "token预算 缓存命中 批量接口 思考token 地板价",
+  "url": "/reports/2026/11/token-price-curve/#howto",
+  "date": "2026-11-03"
+},
+{
   "title": "主动式与被动式 Agent：谁来发起下一轮？",
   "type": "报告 · 学习教程",
   "summary": "用任务由谁发起区分主动与被动，解释执行自主性和定时工作流，并按用途比较六个项目。",

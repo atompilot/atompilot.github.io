@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Token 价格不是一条曲线。固定能力的最低价在对数图上接近直线下降，大约每年便宜一个数量级；同一型号是台阶，当天最强模型的标价下降慢得多。" />
+    <meta name="keywords" content="token价格, LLM API定价, LLMflation, 指数下降, GPT-4, DeepSeek, Epoch AI, 推理成本" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#1f2328" />
+    <title>Token 价格是什么曲线 · 2026-11-03</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { color-scheme: light dark; --bg:#f6f5f1; --card:#fffefb; --ink:#1f2328; --muted:#5f6368; --line:#d8d5cc; --accent:#176155; --soft:#e6f2ed; --warn:#8a4b12; --warnbg:#f8efe4; }
+      @media (prefers-color-scheme:dark) { :root { --bg:#16181b; --card:#1e2125; --ink:#e8e6e1; --muted:#a7acae; --line:#34383d; --accent:#8bdbc5; --soft:#19362e; --warn:#e2b07a; --warnbg:#2c241c; } }
+      * { box-sizing:border-box; }
+      body { margin:0; background:var(--bg); color:var(--ink); font-family:"Avenir Next","PingFang SC","Microsoft YaHei",system-ui,sans-serif; line-height:1.75; -webkit-font-smoothing:antialiased; }
+      main { max-width:940px; margin:auto; padding:30px 20px 70px; }
+      a { color:var(--accent); text-underline-offset:3px; }
+      .back,.meta,figcaption,footer { font-size:14px; color:var(--muted); }
+      .back { text-decoration:none; }
+      .eyebrow { color:var(--accent); font-size:13px; letter-spacing:.08em; margin:36px 0 10px; }
+      h1 { font-size:clamp(29px,6vw,46px); line-height:1.22; letter-spacing:-.04em; margin:0 0 18px; }
+      h2 { font-size:23px; margin:42px 0 14px; padding-top:16px; border-top:1px solid var(--line); line-height:1.4; }
+      h3 { font-size:18px; margin:0 0 8px; }
+      p { margin:14px 0; }
+      .lead { padding:18px 20px; background:var(--soft); border-left:4px solid var(--accent); font-size:19px; margin:26px 0; }
+      figure { margin:24px 0; }
+      .chart { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 8px 4px; overflow-x:auto; }
+      svg { width:100%; height:auto; min-width:560px; display:block; }
+      .series { stroke: var(--accent); }
+      .dot { fill: var(--accent); }
+      .lanes { display:grid; grid-template-columns:1fr; gap:12px; }
+      .lane { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 16px 12px; }
+      .spark { display:flex; align-items:flex-end; gap:6px; height:72px; margin-top:10px; }
+      .spark i { display:block; flex:1; background:var(--accent); border-radius:3px 3px 0 0; opacity:.85; }
+      .spark.step i { background:#3d6b8a; }
+      .spark.flat i { background:#8a5a32; }
+      figcaption { margin-top:10px; }
+      .table-wrap { overflow-x:auto; }
+      table { width:100%; border-collapse:collapse; background:var(--card); font-size:15px; }
+      th,td { text-align:left; vertical-align:top; padding:12px 14px; border-bottom:1px solid var(--line); }
+      th { color:var(--muted); font-weight:600; }
+      td:first-child { font-weight:600; white-space:nowrap; }
+      .note { color:var(--muted); font-size:14px; }
+      .callout { background:var(--warnbg); border-left:4px solid var(--warn); padding:14px 16px; margin:18px 0; }
+      .sources { padding-left:22px; font-size:14px; }
+      .sources li { margin-bottom:9px; }
+      footer { margin-top:36px; padding-top:18px; border-top:1px solid var(--line); }
+      @media (max-width:600px) {
+        main { padding:24px 16px 50px; }
+        th,td { padding:10px 8px; font-size:13px; }
+        .lead { font-size:17px; padding:15px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/reports/">← 报告库</a>
+      <p class="eyebrow">AI 成本 · 调研简报</p>
+      <h1>Token 的价格<br />是三条线，不是一条</h1>
+      <p class="meta">2026-11-03 · 对照 Epoch AI、a16z 与各家价目 · 图为根据公开数字绘制的示意</p>
+      <p class="lead"><strong>把「同样聪明」的最低价画在对数图上，接近一条向下的直线。这就是指数下降：每隔一段时间，价格乘上一个小于 1 的常数。口语里，大约每年便宜一个数量级。</strong></p>
+      <p>Token 是模型计费用的小块文本。各家切分方式不同，所以比较时看「每百万 token 多少钱」，不看某一句话用了几个 token。输入、缓存命中、输出是三种价。输出通常是输入的 4 到 5 倍。</p>
+
+      <h2 id="floor">固定能力的地板价：对数直线</h2>
+      <p>要看曲线，先把能力按住。Epoch AI 取「MMLU 至少达到 GPT-3.5 当时的水平」（约 64.8 分），再记下每个时点最便宜、且过线的模型。斯坦福 2025 AI Index 用的是同一对端点。</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>日期</th><th>当时最便宜的过线模型</th><th>Epoch 记录的价格</th></tr></thead>
+        <tbody>
+          <tr><td>2022-11-30</td><td>GPT-3.5</td><td>$20 / 百万 token</td></tr>
+          <tr><td>2023-03-06</td><td>GPT-3.5 Turbo</td><td>$2</td></tr>
+          <tr><td>2023-11-06</td><td>GPT-3.5 Turbo 1106</td><td>$0.75</td></tr>
+          <tr><td>2024-03-04</td><td>Claude 3 Haiku</td><td>$0.50</td></tr>
+          <tr><td>2024-05-10</td><td>Gemini 1.5 Flash</td><td>$0.13</td></tr>
+          <tr><td>2024-07-23</td><td>Llama 3.1 8B</td><td>$0.10</td></tr>
+          <tr><td>2024-10-03</td><td>Gemini 1.5 Flash-8B</td><td>$0.07</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">价格是 Epoch 表里的单一数字，输入和输出已被他们合成。$20 到 $0.07 大约是 286 倍，公开报道里常写成约 280 倍。</p>
+
+      <figure aria-label="GPT-3.5 能力档最低价的对数图">
+        <div class="chart">
+          <svg viewBox="0 0 680 340" role="img">
+            <title>GPT-3.5 能力档最低价，纵轴为对数</title>
+            <line x1="72" y1="24" x2="72" y2="304" stroke="currentColor" stroke-opacity="0.25" />
+            <line x1="72" y1="72" x2="632" y2="72" stroke="currentColor" stroke-opacity="0.12" />
+            <line x1="72" y1="173" x2="632" y2="173" stroke="currentColor" stroke-opacity="0.12" />
+            <line x1="72" y1="274" x2="632" y2="274" stroke="currentColor" stroke-opacity="0.12" />
+            <text x="64" y="76" text-anchor="end" font-size="12" fill="currentColor" opacity="0.7">$10</text>
+            <text x="64" y="177" text-anchor="end" font-size="12" fill="currentColor" opacity="0.7">$1</text>
+            <text x="64" y="278" text-anchor="end" font-size="12" fill="currentColor" opacity="0.7">$0.1</text>
+            <text x="72" y="326" font-size="12" fill="currentColor" opacity="0.7">2022-11</text>
+            <text x="350" y="326" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.7">2023-11</text>
+            <text x="632" y="326" text-anchor="end" font-size="12" fill="currentColor" opacity="0.7">2024-10</text>
+            <path d="M72 42 L222 91 L375 143 L529 194 L632 227" fill="none" stroke="currentColor" stroke-opacity="0.45" stroke-dasharray="5 4" />
+            <polyline class="series" fill="none" stroke-width="2.5" points="72,42 152,143 355,186 454,203 510,262 571,274 632,289" />
+            <g class="dot">
+              <circle cx="72" cy="42" r="4" /><circle cx="152" cy="143" r="4" /><circle cx="355" cy="186" r="4" />
+              <circle cx="454" cy="203" r="4" /><circle cx="510" cy="262" r="4" /><circle cx="571" cy="274" r="4" /><circle cx="632" cy="289" r="4" />
+            </g>
+            <text x="84" y="36" font-size="12" fill="currentColor">$20</text>
+            <text x="590" y="282" font-size="12" fill="currentColor">$0.07</text>
+          </svg>
+        </div>
+        <figcaption>示意：纵轴是对数，所以「每年便宜 10 倍」会画成直线。实线是上表七点。虚线是从 $20 起、每年正好便宜 10 倍；这一段的实际地板价掉得更快。日常标价是台阶，连成线只是为了看斜率。</figcaption>
+      </figure>
+      <p>对数图上的直线，换回普通坐标就是越来越贴着零、但永远按比例往下掉。例子：价格如果每年变成上一年的十分之一，$20 会变成 $2、$0.20、$0.02。前一年省下的是 18 美元，后一年只省 0.18 美元，比例却一样。</p>
+      <p>几份独立测算落在同一个数量级，斜率并不锁死成一个数：</p>
+      <ul>
+        <li>a16z 在 2024 年 11 月把这条线叫 LLMflation：同等 MMLU 大约每年便宜 10 倍。MMLU 42 分从 2021 年 11 月的 $60 降到 2024 年 11 月的 $0.06，三年约 1000 倍。MMLU 83 分从 GPT-4 发布起约降 62 倍。</li>
+        <li>Epoch 在 2025 年 3 月对多组基准做对数线性回归，年降幅从 9 倍到 900 倍，中位数约 50 倍。最快的那些样本始于 2024 年 1 月之后。</li>
+        <li>Epoch 在 2026 年 9 月用五个主基准重新拟合：自 2023 年起，固定成绩的成本大约每季度降 47%，合每年约 13 倍。刚成为当时最强时大约每季度降 66%（每年约 75 倍）；两年后再看同一档，大约每季度降 32%（每年约 4.7 倍）。</li>
+      </ul>
+      <p>所以更准确的形状是：指数下降，而且一项能力越旧，斜率越平。它不是一条永远同样陡的直线。</p>
+
+      <h2 id="curves">另外两条线长得不一样</h2>
+      <figure aria-label="三条价格线的形状">
+        <div class="lanes">
+          <div class="lane">
+            <h3>1 · 固定能力的地板价</h3>
+            <p>上面那张图。小模型、开源模型和竞争把「够用」的价格打下来。</p>
+            <div class="spark" aria-hidden="true"><i style="height:100%"></i><i style="height:62%"></i><i style="height:38%"></i><i style="height:22%"></i><i style="height:12%"></i><i style="height:7%"></i></div>
+          </div>
+          <div class="lane">
+            <h3>2 · 某一个型号自己的标价</h3>
+            <p>台阶。降价是一次性公告，中间可以停很久，优惠结束还会涨。</p>
+            <div class="spark step" aria-hidden="true"><i style="height:88%"></i><i style="height:88%"></i><i style="height:46%"></i><i style="height:46%"></i><i style="height:70%"></i><i style="height:70%"></i></div>
+          </div>
+          <div class="lane">
+            <h3>3 · 当天最强模型的标价</h3>
+            <p>高位横带。新旗舰往往以接近上一代的价格开卖，推理旗舰还会更贵。</p>
+            <div class="spark flat" aria-hidden="true"><i style="height:78%"></i><i style="height:52%"></i><i style="height:40%"></i><i style="height:36%"></i><i style="height:92%"></i><i style="height:48%"></i></div>
+          </div>
+        </div>
+        <figcaption>示意：柱高只表示相对高低，不是同一套数据。三条线回答的是三个不同的问题。</figcaption>
+      </figure>
+
+      <p>旗舰输入价下降得慢。OpenAI 价目上，2023 年 3 月的 GPT-4（8K）是输入 $30、输出 $60。2023 年 11 月 GPT-4 Turbo 是 $10 / $30。2024 年 5 月 GPT-4o 上线时是 $5 / $15，同一页上现在的 gpt-4o 已是 $2.50 / $10，而 gpt-4o-2024-05-13 仍标着原价。本次读到的官方文档里，GPT-5 与 GPT-5.1 是输入 $1.25、输出 $10。从 $30 到 $1.25，输入大约便宜 24 倍，跨了两年多，远慢于地板价的每年十倍。</p>
+      <p>旧型号可以一直挂着高价。同一份文档里，gpt-4-0613 仍是 $30 / $60。人们感受到的降价，很多是换了一个更便宜的型号，不是旧合同自动变便宜。</p>
+      <div class="callout">
+        <p>涨价同样是这条市场的一部分。DeepSeek-V3 在 2024 年 12 月 26 日到 2025 年 2 月 8 日的优惠价是每百万输出 token 2 元人民币；2 月 9 日起恢复为 8 元。缓存未命中的输入从 1 元回到 2 元。官网在 2026 年 10 月 30 日的价目又换成美元，并分高峰和低谷：Flash 高峰是缓存未命中 $0.30、输出 $1.20，低谷减半；V4 Pro 高峰输出是 $3.96。</p>
+      </div>
+      <p>推理模型把天花板重新抬高。同一份 OpenAI 文档里，o1 仍是输入 $15、输出 $60，o1-pro 是 $150 / $600。一道题若多吐出大量思考 token，每题花费可以上升，即使每 token 的地板价还在降。</p>
+
+      <h2 id="why">为什么地板价掉得比芯片快</h2>
+      <p>Epoch 估算，2023 年以来 AI 芯片的性能每美元大约每年提高 49%，也就是大约 1.5 倍。Token 地板价每年便宜约 10 倍，芯片解释不了大部分降幅。</p>
+      <p>其余来自几件会相乘的事：同样的成绩可以用更小的模型做到；混合专家只激活一部分参数；大模型的能力被蒸馏进小模型；软件和量化让同一张卡吐出更多 token；缓存和批量把有效价再打低；一家把价打穿以后，别人跟着改价目。a16z 在 2024 年就列出了这组彼此独立的因素，并写明以后还能不能每年 10 倍，当时无法预测。</p>
+      <p>Epoch 把这条下降和别的技术放在一起：固定成绩的推理成本大约每年 13 倍，快于 DNA 测序（约每年 1.8 倍）、历史上的通用计算（约 1.5 倍）、锂电池和居民电价。这个比较用的是价格下降速度，不是说 token 会像电一样变成公共事业。</p>
+
+      <h2 id="bill">单价下降时，总账单可以上升</h2>
+      <p>a16z 在 2026 年 10 月 31 日的图表写：2026 年 5 月以来，token 均价大约下降 67%，token 总支出上升约 122% 到 160%。他们把主要增量归于 Agent：一次任务带着更长上下文、走更多步，消耗的 token 大约是人直接对话的 5 倍。</p>
+      <p>Epoch 在 2026 年 5 月另有一个方向相反的判断：若按当时价格估算，token 需求的增速可能快过推理供给。那样的话，人们仍愿意付钱的前沿能力会变贵，日常任务则继续挪到更小的模型。两件事可以同时发生：旧能力更便宜，最前沿的有效供给变紧。</p>
+
+      <h2 id="howto">下次怎么用这条曲线</h2>
+      <p>给一个会反复调用的功能估价时，先写清要守住的能力，再去找这一档现在的地板价，不要用旗舰价，也不要把每年 10 倍写成合同假设。过几个月用更小的模型重测同一批例子。旗舰适合能力刚出现、小模型还过不了线的那段时间，那段也是降价最快的时候。</p>
+      <p>算单次成本时把四件事分开：输入 token、缓存命中、输出 token、思考 token。GPT-5 在本次读到的价目上，输入 $1.25，缓存输入 $0.125，输出 $10。缓存命中一次，输入这项就便宜 10 倍；输出仍是输入的 8 倍。批量接口通常再打五折，但要等异步结果。</p>
+      <p>免费额度和目录价是两套东西。免费档够试调用；一旦用量稳定，就按上面的地板价估算，并把「模型突然涨价或优惠结束」留在预算里。DeepSeek 从 2 元回到 8 元只用了一天切换。</p>
+
+      <h2 id="sources">来源与适用边界</h2>
+      <ul class="sources">
+        <li>Epoch AI，<a href="https://epoch.ai/data-insights/llm-inference-price-trends">LLM inference prices have fallen rapidly but unequally</a>（2025-03-12）：对数线性回归，9 倍到 900 倍/年，中位数约 50 倍；文中的 GPT-3.5 档序列即上表，端点为 $20 与 $0.07。</li>
+        <li>Epoch AI，<a href="https://epoch.ai/publications/the-plunging-price-of-thought">The plunging price of thought</a>（2026-09-22）：约每季度降 47%（每年约 13 倍）；刚成为最强时约 75 倍/年，两年后约 4.7 倍/年。文中写明估计有重要前提。</li>
+        <li>Epoch AI，<a href="https://epoch.ai/trends">Trends</a>：AI 芯片性能每美元自 2023 年起约每年 1.49 倍。</li>
+        <li>Guido Appenzeller，<a href="https://a16z.com/llmflation-llm-inference-cost/">LLMflation</a>（2024-11-12）：同等性能约每年 10 倍；MMLU 42 分三年约 1000 倍，MMLU 83 分约 62 倍。作者写明 MMLU 可能被污染，方法不完美。</li>
+        <li>斯坦福 2025 AI Index 的 GPT-3.5 档「约 280 倍」与 Epoch 序列端点一致。本次未能打开 hai.stanford.edu 原文，280 这个约数来自 Epoch 数字与多家对 AI Index 的转述。</li>
+        <li>OpenAI 定价文档 <a href="https://platform.openai.com/docs/pricing">platform.openai.com/docs/pricing</a>，本次读取：GPT-4 8K 仍为 $30/$60，GPT-4 Turbo $10/$30，gpt-4o-2024-05-13 为 $5/$15，现行 gpt-4o 为 $2.50/$10，GPT-5 与 GPT-5.1 为 $1.25/$10（缓存输入 $0.125），o1 为 $15/$60，o1-pro 为 $150/$600。2026 年若已有更新型号，以打开价目时的页面为准，本页不采用互相矛盾的第三方价目聚合。</li>
+        <li>DeepSeek 优惠结束：<a href="https://www.thepaper.cn/newsDetail_forward_30119856">澎湃新闻 2025-02-10</a>，输出由 2 元/百万回到 8 元。现行价目：<a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek Models &amp; Pricing</a>（页面标注 2026-10-30）。</li>
+        <li>a16z 2026-10-31 关于均价下降、支出上升的转述，见当周对其 Charts of the Week 的报道。原图未在本次逐项复核到 a16z 原文的每个百分比。</li>
+      </ul>
+      <p class="note">适用边界：这些是目录价和研究机构算出的「过某条基准线的最低价」，不是你的发票，也不是模型在真实业务上的质量。基准可以被针对训练；思考 token 会让每题成本偏离每 token 标价；高峰、低谷、缓存和批量都会改有效价。2024 到 2026 年最快的那段下降，Epoch 已写明不一定持续。</p>
+      <footer><a href="/reports/">返回报告库</a> · Atom Wang</footer>
+    </main>
+  </body>
+</html>
