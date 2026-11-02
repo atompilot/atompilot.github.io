@@ -1,5 +1,21 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "主动式与被动式 Agent：谁来发起下一轮？",
+  "type": "报告 · 学习教程",
+  "summary": "用任务由谁发起区分主动与被动，解释执行自主性和定时工作流，并按用途比较六个项目。",
+  "keywords": "主动式Agent 被动式Agent proactive reactive agent OpenClaw Hermes Letta OpenHands Agent Canvas LangGraph n8n 自动化",
+  "url": "/reports/2026/11/proactive-reactive-agents/",
+  "date": "2026-11-02"
+},
+{
+  "title": "主动 Agent 项目怎么选",
+  "type": "报告内主题 · 项目比较",
+  "summary": "个人助手看 OpenClaw 和 Hermes，持续记忆看 Letta，工程自动化看 Agent Canvas，自研编排看 LangGraph，业务连接看 n8n。",
+  "keywords": "主动Agent 项目推荐 OpenClaw Hermes LettaBot 归档 schedules LangGraph n8n OpenHands",
+  "url": "/reports/2026/11/proactive-reactive-agents/#projects",
+  "date": "2026-11-02"
+},
+{
   "title": "Hypit 是怎么火起来的",
   "type": "报告 · 开源传播",
   "summary": "仓库 7 月 29 日建仓后几乎没有星。9 月 14 日发布帖之后，15 日和 16 日新增约 5900 星，10 月仍每天几百星。",

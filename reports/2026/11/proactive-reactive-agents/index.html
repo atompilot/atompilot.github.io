@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="用谁发起下一轮工作理解主动式与被动式 Agent，区分主动性、执行自主性与定时工作流；按用途比较 OpenClaw、Hermes、Letta、OpenHands Agent Canvas、LangGraph 和 n8n。" />
+    <meta name="keywords" content="主动式Agent, 被动式Agent, proactive agent, reactive agent, OpenClaw, Hermes Agent, Letta, OpenHands, Agent Canvas, LangGraph, n8n, 自动化" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#1f2328" />
+    <title>主动式与被动式 Agent：区别与项目选择 · 2026-11-02</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { color-scheme: light dark; --bg:#f6f5f1; --card:#fffefb; --ink:#1f2328; --muted:#5f6368; --line:#d8d5cc; --accent:#176155; --soft:#e6f2ed; }
+      @media (prefers-color-scheme:dark) { :root { --bg:#16181b; --card:#1e2125; --ink:#e8e6e1; --muted:#a7acae; --line:#34383d; --accent:#8bdbc5; --soft:#19362e; } }
+      * { box-sizing:border-box; }
+      body { margin:0; background:var(--bg); color:var(--ink); font-family:"Avenir Next","PingFang SC","Microsoft YaHei",system-ui,sans-serif; line-height:1.8; -webkit-font-smoothing:antialiased; }
+      main { max-width:940px; margin:auto; padding:30px 20px 70px; }
+      a { color:var(--accent); text-underline-offset:3px; }
+      .back,.meta,figcaption,footer { font-size:14px; color:var(--muted); }
+      .back { text-decoration:none; }
+      .eyebrow { color:var(--accent); font-size:13px; letter-spacing:.08em; margin:36px 0 10px; }
+      h1 { font-size:clamp(29px,6vw,48px); line-height:1.22; letter-spacing:-.04em; margin:0 0 18px; }
+      h2 { font-size:23px; margin:40px 0 14px; padding-top:16px; border-top:1px solid var(--line); line-height:1.4; }
+      p { margin:14px 0; }
+      .lead { padding:18px 20px; background:var(--soft); border-left:4px solid var(--accent); font-size:19px; margin:26px 0; }
+      figure { margin:24px 0; }
+      .flows { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+      .flow { padding:20px; border:1px solid var(--line); background:var(--card); border-radius:10px; }
+      .flow h3 { margin:0 0 14px; font-size:18px; }
+      .step { display:block; text-align:center; padding:10px 12px; border:1px solid var(--line); border-radius:6px; }
+      .trigger { background:var(--soft); border-color:var(--accent); }
+      .arrow { display:block; text-align:center; color:var(--muted); line-height:1.7; }
+      figcaption { margin-top:10px; }
+      .table-wrap { overflow-x:auto; }
+      table { width:100%; border-collapse:collapse; background:var(--card); font-size:15px; }
+      th,td { text-align:left; vertical-align:top; padding:13px 14px; border-bottom:1px solid var(--line); }
+      th { color:var(--muted); font-weight:600; }
+      td:first-child { width:24%; font-weight:600; }
+      td:nth-child(2) { width:23%; }
+      .note { color:var(--muted); font-size:14px; }
+      .sources { padding-left:22px; font-size:14px; }
+      .sources li { margin-bottom:9px; }
+      footer { margin-top:36px; padding-top:18px; border-top:1px solid var(--line); }
+      @media (max-width:600px) { .flows { grid-template-columns:1fr; } main { padding:24px 16px 50px; } th,td { padding:10px 8px; font-size:13px; } td:first-child { width:26%; overflow-wrap:anywhere; } .lead { font-size:17px; padding:15px; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/reports/">← 报告库</a>
+      <p class="eyebrow">AI 智能体 · 快速学习</p>
+      <h1>主动式与被动式 Agent<br />谁来发起下一轮？</h1>
+      <p class="meta">2026-11-02 · 按官方文档核对 · 图中流程为概念示意</p>
+      <p class="lead"><strong>被动式：你叫它，它才开始。主动式：你先交代目标，它之后能在合适的时间或事件发生时，自行检查并决定下一步。</strong></p>
+      <p>这里按产品使用方式理解“主动／被动”，不是严格统一的学术分类。例如，先交代“帮我盯住项目进展”：被动模式要等你问“有什么卡点”；主动模式会定时检查，发现新卡点后再通知你。</p>
+
+      <figure aria-label="主动与被动模式的流程比较">
+        <div class="flows">
+          <div class="flow"><h3>被动模式 · 请求发起</h3><span class="step trigger">你问：项目有什么卡点？</span><span class="arrow" aria-hidden="true">↓</span><span class="step">读取资料 → 判断 → 调用工具</span><span class="arrow" aria-hidden="true">↓</span><span class="step">交付结果，等待下一次请求</span></div>
+          <div class="flow"><h3>主动模式 · 目标持续有效</h3><span class="step trigger">到达检查时间，或收到相关事件</span><span class="arrow" aria-hidden="true">↓</span><span class="step">结合目标与已有状态，判断是否有事</span><span class="arrow" aria-hidden="true">↓</span><span class="step">有事则在授权范围行动／通知；无事则等待</span></div>
+        </div>
+        <figcaption>示意：主动系统也需要调度器、事件等触发机制；“自行检查”不是大模型凭空醒来。</figcaption>
+      </figure>
+
+      <h2 id="distinction">两个容易混淆的地方</h2>
+      <p><strong>主动性和执行自主性是两件事。</strong>你下一个命令，它自己连续完成二十步，说明执行自主性强；但下一项工作仍等你发起，就仍是被动使用模式。同一个 Agent 可以同时支持两种模式。</p>
+      <p><strong>定时自动化也不一定需要 Agent。</strong>每天九点照固定规则生成报表，普通工作流就能完成；如果它还要理解新情况、判断是否值得处理、选择工具和下一步，才需要 Agent 的判断能力。主动模式应提前说清：什么时候检查、能做什么、何时通知你。</p>
+
+      <h2 id="projects">目前值得看的六个项目</h2>
+      <p class="note">按用途选择，不作“综合最强”排名。以下是官方能力核对，未对这六套系统做同场实测。</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>项目</th><th>更适合研究什么</th><th>当前能力与边界</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/openclaw/openclaw">OpenClaw</a></td><td>长期个人助手</td><td>聊天入口、定时检查、事件触发与结果投递。当前官方已把 heartbeat 监控统一到普通 automation jobs，旧教程的配置需核对。<a href="https://docs.openclaw.ai/automation">官方机制</a></td></tr>
+          <tr><td><a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a></td><td>记忆与技能积累</td><td>跨会话记忆、可复用 skills，并支持定时／事件任务。经验沉淀在记忆和技能中，不等于自动训练模型。<a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron">任务机制</a></td></tr>
+          <tr><td><a href="https://docs.letta.com/">Letta／Letta Code</a></td><td>有持续记忆的助手</td><td>共享记忆、后台整理经验、channels 与 schedules。旧 LettaBot 已归档；本地定时任务需要对应机器上有活跃 Letta 会话。<a href="https://docs.letta.com/configuration/schedules">运行条件</a></td></tr>
+          <tr><td><a href="https://github.com/OpenHands/OpenHands">OpenHands Agent Canvas</a></td><td>持续工程任务</td><td>当前主仓库是可自托管的编程 Agent 控制台，可从对话启动任务，也可按时间或 webhook 触发，连接本地、远程或云端执行环境。<a href="https://github.com/OpenHands/OpenHands#readme">当前定位</a></td></tr>
+          <tr><td><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></td><td>自己开发 Agent</td><td>提供状态持久化、持续执行与人工介入等编排能力。属于开发底座；何时启动、目标是什么，由应用定义。<a href="https://docs.langchain.com/oss/python/langgraph/overview">官方定位</a></td></tr>
+          <tr><td><a href="https://n8n.io/">n8n</a></td><td>把业务系统接起来</td><td>可用 Schedule Trigger 启动流程，再接 AI Agent 节点选择工具。它是自动化平台，整个工作流不必都交给 Agent 判断。<a href="https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/">Agent 节点</a></td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>我的阅读建议：</strong>想体验“交代一次、后续替我盯着”，先看 OpenClaw、Hermes；想深入记忆机制，看 Letta；想把主动能力做进自己的产品，看 LangGraph，已有固定业务流程则先看 n8n；想围绕代码库持续安排工作，看 Agent Canvas。这是按上述功能作的用途判断，不代表实际效果排名。</p>
+
+      <h2 id="sources">来源与适用边界</h2>
+      <ul class="sources">
+        <li>OpenClaw：<a href="https://docs.openclaw.ai/automation">Automation</a>、<a href="https://docs.openclaw.ai/gateway/heartbeat">Heartbeat migration</a>，确认定时、事件、投递与现行迁移说明。</li>
+        <li>Hermes：<a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron">Scheduled Tasks</a>、<a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/memory">Persistent Memory</a>及<a href="https://github.com/NousResearch/hermes-agent">官方仓库</a>，确认调度、记忆和 skills。</li>
+        <li>Letta：<a href="https://docs.letta.com/configuration/memory">Memory &amp; dreaming</a>、<a href="https://docs.letta.com/configuration/schedules">Schedules</a>、<a href="https://docs.letta.com/self-hosting/channels">Channels</a>及<a href="https://github.com/letta-ai/lettabot">LettaBot 归档说明</a>。</li>
+        <li>OpenHands：<a href="https://github.com/OpenHands/OpenHands#readme">当前官方 README</a>，确认 Agent Canvas 定位、执行环境与定时／webhook 自动化。</li>
+        <li>LangGraph：<a href="https://docs.langchain.com/oss/python/langgraph/overview">Overview</a>，确认其为编排框架与运行时。</li>
+        <li>n8n：<a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/">Schedule Trigger</a>、<a href="https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/">AI Agent</a>，确认触发与工具选择分别由什么承担。</li>
+      </ul>
+      <p class="note">资料核对日期：2026-11-02。产品版本与命名会变化；功能存在不代表特定业务已验证。例子为通用教学示意，不包含私人项目资料。</p>
+      <footer><a href="/reports/">返回报告库</a> · Atom Wang</footer>
+    </main>
+  </body>
+</html>
