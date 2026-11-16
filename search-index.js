@@ -1,5 +1,37 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "给别人的软件打补丁：三条不变量",
+  "type": "学习报告 · 原理短讲",
+  "summary": "闭源软件天天更新，补丁能跟几十版靠三件事：锚点用原文不用行号、幂等靠自己写的标记而不是「pattern 还在不在」、落笔前先快照。附一个每次叠 841 字符、永不收敛的真实坑。",
+  "keywords": "打补丁 patch 锚点 anchor 漂移 幂等 idempotent marker 快照 回滚 fork 命中数",
+  "url": "/reports/2026/11/patching-closed-source-software/",
+  "date": "2026-11-16"
+},
+{
+  "title": "为什么补丁比 fork 活得久",
+  "type": "报告内主题 · 判断依据",
+  "summary": "fork 的失效是沉默偏离，半年后你才发现维护的是另一个软件；补丁的失效是一个可检测事件——锚点找不到就报错。差别不在改动大小，在「出问题我会不会知道」。",
+  "keywords": "fork 补丁 可检测失效 沉默偏离 维护成本 升级",
+  "url": "/reports/2026/11/patching-closed-source-software/#why",
+  "date": "2026-11-16"
+},
+{
+  "title": "幂等为什么不能用内容反推",
+  "type": "报告内主题 · 易错点",
+  "summary": "替换后的文本常包含原 pattern（新文案是旧文案前缀），于是它再次命中，每执行一次叠一层。状态必须显式记录：内容是可变的证据，状态是事实。",
+  "keywords": "幂等 pattern 自匹配 前缀 叠加 状态 marker 841",
+  "url": "/reports/2026/11/patching-closed-source-software/#three",
+  "date": "2026-11-16"
+},
+{
+  "title": "同一套机制：migration、K8s patch、CSS 覆盖",
+  "type": "报告内主题 · 跨领域对照",
+  "summary": "四处同构：用内容的一段当坐标，用显式记录当状态，用报错当失效通知。缺第三条的 CSS 覆盖，升级那天只能等用户来告诉你出事了。",
+  "keywords": "数据库 migration strategic merge patch kustomize CSS 覆盖 同构 对照",
+  "url": "/reports/2026/11/patching-closed-source-software/#analogy",
+  "date": "2026-11-16"
+},
+{
   "title": "四个会写代码的 AI，怎么记住你说过的话",
   "type": "报告 · 科普对照",
   "summary": "窗口只有一扇，任务比窗口大。四家用了四种遗忘策略：摘要写笔记、服务端压缩加沙箱、大窗口兼容生态、日志加投影。含窗口对照表、三小时重构现场和怎么选。",

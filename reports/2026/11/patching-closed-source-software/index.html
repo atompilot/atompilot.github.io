@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="给闭源软件打补丁能长期活下去，靠三条不变量：用原文锚点定位、用自己写的标记判幂等、每次写入前留快照。讲清为什么「原 pattern 还在」不能当作判定依据，以及锚点漂移为什么比 fork 的沉默偏离更安全。" />
+    <meta name="keywords" content="打补丁, patch, 锚点, anchor drift, 幂等, idempotent, marker, 快照, 回滚, fork, 数据库 migration, kustomize, strategic merge patch" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#1f2328" />
+    <title>给别人的软件打补丁：三条不变量 · 2026-11-16</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { color-scheme: light dark; --bg:#f6f5f1; --card:#fffefb; --ink:#1f2328; --muted:#5f6368; --line:#d8d5cc; --accent:#176155; --soft:#e6f2ed; --warn:#8a4b12; --warnbg:#f8efe4; --blue:#2f5d8a; --bluesoft:#e8eff6; }
+      @media (prefers-color-scheme:dark) { :root { --bg:#16181b; --card:#1e2125; --ink:#e8e6e1; --muted:#a7acae; --line:#34383d; --accent:#8bdbc5; --soft:#19362e; --warn:#e2b07a; --warnbg:#2c241c; --blue:#9cc3e6; --bluesoft:#1b2833; } }
+      * { box-sizing:border-box; }
+      body { margin:0; background:var(--bg); color:var(--ink); font-family:"Avenir Next","PingFang SC","Microsoft YaHei",system-ui,sans-serif; line-height:1.78; -webkit-font-smoothing:antialiased; }
+      main { max-width:960px; margin:auto; padding:30px 20px 70px; }
+      a { color:var(--accent); text-underline-offset:3px; }
+      .back,.meta,figcaption,footer,.note { font-size:14px; color:var(--muted); }
+      .back { text-decoration:none; }
+      .eyebrow { color:var(--accent); font-size:13px; letter-spacing:.08em; margin:36px 0 10px; }
+      h1 { font-size:clamp(30px,6vw,48px); line-height:1.2; letter-spacing:-.04em; margin:0 0 18px; }
+      h2 { font-size:23px; margin:44px 0 14px; padding-top:16px; border-top:1px solid var(--line); line-height:1.4; }
+      h3 { font-size:18px; margin:26px 0 8px; }
+      p { margin:14px 0; }
+      ul,ol { padding-left:22px; }
+      li { margin:7px 0; }
+      .lead { padding:18px 20px; background:var(--soft); border-left:4px solid var(--accent); font-size:19px; margin:26px 0; }
+      .table-wrap { overflow-x:auto; margin:18px 0; }
+      table { width:100%; border-collapse:collapse; background:var(--card); font-size:15px; }
+      th,td { text-align:left; vertical-align:top; padding:12px 14px; border-bottom:1px solid var(--line); }
+      th { color:var(--muted); font-weight:600; white-space:nowrap; }
+      td:first-child { font-weight:600; white-space:nowrap; }
+      .flow { display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:14px; margin:16px 0; }
+      .step { background:var(--soft); border-radius:6px; padding:6px 10px; }
+      .step.hot { background:var(--warnbg); }
+      .step.cold { background:var(--bluesoft); }
+      .arrow { color:var(--muted); }
+      .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:20px 0; }
+      .box { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+      .box h4 { margin:0 0 6px; font-size:16px; }
+      .box p { margin:6px 0; font-size:15px; }
+      .num { font-variant-numeric:tabular-nums; }
+      code { font-family:"SFMono-Regular",Menlo,Consolas,monospace; font-size:.9em; background:rgba(23,97,85,.08); border-radius:4px; padding:1px 5px; overflow-wrap:anywhere; }
+      @media (prefers-color-scheme:dark) { code { background:rgba(139,219,197,.12); } }
+      .callout { background:var(--warnbg); border-left:4px solid var(--warn); padding:14px 16px; margin:18px 0; }
+      .sources { padding-left:22px; font-size:14px; }
+      .sources li { margin-bottom:9px; }
+      @media (max-width:720px) { .grid3 { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/reports/">← 报告库</a>
+      <p class="eyebrow">软件工程 · 原理短讲</p>
+      <h1>给别人的软件打补丁，为什么能撑过几十次更新</h1>
+      <p class="meta">2026-11-16 · 一次学习 · 从手边一个「给闭源桌面应用打补丁」的项目里提炼</p>
+
+      <p class="lead">你天天用的软件大多是闭源的，还在天天更新。想改它只有两种活法：fork 一份自己养，或者打补丁跟着更新走。fork 拼的是人力，补丁拼的是「失效时你能立刻知道」。补丁能活下去，靠三条不变量。</p>
+
+      <h2 id="why">先问：为什么不直接改一份自己的</h2>
+      <p>改一份副本最直观，问题出在时间和版本上。上游每两周发一版，你的副本就多两周的差异要追；追到第五次，你的代码和官方的代码已经混成一团，谁也说不清哪一行是谁写的、为什么写。</p>
+      <p>补丁的做法是反的：<strong>不动代码结构，只在原文上做精确字符串替换</strong>。它天然保留「我改了什么」的清单，因为它本来就是一份清单；上游一升级，清单里的每一行都能被逐条验证——要么还找得到锚点（继续用），要么找不到（响亮地报错）。</p>
+      <div class="callout"><strong>一句话：</strong>补丁的价值不是「改动少」，而是<strong>失效是一个可检测事件</strong>，而 fork 的失效是沉默偏离——半年后你才发现自己维护的是另一个软件。</div>
+
+      <h2 id="three">三条不变量</h2>
+      <div class="grid3">
+        <div class="box">
+          <h4>① 可定位：锚点不是行号</h4>
+          <p>用原文里一段<strong>足够特别的字符串</strong>定位，不用「第 312 行」。行号每版都变，字符串变了还能被检测为「漂移」，行号变了你只会改错地方。</p>
+          <p class="note">锚点要选几乎不会有人顺手改的那几句——常量名、错误文案、类型签名。</p>
+        </div>
+        <div class="box">
+          <h4>② 幂等：状态要自己记</h4>
+          <p>判断「改过没有」必须靠<strong>自己写进去的标记</strong>，不能靠「原 pattern 还在不在」。因为替换后的文本常常<em>包含</em>原 pattern（新文案是旧文案的前缀），于是它又命中一次。</p>
+          <p class="note">代价是具体的：每执行一次就多叠一层。</p>
+        </div>
+        <div class="box">
+          <h4>③ 可回滚：先快照再落笔</h4>
+          <p>整份写入前存快照，逐文件再留一份备份。补丁要能重放——因为「应用」这个动作会被反复执行，每次都可能是干净机器，也可能是打了七次的机器。</p>
+          <p class="note">回滚路径不常用，但它决定了你敢不敢按那个按钮。</p>
+        </div>
+      </div>
+
+      <h3>那个最容易踩的坑，展开一句</h3>
+      <p>看着「pattern 没命中」就以为没改过，是这个模式里最贵的错觉。真实项目里踩过一次：某条文案补丁的新文案刚好以旧文案为前缀，于是每次「应用」都会再叠一层，实测<strong>每次增加约 841 个字符，永不收敛</strong>。修法不是把 pattern 写得更聪明，而是承认一件事——</p>
+      <p class="lead" style="font-size:17px">凡是「我是否已经做过」这种状态，都必须显式记录，不能从内容反推。内容是可变的证据，状态是事实。</p>
+
+      <h3>补一条契约：命中数不符就整条拒写</h3>
+      <p>锚点通常配一个「应该命中几处」的期望值。上游把同一段代码复制成两份时，一个宽松的替换会把两处一起改掉——第二处可能根本不该动。所以命中数对不上时，正确动作是<strong>整条补丁拒绝写入并报数</strong>，而不是尽力而为地改一半。半截的成功比失败更难查。</p>
+
+      <h2 id="lifecycle">一次应用的真实顺序</h2>
+      <div class="flow">
+        <span class="step">① 快照 + 逐文件备份</span><span class="arrow">→</span>
+        <span class="step">② 读原文，找锚点</span><span class="arrow">→</span>
+        <span class="step cold">③ 查标记：改过就跳过</span><span class="arrow">→</span>
+        <span class="step">④ 校验命中数</span><span class="arrow">→</span>
+        <span class="step">⑤ 写入 + 记标记</span><span class="arrow">→</span>
+        <span class="step">⑥ 逐条自检，输出证据</span>
+      </div>
+      <div class="flow">
+        <span class="step hot">上游升级</span><span class="arrow">→</span>
+        <span class="step hot">锚点消失</span><span class="arrow">→</span>
+        <span class="step">报「漂移」并给出文件与可能的新位置</span><span class="arrow">→</span>
+        <span class="step">人工确认后重锚（存在本地覆盖文件，不改工具源码）</span>
+      </div>
+      <p class="note">图为示意，非实测截图。第二行是这套办法真正的日常：升级、报错、看一眼、确认、继续。它把「维护」从考古变成了核对。</p>
+
+      <h2 id="analogy">同一套机制，在别处长什么样</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>场景</th><th>锚点</th><th>幂等标记</th><th>失效时</th></tr></thead>
+          <tbody>
+            <tr><td>数据库 migration</td><td>表名 / 列名，不是行位置</td><td>版本号表</td><td>版本对不上，直接拒绝启动</td></tr>
+            <tr><td>K8s strategic merge patch</td><td>资源 key（name / container 名）</td><td>声明式对账，天然幂等</td><td>key 变了就报字段未知，不会静默新建</td></tr>
+            <tr><td>覆盖第三方库样式</td><td>选择器</td><td><strong>没有</strong>，只能加 <code>!important</code> 硬压</td><td>库升级改类名，样式静默崩掉——这就是反例</td></tr>
+            <tr><td>翻译 / 汉化包</td><td>原文句子</td><td>版本戳</td><td>原文改一个字，那条翻译悄悄落空</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>四行对照下来，共同机制很清楚：<strong>用「内容的某一段」当坐标，用「显式记录」当状态，用「报错」当失效通知</strong>。凡是缺第三条的（比如 CSS 覆盖），升级那天你只能靠用户来告诉你出事了。</p>
+
+      <h2 id="boundary">边界</h2>
+      <ul>
+        <li>这条路径依赖<strong>目标程序的内部结构</strong>，上游一重构就失效。它适合「我自己的环境、我要长期跟」，不适合分发给不特定用户。</li>
+        <li>有签名与完整性校验的软件（macOS 公证、Windows 签名、容器镜像 digest、SaaS 服务端）改不了，也不该改——校验存在就是为了让「沉默偏离」变成「明确拒绝」。</li>
+        <li>补丁越少越好。每一条都是一份「上游可能改这里」的赌注；能通过配置、插件、公开扩展点解决的事，别写成补丁。</li>
+        <li>本文只讲机制，不针对任何具体产品；数字（如每次叠加约 841 字符）来自一次本地实测，仅用于说明「不收敛」这个定性结论。</li>
+      </ul>
+
+      <h2 id="takeaway">下次能用的三句话</h2>
+      <ol>
+        <li>改别人的代码前，先问「它失效时我会不会知道」。不知道，就还没设计完。</li>
+        <li>任何「做过没有」的判断，写成显式记录；从内容反推状态，早晚会重复叠加。</li>
+        <li>宁可整条失败并报数，也不要改一半成功——半截的成功是最贵的债。</li>
+      </ol>
+
+      <footer>
+        <p>2026-11-16 · 归入 <a href="/reports/">报告库</a> · 素材来自本地一个长期维护宿主补丁的项目，已脱敏为通用机制</p>
+      </footer>
+    </main>
+  </body>
+</html>
