@@ -1,5 +1,45 @@
 window.ATOM_SEARCH_INDEX = [
 {
+  "title": "四个会写代码的 AI，怎么记住你说过的话",
+  "type": "报告 · 科普对照",
+  "summary": "窗口只有一扇，任务比窗口大。四家用了四种遗忘策略：摘要写笔记、服务端压缩加沙箱、大窗口兼容生态、日志加投影。含窗口对照表、三小时重构现场和怎么选。",
+  "keywords": "Claude Code Codex Grok Build DeepSeek Harness 上下文窗口 自动压缩 compaction AGENTS.md CLAUDE.md 记忆 沙箱 coding agent",
+  "url": "/reports/2026/11/coding-agent-harness-comparison/",
+  "date": "2026-11-16"
+},
+{
+  "title": "为什么上下文一定会满",
+  "type": "报告内主题 · 基础概念",
+  "summary": "窗口里挤着固定开销、对话历史和工具输出，工具输出涨最快。满了只会报错或悄悄忘掉开头，所以每个 harness 都必须有遗忘策略：截断、落盘、摘要、隔离。",
+  "keywords": "上下文窗口 token 工具输出 遗忘策略 截断 落盘 摘要",
+  "url": "/reports/2026/11/coding-agent-harness-comparison/#why",
+  "date": "2026-11-16"
+},
+{
+  "title": "四家 harness 的压缩与记忆对照表",
+  "type": "报告内主题 · 对照表",
+  "summary": "窗口从 256K 到 1.05M；压缩从服务端 v2 到日志替换；记忆从 MEMORY.md 到后台管线。一张表看八行。",
+  "keywords": "对照表 窗口 压缩 保留尾部 指令文件 长期记忆 沙箱",
+  "url": "/reports/2026/11/coding-agent-harness-comparison/#table",
+  "date": "2026-11-16"
+},
+{
+  "title": "同一件事，四种现场",
+  "type": "报告内主题 · 场景推演",
+  "summary": "三十万 token 的老项目、三小时无人值守：Claude 重读文件捡现场，Codex 搬上云，Grok 双倍计价硬扛，DSH 的日志早就落盘。",
+  "keywords": "场景 重构 无人值守 云端 落盘 压缩触发",
+  "url": "/reports/2026/11/coding-agent-harness-comparison/#scenario",
+  "date": "2026-11-16"
+},
+{
+  "title": "四种记忆观与怎么选",
+  "type": "报告内主题 · 选型",
+  "summary": "笔记式、流水线式、兼容式、账本式各适合谁；共同结论是只有仓库文件和盘上日志活得过三次压缩。",
+  "keywords": "记忆观 选型 AGENTS.md 文件 日志 长任务",
+  "url": "/reports/2026/11/coding-agent-harness-comparison/#memory-views",
+  "date": "2026-11-16"
+},
+{
   "title": "Token 的价格是三条线，不是一条",
   "type": "报告 · 调研简报",
   "summary": "固定能力的最低价在对数图上接近直线下降。2026-11-03 另有国内外旗舰对照：冷请求国内约 12–27 元，GPT-6 Astra 与 Claude Fable 约 20 美元。缓存和订阅分开算。",

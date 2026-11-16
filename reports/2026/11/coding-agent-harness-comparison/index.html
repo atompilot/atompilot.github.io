@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="同样让 AI 写代码，Claude Code、Codex、Grok Build 和 DeepSeek Harness 处理超长上下文与记忆的方式完全不同：一个写笔记，一个上流水线，一个换大桌子，一个记账。用一张表和一个三小时重构的例子讲清区别。" />
+    <meta name="keywords" content="Claude Code, Codex, Grok Build, DeepSeek Harness, 上下文窗口, 自动压缩, compaction, AGENTS.md, CLAUDE.md, 记忆, coding agent, 沙箱" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#1f2328" />
+    <title>四个会写代码的 AI，怎么记住你说过的话 · 2026-11-16</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { color-scheme: light dark; --bg:#f6f5f1; --card:#fffefb; --ink:#1f2328; --muted:#5f6368; --line:#d8d5cc; --accent:#176155; --soft:#e6f2ed; --warn:#8a4b12; --warnbg:#f8efe4; --blue:#2f5d8a; --bluesoft:#e8eff6; }
+      @media (prefers-color-scheme:dark) { :root { --bg:#16181b; --card:#1e2125; --ink:#e8e6e1; --muted:#a7acae; --line:#34383d; --accent:#8bdbc5; --soft:#19362e; --warn:#e2b07a; --warnbg:#2c241c; --blue:#9cc3e6; --bluesoft:#1b2833; } }
+      * { box-sizing:border-box; }
+      body { margin:0; background:var(--bg); color:var(--ink); font-family:"Avenir Next","PingFang SC","Microsoft YaHei",system-ui,sans-serif; line-height:1.78; -webkit-font-smoothing:antialiased; }
+      main { max-width:960px; margin:auto; padding:30px 20px 70px; }
+      a { color:var(--accent); text-underline-offset:3px; }
+      .back,.meta,figcaption,footer,.note { font-size:14px; color:var(--muted); }
+      .back { text-decoration:none; }
+      .eyebrow { color:var(--accent); font-size:13px; letter-spacing:.08em; margin:36px 0 10px; }
+      h1 { font-size:clamp(30px,6vw,48px); line-height:1.2; letter-spacing:-.04em; margin:0 0 18px; }
+      h2 { font-size:23px; margin:44px 0 14px; padding-top:16px; border-top:1px solid var(--line); line-height:1.4; }
+      h3 { font-size:18px; margin:26px 0 8px; }
+      p { margin:14px 0; }
+      ul,ol { padding-left:22px; }
+      li { margin:7px 0; }
+      .lead { padding:18px 20px; background:var(--soft); border-left:4px solid var(--accent); font-size:19px; margin:26px 0; }
+      .table-wrap { overflow-x:auto; margin:18px 0; }
+      table { width:100%; border-collapse:collapse; background:var(--card); font-size:15px; }
+      th,td { text-align:left; vertical-align:top; padding:12px 14px; border-bottom:1px solid var(--line); }
+      th { color:var(--muted); font-weight:600; white-space:nowrap; }
+      td:first-child { font-weight:600; white-space:nowrap; }
+      .lanes { display:grid; gap:12px; margin:22px 0; }
+      .lane { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+      .lane h4 { margin:0 0 4px; font-size:16px; }
+      .lane .why { color:var(--muted); font-size:13px; margin:0 0 10px; }
+      .flow { display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:14px; }
+      .step { background:var(--soft); border-radius:6px; padding:6px 10px; }
+      .step.hot { background:var(--warnbg); }
+      .step.cold { background:var(--bluesoft); }
+      .arrow { color:var(--muted); }
+      .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+      .box { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+      .box h4 { margin:0 0 6px; font-size:16px; }
+      .box p { margin:6px 0; font-size:15px; }
+      .num { font-variant-numeric:tabular-nums; }
+      code { font-family:"SFMono-Regular",Menlo,Consolas,monospace; font-size:.9em; background:rgba(23,97,85,.08); border-radius:4px; padding:1px 5px; overflow-wrap:anywhere; }
+      @media (prefers-color-scheme:dark) { code { background:rgba(139,219,197,.12); } }
+      .tag { display:inline-block; font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:1px 9px; margin-left:6px; vertical-align:2px; }
+      .callout { background:var(--warnbg); border-left:4px solid var(--warn); padding:14px 16px; margin:18px 0; }
+      .sources { padding-left:22px; font-size:14px; }
+      .sources li { margin-bottom:9px; }
+      .bar { display:grid; grid-template-columns:112px 1fr 62px; align-items:center; gap:10px; margin:6px 0; font-size:14px; }
+      .bar span:first-child { color:var(--muted); text-align:right; }
+      .track { height:14px; background:var(--soft); border-radius:7px; overflow:hidden; }
+      .fill { height:100%; background:var(--accent); border-radius:7px; }
+      .fill.b { background:var(--blue); }
+      .fill.w { background:var(--warn); }
+      .bar .val { color:var(--muted); font-variant-numeric:tabular-nums; }
+      footer { margin-top:40px; padding-top:18px; border-top:1px solid var(--line); }
+      @media (max-width:640px) {
+        main { padding:24px 16px 50px; }
+        th,td { padding:10px 8px; font-size:13px; }
+        td:first-child { white-space:normal; }
+        .lead { font-size:17px; padding:15px; }
+        .grid2 { grid-template-columns:1fr; }
+        .bar { grid-template-columns:88px 1fr 52px; font-size:13px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/reports/">← 报告库</a>
+      <p class="eyebrow">AI 工程 · 科普对照</p>
+      <h1>四个会写代码的 AI<br />怎么记住你说过的话</h1>
+      <p class="meta">2026-11-16 · 对照各家官方文档与公开实测 · 数字随版本变化，未确认处已标注 · 图为示意</p>
+      <p class="lead"><strong>它们的差距不在模型多聪明，而在「窗口只有一扇，任务比窗口大」时怎么办。同样一场三小时的重构，四家用了四种完全不同的遗忘策略。</strong></p>
+
+      <h2 id="why">先说清一件事：为什么一定会「记不住」</h2>
+      <p>AI 一次能读的字数有上限，这个上限叫<strong>上下文窗口</strong>（单位是 token，中文大约一个字一个 token）。窗口里同时挤着三样东西：</p>
+      <ul>
+        <li><strong>固定开销</strong>：系统提示、工具说明、项目规则文件。每次请求都要重新带上。</li>
+        <li><strong>对话历史</strong>：你说过的话、它说过的话、它改过的代码。</li>
+        <li><strong>工具输出</strong>：跑一次测试的日志、读一个文件的全文、搜索结果。这一项涨得最快。</li>
+      </ul>
+      <p>窗口满了只有两种结局：要么报错停下，要么悄悄忘掉开头——你前面说过的约束就这么没了。所以每个 harness（模型外面那层「脚手架」）都必须回答同一个问题：<strong>该丢什么、丢到哪、丢了以后还能不能找回来。</strong></p>
+      <p>答案基本只有四种动作，四家的区别就是这四种动作的配比不同：<strong>截断</strong>（砍掉多余输出）、<strong>落盘</strong>（写进文件，只留路径）、<strong>摘要</strong>（让模型把旧对话压成一段笔记）、<strong>隔离或搬家</strong>（交给子代理、换个干净会话、搬到云上）。</p>
+
+      <h2 id="table">一眼看四家</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>维度</th><th>Claude Code</th><th>Codex</th><th>Grok Build</th><th>DeepSeek Harness</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>窗口</td><td>新模型原生 1M；4.6 系列 200K</td><td>Codex 内默认 500K；API 标称 1.05M</td><td>grok-4.7 为 500K；4.3 为 1M；build-0.1 为 256K</td><td>DeepSeek V4 为 1,048,576</td></tr>
+            <tr><td>先砍哪里</td><td>旧工具结果清理 + 摘要</td><td>工具输出按 token 上限截断</td><td>靠大窗口顶，满了再压</td><td>大输出先落盘，再确定性剪枝</td></tr>
+            <tr><td>压缩方式</td><td>摘要替换，重注入规则与最近文件</td><td>服务端 compaction v2，失败回落本地摘要</td><td>自动 + 手动 <code>/compact</code></td><td>摘要替换 + 溢出后强制头部缩减</td></tr>
+            <tr><td>留多少尾部</td><td>未公开；社区实测约 16%</td><td>远端约 64K token，本地约 20K</td><td>未公开（未确认）</td><td>窗口减输出后的 16%，默认约 127K</td></tr>
+            <tr><td>指令文件</td><td>CLAUDE.md 四层拼接</td><td>AGENTS.md 逐级拼接，32KiB 硬顶</td><td>直接读 CLAUDE.md / AGENTS.md 全家族</td><td>AGENTS.md + 技能渐进加载</td></tr>
+            <tr><td>长期记忆</td><td>自动记忆目录 MEMORY.md</td><td>后台 memories 管线（默认关）</td><td>实验性 memory，较弱</td><td>事件日志 + 目标状态机 + 会话引用</td></tr>
+            <tr><td>沙箱</td><td>有，默认关</td><td>有，默认开，工作区模式默认断网</td><td>有，默认关</td><td>有，按权限档位切换</td></tr>
+            <tr><td>运行形态</td><td>终端 / IDE / 桌面 / 云端 VM</td><td>CLI / IDE / 桌面 / 云端并行任务</td><td>官方 CLI + 编辑器集成</td><td>桌面 / Web / CLI / ACP / SDK</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">窗口数字是各家文档口径，不等于「实际能塞满」。预留输出、压缩余量、计价倍率都会让可用空间更小。</p>
+
+      <h2 id="windows">窗口有多大，差在哪</h2>
+      <div class="bar"><span>DeepSeek V4</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">1.05M</span></div>
+      <div class="bar"><span>GPT-6.1 Sol（API）</span><div class="track"><div class="fill b" style="width:100%"></div></div><span class="val">1.05M</span></div>
+      <div class="bar"><span>Claude 新模型</span><div class="track"><div class="fill" style="width:95%"></div></div><span class="val">1M</span></div>
+      <div class="bar"><span>Codex 内默认</span><div class="track"><div class="fill b" style="width:48%"></div></div><span class="val">500K</span></div>
+      <div class="bar"><span>grok-4.7</span><div class="track"><div class="fill w" style="width:48%"></div></div><span class="val">500K</span></div>
+      <div class="bar"><span>grok-build-0.1</span><div class="track"><div class="fill w" style="width:24%"></div></div><span class="val">256K</span></div>
+      <p class="note">示意：条长按 1.05M 归一。同一家不同模型的窗口并不一样，选模型就是选桌子大小。</p>
+
+      <h2 id="claude">Claude Code：会做笔记的同事</h2>
+      <p><strong>它的答案是把历史写成摘要，再补上最近的现场。</strong>窗口快满时自动压缩：把前面的对话换成一份结构化摘要，然后重新注入系统提示、项目规则、技能说明，并<strong>重新读一遍最近改过的几个文件</strong>——这一步很关键，因为摘要会丢细节，但文件内容不会骗人。</p>
+      <div class="lanes">
+        <div class="lane">
+          <h4>压缩时发生什么</h4>
+          <p class="why">据官方文档与社区实测；触发点可配置</p>
+          <div class="flow"><span class="step">接近窗口上限</span><span class="arrow">→</span><span class="step hot">生成摘要</span><span class="arrow">→</span><span class="step">重注入 CLAUDE.md / 记忆</span><span class="arrow">→</span><span class="step">重读最近 5 个文件</span><span class="arrow">→</span><span class="step">继续</span></div>
+        </div>
+      </div>
+      <p>记忆分两层。<strong>手写层</strong>是 CLAUDE.md：企业级、用户级、项目级、项目本地四层<em>拼接</em>而不是覆盖，所以公司规范和个人习惯能同时生效；子目录里的规则只在你碰那个目录时才加载。<strong>自动层</strong>是 <code>~/.claude/projects/&lt;项目&gt;/memory/MEMORY.md</code>，相当于 Claude 自己维护的索引，每次会话只读前 200 行或 25KB——它知道「有这本笔记」，需要时再翻。</p>
+      <p>代价也很直接。第三方实测显示，压缩后的摘要能保住约 77% 的决策，但只剩约 0.2% 的具体命令；早期约束和多步任务状态最容易蒸发。另外沙箱默认是关的，安全靠逐次权限确认兜底，弹窗多也是它被抱怨最多的地方。</p>
+
+      <h2 id="codex">Codex：一条有门禁的流水线</h2>
+      <p><strong>它的答案是把压缩做成服务端能力，把执行关进系统沙箱，把长任务搬上云。</strong>压缩有两条轨：优先走服务端的 compaction v2（官方口径保留约 64K token 的近期消息），失败才回落本地摘要（约 20K）。这样压缩本身不占本地算力，也更容易在不同入口之间保持一致。</p>
+      <p>规则文件走另一套逻辑：全局 <code>~/.codex/AGENTS.override.md</code> 优先于 <code>AGENTS.md</code>，项目层从仓库根一路拼到当前目录，越近越靠后；总量有 <strong>32KiB 硬顶</strong>，防止你把整个 wiki 塞进提示词。</p>
+      <p>它的「长期记忆」不是靠你手写文件，而是一条<strong>后台管线</strong>：会话空闲足够久（约 6 小时）、额度还剩得够（约 25%）、只看 30 天内的对话，每次最多提炼 16 条。官方自己说得很清楚——它是<em>召回层</em>，替代不了 AGENTS.md。</p>
+      <p>最不一样的是默认值：沙箱默认开，macOS 用 Seatbelt，Linux 用 bwrap + seccomp，工作区模式<strong>默认断网</strong>。所以它敢在你不在的时候跑；真跑不完，<code>codex cloud</code> 把任务交出去，睡一觉回来 apply 结果。代价是订阅窗口（500K）小于 API 标称（1.05M），且超过约 272K 输入按 2 倍计价。</p>
+
+      <h2 id="grok">Grok Build：把桌子换大，家具直接借邻居的</h2>
+      <p><strong>它的答案最省事：窗口给大一点，生态直接兼容。</strong>2026 年 5 月才有官方 CLI，但一上来就零配置读 Claude 那一套——CLAUDE.md、<code>.claude/</code> 下的技能与市场、MCP 配置都能直接用。你从 Claude Code 迁过去，几乎不用改文件。</p>
+      <p>默认模型是旗舰 grok-4.7（500K），而不是专门的小上下文代码模型；更老的 4.3 反而有 1M。压缩是标配的自动 + 手动 <code>/compact</code>，但保留策略官方没细说。记忆是明显短板：只有实验性的 memory 开关，没有 Claude 那种「自己写笔记」的成熟体系。</p>
+      <p>两个要留意的成本细节：prompt 超过 200K 后<strong>单价整体翻倍</strong>（$2/$6 变 $4/$12），以及订阅是共享周池，重度使用容易提前见底。沙箱也有，但默认关闭。</p>
+
+      <h2 id="dsh">DeepSeek Harness：把「历史」和「上下文」拆开</h2>
+      <p><strong>它的答案最工程化：历史是一本只追加的账，上下文只是这本账在某一刻的投影。</strong>压缩不是删除，而是往账本上追加一条「用这段摘要替换那一段」的记录——原始事件还在盘上，被替换的范围也记得清清楚楚，所以可审计、可回溯、崩溃后可重建。</p>
+      <div class="lanes">
+        <div class="lane">
+          <h4>四道闸门，从便宜到贵</h4>
+          <p class="why">按默认配置推算：窗口 1M、单次输出上限 256K、余量 64K</p>
+          <div class="flow"><span class="step">大输出落盘<br /><small>≤12.5K 留在窗口</small></span><span class="arrow">→</span><span class="step">确定性剪枝<br /><small>8192 字符</small></span><span class="arrow">→</span><span class="step hot">摘要替换<br /><small>约 727K 触发</small></span><span class="arrow">→</span><span class="step cold">溢出重试<br /><small>强制缩头部</small></span></div>
+        </div>
+      </div>
+      <p>门槛是这样算的：取「窗口的 80%」和「窗口减输出预留再减 64K 余量」里更小的那个。1M 窗口下约 <strong>727K</strong> 才触发摘要，摘要后逐字保留最近约 <strong>127K</strong>。在那之前，它先用两种几乎不花钱的手段：单个工具结果超过约 12,500 token 就写进文件，只留首尾预览和路径（模型需要时自己 <code>read</code>／<code>grep</code>）；真到了压缩，再先把超长工具结果按头 4096 / 尾 1024 字符剪一遍——剪完够用就不调用模型写摘要了。</p>
+      <p>记忆的层次也最多：AGENTS.md 提供项目约束；技能只在目录里放一行摘要，正文按需加载（渐进披露本身就是省 token）；目标（goal）是独立的状态机，能跨轮次续跑、记录修订号，连续三轮同一阻塞才算「卡住」；子代理默认不共享上下文，只回结果——隔离本身就是一种记忆管理。</p>
+      <p>它的短板在「量得不准」：token 估算按每 token 四字符的启发式，对中文和 JSON 会低估，理论上压缩会来得偏晚。好处是这套东西全是插件，压缩后端、剪枝策略、权限档位都能换。</p>
+
+      <h2 id="scenario">同一件事，四种现场</h2>
+      <p>假设你丢给它一个三十万 token 的老项目，说「把支付模块重构成异步，别改对外接口」，然后离开三小时。</p>
+      <div class="grid2">
+        <div class="box">
+          <h4>Claude Code</h4>
+          <p>还早，窗口没满，它先把「不要改对外接口」记进项目记忆。跑到第九十分钟窗口到顶，压缩一次，摘要里留下结论、丢掉你当初举的反例；它重读最近改的五个文件，把现场捡回来。你回来时它还知道目标，但可能问你「刚才说的那个兼容层要保留吗」。</p>
+        </div>
+        <div class="box">
+          <h4>Codex</h4>
+          <p>因为默认断网，它不会偷偷装依赖；跑测试碰壁会停下来问你。窗口到 500K 附近触发服务端压缩，保留最近 64K 的上下文。三小时没跑完，它把任务提交到云端继续，第二天你在本地 <code>apply</code> 结果，再看一遍 diff。</p>
+        </div>
+        <div class="box">
+          <h4>Grok Build</h4>
+          <p>直接读你现成的 <code>.claude/</code> 技能，零配置开工。500K 窗口够撑到重构过半，超过 200K 之后每一步都按双倍价钱算。真满了靠自己 <code>/compact</code>，或者你手动重开会话，把关键结论贴回去。</p>
+        </div>
+        <div class="box">
+          <h4>DeepSeek Harness</h4>
+          <p>每次跑测试的几万行日志早就落盘，模型只看到「结果太长，存在这个路径」。727K 才第一次摘要，历史仍在账本上。你不放心，可以回头查它到底哪一步替换了什么——因为压缩是可查的事件，不是一次不可逆的遗忘。</p>
+        </div>
+      </div>
+
+      <h2 id="memory-views">抽象一层：四种「记忆观」</h2>
+      <ul>
+        <li><strong>笔记式</strong>（Claude Code）：让模型自己写笔记，下次先读索引。优点是自然，缺点是笔记质量取决于模型自觉。</li>
+        <li><strong>流水线式</strong>（Codex）：把记忆变成后台任务，加空闲时长、额度、条数、时间窗四道限制。优点是可控，缺点是不及时、默认还关着。</li>
+        <li><strong>兼容式</strong>（Grok Build）：不发明记忆格式，复用别人的文件约定。优点是迁移零成本，缺点是没有自己的深度。</li>
+        <li><strong>账本式</strong>（DeepSeek Harness）：记忆是事件日志，上下文是投影。优点是可信、可审计、可重放，缺点是概念多、要理解「替换不是删除」。</li>
+      </ul>
+      <div class="callout">
+        <strong>一个共同结论：</strong>四家都不指望「对话」替你记事。真正稳定的记忆只有两种载体——<strong>仓库里的文件</strong>（AGENTS.md、CLAUDE.md、技能、代码本身）和<strong>盘上的日志</strong>（会话记录、落盘的工具输出）。写进这两处的东西才活得过三次压缩。
+      </div>
+
+      <h2 id="choose">怎么选</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>你的处境</th><th>更合适的选择</th><th>原因</th></tr></thead>
+          <tbody>
+            <tr><td>要生态、要稳、团队协作</td><td>Claude Code</td><td>技能、子代理、插件、云端一应俱全，规则分层最成熟</td></tr>
+            <tr><td>要无人值守、要安全边界</td><td>Codex</td><td>沙箱默认开、默认断网，云端并行跑长任务</td></tr>
+            <tr><td>已有 Claude 配置，想省钱求快</td><td>Grok Build</td><td>零配置复用 <code>.claude/</code>，按次成本低</td></tr>
+            <tr><td>要可控、可审计、想自己改</td><td>DeepSeek Harness</td><td>1M 窗口、日志可回溯、连压缩后端都是插件</td></tr>
+            <tr><td>中文长文档 + 长任务</td><td>优先 1M 窗口的两家</td><td>窗口每小一档，压缩就早一次，细节就多丢一层</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>不管选哪家，有四件事现在就能做，效果比换工具大：</p>
+      <ol>
+        <li>把「永远成立」的约束写进 AGENTS.md 或 CLAUDE.md，别在对话里重复第十遍。</li>
+        <li>长任务拆成有明确验收点的阶段，每阶段结束让它把结论写进文件。</li>
+        <li>重要产出（设计决定、接口清单、失败原因）落盘，不要只活在对话里。</li>
+        <li>知道它的压缩触发点在哪，快到时主动收尾或开新会话，比被动画一刀更划算。</li>
+      </ol>
+
+      <h2 id="sources">来源与边界</h2>
+      <ul class="sources">
+        <li>Claude Code：<a href="https://code.claude.com/docs/en/context-window" rel="noreferrer">Context window</a>、<a href="https://code.claude.com/docs/en/memory" rel="noreferrer">Memory</a>、<a href="https://code.claude.com/docs/en/model-config" rel="noreferrer">Model config</a>、<a href="https://code.claude.com/docs/en/sandboxing" rel="noreferrer">Sandboxing</a>（2026-11 读取）。</li>
+        <li>Codex：<a href="https://github.com/openai/codex" rel="noreferrer">openai/codex</a>、<a href="https://learn.chatgpt.com/docs/config-file/config-reference" rel="noreferrer">Config reference</a>（v0.169，2026-11-13）。</li>
+        <li>Grok Build：<a href="https://docs.x.ai/build/overview" rel="noreferrer">Build overview</a>、<a href="https://docs.x.ai/build/features/project-rules" rel="noreferrer">Project rules</a>、<a href="https://docs.x.ai/build/features/sandbox" rel="noreferrer">Sandbox</a>、<a href="https://docs.x.ai/developers/models" rel="noreferrer">Models &amp; pricing</a>。</li>
+        <li>DeepSeek Harness：<a href="https://github.com/deepseek-ai/deepseek-harness" rel="noreferrer">deepseek-ai/deepseek-harness</a> 的压缩、spill、token 计量子系统文档；<a href="https://api-docs.deepseek.com/zh-cn/news/news260424/" rel="noreferrer">DeepSeek-V4 发布说明</a>（1M 上下文）。</li>
+        <li>社区实测与 issue 编号来自各家公开仓库与讨论区，仅用于说明「压缩会丢细节」这类定性结论，不当作官方指标。</li>
+      </ul>
+      <p class="note">边界：本文比较的是各家 harness 的「默认行为」。四家都能改配置——窗口、压缩阈值、保留比例、沙箱开关、记忆开关，改完结论可能反转。文中数字读取于 2026-11-16，版本迭代很快；标「未确认」的项没有找到官方口径。图为示意，非实测截图。</p>
+
+      <footer>
+        <p>2026-11-16 · 归入 <a href="/reports/">报告库</a> · 下一份可对比的题目：四家的子代理与并行编排差异</p>
+      </footer>
+    </main>
+  </body>
+</html>
